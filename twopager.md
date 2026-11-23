@@ -1,7 +1,7 @@
 # Agent Safety: The Two Cultures
 
-!!! warning "Status: STARTED"
-    Draft. Not fully human-reviewed. See [the AI-use statement](../ai-use.md).
+!!! warning "AI-generated draft"
+    Written by Claude (Anthropic) under Robin Chauhan's direction; not fully human-reviewed. See [the AI-use statement](../ai-use.md).
 
 
 *Two-page draft v0.1, 2026-11-20. Position paper. All incident statistics are model-judged and not human-audited; they are marked `[U]`.*

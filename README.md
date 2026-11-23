@@ -1,6 +1,6 @@
 # "Two Cultures" paper
 
-Breiman [1] split statistics into a data-modelling and an algorithmic culture; agent safety has the same split. One culture (safe RL, constrained MDPs, shields) begins "assume the agent maximises a reward R". The other (red teams, evals, AI control, incident reports) treats the agent as a black box and measures what it does. The paper maps the two line by line, counts how often each side's assumptions fail across 70 real incidents, and traces both in the citation graph.
+Breiman [1] split statistics into a data-modelling and an algorithmic culture; agent safety has the same split. One culture (safe RL, constrained MDPs, shields) begins "assume the agent maximises a reward R". The other (red teams, evals, AI control, incident reports) treats the agent as a black box and measures what it does. The paper maps the two line by line, counts how often each side's assumptions fail across 70 real incidents, and traces both in the citation graph. A two-page draft (v0.1, 2026-11-20) is written; the full paper is not.
 
 **Status:** Started. Most text was written by Claude (Anthropic) under Robin Chauhan's direction and has not been human-reviewed.
 
