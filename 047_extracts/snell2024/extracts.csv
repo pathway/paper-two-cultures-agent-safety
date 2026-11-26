@@ -1,0 +1,2 @@
+id,kind,locator,text,tex
+e1,cell,5.1. Training Verifiers Amenable to Search,using estimates of per-step correctness obtained from running Monte Carlo rollouts from each step in the solution,

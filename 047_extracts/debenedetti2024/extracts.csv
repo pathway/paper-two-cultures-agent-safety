@@ -1,0 +1,2 @@
+id,kind,locator,text,tex
+e1,cell,2,"Untrusted data processed and returned by the tools called by an AI agent are an effective vector for (indirect) prompt injections that execute malicious actions on behalf of the user [13, 18, 23].",

@@ -1,0 +1,26 @@
+id,pass,topic,locator,line,text
+c1,llm_wf,claim,1,27,"Two natural approaches are outcome-based approaches, which supervise the final result, and process-based approaches, which supervise each step of the reasoning process, including the last step outputting the final result."
+c2,llm_wf,policy,2.2,179,"We use an LM as a policy, which maps the problem statement and steps-so-far to a next step."
+c3,llm_wf,action,2.2,180,"In the RL formalism, this treats each step as an action, and the observation is provided by all the tokens so far."
+c4,llm_wf,reward,2.2,182,"We also train LMs as reward models (Section 2.4), which score proposed completions or partial completions from the policy, and can be used both for reranking"
+c5,llm_wf,reward,2.4,198,"In both approaches, we implement the RM as a LM, trained to predict a binary label as either a ‘correct’ or ‘incorrect’ token after each step."
+c6,llm_wf,reward,2.4,200,"In the outcome-supervised RM (ORM), the binary label for each step indicates whether the resulting final answer of that full sample matched the reference final answer, as proposed by Cobbe et al. (2021)."
+c7,llm_wf,reward,2.4,204,"Because we lack reliable programmatic means for determining the correctness of intermediate steps, we use human annotations for these labels, as described in Section 2.7."
+c8,llm_wf,value,2.4,202,A policy which maximizes the ORM score at each step thus maximizes the RM-estimated probability at each step of eventually reaching the correct final answer.
+c9,llm_wf,value,2.4,206,A policy which maximizes the PRM score thus selects each step to maximize the RM-estimated probability of the steps so far being correct.
+c10,llm_wf,episode,2.6,351,"At each step, we generate 𝐾 candidate steps, select the candidate with the highest PRM score, and continue from the selected step until the model outputs a step with the final answer indicator text, or a maximum of 15 steps."
+c11,llm_wf,objective,2.1,154,Final-answer error rate is the fraction of problems for which the method does not produce the correct final answer.
+c12,llm_wf,objective,2.1,157,Trace error rate is the fraction of problems with correct final answers for which the method produces at least one incorrect reasoning step.
+c13,llm_wf,oversight,2.7,363,"To collect this data, we present human annotators with the problem statement, the reference solution from GSM8K, and the generated model solution, and ask them to indicate the first model step with a major mistake, if any exist."
+c14,llm_wf,principal,2.7,365,"Our instructions define a major mistake as “a step where the information expressed is incorrect, or it would no longer be possible to reach the correct solution without undoing that step”."
+c15,llm_wf,failure,3,650,"Because Final-Answer RL only optimizes for final-answer error, the intermediate steps need not be understandable to a human evaluator, or correct under standard English semantics."
+c16,llm_wf,failure,3.1,664,These both support the view that outcome-based approaches can find ways to produce correct answers for incorrect reasons.
+c17,llm_wf,failure,4.1.3,881,"A common concern within the AI safety literature is from RL agents which tamper (Everitt et al., 2017), i.e., corrupt their feedback mechanisms in order to receive positive feedback."
+c18,llm_wf,principal,4.1.3,883,"If optimized for total user satisfaction, such an agent may influence users towards preferences which are easier to satisfy"
+c19,llm_wf,reward,4.1.3,890,"While this does not directly prevent actions which influence future user preferences, these future changes would not affect rewards for the corresponding actions, and so would not be optimized for by process-based feedback."
+c20,llm_wf,oversight,4.1.3,905,"However, this approach only scales to tampering we can detect: in other cases, effects can be difficult to observe or measure"
+c21,llm_wf,limitation,4.2,912,We generally expect process-based and outcome-based feedback to align more closely for math compared to other domains.
+c22,llm_wf,limitation,3,621,"However, we caution against over-generalizing: the fact that the ORM model approximates the PRM labels may be domain-specific."
+c23,llm_wf,limitation,6,1046,"While some of these conclusions may be specific to our setting of math word problems, we hope that future work explores the extent to which they generalize to other domains."
+c24,llm_wf,setting,2.2,169,"Our goal is to train a system for the sequence-to-sequence task (Sutskever et al., 2014) of taking the text of a problem as input and generating the text of an answer as output."
+c25,llm_wf,action,4.1.3,897,"Because the only actions in GSM8K are reasoning steps, we typically refer directly to reasoning steps in this paper, but the different approaches to supervision apply more generally."

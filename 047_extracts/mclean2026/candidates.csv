@@ -1,0 +1,58 @@
+id,pass,topic,locator,line,text
+c1,llm,claim,Abstract,3,We argue that many of these safety limitations are not novel problems.
+c2,llm,setting,Abstract,3,AI agents are designed to solve sequential decision-making problems: problems with long-term objectives in which actions have delayed consequences.
+c3,llm,failure,1. Introduction,9,"In the last year, several high-profile safety issues have plagued AI agents, such as deleting an entire company’s database (Nolan, 2025), autonomously mining cryptocurrencies (Wang et al., 2026), causing large data leaks of user information (Down, 2026), and deleting all emails from a user’s inbox (Martindale, 2026)."
+c4,llm,failure,1. Introduction,9,"These failures speak to a larger set of issues in AI agents, such as a lack of generalization, where agents fail to adapt knowledge to novel scenarios; distributional shift, where environmental dynamics fall outside the agent’s training data; and reward hacking, where an agent optimizes for a literal objective in a way that violates user intent."
+c5,llm,llm,2. Background Information,12,"Since the introduction of ChatGPT (OpenAI, 2022) and many subsequent advances in LLMs, there has been an influx of interest in AI agents, which we define as an agent that leverages a LLM as their decision making backbone, and Agentic AI."
+c6,llm,failure,AI agent Failures,15,"Perhaps most concerning for deployment, Simhi et al. (2026) designed tasks requiring agents to navigate a tension between operational performance and human safety, finding that all evaluated agents struggled to reliably choose the safe option when it came at a cost to task performance."
+c7,llm,reward,Reinforcement Learning,18,"RL is the study of creating agents that can observe their environment, select an action, observe how the environment changes, and receive a reward for taking that action."
+c8,llm,state,Reinforcement Learning,18,"The failure modes of inadequate exploration, misspecified objectives, and partial observability are not unique to AI agents."
+c9,llm,objective,,17,"An agent that cannot reliably prioritize human welfare over task completion, that pursues misspecified objectives without correction, or that acts on partial information in irreversible situations, poses risks that scale directly with the autonomy and deployment context described above."
+c10,llm,claim,1. Introduction,11,"This motivates our position that AI Agent safety is a reinforcement learning problem: the failure modes currently observed in deployed AI agents are structural instances of problems RL has formalized for decades, and the RL safety literature provides principled tools to diagnose and address them."
+c11,llm,policy,3.2. Stochastic Control,31,The agent's task is then to find a policy π : Z → A that optimizes J .
+c12,llm,action,3.4. Markov Decision Processes (MDPs),40,"The action at corresponds to the agent's output, such as individual tokens or tool invocations."
+c13,llm,observation,3.2. Stochastic Control,31,"The AI agent perceives its environment through an observation function O, typically rendered as natural language text."
+c14,llm,state,3.4. Markov Decision Processes (MDPs),40,The state st corresponds to the textual representation of the current situation.
+c15,llm,state,3.3. Specializing the Stochastic Control Problem for AI agents,40,"This imposes the Markov property, that the transitions of this distribution only rely on the current state st and the action at applied in st ."
+c16,llm,transition,3.4. Markov Decision Processes (MDPs),40,"In practice, however, the transition function is rarely known, and the agent must instead learn a policy through direct interaction with the system."
+c17,llm,episode,3.3. Specializing the Stochastic Control Problem for AI agents,38,"This structure means that at time t = 0, 1, 2, ..., n, the agent receives an observation, chooses an action, and the system transitions to the next state."
+c18,llm,objective,3.2. Stochastic Control,31,"Finally, J : (S × A)τ → R is the objective function, which the agent seeks to optimize over the trajectory τ of its interactions with the system."
+c19,llm,principal,3.2. Stochastic Control,31,The objective function J measures the degree to which the trajectory of the AI agent’s interactions satisfies the requirements implicitly defined by a user’s instructions.
+c20,llm,failure,,18,"The Markov Decision Process (MDP) formalism and its variants provide a shared mathematical language that allows researchers to characterize problems precisely, identify failure modes structurally, and connect empirical observations to theoretical guarantees."
+c21,llm,claim,3.1. Agent Interaction Framework,21,"In the remainder of this section, we make this equivalence precise by showing that, as a representative example, the AI agent problem can be formalized as a POMDP (Kaelbling et al., 1998), the same mathematical object that part of RL has studied for decades."
+c22,llm,setting,3.4. Markov Decision Processes (MDPs),40,"These specializations transform the SC tuple ⟨S, A, f, O, J ⟩ into the Markov Decision Process (MDP) tuple ⟨S, A, P, R⟩."
+c23,llm,limitation,3.3. Specializing the Stochastic Control Problem for AI agents,40,"This is also an idealized assumption, as it is possible that the history of states s0:t and actions a0:t taken to reach the current state may be relevant to predicting the next state."
+c24,llm,limitation,3.3. Specializing the Stochastic Control Problem for AI agents,38,"While this assumption of being able to observe the true state of the system st is strong, we will show the implications of relaxing this assumption in Section 3.5."
+c25,llm,llm,3.4. Markov Decision Processes (MDPs),40,"While we discuss the problems that AI agents are solving during deployment, we do note that RLHF () and RLVR () leverage the POMDP framing during the post-training phase."
+c26,llm,reward,3.5,40,"the reward R(st , at ) measures the degree to which that action advances the user’s objective."
+c27,llm,reward,3.5,42,"The reward function R in the AI agent setting is somewhat different from training (updating the policy) to deployment (freezing the policy), and we elaborate further on reward functions in Section 4."
+c28,llm,policy,3.5,40,the agent must instead learn a policy through direct interaction with the system.
+c29,llm,policy,3.6.2,78,which constrains how far the policy may drift from a reference model during optimization but places no hard constraints on which actions the deployed policy may take in a given state.
+c30,llm,action,3.5,40,"The action at corresponds to the agent’s output, such as individual tokens or tool invocations."
+c31,llm,observation,3.4,40,"However, the textual representation of the world that an AI agent receives is not the full true state of the world; it is a partial, language-rendered observation of it."
+c32,llm,state,3.4,42,"When the agent’s observation is not a sufficient statistic for the true state, the Markov property no longer holds at the level of observations."
+c33,llm,transition,3.5,42,We can imagine stochasticity in the system being interacted with due to multiple reasons.
+c34,llm,episode,3.6.2,76,"Unlike games or simulations where agents can be “reset,” real-world AI agent deployments often lack a safety shield or a “constrained MDP” (Altman, 1999) framework that prevents the exploration of high-risk actions before they occur."
+c35,llm,objective,3.6.1,76,"The proxy objective is the literal task specification, while the true objective includes preserving existing state, respecting implicit constraints, and flagging uncertainty before taking irreversible actions."
+c36,llm,objective,3.6.1,76,The only way that a user can interact with the AI agent during deployment is through the initial prompt that attempts to describe the goal and what the AI agent should do to accomplish this goal.
+c37,llm,principal,3.6.1,75,"A central failure mode visible in deployed AI agents is reward misspecification, which is the divergence between the proxy objective an agent optimizes and the true objective the user intends."
+c38,llm,failure,3.6.1,76,"For example, in July 2025, Replit’s AI agent deleted a production database of 1, 206 executive records during a code freeze, then fabricated 4, 000 synthetic records to mask the deletion (Nolan, 2025)."
+c39,llm,claim,3.5,59,"The systematic application of this formalism to AI agent safety has not yet followed, which is the gap that this paper addresses."
+c40,llm,limitation,3.4,40,One natural tension in this mapping is the Markov property.
+c41,llm,llm,3.6.1,76,"We hypothesize that the AI agent learns an internal reward function f (op , og ) that maps op to the goal state og , potentially during the process of post-training with RLVR (Shao et al., 2024; Guo et al., 2025)."
+c42,llm,failure,3.6.3. O BSERVATION A MBIGUITY,78,"However, due to a missing state file, the agent interpreted the environment as empty and executed terraform destroy, deleting 1, 943, 200 rows of course data accumulated over 2.5 years (Grigorev, 2025)."
+c43,llm,observation,3.6.3. O BSERVATION A MBIGUITY,78,Failures in this category arise when an agent treats a POMDP as a fully observable MDP.
+c44,llm,reward,4. Counter Arguments,79,"The AI agent does not receive a scalar reward signal during deployment, so using any MDP to describe the problem is incorrect."
+c45,llm,reward,4. Counter Arguments,79,"During the training of an AI agent, it is common to leverage a Process Reward Model (PRM) (Liu et al., 2025) that provides sparse feedback for a trajectory of an AI agent."
+c46,llm,action,"AI agents use tools, RL agents use primitive actions",82,Sutton et al. (1999) introduces the idea of options. Options share the key structural property of tool calls in that both are temporally extended actions.
+c47,llm,state,,82,Elelimy et al. (2025b) propose that RL agents should learn an explicit mapping from trajectory history to state.
+c48,llm,llm,,82,"Firstly, a finite context window size means that information from early in a trajectory may be truncated or compressed."
+c49,llm,limitation,5. Limitations,85,"First, a significant scaling gap exists between the abstract formalisms that unify these settings and the practical solution methods deployed within them."
+c50,llm,claim,6. Conclusion,87,"Through this paper, we have shown that AI agents are solving a similar problem that RL researchers have attempted to solve for decades."
+c51,llm,claim,,87,"This collaboration might take the form of shared benchmarks that test both RL and AI agents on the same sequential decision-making problems, shared formalisms for diagnosing safety failures, and joint evaluation frameworks that hold both communities to rigorous empirical standards."
+c52,llm,failure,References,93,Meta ai agent’s instruction causes large sensitive data leak to employees.
+c53,llm,failure,References,93,"How i dropped our production database and now pay 10 Substack, 2025."
+c54,llm,failure,References,97,Meta security researcher’s ai agent accidentally deleted her emails.
+c55,llm,failure,References,99,"An ai-powered coding tool wiped out a software company’s database, then apologized for a ‘catastrophic failure on my part’."
+c56,llm,llm,A.1. AI agents,108,"Systems such as SWE-agent (Yang et al., 2024) and OpenHands (Wang et al., 2025c) are capable of autonomously navigating production codebases, identifying the source of reported bugs, implementing fixes, and validating their solutions against existing test suites."
+c57,llm,oversight,A.1. AI agents,108,"The first component of an agent is autonomy, where an agent can act without the direct intervention of humans or others, and the agent has some control over their own actions and internal state (Castelfranchi, 1995)."

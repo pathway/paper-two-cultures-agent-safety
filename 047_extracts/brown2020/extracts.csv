@@ -1,0 +1,2 @@
+id,kind,locator,text,tex
+e1,cell,Abstract,"For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model",

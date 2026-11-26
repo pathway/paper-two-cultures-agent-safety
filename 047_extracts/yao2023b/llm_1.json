@@ -1,0 +1,132 @@
+[
+ {
+  "topic": "setting",
+  "locator": "2",
+  "text": "At time step t, an agent receives an observation ot ∈ O from the environment and takes an action at ∈ A following some policy π(at |ct ), where ct = (o1 , a1 , · · · , ot−1 , at−1 , ot ) is the context to the agent."
+ },
+ {
+  "topic": "action",
+  "locator": "2",
+  "text": "The idea of ReAct is simple: we augment the agent’s action space to Â = A ∪ L, where L is the space of language. An action ât ∈ L in the language space, which we will refer to as a thought or a reasoning trace, does not affect the external environment, thus leading to no observation feedback."
+ },
+ {
+  "topic": "state",
+  "locator": "2",
+  "text": "Instead, a thought ât aims to compose useful information by reasoning over the current context ct , and update the context ct+1 = (ct , ât ) to support future reasoning or acting."
+ },
+ {
+  "topic": "policy",
+  "locator": "2",
+  "text": "In this paper, we mainly focus on the setup where a frozen large language model, PaLM-540B (Chowdhery et al., 2022)1 , is prompted with few-shot in-context examples to generate both domain-specific actions and free-form language thoughts for task solving"
+ },
+ {
+  "topic": "policy",
+  "locator": "2",
+  "text": "Each in-context example is a human trajectory of actions, thoughts, and environment observations to solve a task instance (see Appendix C)."
+ },
+ {
+  "topic": "claim",
+  "locator": "1",
+  "text": "In this work, we present ReAct, a general paradigm to combine reasoning and acting with language models for solving diverse language reasoning and decision making tasks (Figure 1)."
+ },
+ {
+  "topic": "claim",
+  "locator": "1",
+  "text": "To summarize, our key contributions are the following: (1) we introduce ReAct, a novel promptbased paradigm to synergize reasoning and acting in language models for general task solving;"
+ },
+ {
+  "topic": "claim",
+  "locator": "1",
+  "text": "On ALFWorld and WebShop, two or even one-shot ReAct prompting is able to outperform imitation or reinforcement learning methods trained with 103 ∼ 105 task instances, with an absolute improvement of 34% and 10% in success rates respectively."
+ },
+ {
+  "topic": "observation",
+  "locator": "3.1",
+  "text": "In this work, we operate in a question-only setup for both tasks, where models only receive the question/claim as input without access to support paragraphs, and have to rely on their internal knowledge or retrieve knowledge via interacting with an external environment to support reasoning."
+ },
+ {
+  "topic": "action",
+  "locator": "3.1",
+  "text": "We design a simple Wikipedia web API with three types of actions to support interactive information retrieval: (1) search[entity], which returns the first 5 sentences from the corresponding entity wiki page if it exists, or else suggests top-5 similar entities from the Wikipedia search engine,"
+ },
+ {
+  "topic": "episode",
+  "locator": "4",
+  "text": "We also test ReAct on two language-based interactive decision-making tasks, ALFWorld and WebShop, both of which feature complex environments that require agents to act over long horizons with sparse rewards, warranting the need for reasoning to act and explore effectively."
+ },
+ {
+  "topic": "transition",
+  "locator": "4",
+  "text": "A task instance can have more than 50 locations and take an expert policy more than 50 steps to solve, thus challenging an agent to plan and track subgoals, as well as explore systematically"
+ },
+ {
+  "topic": "objective",
+  "locator": "4",
+  "text": "Webshop contains a high variety of structured and unstructured texts (e.g. product titles, descriptions, and options crawled from Amazon), and requires an agent to purchase a product based on a user instruction"
+ },
+ {
+  "topic": "reward",
+  "locator": "4",
+  "text": "This task is evaluated by average score (percentage of desired attributes covered by the chosen product averaged across all episodes) and success rate (percentage of episodes where the chosen product satisfies all requirements) on 500 test instructions."
+ },
+ {
+  "topic": "oversight",
+  "locator": "1",
+  "text": "the combination of reasoning and acting also contributes to model interpretability, trustworthiness, and diagnosability across all domains, as humans can readily distinguish information from model’s internal knowledge versus external environments, as well as inspect reasoning traces to understand the decision basis of model actions."
+ },
+ {
+  "topic": "oversight",
+  "locator": "2",
+  "text": "D) Human aligned and controllable: ReAct promises an interpretable sequential decision making and reasoning process where humans can easily inspect reasoning and factual correctness. Moreover, humans can also control or correct the agent behavior on the go by thought editing, as shown in Figure 5 in Section 4."
+ },
+ {
+  "topic": "failure",
+  "locator": "3.3",
+  "text": "Hallucination is a serious problem for CoT, resulting in much higher false positive rate than ReAct (14% vs. 6%) in success mode, and make up its major failure mode (56%)."
+ },
+ {
+  "topic": "failure",
+  "locator": "3.3",
+  "text": "B) While interleaving reasoning, action and observation steps improves ReAct’s groundedness and trustworthiness, such a structural constraint also reduces its flexibility in formulating reasoning steps, leading to more reasoning error rate than CoT."
+ },
+ {
+  "topic": "failure",
+  "locator": "3.3",
+  "text": "we note that there is one frequent error pattern specific to ReAct, in which the model repetitively generates the previous thoughts and actions, and we categorize it as part of “reasoning error” as the model fails to reason about what the proper next action to take and jump out of the loop4 ."
+ },
+ {
+  "topic": "llm",
+  "locator": "5",
+  "text": "The strong capability of LLMs has enabled them to perform tasks beyond language generation, and it is becoming more popular to take advantage of LLMs as a policy model for decision making, especially in interactive environments."
+ },
+ {
+  "topic": "reward",
+  "locator": "5",
+  "text": "In comparison to ReAct, WebGPT does not explicitly model the thinking and reasoning procedure, instead rely on expensive human feedback for reinforcement learning."
+ },
+ {
+  "topic": "policy",
+  "locator": "5",
+  "text": "In contrast, ReAct learns a policy in a much cheaper way, since the decision making process only requires language description of the reasoning procedure.6"
+ },
+ {
+  "topic": "limitation",
+  "locator": "6",
+  "text": "Despite the simplicity of our method, complex tasks with large action spaces require more demonstrations to learn well, which unfortunately can easily go beyond the input length limit of in-context learning."
+ },
+ {
+  "topic": "limitation",
+  "locator": "6",
+  "text": "Scaling up ReAct with multi-task training and combining it with complementary paradigms like reinforcement learning could result in stronger agents that further unlock the potential of LLMs for more applications."
+ },
+ {
+  "topic": "failure",
+  "locator": "Ethics Statement",
+  "text": "However, hooking up a large language model with an action space to interact with external environments (e.g. the web, physical environments) has potential dangers, e.g. looking up inappropriate or private information, or taking harmful actions in an environment."
+ },
+ {
+  "topic": "action",
+  "locator": "Ethics Statement",
+  "text": "Our experiments minimize such risks by limiting the interactions to specific websites (Wikipedia or WebShop) that are free of private information, without any dangerous actions in the action space design (i.e. models cannot really buy products on WebShop the research benchmark, or edit Wikipedia)."
+ }
+]

@@ -1,0 +1,127 @@
+[
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "we propose a new metric: 50%-task-completion time horizon, the time humans typically take to complete tasks that AI models can complete\nwith 50% success rate."
+ },
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "Furthermore, frontier AI time horizon has doubled approximately every seven months since 2019, though the trend may have accelerated since 2024."
+ },
+ {
+  "topic": "setting",
+  "locator": "1",
+  "text": "We propose tracking AI progress over time using the task completion time horizon: the duration\nof tasks that models can complete at a certain success probability, providing an intuitive measure of\nreal-world capability compared to humans."
+ },
+ {
+  "topic": "setting",
+  "locator": "2.1",
+  "text": "All tasks are automatically scored with a continuous score or binary threshold; details of how we\nnormalize and process scores are given in Section 3.1, and other task suite details in Appendix B."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.1",
+  "text": "To convert agent run data to task completion time horizon, we first convert the agent performance on\neach task to a binary value (success or failure). Many tasks are naturally binary, including all SWAA\ntasks."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.1",
+  "text": "Continuously scored tasks are binarized via a task-specific threshold chosen to represent\nhuman performance. For HCAST, the task-specific threshold is the same “target score” the human\nbaseliner tries to achieve, which we also use to filter for successful runs."
+ },
+ {
+  "topic": "policy",
+  "locator": "2",
+  "text": "Second, we have both humans and AI agents (consisting of an AI model and a\nscaffold) attempt these tasks, recording the time taken by successful humans and the success rate for\nAI agents."
+ },
+ {
+  "topic": "episode",
+  "locator": "2.3",
+  "text": "We perform 8 runs4 per\nagent/task pair and report the average results in Figure 3."
+ },
+ {
+  "topic": "value",
+  "locator": "3.1",
+  "text": "where ttask is the geometric mean time of successful human baselines, and hagent and βagent are\nlearned parameters, with hagent representing the 50% time horizon."
+ },
+ {
+  "topic": "value",
+  "locator": "3.1 fn5",
+  "text": "Like in IRT, we use logistic regression to find the task\ndifficulty at which the agent has a 50% chance of success, but unlike IRT, we use difficulty ratings directly based\non human baseline time rather than ratings learned from agent performance."
+ },
+ {
+  "topic": "objective",
+  "locator": "2.1",
+  "text": "Tasks under 1 minute measure knowledge relevant to professional software engineering. At 10 minutes, tasks can include the easiest meaningful\nstep of a real software project (e.g. configuring a common open-source package)."
+ },
+ {
+  "topic": "failure",
+  "locator": "3.3",
+  "text": "However, we noticed that AI agents still seem to struggle in intuitively “messier” environments—\nspecifically, environments without clear feedback loops, or where the agent needs to proactively\nseek out relevant information."
+ },
+ {
+  "topic": "failure",
+  "locator": "3.3",
+  "text": "we observe that models seem to have improved greatly in terms of tool use capabilities,\ndemonstrate a markedly greater ability to adapt to mistakes (as opposed to repeating unsuccessful\nactions)"
+ },
+ {
+  "topic": "limitation",
+  "locator": "5",
+  "text": "Such differences cast doubt on whether the rapid performance improvements seen on this\ntask suite (and other benchmarks) will generalize."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5",
+  "text": "in short, realistic tasks rarely have automatic scoring, and often require\ndealing with other agents, resource constraints, dynamic environments, and high reliability requirements."
+ },
+ {
+  "topic": "limitation",
+  "locator": "6",
+  "text": "we\ncaution that time horizon is always measured relative to a domain, task distribution, and human\nbaseliners’ level of skill and context, and can be difficult to measure in practice, especially for\nlonger horizons or success rates near 100%."
+ },
+ {
+  "topic": "limitation",
+  "locator": "1",
+  "text": "but do not rule out the possibility that trends are meaningfully slower on the distribution\nof tasks required to automate software engineer jobs."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3.2.1",
+  "text": "Due to the limited dataset, we cannot confidently measure time horizons\nat very high success rates (e.g. 95%)"
+ },
+ {
+  "topic": "oversight",
+  "locator": "1",
+  "text": "Robust benchmarks\nthat can accurately track and forecast AI capabilities thus form the foundation for responsible AI\ngovernance and risk mitigation."
+ },
+ {
+  "topic": "principal",
+  "locator": "1",
+  "text": "In\nparticular, many frontier AI developers have committed to using measures of specific AI capabilities to determine the necessary risk mitigations for their frontier AI systems."
+ },
+ {
+  "topic": "claim",
+  "locator": "3.2",
+  "text": "time horizon has doubled every 207 days with a 95% bootstrapped\nconfidence interval 166-240 days (roughly ±19%)."
+ },
+ {
+  "topic": "claim",
+  "locator": "5",
+  "text": "If future progress instead\nfollows the 2024–2025 trend, 1-month AI would arrive sooner, with half the probability in 2027 and\neven late 2026."
+ },
+ {
+  "topic": "setting",
+  "locator": "2.2",
+  "text": "148 of the 169 tasks have human\nbaselines, but we rely on researcher estimates for 21 tasks in HCAST."
+ },
+ {
+  "topic": "failure",
+  "locator": "3.2.1",
+  "text": "models’ 80% time horizons are 4-6x shorter, suggesting that even models that sometimes succeed on difficult and diverse tasks cannot reliably perform\ntasks of moderate length."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5",
+  "text": "The time horizon trend may significantly change in the\nfuture due to factors including agency training, compute scaling, and automation of AI research and\ndevelopment."
+ }
+]

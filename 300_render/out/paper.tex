@@ -1,0 +1,564 @@
+% Built by build.py from ../draft_conditions_short.md. Edit the markdown, not paper.tex.
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{tabularx}
+\usepackage{placeins}  % \FloatBarrier keeps tables before the references
+\usepackage{xurl}  % lets long URLs break at any character
+\usepackage{hyperref}
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+\usepackage{icml2026}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{newunicodechar}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{✗}{\ensuremath{\times}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{⊆}{\ensuremath{\subseteq}}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∑}{\ensuremath{\sum}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\newunicodechar{′}{\ensuremath{^\prime}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{ℓ}{\ensuremath{\ell}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{Ω}{\ensuremath{\Omega}}
+\newunicodechar{φ}{\ensuremath{\phi}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{η}{\ensuremath{\eta}}
+\newunicodechar{κ}{\ensuremath{\kappa}}
+\newunicodechar{ψ}{\ensuremath{\psi}}
+\newunicodechar{∂}{\ensuremath{\partial}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{∼}{\ensuremath{\sim}}
+\newunicodechar{⟨}{\ensuremath{\langle}}
+\newunicodechar{⟩}{\ensuremath{\rangle}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{²}{\ensuremath{^2}}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+% pandoc output helpers
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\newcommand{\passthrough}[1]{#1}
+
+\icmltitlerunning{The Two Cultures of Agents}
+
+\begin{document}
+\onecolumn
+  \icmltitle{The Two Cultures of Agents. What Reward, Policy, Action, Observation and Transition Mean for LLM Chatbots and Tool Agents}
+  \begin{icmlauthorlist}
+    \icmlauthor{Anonymous Authors}{anon}
+  \end{icmlauthorlist}
+  \icmlaffiliation{anon}{Anonymous Institution}
+  \icmlcorrespondingauthor{Anonymous Authors}{anon@example.com}
+  \icmlkeywords{reinforcement learning, LLM agents, two cultures, position paper}
+  \vskip 0.3in
+
+\printAffiliationsAndNotice{}
+
+\begin{abstract}
+When an RL researcher and an LLM-agent builder say \emph{agent}, they name different objects, and claims that cross between them arrive with the words but not the objects: a deployed LLM agent is said to hack a reward it does not have. This paper lays the two meanings side by side, one primitive at a time, in training and in deployment, and says where each word keeps its meaning and where it loses it. It describes the gap and proposes no bridge. One culture writes down the decision process and the reward and learns a policy; the other prompts a pretrained model inside a scaffold with tools and judges it by what it does. We take the eight primitives that \citet{sutton2018} define, reward, policy, action, observation, state, transition, episode and value, and read each one in nine settings: an RL agent in training and in deployment, chat training with an outcome reward model, with a verifier and with a process reward model, agent training with trajectory reward, and deployment of a chatbot, of a tool agent with a human between steps and of an autonomous tool agent. The reading is a table of 72 cells, each with its reason, and sources where the reason rests on one. We also code 23 properties in every setting and compare settings only within a phase. In training and in deployment alike, LLM agents differ from RL agents on six properties, among them that an LLM agent's observations can carry instructions and its behaviour can be steered by instructions in its input. In deployment the RL agent's task still has a reward function and the LLM's has none. Some differences that look cultural are differences of phase: neither a deployed RL policy nor a deployed LLM uses reward to change its parameters. Chat training with a learned or programmatic outcome reward is a contextual bandit with no subsequent decision and a degenerate value, for which the critic is often dropped; process supervision has the code of RL training, where both bandit settings do not, on whether reward arrives at every step, an episode has one action and an action is followed by a further decision, though its per-step reward is a learned score. \citet{breiman2001} described the same split in statistics, between a culture that assumes a stochastic model of the inside of the box and one that treats the inside as unknown and judges by prediction. We set the two cultures of agents in his lines, measure how little the two literatures cite each other, and say which of his discussants' objections transfer: Cox's on prediction under changed conditions and Efron's on prediction being only occasionally sufficient.
+\end{abstract}
+
+\hypertarget{sec:intro}{%
+\section{Introduction}\label{sec:intro}}
+
+\textbf{Scope.} When an RL researcher and an LLM-agent builder say \emph{agent}, they name different objects, and claims that cross between them arrive with the words but not the objects: a deployed LLM agent is said to hack a reward it does not have. This paper lays the two meanings side by side, one primitive at a time, in training and in deployment, and says where each word keeps its meaning and where it loses it. It describes the gap and proposes no bridge.
+
+\textbf{Position.} The RL primitives do not denote the same objects for LLM chatbots and LLM tool agents as for the agents they were defined for, and the difference is one of setting, not of scale. The same weights are a bandit policy during preference training, a tree policy under process supervision, a frozen function in a chatbot, and one component of a loop with side effects in a tool agent. An RL reader who hears that an agent \emph{hacked its reward} should ask which setting is meant, because a deployed LLM agent's task, unlike a deployed RL agent's, has no reward function to hack. The paper gives that reader a table.
+
+\citet{sutton2018} define the agent--environment interface in a few sentences, and the flexibility they build in, time steps as ``arbitrary successive stages of decision making and acting'' \citep{sutton2018}, is what lets \citet{mclean2026} write an LLM agent as a POMDP. We agree that the writing is legitimate. We ask what each symbol in it denotes once the setting is fixed, and we read RL itself in both phases, training and deployment, because a deployed RL policy is frozen too and the comparison must not oppose RL training to LLM deployment.
+
+The paper is organised around one table, split by phase (Tables \ref{tab:primitive_cells_training} and \ref{tab:primitive_cells_deployment}). §\ref{sec:vocab} fixes the RL reader's definitions from the textbook. §\ref{sec:settings} fixes the settings, which follow our companion paper \citep{debunking2026} in splitting training from deployment. §\ref{sec:primitives} reads each primitive across the settings. §\ref{sec:cultures} names the two cultures that have grown around the two readings and sets them in Breiman's lines. §\ref{sec:census} measures contact between the two literatures. §\ref{sec:breiman} says where Breiman's argument transfers and where his discussants' objections do.
+
+\hypertarget{sec:related}{%
+\section{Related work}\label{sec:related}}
+
+No prior paper reads the RL primitives setting by setting for LLM systems, or sets the RL-agent culture against the LLM-agent culture. The nearest work comes in four strands. First, the formal reading of RLHF as a bandit: \citet{ahmadian2024} argue that the whole generation should be modelled as a single action and the problem reduces to a bandit; \citet{li2024} drop the value model for the same reason; \citet{xiong2024} formalise RLHF as a KL-regularised contextual bandit; \citet{lambert2025} contrasts the bandit and token-level MDP framings in a textbook. \citet{rafailov2024} show that DPO nonetheless learns an implicit token-level Q-function. Second, the constrained reading of the KL penalty: \citet{moskovitz2024} cast RLHF with several reward models as a constrained MDP with one constraint per reward model, and note that the KL coefficient already acts as a Lagrange multiplier, and \citet{korbak2022} give the competing Bayesian reading. Third, the paper that states the equivalence: \citet{mclean2026} ``formalize the problem equivalence'' \citep{mclean2026} between AI agents and RL agents and write the agent as a POMDP. On the reward primitive, \citet{turner2022b} argues, within RL, that a trained policy need not be a reward optimiser. Fourth, Breiman's frame: \citet{breiman2001}, and \citet{damour2021} on the Rashomon set.
+
+\hypertarget{sec:vocab}{%
+\section{The RL reader's vocabulary}\label{sec:vocab}}
+
+We take the definitions from the textbook, so that an RL reader can check the starting point (Table \ref{tab:primitives}). The reward is ``a received scalar signal (called reward)'' \citep{sutton2018}, ``passing from the environment to the agent'' \citep{sutton2018}; it is the designer's channel for ``what you want achieved, not how you want it achieved'' \citep{sutton2018}. ``Formally, a policy is a mapping from states to probabilities of selecting each possible action.'' \citep{sutton2018} An episode ends in a terminal state ``followed by a reset to a standard starting state'' \citep{sutton2018}, and the next one begins independently. The dynamics are a function p of the state and action. These are the objects we track.
+
+\begin{table}[!htb]
+\centering\small\setlength{\tabcolsep}{3pt}
+\caption{The primitives as Sutton and Barto define them.}\label{tab:primitives}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+Primitive & In Sutton and Barto \\
+\midrule
+Reward & A scalar signal from the environment at each step; the agent's goal is to maximise its expected cumulative sum. \\
+Policy & A mapping from states to probabilities of actions; the object that learning changes. \\
+Action & What the agent selects at each step; low-level controls or high-level decisions from a set A(s). \\
+Observation & The representation of the environment's state that the agent receives at each step. \\
+State & What the dynamics p are conditioned on; Markov when it carries all past information that matters for the future. \\
+Transition & The dynamics p(s', r \textbar{} s, a) of the environment. \\
+Episode & A subsequence of interaction that ends in a terminal state and is followed by a reset; the next episode begins independently. \\
+Value & Expected return under a policy; the central computational object of RL methods. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\hypertarget{sec:settings}{%
+\section{Settings}\label{sec:settings}}
+
+Neither ``RL'' nor ``LLM'' is one setting. We split by phase, training or deployment, and then by how the decision problem is posed: what one action is, and where the reward, if any, comes from (Table \ref{tab:settings}). The RL agent appears twice, in training and as a deployed fixed policy. The training settings for chat differ by reward source: a learned reward model fit to human preferences \citep{christiano2017, ouyang2022}, a programmatic verifier of the final answer \citep{lambert2024, deepseekai2025}, or a process reward model that scores each reasoning step \citep{uesato2022, lightman2024}. In agent training, as we define the setting, the reward is task success at the end of a multi-turn run of tool calls; the cited multi-turn RL work also uses milestone, per-step and dense rewards \citep{zhou2024b}. In deployment no reward changes the policy, and the LLM settings have no reward function for the task; they differ by whether a human sees each step. The companion paper uses the same phase split and a coarser posing \citep{debunking2026}; our D-AGENT-A and D-AGENT-X refine its D-AGENT, and our T-CHAT and T-RLVR refine its T-CHAT.
+
+\begin{table}[!htb]
+\centering\small\setlength{\tabcolsep}{3pt}
+\caption{The settings. T- marks training and D- marks deployment; the setting fixes what one action is and where the reward, if any, comes from.}\label{tab:settings}
+\begin{tabularx}{\textwidth}{@{}ll>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+Setting & Phase & Posed as & Reward source & One action is \\
+\midrule
+T-RL & training & MDP or POMDP; the agent acts and learns in one loop & environment & environment action \\
+T-CHAT & training & Contextual bandit: the whole reply is one action, scored by a learned reward model; KL penalty to the reference model & learned reward model & whole reply \\
+T-RLVR & training & Contextual bandit: trace plus answer is one action, scored by a programmatic checker; reasoning steps are not scored for correctness (a format reward may apply) & programmatic verifier & whole reply \\
+T-PRM & training & Finite-horizon deterministic tree MDP: each reasoning step is one action, scored by a process reward model & process reward model & reasoning step \\
+T-AGENT & training & Episodic POMDP in a sandbox that is reset between episodes: tool calls are actions, reward on task success at the end & task success test & tool call \\
+D-RL & deployment & MDP or POMDP; the policy is fixed; no learning & designer's R, unused & environment action \\
+D-CHAT & deployment & One reply per user turn; no reward; the weights are frozen & none & whole reply \\
+D-AGENT-A & deployment & Episodic POMDP with a human turn between tool calls; side effects visible before the next call & none & tool call \\
+D-AGENT-X & deployment & Long-horizon POMDP; no human between calls; memory and sub-agents; no reset & none & tool call \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\hypertarget{sec:primitives}{%
+\section{The primitives, setting by setting}\label{sec:primitives}}
+
+Tables \ref{tab:primitive_cells_training} and \ref{tab:primitive_cells_deployment} are the paper. Each cell is a short label; Appendix \ref{app:cells} gives the reason for each of the 72 cells, with sources where the reason rests on one, and says which rest on quotations and which on our reading.
+
+\begin{table}[!htb]
+\centering\small\setlength{\tabcolsep}{3pt}
+\caption{Training settings: what each primitive denotes in each setting. Each cell is a short label; Appendix~\ref{app:cells} gives the reason for every cell, and sources where the reason rests on one.}\label{tab:primitive_cells_training}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+Primitive & T-RL & T-CHAT & T-RLVR & T-PRM & T-AGENT \\
+\midrule
+Reward & scalar, each step & RM score, terminal & verifier, terminal & PRM score, each step & task success, terminal \\
+Policy & π(a\textbar s), learned & the model & the model & model + step boundary & model in scaffold \\
+Action & a\_t from A(s) & whole reply & trace + answer & one reasoning step & tool call \\
+Observation & sensor of s\_t & the prompt & the prompt & own previous steps & tool output, benign \\
+State & Markov s\_t; partly hidden in a POMDP & the prompt, fixed & the prompt, fixed & prefix & context + sandbox \\
+Transition & p(s',r\textbar s,a) & none (one step) & none (one step) & append, deterministic & sandbox executes \\
+Episode & episodes with reset & one reply & one reply & steps to answer; resample & task in sandbox; reset \\
+Value & V, Q central & degenerate; critic often dropped & degenerate; critic dropped & step score; rollout value if trained & terminal; some value heads \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+\centering\small\setlength{\tabcolsep}{3pt}
+\caption{Deployment settings: what each primitive denotes in each setting. Each cell is a short label; Appendix~\ref{app:cells} gives the reason for every cell, and sources where the reason rests on one.}\label{tab:primitive_cells_deployment}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+Primitive & D-RL & D-CHAT & D-AGENT-A & D-AGENT-X \\
+\midrule
+Reward & R defined; unused & no reward function & no reward function & no reward function; success claimed \\
+Policy & π fixed & model, frozen & model + scaffold + tools & model, scaffold, memory, sub-agents \\
+Action & a\_t from A(s) & whole reply & tool call, visible & tool call, unseen \\
+Observation & sensor of s\_t & user turn + own replies & tool output, user, own calls & untrusted tool output \\
+State & Markov s\_t; partly hidden in a POMDP & context window & context + hidden world & context, hidden world, own effects \\
+Transition & p(s',r\textbar s,a) & user replies & tool executes & tool + world moves \\
+Episode & episodes or continuing & one conversation & task with human turns & one run; no reset \\
+Value & none for an actor; Q if value-based & none & none & none; verbal self-check \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+\centering\small\setlength{\tabcolsep}{3pt}
+\caption{Coded properties in every setting, compared only within a phase. LLM columns list each code with the settings that carry it. Moves with: the axis along which the property's code changes between matched settings (culture within a phase, phase within a culture).}\label{tab:gap}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}Xl>{\raggedright\arraybackslash}Xl>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+Property & RL training & LLM training & RL deployment & LLM deployment & Moves with \\
+\midrule
+a reward function is defined for the task & yes & yes & yes & no & culture and phase \\
+reward changes the parameters & yes & yes & no & no & phase \\
+reward arrives at every step & yes & no: T-CHAT, T-RLVR, T-AGENT; yes: T-PRM & partly & no & culture and phase \\
+the environment computes the reward & yes & no: T-CHAT, T-PRM; yes: T-RLVR, T-AGENT & partly & no & culture and phase \\
+the parameters change & yes & yes & no & no & phase \\
+behaviour can be steered by instructions in the input & no & yes & no & yes & culture \\
+the acting system has non-learned components & no & no: T-CHAT, T-RLVR; partly: T-PRM; yes: T-AGENT & no & no: D-CHAT; yes: D-AGENT-A, D-AGENT-X & culture and phase \\
+the action set is fixed and known & yes & no: T-CHAT, T-RLVR, T-PRM; partly: T-AGENT & yes & no: D-CHAT; partly: D-AGENT-A, D-AGENT-X & culture \\
+actions have side effects & yes & no: T-CHAT, T-RLVR, T-PRM; yes: T-AGENT & yes & no: D-CHAT; yes: D-AGENT-A, D-AGENT-X & culture \\
+an episode has one action & no & no: T-PRM, T-AGENT; yes: T-CHAT, T-RLVR & no & no & culture and phase \\
+observations can carry instructions & no & yes & no & yes & culture \\
+third parties can author observations & no & partly: T-RLVR, T-PRM, T-AGENT; yes: T-CHAT & no & partly: D-CHAT; yes: D-AGENT-A, D-AGENT-X & culture and phase \\
+observations include the agent's own outputs & no & no: T-CHAT, T-RLVR; yes: T-PRM, T-AGENT & no & yes & culture and phase \\
+the input is a Markov state & partly & no: T-AGENT; yes: T-CHAT, T-RLVR, T-PRM & partly & no: D-AGENT-A, D-AGENT-X; partly: D-CHAT & culture and phase \\
+world state is hidden & partly & no: T-CHAT, T-RLVR, T-PRM; yes: T-AGENT & partly & partly: D-CHAT; yes: D-AGENT-A, D-AGENT-X & culture and phase \\
+the state includes a principal's intent & no & no: T-RLVR, T-PRM; partly: T-AGENT; yes: T-CHAT & no & yes & culture and phase \\
+an action is followed by a further decision & yes & no: T-CHAT, T-RLVR; yes: T-PRM, T-AGENT & yes & yes & culture and phase \\
+the dynamics are known & yes & yes & partly & no: D-CHAT, D-AGENT-X; partly: D-AGENT-A & culture and phase \\
+the dynamics are stationary & yes & yes & partly & no: D-CHAT, D-AGENT-X; partly: D-AGENT-A & culture and phase \\
+the environment resets by design & yes & yes & partly & no & culture and phase \\
+irreversible effects are possible & partly & no: T-CHAT, T-RLVR, T-PRM; yes: T-AGENT & partly & partly: D-CHAT; yes: D-AGENT-A, D-AGENT-X & culture and phase \\
+a learned value function is used & yes & no: T-RLVR; partly: T-CHAT, T-PRM, T-AGENT & partly & no & culture and phase \\
+a value estimate selects actions & partly & no & partly & no & culture \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Reward.} In deployment, the RL agent's task still has a reward function, written by its designer, whether or not the frozen policy uses it; the deployed LLM's task has none, and its objective is the instruction in the context. Neither a deployed RL policy nor a deployed LLM uses reward to change its parameters; that difference is between training and deployment, not between the cultures. The reward model, verifier or process reward model is a training artefact: \citet{mclean2026} say of the process reward model that once training is complete it ``is no longer used'' \citep{mclean2026}, and note that the reward function ``is somewhat different from training (updating the policy) to deployment (freezing the policy)'' \citep{mclean2026}. What stands in its place is the instruction in the context, which any later text in the context can revise, and the user's acceptance after the fact.
+\item
+  \textbf{Action and transition.} In T-CHAT and T-RLVR the whole reply is one action and generation leads directly to a terminal state with no subsequent decision: the problem is a contextual bandit \citep{ahmadian2024, xiong2024}; the cited work treats RLHF, and we extend the reading to verifier rewards. PPO treats tokens as actions, but the reward is terminal. RLOO and ReMax show that the bandit view suffices and drop the critic \citep{ahmadian2024, li2024}; GRPO also drops the critic \citep{shao2024}. Under process supervision an action is one reasoning step and the transition is deterministic: the agent is the dynamics. In the agent settings an action is a tool call. In agent training the transition is the response of a training environment that, by the definition of the setting, is reset between episodes (the cited work samples a new task for each episode \citep{zhou2024b}); in deployment it is what the tool and the world do, which no party fully controls.
+\item
+  \textbf{Observation and state.} In RL the observation is data from a sensor. In the LLM settings the observation is mostly text, and text carries instructions; agents may also receive images and other modalities. In the agent settings tool outputs arrive in the same stream as the user's instructions, and models do not reliably separate the two \citep{zverev2025, greshake2023}. The state of a deployed agent includes world state it cannot see and the user's intent; \citet{mclean2026} concede that the agent's inputs ``cannot fully capture the true state of the world and the user's intents'' \citep{mclean2026}. In deployment the context window is a bounded, lossy belief.
+\item
+  \textbf{Episode and value.} Every training setting resets by design. Under process supervision any prefix can be resampled; in agent training the environment resets between tasks. A deployed RL environment may be designed to reset; no LLM deployment setting is. A chatbot's conversation ends, and a tool agent's side effects persist. In deployment no LLM setting uses a learned value function, and a deployed RL policy uses one only when it is value-based (a fixed Q-network, or search with a learned value); in the LLM deployment settings other checks stand in for it: the user's acceptance in D-CHAT, the human who sees each step in D-AGENT-A, and verbal self-checks and retries in D-AGENT-X. Search-augmented agents score continuations by reverting to earlier states, which a live deployment does not allow, and in D-AGENT-X each probe is a real action with persistent effects.
+\item
+  \textbf{Which settings differ.} Table \ref{tab:gap} codes 23 properties in every setting; two independent LLM raters (instances of Claude Sonnet) agreed on 197/207 codes (kappa 0.92), and a further instance, as adjudicator, settled the rest; review rounds then revised three of these codes, against the raters' or the adjudicator's value (a learned value function in deployed RL, a value estimate selecting actions under process supervision, and one action per episode for the deployed chatbot). Settings are compared only within a phase, so that a difference between training and deployment is never read as a difference between the cultures. In training and in deployment alike, every LLM setting differs from the RL setting on six properties: whether behaviour can be steered by instructions in the input, the action set is fixed and known, observations can carry instructions, third parties can author observations, a learned value function is used and a value estimate selects actions. In deployment, every LLM setting also differs from the RL setting on six more: whether a reward function is defined for the task, reward arrives at every step, the environment computes the reward, observations include the agent's own outputs, the state includes a principal's intent and the environment resets by design. Whether reward changes the parameters and the parameters change differs between training and deployment in both cultures and not between them. Process supervision has the code of RL training, where both bandit settings do not, on three properties: whether reward arrives at every step, an episode has one action and an action is followed by a further decision; but its per-step reward is a learned process-reward-model score, not an environment signal, and its actions have no side effects.
+\end{itemize}
+
+\hypertarget{sec:cultures}{%
+\section{Two cultures of agents}\label{sec:cultures}}
+
+Two research cultures have grown around the two ends of the table. One begins by positing what is inside the box: an optimiser of a reward R in a decision process the designer wrote down, from which value functions, policy gradients and designed exploration follow \citep{sutton2018, schulman2017}. The other treats the inside as unknown: a pretrained model steered by a prompt and a scaffold, judged by what it does on tasks \citep{yao2023b, kapoor2024}; where it posits a reward, it is to train the model, and none is defined for the task at deployment (Table \ref{tab:gap}). \citet{breiman2001} described the same split in statistics. His data-modeling culture begins ``Assume that the data are generated by the following model'' \citep{breiman2001}; he put ``98\% of all statisticians'' \citep{breiman2001} in it; and his objection was that ``The conclusions are about the model's mechanism, and not about nature's mechanism.'' \citep{breiman2001} His algorithmic culture ``considers the inside of the box complex and unknown'' \citep{breiman2001} and validates by predictive accuracy. Table \ref{tab:cultures} sets the four cultures in his lines. We call ours \emph{objective-modeling} and \emph{behavior-modeling}, by their move, not their tribe. The mapping runs the RL-agent culture to Breiman's statistics, not to his machine learning: in our reading, the move that matters is writing down a model before looking at behaviour: the RL-agent culture writes down a decision process and a reward, as Breiman's data-modeling culture writes down a stochastic data model. The mapping is of moves, not of people: the same researcher may write down a decision process and a reward in the morning and prompt a tool agent in the afternoon. Our comparisons are between settings: T-RL and D-RL stand for the RL-agent culture, and every chat and agent setting, training included, stands for the LLM-agent culture, although chat and agent training use RL algorithms.
+
+\begin{table}[!htb]
+\centering\small\setlength{\tabcolsep}{3pt}
+\caption{Breiman's two cultures in his own lines, and the two cultures of agents in the same lines. Quoted cells are Breiman's words \citep{breiman2001}.}\label{tab:cultures}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+Line & data-modeling & algorithmic & objective-modeling & behavior-modeling \\
+\midrule
+inside the box & a stochastic data model; the analysis begins ``Assume that the data are generated by the following model:'' & unknown; ``The analysis in this culture considers the inside of the box complex and unknown.'' & an optimiser of a reward R in a decision process the designer wrote down & unknown: a pretrained artefact with latent dispositions, steered by prompts and a scaffold \\
+opening sentence &  &  & assume the agent maximises R(s a) in this MDP & we gave the model these tools and this prompt and ran it on N tasks \\
+validation & ``Yes--no using goodness-of-fit tests and residual examination.'' & ``Measured by predictive accuracy.'' & expected return on the task; sample efficiency; regret & task success rate on benchmarks and evaluations; user acceptance \\
+instruments &  &  & MDPs and POMDPs, value functions, policy gradients, designed exploration, simulators & prompts, scaffolds, tools, retrieval, memory, evaluation suites \\
+where the hard part goes & into the choice of the model; ``The conclusions are about the model's mechanism, and not about nature's mechanism.'' & into the choice of algorithm and the test set & into the specification of R and the design of the environment & into the scaffold, the prompt and the coverage of the evaluation \\
+population & ``98\% of all statisticians.'' & ``2\% of statisticians'' in 2001; the machine-learning community &  &  \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Breiman's objection transfers with the mapping. When an LLM agent is written as an optimiser of an internalised reward and conclusions are drawn from that model, the conclusions are about the model's mechanism. Table \ref{tab:settings} says where the designer writes down the decision process and the reward (the RL settings), where the reward is a learned score at each reasoning step (process supervision), where the problem is a bandit (outcome-rewarded chat training), and where the task has no reward function (every LLM deployment setting, unlike a deployed RL agent's task).
+
+\hypertarget{sec:census}{%
+\section{What the two literatures say to each other}\label{sec:census}}
+
+Breiman guessed the sizes of his cultures. We measured contact between ours. From OpenAlex \citep{openalex2026} we built an RL-agent corpus and an LLM-agent corpus for 2012--2026 with general queries (Table \ref{tab:census_general}). Louvain communities on the union graph recover our labels with purity 0.98 on the 1250 works that have at least one citation link (570 isolated works are excluded); the corpora share zero works.
+
+\begin{table}[!htb]
+\centering\small\setlength{\tabcolsep}{3pt}
+\caption{Cross-citation between an RL-agent corpus and an LLM-agent corpus built from OpenAlex with general queries, 2012–2026.}\label{tab:census_general}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+ & RL-agent corpus & LLM-agent corpus \\
+\midrule
+Works & 1117 & 703 \\
+References landing in own corpus & 6.5\% & 2.0\% \\
+References landing in the other corpus & 0.01\% & 0.22\% \\
+Papers citing the other corpus at all & 0.2\% & 5.0\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\hypertarget{sec:breiman}{%
+\section{Where Breiman's argument transfers}\label{sec:breiman}}
+
+In Breiman's account the algorithmic culture validates a model by predictive accuracy, and the data-modeling culture by goodness-of-fit tests and residual examination \citep{breiman2001}. In the behavior-modeling culture, task-success rates on benchmarks are a principal way to judge agents. Cox's objection transfers directly: ``Often the prediction is under quite different conditions from the data'' \citep{breiman2001}. An agent trained in a sandbox that resets, where third parties author tool outputs at most in part, is deployed where nothing resets and third parties can author them; the gap between T-AGENT (Table \ref{tab:primitive_cells_training}) and D-AGENT-X (Table \ref{tab:primitive_cells_deployment}) is the gap Cox names. Efron's transfers: ``Prediction by itself is only occasionally sufficient.'' \citep{breiman2001} A task-success rate says what the agent did on those tasks and nothing about the mechanism, which is what the objective-modeling culture wants to know. Breiman's own Rashomon Effect transfers too: many functions give about the same error rate, so a benchmark score does not identify the agent behind it \citep{breiman2001, damour2021}.
+
+\hypertarget{sec:alternatives}{%
+\section{Alternative views}\label{sec:alternatives}}
+
+\textbf{\emph{The POMDP framing is only a lens.}} \citet{mclean2026} formalize a problem equivalence, which they also call an ``approximate equivalence'' \citep{mclean2026}, and say that their MDP framing ``provides a diagnostic lens for discussing and solving these reward specification problems'' \citep{mclean2026}. As a lens it is legitimate, and our table uses it. The disagreement is about what the symbols denote once the lens is applied to a deployment setting.
+
+\textbf{\emph{Agentic RL is making the deployment settings look like training.}} Multi-turn RL does bring more of the RL machinery into agent training: ArCHer trains a turn-level value function to aggregate reward over utterances \citep{zhou2024b}. It does not change a deployment cell: the deployed agent is still frozen, as a deployed RL policy is, but unlike it has no reward function for its task and no designed reset, which a deployed RL agent's task may have. The gap between T-AGENT and D-AGENT-X is the sim-to-real gap of this field.
+
+\textbf{\emph{Everything here is already known to practitioners.}} Much of it is, in pieces: the bandit reading \citep{ahmadian2024, lambert2025}, the constrained reading of RLHF \citep{moskovitz2024} and the KL penalty as a Bayesian prior \citep{korbak2022}, and DeepSeek's decision to apply no neural reward model, outcome-based or process-based, to reasoning tasks, citing its observation that such models are susceptible to reward hacking and the cost of retraining them \citep{deepseekai2025}. We put the pieces in one table, with a reason for each cell and its sources where it rests on one, so that the next argument about whether an LLM agent is an RL agent can point at a cell.
+
+\hypertarget{sec:conclusion}{%
+\section{Conclusion}\label{sec:conclusion}}
+
+Unlike the bandit settings, process supervision matches RL training on whether reward arrives at every step, an episode has one action and an action is followed by a further decision, though its reward is a learned score. Compared within a phase, LLM agents differ from RL agents in every setting in that their observations can carry instructions and their behaviour can be steered by instructions in their input; in deployment their task has no reward function and no designed reset, while a deployed RL agent's task has a reward function and may have a designed reset. Whether reward changes the parameters is a difference of phase, not of culture. Two cultures have grown around the two ends of that table and barely cite each other. Two of Breiman's discussants' objections transfer to them: prediction under changed conditions is the hard case, and a score is only occasionally sufficient.
+
+\FloatBarrier
+\section*{Impact Statement}
+This paper explains what reinforcement-learning terms denote when the agent is a language model, in training and in deployment. Its aim is to let the two research communities that build agents read each other's claims with the objects attached. It proposes no new capability.
+
+\section*{AI Disclosure Statement}
+The text was drafted by a large language model (Claude, Anthropic) under the authors' direction. The model also built the citation census, proposed the settings and the cells of Tables~\ref{tab:primitive_cells_training} and~\ref{tab:primitive_cells_deployment}, coded the properties of Table~\ref{tab:gap} (two independent instances of Claude Sonnet as raters and a further instance as adjudicator; later review rounds, also run by instances of the model, revised some of these codes against the raters' or the adjudicator's value, as Section~\ref{sec:primitives} states; no human rater), and selected the quotations. A program checks that each quotation is verbatim in a stored copy of its source and that each cited work exists. Other instances of the model proposed the passages to quote and reviewed the draft in rounds; the authors have not independently verified the citations, the quotations or the cells.
+
+\begin{thebibliography}{99}
+\small
+\bibitem[Ahmadian et~al.(2024)]{ahmadian2024} Ahmadian, A. et al., ``Back to basics: revisiting REINFORCE-style optimization for learning from human feedback in LLMs,'' \emph{ACL}, 2024. \url{https://arxiv.org/abs/2402.14740}
+\bibitem[Breiman(2001)]{breiman2001} L. Breiman, ``Statistical Modeling: The Two Cultures (with comments and a rejoinder),'' \emph{Statistical Science}, 2001. \url{https://doi.org/10.1214/ss/1009213726}
+\bibitem[Brown et~al.(2020)]{brown2020} T. Brown et al., ``Language Models are Few-Shot Learners,'' \emph{NeurIPS 2020}, 2020. \url{https://arxiv.org/abs/2005.14165}
+\bibitem[Chen et~al.(2024)]{chen2024} Chen, Z. et al., ``AgentPoison: red-teaming LLM agents via poisoning memory or knowledge bases,'' \emph{NeurIPS}, 2024. \url{https://arxiv.org/abs/2407.12784}
+\bibitem[Christiano et~al.(2017)]{christiano2017} Christiano, P. et al., ``Deep reinforcement learning from human preferences,'' \emph{NeurIPS}, 2017. \url{https://arxiv.org/abs/1706.03741}
+\bibitem[Companion paper(2026)]{debunking2026} Anonymous, ``Position: RL Safety Guarantees Do Not Yet Transfer to Deployed LLM Agents,'' companion position paper, draft, 2026.
+\bibitem[D'Amour(2021)]{damour2021} A. D'Amour, ``Revisiting Rashomon: A Comment on `The Two Cultures','' \emph{Observational Studies}, 2021. \url{https://doi.org/10.1353/obs.2021.0022}
+\bibitem[Debenedetti et~al.(2024)]{debenedetti2024} E. Debenedetti, J. Zhang, M. Balunović, L. Beurer-Kellner, M. Fischer, F. Tramèr, ``AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents,'' \emph{NeurIPS 2024 Datasets and Benchmarks}. \url{https://arxiv.org/abs/2406.13352}
+\bibitem[DeepSeek-AI et~al.(2025)]{deepseekai2025} DeepSeek-AI, D. Guo, D. Yang, H. Zhang, J. Song, et al., ``DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning,'' 2025; \emph{Nature} 645, 633--638. \url{https://arxiv.org/abs/2501.12948}
+\bibitem[Feng et~al.(2023)]{feng2023} Feng, X. et al., ``AlphaZero-like tree-search can guide large language model decoding and training,'' 2023. \url{https://arxiv.org/abs/2309.17179}
+\bibitem[Greshake et~al.(2023)]{greshake2023} K. Greshake, S. Abdelnabi, S. Mishra, C. Endres, T. Holz, M. Fritz, ``Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection,'' \emph{AISec 2023}. \url{https://arxiv.org/abs/2302.12173}
+\bibitem[Grinsztajn et~al.(2021)]{grinsztajn2021} Grinsztajn, N. et al., ``There is no turning back: a self-supervised approach for reversibility-aware reinforcement learning,'' \emph{NeurIPS}, 2021. \url{https://arxiv.org/abs/2106.04480}
+\bibitem[Hammond et~al.(2025)]{hammond2025} Hammond, L. et al., ``Multi-agent risks from advanced AI,'' 2025. \url{https://arxiv.org/abs/2502.14143}
+\bibitem[Jimenez et~al.(2024)]{jimenez2024} Jimenez, C. E. et al., \emph{SWE-bench: can language models resolve real-world GitHub issues? }ICLR*, 2024. \url{https://arxiv.org/abs/2310.06770}
+\bibitem[Kaelbling et~al.(1998)]{kaelbling1998} L. P. Kaelbling, M. L. Littman, A. R. Cassandra, ``Planning and Acting in Partially Observable Stochastic Domains,'' \emph{Artificial Intelligence} 101, 1998. https://doi.org/10.1016/S0004-3702(98)00023-X
+\bibitem[Kapoor et~al.(2024)]{kapoor2024} Kapoor, S. et al., ``AI agents that matter,'' 2024. \url{https://arxiv.org/abs/2407.01502}
+\bibitem[Korbak et~al.(2022)]{korbak2022} Korbak, T., Perez, E. \& Buckley, C. L., ``RL with KL penalties is better viewed as Bayesian inference,'' \emph{Findings of EMNLP}, 2022. \url{https://arxiv.org/abs/2205.11275}
+\bibitem[Kwa et~al.(2025)]{kwa2025} Kwa, T. et al., ``Measuring AI ability to complete long software tasks,'' \emph{NeurIPS}, 2025. \url{https://arxiv.org/abs/2503.14499}
+\bibitem[Lambert(2025)]{lambert2025} N. Lambert, \emph{Reinforcement Learning from Human Feedback}, 2025. \url{https://arxiv.org/abs/2504.12501}
+\bibitem[Lambert et~al.(2024)]{lambert2024} Lambert, N. et al., ``Tülu 3: pushing frontiers in open language model post-training (RLVR),'' 2024. \url{https://arxiv.org/abs/2411.15124}
+\bibitem[Li et~al.(2024)]{li2024} Li, Z. et al., ``ReMax: a simple, effective, and efficient reinforcement learning method for aligning large language models,'' \emph{ICML}, 2024. \url{https://arxiv.org/abs/2310.10505}
+\bibitem[Lightman et~al.(2024)]{lightman2024} Lightman, H. et al., ``Let's verify step by step,'' \emph{ICLR}, 2024. \url{https://arxiv.org/abs/2305.20050}
+\bibitem[McLean et~al.(2026)]{mclean2026} R. McLean, T. E. Lee, M. Mohammedalamen, K. Roice, G. Berseth, P. Pilarski, M. C. Machado, A. Lefaivre Škopac, B. Rosman, ``AI Agent Safety is a Reinforcement Learning Problem,'' \emph{Second Workshop on Agents in the Wild (AIWILD), ICML 2026}. \url{https://openreview.net/forum?id=wvga9chmb6}
+\bibitem[Moskovitz et~al.(2024)]{moskovitz2024} Moskovitz, T. et al., ``Confronting reward model overoptimization with constrained RLHF,'' \emph{ICLR}, 2024. \url{https://arxiv.org/abs/2310.04373}
+\bibitem[OurResearch(2026)]{openalex2026} OurResearch, \emph{OpenAlex}, accessed 2026-11-20. \url{https://openalex.org/}
+\bibitem[Ouyang et~al.(2022)]{ouyang2022} L. Ouyang, J. Wu, X. Jiang, D. Almeida, C. L. Wainwright, et al., ``Training Language Models to Follow Instructions with Human Feedback,'' \emph{NeurIPS 2022}. \url{https://arxiv.org/abs/2203.02155}
+\bibitem[Rafailov et~al.(2023)]{rafailov2023} Rafailov, R. et al., ``Direct Preference Optimization: your language model is secretly a reward model,'' \emph{NeurIPS}, 2023. \url{https://arxiv.org/abs/2305.18290}
+\bibitem[Rafailov et~al.(2024)]{rafailov2024} Rafailov, R. et al., ``From r to Q\emph{: your language model is secretly a Q-function,'' }COLM*, 2024. \url{https://arxiv.org/abs/2404.12358}
+\bibitem[Ross et~al.(2011)]{ross2011} Ross, S., Gordon, G. \& Bagnell, J. A., ``A reduction of imitation learning and structured prediction to no-regret online learning (DAgger),'' \emph{AISTATS}, 2011. \url{https://arxiv.org/abs/1011.0686}
+\bibitem[Ruan et~al.(2024)]{ruan2024} Ruan, Y. et al., ``Identifying the risks of LM agents with an LM-emulated sandbox (ToolEmu),'' \emph{ICLR}, 2024. \url{https://arxiv.org/abs/2309.15817}
+\bibitem[Schulman et~al.(2017)]{schulman2017} Schulman, J., Wolski, F., Dhariwal, P., Radford, A. \& Klimov, O., ``Proximal policy optimization algorithms,'' 2017. \url{https://arxiv.org/abs/1707.06347}
+\bibitem[Shao et~al.(2024)]{shao2024} Shao, Z. et al., ``DeepSeekMath: pushing the limits of mathematical reasoning in open language models (GRPO),'' 2024. \url{https://arxiv.org/abs/2402.03300}
+\bibitem[Sharma et~al.(2022)]{sharma2022} Sharma, A. et al., ``Autonomous reinforcement learning: formalism and benchmarking,'' \emph{ICLR}, 2022. \url{https://arxiv.org/abs/2112.09605}
+\bibitem[Shinn et~al.(2023)]{shinn2023} Shinn, N. et al., ``Reflexion: language agents with verbal reinforcement learning,'' \emph{NeurIPS}, 2023. \url{https://arxiv.org/abs/2303.11366}
+\bibitem[Silver et~al.(2017)]{silver2017} Silver, D. et al., ``Mastering chess and shogi by self-play with a general reinforcement learning algorithm (AlphaZero),'' 2017. \url{https://arxiv.org/abs/1712.01815}
+\bibitem[Snell et~al.(2024)]{snell2024} Snell, C. et al., ``Scaling LLM test-time compute optimally can be more effective than scaling model parameters,'' 2024. \url{https://arxiv.org/abs/2408.03314}
+\bibitem[Stiennon et~al.(2020)]{stiennon2020} Stiennon, N. et al., ``Learning to summarize from human feedback,'' \emph{NeurIPS}, 2020. \url{https://arxiv.org/abs/2009.01325}
+\bibitem[Sutton and Barto(2018)]{sutton2018} R. S. Sutton, A. G. Barto, \emph{Reinforcement Learning: An Introduction}, 2nd ed., MIT Press, 2018. \url{http://incompleteideas.net/book/the-book-2nd.html}
+\bibitem[Turner(2022)]{turner2022b} A. M. Turner, ``Reward is not the optimization target,'' 2022. \url{https://www.alignmentforum.org/posts/pdaGN6pQyQarFHXF4/reward-is-not-the-optimization-target}
+\bibitem[Uesato et~al.(2022)]{uesato2022} Uesato, J. et al., ``Solving math word problems with process- and outcome-based feedback,'' 2022. \url{https://arxiv.org/abs/2211.14275}
+\bibitem[Wallace et~al.(2024)]{wallace2024} E. Wallace, K. Xiao, R. Leike, L. Weng, J. Heidecke, A. Beutel, ``The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions,'' 2024. \url{https://arxiv.org/abs/2404.13208}
+\bibitem[Wang et~al.(2024)]{wang2024} Wang, P. et al., ``Math-Shepherd: verify and reinforce LLMs step-by-step without human annotations,'' \emph{ACL}, 2024. \url{https://arxiv.org/abs/2312.08935}
+\bibitem[Xiong et~al.(2024)]{xiong2024} Xiong, W. et al., ``Iterative preference learning from human feedback: bridging theory and practice for RLHF under KL-constraint,'' \emph{ICML}, 2024. \url{https://arxiv.org/abs/2312.11456}
+\bibitem[Yao et~al.(2023a)]{yao2023a} Yao, S. et al., ``Tree of Thoughts: deliberate problem solving with large language models,'' \emph{NeurIPS}, 2023. \url{https://arxiv.org/abs/2305.10601}
+\bibitem[Yao et~al.(2023b)]{yao2023b} Yao, S. et al., ``ReAct: synergizing reasoning and acting in language models,'' \emph{ICLR}, 2023. \url{https://arxiv.org/abs/2210.03629}
+\bibitem[Yao et~al.(2024)]{yao2024} Yao, S., Shinn, N., Razavi, P. \& Narasimhan, K., ``τ-bench: a benchmark for tool-agent-user interaction in real-world domains,'' 2024. \url{https://arxiv.org/abs/2406.12045}
+\bibitem[Zhang et~al.(2025)]{zhang2025} Z. Zhang, C. Zheng, Y. Wu, B. Zhang, R. Lin, et al., ``The Lessons of Developing Process Reward Models in Mathematical Reasoning,'' 2025. \url{https://arxiv.org/abs/2501.07301}
+\bibitem[Zhou et~al.(2024a)]{zhou2024a} Zhou, A. et al., ``Language agent tree search unifies reasoning, acting, and planning in language models,'' \emph{ICML}, 2024. \url{https://arxiv.org/abs/2310.04406}
+\bibitem[Zhou et~al.(2024b)]{zhou2024b} Zhou, Y., Zanette, A., Pan, J., Levine, S. \& Kumar, A., ``ArCHer: training language model agents via hierarchical multi-turn RL,'' \emph{ICML}, 2024. \url{https://arxiv.org/abs/2402.19446}
+\bibitem[Ziegler et~al.(2019)]{ziegler2019} Ziegler, D. M. et al., ``Fine-tuning language models from human preferences,'' 2019. \url{https://arxiv.org/abs/1909.08593}
+\bibitem[Zverev et~al.(2025)]{zverev2025} E. Zverev, S. Abdelnabi, S. Tabesh, M. Fritz, C. H. Lampert, ``Can LLMs Separate Instructions From Data? And What Do We Even Mean By That?,'' \emph{ICLR 2025}. \url{https://arxiv.org/abs/2403.06833}
+\end{thebibliography}
+
+\newpage
+\appendix
+\hypertarget{app:cells}{%
+\section{Reasons for the cells}\label{app:cells}}
+
+A cell gives our reading of what the primitive denotes in the setting. A quotation marks a cell that rests on the source's words; the other cells rest on our reading, and cite a work where the reading rests on one.
+
+\textbf{Reward.}
+
+\begin{itemize}
+\tightlist
+\item
+  T-RL, \emph{scalar, each step}: A ``simple number'' at each step, ``passing from the environment to the agent''; the goal is its expected cumulative sum \citep{sutton2018}.
+\item
+  T-CHAT, \emph{RM score, terminal}: A learned reward model fit to human pairwise preferences scores the whole reply once: ``Note that the reward model only gives rewards for entire summaries, and not at intermediate time steps.'' \citep{stiennon2020}. A per-token KL penalty to the reference model is added \citep{ziegler2019, ouyang2022}.
+\item
+  T-RLVR, \emph{verifier, terminal}: A programmatic check of the final answer (test cases, exact match) gives the main reward; the correctness of the reasoning steps is not scored, but a rule-based format reward on the trace structure may be added \citep{lambert2024, deepseekai2025}.
+\item
+  T-PRM, \emph{PRM score, each step}: A process reward model scores each reasoning step: ``Outcome-supervised reward models (ORMs) are trained using only the final result of the model's chain-of-thought, while process-supervised reward models (PRMs) receive feedback for each step in the chain-of-thought.'' \citep{lightman2024}. Related work is \citep{uesato2022, wang2024}.
+\item
+  T-AGENT, \emph{task success, terminal}: By the definition of this setting, a task-success signal at the end of the whole multi-turn run is the reward. Multi-turn RL for LLM agents is shown in \citep{zhou2024b}, whose tasks give milestone, per-step or dense rewards and not only a terminal one.
+\item
+  D-RL, \emph{R defined; unused}: The environment may still emit rewards, but none is used to change the policy: RL methods ``specify how the agent's policy is changed as a result of its experience'' \citep{sutton2018}; that a deployed policy is not changed is our reading.
+\item
+  D-CHAT, \emph{no reward function}: No reward signal exists at run time: the weights are frozen, and McLean et al.~say of the process reward model that once training is complete it ``is no longer used'' \citep{mclean2026}; we read the same for an outcome reward model or a verifier. Where a deployment adds search over a scorer, the scorer ranks candidates and does not update the policy \citep{snell2024}. The effective objective is the instruction in the context.
+\item
+  D-AGENT-A, \emph{no reward function}: No scalar at run time. The user's acceptance or correction after each turn is the only feedback, and it does not update the weights.
+\item
+  D-AGENT-X, \emph{no reward function; success claimed}: No reward at run time and no human to react. Task completion is a claim the model makes; the verifier of training is absent.
+\end{itemize}
+
+\textbf{Policy.}
+
+\begin{itemize}
+\tightlist
+\item
+  T-RL, \emph{π(a\textbar s), learned}: ``a mapping from states to probabilities of selecting each possible action'', the object that learning changes \citep{sutton2018}.
+\item
+  T-CHAT, \emph{the model}: The language model itself is the policy: RLHF methods ``use RL to optimize a language model policy to produce responses assigned high reward without drifting excessively far from the original model'' \citep{rafailov2023}; PPO updates the policy in RLHF \citep{ouyang2022}, and DPO updates it directly from preference data \citep{rafailov2023}.
+\item
+  T-RLVR, \emph{the model}: The model is the policy, and ``GRPO foregoes the critic model, instead estimating the baseline from group scores, significantly reducing training resources'' \citep{shao2024}; the same method is used for reasoning training in \citep{deepseekai2025}.
+\item
+  T-PRM, \emph{model + step boundary}: The policy is the generator model with a step boundary: ``To make parsing individual steps easier, we train the generator to produce solutions in a newline delimited step-by-step format'' \citep{lightman2024}.
+\item
+  T-AGENT, \emph{model in scaffold}: The model inside a scaffold that parses tool calls and feeds results back; in this training setting RL updates the model weights \citep{zhou2024b}. ReAct illustrates the prompted model-and-tool interaction with a frozen model \citep{yao2023b}.
+\item
+  D-RL, \emph{π fixed}: The trained mapping, frozen; it does not change with experience.
+\item
+  D-CHAT, \emph{model, frozen}: The weights stay frozen and adaptation is in context: ``For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model'' \citep{brown2020}.
+\item
+  D-AGENT-A, \emph{model + scaffold + tools}: The agent policy is a frozen model steered from outside the weights: ``a frozen large language model, PaLM-540B (Chowdhery et al., 2022)1 , is prompted with few-shot in-context examples to generate both domain-specific actions and free-form language thoughts for task solving'' \citep{yao2023b}.
+\item
+  D-AGENT-X, \emph{model, scaffold, memory, sub-agents}: The same, plus memory stores the loop writes and reads and sub-agents it spawns; the policy's effective inputs are partly its own earlier outputs \citep{chen2024, hammond2025}.
+\end{itemize}
+
+\textbf{Action.}
+
+\begin{itemize}
+\tightlist
+\item
+  T-RL, \emph{a\_t from A(s)}: Selected at each step from a set A(s); ``low-level controls'' or ``high-level decisions'' \citep{sutton2018}.
+\item
+  T-CHAT, \emph{whole reply}: The whole completion is one action with a terminal reward: ``Thus, it is more appropriate and efficient to model the entire generation as a single action with the initial state determined by the prompt.'' \citep{ahmadian2024}. PPO treats tokens as actions, but RLOO and ReMax use the bandit view \citep{ahmadian2024, li2024}, and GRPO also drops the critic \citep{shao2024}.
+\item
+  T-RLVR, \emph{trace + answer}: One sample holds a reasoning trace and an answer: ``A conversation between User and Assistant. The user asks a question, and the Assistant solves it. The assistant first thinks about the reasoning process in the mind and then provides the user with the answer.'' \citep{deepseekai2025}. The trace length is inside the action, not a horizon.
+\item
+  T-PRM, \emph{one reasoning step}: A step is a delimited unit: ``To make parsing individual steps easier, we train the generator to produce solutions in a newline delimited step-by-step format.'' \citep{lightman2024}. Per-episode step count and absence of side effects follow from the text-only setting.
+\item
+  T-AGENT, \emph{tool call}: The agent acts through named tool calls: ``We design a simple Wikipedia web API with three types of actions to support interactive information retrieval: (1) search{[}entity{]}, which returns the first 5 sentences from the corresponding entity wiki page if it exists,'' \citep{yao2023b}. The scaffold executes them in a sandbox \citep{jimenez2024}.
+\item
+  D-RL, \emph{a\_t from A(s)}: As in training; fixed semantics.
+\item
+  D-CHAT, \emph{whole reply}: One reply per turn; its only effect is on the reader.
+\item
+  D-AGENT-A, \emph{tool call, visible}: A tool call with side effects in the world; by stipulation of this setting the user sees the result before the next call.
+\item
+  D-AGENT-X, \emph{tool call, unseen}: A tool call in a long chain (tasks of up to 30 hours of human work \citep{kwa2025}); side effects accumulate without a human between them; open-ended and compositional \citep{ruan2024}.
+\end{itemize}
+
+\textbf{Observation.}
+
+\begin{itemize}
+\tightlist
+\item
+  T-RL, \emph{sensor of s\_t}: ``some representation of the environment's state'', given by the environment as data \citep{sutton2018}.
+\item
+  T-CHAT, \emph{the prompt}: Instructions and data share one input: ``for which instructions can occur anywhere in their input, be it a system prompt or a user one (OpenAI, 2023).'' \citep{zverev2025}.
+\item
+  T-RLVR, \emph{the prompt}: The prompt: a problem from an outside problem set that the trainer curates (math, code), so outside authorship is common but filtered.
+\item
+  T-PRM, \emph{own previous steps}: By construction the model conditions each reasoning step on the prompt and its own previously generated steps, so the observations are self-generated and their distribution is policy-induced; Ross et al.~treat the general problem of policy-dependent input distributions \citep{ross2011}.
+\item
+  T-AGENT, \emph{tool output, benign}: Tool outputs from a sandbox the trainer built; instructions in them are usually absent or planted for training \citep{wallace2024}.
+\item
+  D-RL, \emph{sensor of s\_t}: As in training.
+\item
+  D-CHAT, \emph{user turn + own replies}: The user's message, read in a context that also holds the model's own earlier replies; the user is both principal and source of new observations.
+\item
+  D-AGENT-A, \emph{tool output, user, own calls}: Tool outputs and user turns mix with instructions in one stream: ``1) instructions injected indirectly can successfully steer the model; the data and instruction modalities are not disentangled,'' \citep{greshake2023}. Models do not reliably separate the two \citep{zverev2025}. The context also holds the agent's own earlier tool calls and messages.
+\item
+  D-AGENT-X, \emph{untrusted tool output}: Tool outputs are untrusted and can carry commands: ``Untrusted data processed and returned by the tools called by an AI agent are an effective vector for (indirect) prompt injections that execute malicious actions on behalf of the user {[}13, 18, 23{]}.'' \citep{debenedetti2024}; indirect injection through retrieved data was first shown in \citep{greshake2023}.
+\end{itemize}
+
+\textbf{State.}
+
+\begin{itemize}
+\tightlist
+\item
+  T-RL, \emph{Markov s\_t; partly hidden in a POMDP}: The quantity the dynamics are conditioned on; the probabilities given by p ``completely characterize the environment's dynamics'' \citep{sutton2018}. In a partially observed task the agent's input is an observation, not the state \citep{kaelbling1998}.
+\item
+  T-CHAT, \emph{the prompt, fixed}: The prompt; it does not change within the episode.
+\item
+  T-RLVR, \emph{the prompt, fixed}: The prompt; it does not change within the episode. The task is specified so that the prompt and the checker give the intent in full.
+\item
+  T-PRM, \emph{prefix}: Prompt plus steps so far; fully observed and Markov, since the prefix is the whole history \citep{feng2023}.
+\item
+  T-AGENT, \emph{context + sandbox}: The context window plus the environment state; the latter is partly hidden \citep{yao2024} but resettable in an evaluation harness \citep{jimenez2024}; by the definition of this setting the training sandbox is reset between episodes.
+\item
+  D-RL, \emph{Markov s\_t; partly hidden in a POMDP}: As in training.
+\item
+  D-CHAT, \emph{context window}: The context window; nothing persists across conversations unless the deployer adds memory.
+\item
+  D-AGENT-A, \emph{context + hidden world}: World state the model cannot see: ``contents of the database form the state sdb (Figure 2a), which is hidden from the agent and the user'' \citep{yao2024}; with only the context visible the process is non-Markov in the context \citep{kaelbling1998}.
+\item
+  D-AGENT-X, \emph{context, hidden world, own effects}: The same, plus the world as changed by the agent's own earlier calls and by others, and the contents of memory stores; the context is a bounded, lossy belief \citep{kaelbling1998, chen2024}.
+\end{itemize}
+
+\textbf{Transition.}
+
+\begin{itemize}
+\tightlist
+\item
+  T-RL, \emph{p(s',r\textbar s,a)}: ``The function p defines the dynamics of the MDP''; stochastic, often unknown to the agent \citep{sutton2018}.
+\item
+  T-CHAT, \emph{none (one step)}: ``Hence, the problem can be reduced to a bandit problem, where the Markov Decision Process (MDP) consists of only the initial state as determined by the prompt, and the terminal state, which is always reached after the generation'' \citep{ahmadian2024} Generation leads directly to a terminal state with no subsequent decision \citep{xiong2024}.
+\item
+  T-RLVR, \emph{none (one step)}: We extend the one-action bandit reading from RLHF \citep{ahmadian2024} to the verifier-reward setting: the prompt is the initial context, the whole reply is one action, and generation leads directly to a terminal state with no subsequent decision.
+\item
+  T-PRM, \emph{append, deterministic}: The next state is the prefix plus the step; the agent is the dynamics \citep{feng2023}.
+\item
+  T-AGENT, \emph{sandbox executes}: The sandbox executes the call. An evaluation harness shows the reset: ``Next, within the local copy of the mirror, checking out the base commit will reset the repository to codebase C.'' \citep{jimenez2024}; by the definition of this setting the training sandbox is reset between episodes.
+\item
+  D-RL, \emph{p(s',r\textbar s,a)}: As in training: ``In a Markov decision process, the probabilities given by p completely characterize the environment's dynamics.'' \citep{sutton2018}
+\item
+  D-CHAT, \emph{user replies}: The next observation is the user's reply; the user is the environment.
+\item
+  D-AGENT-A, \emph{tool executes}: ``the LM agent takes an action an ∈ A composed of the specific tool being invoked fn ∈ F and additional input arguments for the tool (e.g., specific terminal commands), and receives an observation ωn ∈ Ω from tool execution.'' \citep{ruan2024} The tool executes and returns an observation; the cited work emulates the execution with a language model.
+\item
+  D-AGENT-X, \emph{tool + world moves}: ``However, exact reproducibility is difficult to guarantee with such a black-box system with no control over the generation's parameters and a dynamic environment.'' \citep{greshake2023} The world moves between calls.
+\end{itemize}
+
+\textbf{Episode.}
+
+\begin{itemize}
+\tightlist
+\item
+  T-RL, \emph{episodes with reset}: Each episode ``ends in a special state called the terminal state, followed by a reset''; the next ``begins independently'' \citep{sutton2018}.
+\item
+  T-CHAT, \emph{one reply}: Horizon 1; trivially reset.
+\item
+  T-RLVR, \emph{one reply}: Horizon 1.
+\item
+  T-PRM, \emph{steps to answer; resample}: A step-level verifier is trained by ``using estimates of per-step correctness obtained from running Monte Carlo rollouts from each step in the solution'' \citep{snell2024}, so any prefix can be resampled; tree search over partial solutions branches the same way \citep{yao2023a}.
+\item
+  T-AGENT, \emph{task in sandbox; reset}: One task. By the definition of this setting the environment is reset between training episodes, which the deployed agent settings lack; in the cited work each episode starts on a new task \citep{zhou2024b}, and a resettable sandbox is shown for evaluation in \citep{jimenez2024}.
+\item
+  D-RL, \emph{episodes or continuing}: As the task defines; the environment resets or continues.
+\item
+  D-CHAT, \emph{one conversation}: A conversation; ends when the user leaves; nothing in the world to reset.
+\item
+  D-AGENT-A, \emph{task with human turns}: One task or conversation of many tool calls, with a human turn between calls (a stipulated approval boundary inside the episode); the conversation can restart but side effects remain.
+\item
+  D-AGENT-X, \emph{one run; no reset}: One task run, on tasks of up to 30 hours of human work \citep{kwa2025}; ends when the agent submits or a scaffold limit stops it; actions persist and some are irreversible, for example a file deletion in an emulated run \citep{ruan2024}; irreversibility as an RL notion is treated in \citep{grinsztajn2021, sharma2022}.
+\end{itemize}
+
+\textbf{Value.}
+
+\begin{itemize}
+\tightlist
+\item
+  T-RL, \emph{V, Q central}: ``value functions are defined with respect to particular ways of acting, called policies''; the central object of RL methods \citep{sutton2018}.
+\item
+  T-CHAT, \emph{degenerate; critic often dropped}: With one terminal reward the critic can be dropped: ``GRPO foregoes the critic model, instead estimating the baseline from group scores, significantly reducing training resources compared to Proximal Policy Optimization (PPO).'' \citep{shao2024}; RLOO and ReMax also drop it \citep{ahmadian2024, li2024}. PPO-based RLHF still trains a value function, initialised from the reward model \citep{ouyang2022}.
+\item
+  T-RLVR, \emph{degenerate; critic dropped}: One terminal reward needs no critic, and GRPO drops it \citep{shao2024}.
+\item
+  T-PRM, \emph{step score; rollout value if trained}: A PRM scores the correctness of the current step and is not in general a value; a verifier trained on continuation-success estimates reads as a value of the prefix \citep{snell2024}. At inference, which is outside this training setting, it drives best-of-n, beam and tree search, the AlphaZero shape \citep{zhang2025, feng2023, silver2017}.
+\item
+  T-AGENT, \emph{terminal; some value heads}: Some methods add a turn-level value: ``a high-level off-policy RL algorithm that trains a value function to aggregate reward over utterances'' \citep{zhou2024b}; in this setting as defined the base reward is terminal.
+\item
+  D-RL, \emph{none for an actor; Q if value-based}: A deployed actor policy samples actions directly and needs no value estimate. A value-based policy is a fixed Q-network that picks the argmax-Q action, and AlphaZero searches with its learned value estimates \citep{silver2017}. No value is learned at run time.
+\item
+  D-CHAT, \emph{none}: No value function; the model's verbal judgement and the user's acceptance stand in.
+\item
+  D-AGENT-A, \emph{none}: No value function; the human who sees each step is the check.
+\item
+  D-AGENT-X, \emph{none; verbal self-check}: No learned value function is used; retry, reflection and self-verification stand in for it \citep{shinn2023}, and each probe is a real action with persistent effects. Search-augmented agents score candidate continuations at inference time by reverting to earlier states \citep{zhou2024a}, which a live deployment does not allow.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,122 @@
+[
+{
+"topic": "claim",
+"locator": "12. Final Remarks",
+"text": "The goals in statistics are to use data to predict and to get information about the underlying data mechanism. Nowhere is it written on a stone tablet what kind of model should be used to solve problems involving data."
+},
+{
+"topic": "objective",
+"locator": "11. Information from a Black Box",
+"text": "Framing the question as the choice between accuracy and interpretability is an incorrect interpretation of what the goal of a statistical analysis is."
+},
+{
+"topic": "objective",
+"locator": "11. Information from a Black Box",
+"text": "The point of a model is to get useful information about the relation between the response and predictor variables. Interpretability is a way of getting information."
+},
+{
+"topic": "setting",
+"locator": "11. Information from a Black Box",
+"text": "Nature forms the outputs y from the inputs x by means of a black box with complex and unknown interior."
+},
+{
+"topic": "claim",
+"locator": "11. Information from a Black Box",
+"text": "So we are facing two black boxes, where ours seems only slightly less inscrutable than nature’s."
+},
+{
+"topic": "limitation",
+"locator": "10. Support Vector Machines",
+"text": "Separation can always be had by raising the dimensionality high enough. But if the separating hyperplane becomes too complex, the generalization error becomes large."
+},
+{
+"topic": "failure",
+"locator": "11.1 Example I: Variable Importance in a Survival Data Set",
+"text": "The authors comment, “Of the four variables originally selected not one was selected in more than 60 percent of the samples. Hence the variables identiﬁed in the original analysis cannot be taken too seriously.”"
+},
+{
+"topic": "failure",
+"locator": "11.4 Remarks about the Examples",
+"text": "Its weakness might have been unknown and the variable importances accepted at face value if its predictive accuracy was not evaluated."
+},
+{
+"topic": "setting",
+"locator": "11.4 Remarks about the Examples",
+"text": "There are 32 deaths and 123 survivors in the hepatitis data set. Calling everyone a survivor gives a baseline error rate of 20.6%. Logistic regression lowers this to 17.4%."
+},
+{
+"topic": "claim",
+"locator": "11.4 Remarks about the Examples",
+"text": "Higher predictive accuracy is associated with more reliable information about the underlying data mechanism. Weak predictive accuracy can lead to questionable conclusions."
+},
+{
+"topic": "claim",
+"locator": "11.4 Remarks about the Examples",
+"text": "Algorithmic models can give better predictive accuracy than data models, and provide better information about the underlying mechanism."
+},
+{
+"topic": "setting",
+"locator": "Glossary",
+"text": "Assume that the training set is i.i.d drawn from the distribution of the random vector Y X."
+},
+{
+"topic": "objective",
+"locator": "Glossary",
+"text": "Predictive accuracy. This refers to the size of the estimated generalization error. Good predictive accuracy means low estimated error."
+},
+{
+"topic": "policy",
+"locator": "Glossary",
+"text": "Dropping an x down a tree. When a vector of predictor variables is “dropped” down a tree, at each intermediate node it has instructions whether to go left or right depending on the coordinates of x."
+},
+{
+"topic": "objective",
+"locator": "Comment (Cox)",
+"text": "Professor Breiman takes data as his starting point. I would prefer to start with an issue, a question or a scientiﬁc hypothesis, although I would be surprised if this were a real source of disagreement."
+},
+{
+"topic": "limitation",
+"locator": "Comment (Cox)",
+"text": "Is it preferable to proceed with a directly empirical black-box approach, as favored by Professor Breiman, or is it better to try to take account of some underlying explanatory process?"
+},
+{
+"topic": "limitation",
+"locator": "Comment (Cox)",
+"text": "Key issues are then the stability of the predictor as practical prediction proceeds, the need from time to time for recalibration and so on."
+},
+{
+"topic": "limitation",
+"locator": "Comment (Cox)",
+"text": "That is, it may be desired to predict the consequences of something only indirectly addressed by the data available for analysis."
+},
+{
+"topic": "objective",
+"locator": "Comment (Cox)",
+"text": "The absolutely crucial issue in serious mainstream statistics is the choice of a model that will translate key subject-matter questions into a form for analysis and interpretation."
+},
+{
+"topic": "setting",
+"locator": "Comment (Efron)",
+"text": "the theory requires a modestly high ratio of signal to noise, sample size to number of unknown parameters, to have much hope of success."
+},
+{
+"topic": "failure",
+"locator": "Comment (Efron)",
+"text": "In fact it is very difﬁcult to run an honest simulation comparison, and easy to inadvertently cheat by choosing favorable examples, or by not putting as much effort into optimizing the dull old standard as the exciting new challenger."
+},
+{
+"topic": "failure",
+"locator": "Comment (Efron)",
+"text": "Complicated methods are harder to criticize than simple ones. By now it is easy to check the efﬁciency of a logistic regression, but it is no small matter to analyze the limitations of a support vector machine."
+},
+{
+"topic": "objective",
+"locator": "Comment (Efron)",
+"text": "Prediction by itself is only occasionally sufﬁcient. The post ofﬁce is happy with any method that predicts correct addresses from hand-written scrawls."
+},
+{
+"topic": "oversight",
+"locator": "Comment (Efron)",
+"text": "The whole point of science is to open up black boxes, understand their insides, and build better boxes for the purposes of mankind."
+}
+]

@@ -1,0 +1,127 @@
+[
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "We find real-world software engineering to be a rich, sustainable, and challenging\ntestbed for evaluating the next generation of language models."
+ },
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "The best-performing model, Claude 2, is able to solve a mere\n1.96% of the issues."
+ },
+ {
+  "topic": "setting",
+  "locator": "Abstract",
+  "text": "Given a codebase along with a description\nof an issue to be resolved, a language model is tasked with editing the codebase\nto address the issue."
+ },
+ {
+  "topic": "setting",
+  "locator": "1 Introduction",
+  "text": "As shown in Figure 1, models are tasked to resolve\nissues (typically a bug report or a feature request) submitted to popular GitHub repositories. Each\ntask requires generating a patch describing changes to apply to the existing codebase."
+ },
+ {
+  "topic": "reward",
+  "locator": "2.2 Task Formulation",
+  "text": "If the patch applies successfully and all of these tests pass we consider the proposed\nsolution to have successfully resolved the issue. The metric for our benchmark is the percentage of\ntask instances that are resolved."
+ },
+ {
+  "topic": "reward",
+  "locator": "2.2 Task Formulation",
+  "text": "To evaluate a proposed solution, we apply the generated patch, using unix’s\npatch program, to the codebase and then execute the unit and system tests associated with the\ntask instance."
+ },
+ {
+  "topic": "observation",
+  "locator": "2.2 Task Formulation",
+  "text": "A model is given an issue text description and a complete codebase. The model is\nthen tasked to make an edit to the codebase to resolve the issue."
+ },
+ {
+  "topic": "action",
+  "locator": "2.2 Task Formulation",
+  "text": "In practice, we represent edits as\npatch files, which specify which lines in the codebase to modify in order to resolve the issue."
+ },
+ {
+  "topic": "objective",
+  "locator": "2.1 Benchmark Construction",
+  "text": "We create candidate tasks by selecting the merged PRs that (1)\nresolve a GitHub issue and (2) make changes to the test files of the repository, which indicates that\nthe user likely contributed tests to check whether the issue has been resolved."
+ },
+ {
+  "topic": "principal",
+  "locator": "2.1 Benchmark Construction",
+  "text": "SWE-bench sources task instances from real-world Python repositories by connecting\nGitHub issues to merged pull request solutions that resolve related tests."
+ },
+ {
+  "topic": "objective",
+  "locator": "2.3 Features of SWE-bench",
+  "text": "For each task instance, there is at least one fail-to-pass test which was used\nto test the reference solution, and 40% of instances have at least two fail-to-pass tests. These tests\nevaluate whether the model addressed the problem in the issue."
+ },
+ {
+  "topic": "failure",
+  "locator": "2.3 Features of SWE-bench",
+  "text": "In addition, a median of 51 additional\ntests run to check whether prior functionality is properly maintained."
+ },
+ {
+  "topic": "episode",
+  "locator": "2.3 Features of SWE-bench",
+  "text": "Our collection process can be easily applied to any Python repository on\nGitHub and requires minimal human intervention."
+ },
+ {
+  "topic": "policy",
+  "locator": "3 SWE-Llama",
+  "text": "we perform supervised fine-tuning on the 7 billion- and 13 billion-parameter CodeLlamaPython models. The resulting models are specialized repository editors that can run on consumer\nhardware and resolve GitHub issues."
+ },
+ {
+  "topic": "policy",
+  "locator": "4.1 Retrieval-based Approach",
+  "text": "To address this issue for our baselines, we simply use a generic retrieval system to select the files\nto insert as context."
+ },
+ {
+  "topic": "oversight",
+  "locator": "4.1 Retrieval-based Approach",
+  "text": "This “oracle” setting is less realistic,\nsince an engineer working on addressing an issue may not know a priori which files need to be\nmodified."
+ },
+ {
+  "topic": "llm",
+  "locator": "5 Results",
+  "text": "Across the board, models struggle significantly to resolve\nissues. The best performing model, Claude 2, is only able to resolve 1.96% of the issues."
+ },
+ {
+  "topic": "failure",
+  "locator": "5 Results",
+  "text": "In our evaluation\nsettings, models see a lot of code that may not be directly related to solving the issue at hand, and\nthey seem to frequently struggle with localizing problematic code needing to be updated."
+ },
+ {
+  "topic": "failure",
+  "locator": "5.1 Qualitative Analysis",
+  "text": "Models tend to write primitive Python code and do not leverage existing third-party libraries or\nthe rest of the codebase for their solutions."
+ },
+ {
+  "topic": "failure",
+  "locator": "5 Results",
+  "text": "We consider this result to be largely promising as it suggests that despite models having\nbeen exposed to some version of an repository’s codebase, they are unlikely to “cheat” to address\nissues simply by generating a more recent version of the repository."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7 Discussion",
+  "text": "SWE-bench task instances are all in Python; we hope to apply\nSWE-bench’s task instance collection procedure to expand its coverage to more programming languages and domains."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7 Discussion",
+  "text": "our experiments aim to establish a baseline of the simplest and most\nstraight-forward approaches for this task; we do not intend to constrain future methodologies to the\nsame type of approach"
+ },
+ {
+  "topic": "limitation",
+  "locator": "7 Discussion",
+  "text": "relying solely on this\nmethod is insufficient to guarantee reliable performance of model generations, as we find automated\ncode generations from LMs can frequently be less comprehensive, efficient, or readable compared\nto human-written solutions."
+ },
+ {
+  "topic": "llm",
+  "locator": "5 Results",
+  "text": "Finetuned models are sensitive to context distribution shifts. The finetuned models SWE-Llama\n7b and 13b perform surprisingly poorly with BM25 retrieved context."
+ },
+ {
+  "topic": "claim",
+  "locator": "7 Discussion",
+  "text": "By drawing on the open-source collaborative pipeline, SWE-bench creates\na faithful mirror of real world coding environments."
+ }
+]

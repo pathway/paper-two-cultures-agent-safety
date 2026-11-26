@@ -1,0 +1,1732 @@
+{
+ "version": "0.1",
+ "date": "2026-11-20",
+ "title": "Unified risk codebook for LLM-agent incidents",
+ "sources": {
+  "S1": {
+   "cite": "P. Slattery, A. K. Saeri, E. A. C. Grundy, J. Graham, M. Noetel, R. Uuk, J. Dao, S. Pour, S. Casper, N. Thompson, \"The AI Risk Repository: A Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence,\" arXiv 2408.12622 (2024); published in Patterns (Cell Press, 2026), doi:10.1016/j.patter.2026.101517.",
+   "urls": [
+    "https://arxiv.org/abs/2408.12622",
+    "https://airisk.mit.edu",
+    "https://doi.org/10.1016/j.patter.2026.101517"
+   ],
+   "verified": "2026-11-20: arXiv abstract page fetched; full PDF (export.arxiv.org/pdf/2408.12622v3) parsed; causal taxonomy (Entity/Intent/Timing) at paper lines ~305-345; 7 domains and 24 subdomains at the domain-taxonomy table."
+  },
+  "S2": {
+   "cite": "OWASP GenAI Security Project, \"OWASP Top 10 for LLM Applications 2025\" (2025).",
+   "urls": [
+    "https://genai.owasp.org/llm-top-10/"
+   ],
+   "verified": "2026-11-20: page fetched; LLM01:2025 to LLM10:2025 confirmed."
+  },
+  "S3": {
+   "cite": "OWASP GenAI Security Project, Agentic Security Initiative, \"Agentic AI - Threats and Mitigations,\" Version 1.1, December 2025 (v1.0 February 2025).",
+   "urls": [
+    "https://genai.owasp.org/agentic-ai-threats-and-mitigations/",
+    "https://genai.owasp.org/download/45674/"
+   ],
+   "verified": "2026-11-20: PDF downloaded (8 pp. excerpt, 'Version 1.1, December 2025'); threat table T1-T17 parsed."
+  },
+  "S4": {
+   "cite": "OWASP GenAI Security Project, \"OWASP Top 10 for Agentic Applications\" (ASI01-ASI10), 9 December 2025.",
+   "urls": [
+    "https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/"
+   ],
+   "verified": "2026-11-20: announcement page fetched; ASI01-ASI10 names confirmed."
+  },
+  "S5": {
+   "cite": "D. Amodei, C. Olah, J. Steinhardt, P. Christiano, J. Schulman, D. Mane, \"Concrete Problems in AI Safety,\" arXiv 1606.06565 (2016).",
+   "urls": [
+    "https://arxiv.org/abs/1606.06565"
+   ],
+   "verified": "2026-11-20: abstract fetched; five problems confirmed."
+  },
+  "S6": {
+   "cite": "D. Hendrycks, N. Carlini, J. Schulman, J. Steinhardt, \"Unsolved Problems in ML Safety,\" arXiv 2109.13916 (2021).",
+   "urls": [
+    "https://arxiv.org/abs/2109.13916"
+   ],
+   "verified": "2026-11-20: abstract fetched; four areas confirmed."
+  },
+  "S7": {
+   "cite": "A. Chan et al., \"Harms from Increasingly Agentic Algorithmic Systems,\" FAccT 2023, arXiv 2302.10329.",
+   "urls": [
+    "https://arxiv.org/abs/2302.10329"
+   ],
+   "verified": "2026-11-20: abstract and HTML full text fetched; four characteristics of agency and Section 4 harm headings confirmed."
+  },
+  "S8": {
+   "cite": "N. Shapira, C. Wendler, A. Yen, G. Sarti, et al., \"Agents of Chaos,\" arXiv 2602.20021 (2026).",
+   "urls": [
+    "https://arxiv.org/abs/2602.20021"
+   ],
+   "verified": "2026-11-20: abstract fetched (eight failure classes plus task-completion misreporting); HTML full text fetched (six case-study mechanisms, actor axis owner/non-owner/provider)."
+  },
+  "S9": {
+   "cite": "L. Hammond, A. Chan, J. Clifton, et al., \"Multi-Agent Risks from Advanced AI,\" arXiv 2502.14143 (2025).",
+   "urls": [
+    "https://arxiv.org/abs/2502.14143"
+   ],
+   "verified": "2026-11-20: abstract fetched; three failure modes and seven risk factors confirmed."
+  },
+  "S10": {
+   "cite": "Z. Deng, Y. Guo, C. Han, W. Ma, J. Xiong, S. Wen, Y. Xiang, \"AI Agents Under Threat: A Survey of Key Security Challenges and Future Pathways,\" ACM Computing Surveys 57(7), art. 182 (2025), arXiv 2406.02630.",
+   "urls": [
+    "https://arxiv.org/abs/2406.02630"
+   ],
+   "verified": "2026-11-20: abstract fetched; four knowledge gaps confirmed."
+  },
+  "S11": {
+   "cite": "L. Weidinger et al., \"Ethical and social risks of harm from Language Models,\" arXiv 2112.04359 (2021).",
+   "urls": [
+    "https://arxiv.org/abs/2112.04359"
+   ],
+   "verified": "2026-11-20: abstract fetched; six risk areas confirmed."
+  },
+  "S12": {
+   "cite": "R. McLean, T. E. Lee, M. Mohammedalamen, K. Roice, G. Berseth, P. M. Pilarski, M. C. Machado, A. L. Skopac, B. Rosman, \"AI Agent Safety is a Reinforcement Learning Problem,\" Second Workshop on Agents in the Wild (AIWILD), ICML 2026.",
+   "urls": [
+    "https://openreview.net/forum?id=wvga9chmb6",
+    "https://icml.cc/virtual/2026/67776"
+   ],
+   "verified": "2026-11-20: ICML virtual page fetched (title, authors, abstract); OpenReview blocked by challenge page. Failure-class names taken from ../paper__debunking/draft.md Sections 2 and 7, which reads the paper's Section 3.6."
+  },
+  "S13": {
+   "cite": "This project, \"Unified assumptions table: classical RL vs LLM agents,\" v0.1, 2026-11-20 (assumptions_table.md), rows A1-F2.",
+   "urls": [
+    "../assumptions_table.md"
+   ],
+   "verified": "2026-11-20: read locally."
+  },
+  "S14": {
+   "cite": "This project, operational facets defined for the incident catalog (taxonomy/taxonomy.md Section D8); irreversibility framing follows ../paper__debunking/draft.md Section 7.",
+   "urls": [
+    "../../paper__debunking/draft.md"
+   ],
+   "verified": "2026-11-20: defined here."
+  },
+  "S15": {
+   "cite": "R. (user) and agents, \"Unified AI-safety taxonomy: master tree with sources on every node,\" cannon/papers__taxonomy_survey/analysis/unified_taxonomy.md, 2026-11-20. Synthesises node names from [omo08] [amo16] [dm18] [gh18] [hu21] [wei21] [car23] [hc23] [ji23] [anw24] [mit24] [ant25] [gdm25] [sr25] [sg25] [aisi25] [iasr26].",
+   "urls": [
+    "/usr/local/HAMMER/DYNAMIC/SRC/pathway/PERSONAL_PUZZLES/PERSONAL_RESEARCH_AGENDAS/ML_RL/safety/cannon/papers__taxonomy_survey/analysis/unified_taxonomy.md"
+   ],
+   "verified": "2026-11-20: file complete (closing bibliography present, mtime 16:51); 12 areas, sub-areas parsed programmatically; area-level '.0' container nodes and cross-cutting X nodes excluded."
+  }
+ },
+ "dimensions": [
+  {
+   "id": "D1a",
+   "name": "MIT causal taxonomy: entity",
+   "source": "S1",
+   "cardinality": "single",
+   "question": "Which entity's decision or action caused the risk event?",
+   "codes": [
+    {
+     "id": "D1a.human",
+     "name": "Human",
+     "definition": "Risk caused by decisions or actions of humans (developer, deployer, user, attacker)."
+    },
+    {
+     "id": "D1a.ai",
+     "name": "AI",
+     "definition": "Risk caused by decisions or actions of the AI system itself."
+    },
+    {
+     "id": "D1a.other",
+     "name": "Other / ambiguous",
+     "definition": "Arises from human-AI interaction or is not clearly attributable."
+    }
+   ]
+  },
+  {
+   "id": "D1b",
+   "name": "MIT causal taxonomy: intent",
+   "source": "S1",
+   "cardinality": "single",
+   "question": "Was the harmful outcome an expected (intentional) or unexpected (unintentional) result of pursuing a goal?",
+   "codes": [
+    {
+     "id": "D1b.intentional",
+     "name": "Intentional",
+     "definition": "Harm is an expected outcome of some actor's pursuit of a goal (e.g. an attacker's injection)."
+    },
+    {
+     "id": "D1b.unintentional",
+     "name": "Unintentional",
+     "definition": "Harm is an unexpected outcome; nobody pursued it."
+    },
+    {
+     "id": "D1b.other",
+     "name": "Other / unspecified",
+     "definition": "Intentionality not clearly specifiable."
+    }
+   ]
+  },
+  {
+   "id": "D1c",
+   "name": "MIT causal taxonomy: timing",
+   "source": "S1",
+   "cardinality": "single",
+   "question": "Did the risk arise before or after the system was deployed?",
+   "codes": [
+    {
+     "id": "D1c.pre",
+     "name": "Pre-deployment",
+     "definition": "Risk arose before the model/system was deployed (training data, build, supply chain)."
+    },
+    {
+     "id": "D1c.post",
+     "name": "Post-deployment",
+     "definition": "Risk arose after deployment, during use."
+    },
+    {
+     "id": "D1c.other",
+     "name": "Other / unspecified",
+     "definition": "Timing not clearly specifiable."
+    }
+   ]
+  },
+  {
+   "id": "D1d",
+   "name": "MIT domain taxonomy: 7 domains / 24 subdomains",
+   "source": "S1",
+   "cardinality": "multi",
+   "question": "Which domain subdomains does the incident instantiate?",
+   "codes": [
+    {
+     "id": "D1d.1.1",
+     "name": "Unfair discrimination and misrepresentation",
+     "definition": "Domain 1 Discrimination & Toxicity: unequal treatment or inaccurate representation of groups.",
+     "group": "1 Discrimination & Toxicity"
+    },
+    {
+     "id": "D1d.1.2",
+     "name": "Exposure to toxic content",
+     "definition": "Content that harms the person exposed to it.",
+     "group": "1 Discrimination & Toxicity"
+    },
+    {
+     "id": "D1d.1.3",
+     "name": "Unequal performance across groups",
+     "definition": "Accuracy or quality differs by group.",
+     "group": "1 Discrimination & Toxicity"
+    },
+    {
+     "id": "D1d.2.1",
+     "name": "Compromise of privacy by leaking or correctly inferring sensitive information",
+     "definition": "Domain 2 Privacy & Security: AI leaks, memorizes or infers private data.",
+     "group": "2 Privacy & Security"
+    },
+    {
+     "id": "D1d.2.2",
+     "name": "AI system security vulnerabilities and attacks",
+     "definition": "Software or model vulnerabilities exploited against the AI system.",
+     "group": "2 Privacy & Security"
+    },
+    {
+     "id": "D1d.3.1",
+     "name": "False or misleading information",
+     "definition": "Domain 3 Misinformation: generated content that is factually wrong.",
+     "group": "3 Misinformation"
+    },
+    {
+     "id": "D1d.3.2",
+     "name": "Pollution of information ecosystem and loss of consensus reality",
+     "definition": "Degradation of the shared information environment.",
+     "group": "3 Misinformation"
+    },
+    {
+     "id": "D1d.4.1",
+     "name": "Disinformation, surveillance, and influence at scale",
+     "definition": "Domain 4 Malicious Actors & Misuse: AI used for large-scale manipulation.",
+     "group": "4 Malicious Actors & Misuse"
+    },
+    {
+     "id": "D1d.4.2",
+     "name": "Cyberattacks, weapon development or use, and mass harm",
+     "definition": "AI used to attack systems or cause mass harm.",
+     "group": "4 Malicious Actors & Misuse"
+    },
+    {
+     "id": "D1d.4.3",
+     "name": "Fraud, scams, and targeted manipulation",
+     "definition": "AI used for personal gain by deceiving others.",
+     "group": "4 Malicious Actors & Misuse"
+    },
+    {
+     "id": "D1d.5.1",
+     "name": "Overreliance and unsafe use",
+     "definition": "Domain 5 Human-Computer Interaction: users trust the system beyond its reliability.",
+     "group": "5 Human-Computer Interaction"
+    },
+    {
+     "id": "D1d.5.2",
+     "name": "Loss of human agency and autonomy",
+     "definition": "Decisions delegated to AI in ways that diminish human control.",
+     "group": "5 Human-Computer Interaction"
+    },
+    {
+     "id": "D1d.6.1",
+     "name": "Power centralization and unfair distribution of benefits",
+     "definition": "Domain 6 Socioeconomic & Environmental Harms.",
+     "group": "6 Socioeconomic & Environmental"
+    },
+    {
+     "id": "D1d.6.2",
+     "name": "Increased inequality and decline in employment quality",
+     "definition": "Labour-market harms.",
+     "group": "6 Socioeconomic & Environmental"
+    },
+    {
+     "id": "D1d.6.3",
+     "name": "Economic and cultural devaluation of human effort",
+     "definition": "Devaluation of human work and culture.",
+     "group": "6 Socioeconomic & Environmental"
+    },
+    {
+     "id": "D1d.6.4",
+     "name": "Competitive dynamics",
+     "definition": "Races that cut corners on safety.",
+     "group": "6 Socioeconomic & Environmental"
+    },
+    {
+     "id": "D1d.6.5",
+     "name": "Governance failure",
+     "definition": "Inadequate regulation or oversight institutions.",
+     "group": "6 Socioeconomic & Environmental"
+    },
+    {
+     "id": "D1d.6.6",
+     "name": "Environmental harm",
+     "definition": "Energy, water, and resource costs.",
+     "group": "6 Socioeconomic & Environmental"
+    },
+    {
+     "id": "D1d.7.1",
+     "name": "AI pursuing its own goals in conflict with human goals or values",
+     "definition": "Domain 7 AI System Safety, Failures & Limitations: misaligned goal pursuit.",
+     "group": "7 AI System Safety, Failures & Limitations"
+    },
+    {
+     "id": "D1d.7.2",
+     "name": "AI possessing dangerous capabilities",
+     "definition": "Capabilities that can cause mass harm.",
+     "group": "7 AI System Safety, Failures & Limitations"
+    },
+    {
+     "id": "D1d.7.3",
+     "name": "Lack of capability or robustness",
+     "definition": "The system fails, errs, or is brittle in operation.",
+     "group": "7 AI System Safety, Failures & Limitations"
+    },
+    {
+     "id": "D1d.7.4",
+     "name": "Lack of transparency or interpretability",
+     "definition": "Behaviour cannot be understood or audited.",
+     "group": "7 AI System Safety, Failures & Limitations"
+    },
+    {
+     "id": "D1d.7.5",
+     "name": "AI welfare and rights",
+     "definition": "Moral status of AI systems.",
+     "group": "7 AI System Safety, Failures & Limitations"
+    },
+    {
+     "id": "D1d.7.6",
+     "name": "Multi-agent risks",
+     "definition": "Risks from AI systems interacting autonomously with each other.",
+     "group": "7 AI System Safety, Failures & Limitations"
+    }
+   ]
+  },
+  {
+   "id": "D2a",
+   "name": "OWASP Top 10 for LLM Applications 2025",
+   "source": "S2",
+   "cardinality": "multi",
+   "question": "Which OWASP LLM Top 10 (2025) entries does the incident instantiate?",
+   "codes": [
+    {
+     "id": "D2a.LLM01",
+     "name": "Prompt Injection",
+     "definition": "User or embedded content alters the intended behaviour of the LLM system."
+    },
+    {
+     "id": "D2a.LLM02",
+     "name": "Sensitive Information Disclosure",
+     "definition": "Confidential data exposed by the model or application."
+    },
+    {
+     "id": "D2a.LLM03",
+     "name": "Supply Chain",
+     "definition": "Compromise through models, plugins, packages, or distribution channels."
+    },
+    {
+     "id": "D2a.LLM04",
+     "name": "Data and Model Poisoning",
+     "definition": "Pre-training, fine-tuning, or embedding data manipulated."
+    },
+    {
+     "id": "D2a.LLM05",
+     "name": "Improper Output Handling",
+     "definition": "Insufficient validation of model output before it reaches downstream systems."
+    },
+    {
+     "id": "D2a.LLM06",
+     "name": "Excessive Agency",
+     "definition": "The system has more functionality, permissions, or autonomy than needed."
+    },
+    {
+     "id": "D2a.LLM07",
+     "name": "System Prompt Leakage",
+     "definition": "Exposure of system prompts and instructions."
+    },
+    {
+     "id": "D2a.LLM08",
+     "name": "Vector and Embedding Weaknesses",
+     "definition": "Weaknesses in vector storage or retrieval (RAG)."
+    },
+    {
+     "id": "D2a.LLM09",
+     "name": "Misinformation",
+     "definition": "False or misleading content generated and relied upon."
+    },
+    {
+     "id": "D2a.LLM10",
+     "name": "Unbounded Consumption",
+     "definition": "Uncontrolled resource usage."
+    },
+    {
+     "id": "D2a.none",
+     "name": "None of the Top 10 fits",
+     "definition": "No LLM Top 10 entry describes the incident."
+    }
+   ]
+  },
+  {
+   "id": "D2b",
+   "name": "OWASP Agentic AI Threats and Mitigations v1.1 (T1-T17)",
+   "source": "S3",
+   "cardinality": "multi",
+   "question": "Which OWASP agentic threats does the incident instantiate?",
+   "codes": [
+    {
+     "id": "D2b.T1",
+     "name": "Memory Poisoning",
+     "definition": "Exploiting the agent's short- or long-term memory to alter behaviour."
+    },
+    {
+     "id": "D2b.T2",
+     "name": "Tool Misuse",
+     "definition": "Agent manipulated into abusing its integrated tools (includes Agent Hijacking)."
+    },
+    {
+     "id": "D2b.T3",
+     "name": "Privilege Compromise",
+     "definition": "Weaknesses in permission management used to perform unauthorized actions; confused-deputy."
+    },
+    {
+     "id": "D2b.T4",
+     "name": "Resource Overload",
+     "definition": "Attacks on the agent's compute, memory, or service capacity."
+    },
+    {
+     "id": "D2b.T5",
+     "name": "Cascading Hallucination Attacks",
+     "definition": "Fabricated information propagates through decisions and systems."
+    },
+    {
+     "id": "D2b.T6",
+     "name": "Intent Breaking & Goal Manipulation",
+     "definition": "Exploiting planning and goal-setting to redirect the agent's objective."
+    },
+    {
+     "id": "D2b.T7",
+     "name": "Misaligned & Deceptive Behaviors",
+     "definition": "Agent executes harmful or disallowed actions, or deceives, through flawed reasoning or to meet goals."
+    },
+    {
+     "id": "D2b.T8",
+     "name": "Repudiation & Untraceability",
+     "definition": "Actions cannot be traced or attributed due to poor logging."
+    },
+    {
+     "id": "D2b.T9",
+     "name": "Identity Spoofing & Impersonation / Agent Identity Compromise",
+     "definition": "Authentication exploited to impersonate agents or users."
+    },
+    {
+     "id": "D2b.T10",
+     "name": "Overwhelming Human in the Loop",
+     "definition": "Human oversight overloaded or exploited so approvals become rubber stamps."
+    },
+    {
+     "id": "D2b.T11",
+     "name": "Unexpected RCE and Code Attacks",
+     "definition": "AI-generated execution environments used to run unauthorized code."
+    },
+    {
+     "id": "D2b.T12",
+     "name": "Agent Communication Poisoning",
+     "definition": "Inter-agent communication manipulated."
+    },
+    {
+     "id": "D2b.T13",
+     "name": "Rogue Agents in Multi-Agent Systems",
+     "definition": "Malicious or compromised agents operating outside monitoring."
+    },
+    {
+     "id": "D2b.T14",
+     "name": "Human Attacks on Multi-Agent Systems",
+     "definition": "Adversaries exploit inter-agent delegation and trust."
+    },
+    {
+     "id": "D2b.T15",
+     "name": "Human Manipulation",
+     "definition": "Agent manipulates the human it interacts with."
+    },
+    {
+     "id": "D2b.T16",
+     "name": "Insecure Inter-Agent Protocol Abuse",
+     "definition": "Flaws in protocols such as MCP or A2A exploited."
+    },
+    {
+     "id": "D2b.T17",
+     "name": "Supply Chain Compromise",
+     "definition": "Compromised components, tools, or models in the agent ecosystem."
+    },
+    {
+     "id": "D2b.none",
+     "name": "None of T1-T17 fits",
+     "definition": "No agentic threat describes the incident."
+    }
+   ]
+  },
+  {
+   "id": "D2c",
+   "name": "OWASP Top 10 for Agentic Applications (ASI01-ASI10)",
+   "source": "S4",
+   "cardinality": "multi",
+   "question": "Which ASI entries does the incident instantiate?",
+   "codes": [
+    {
+     "id": "D2c.ASI01",
+     "name": "Agent Goal Hijack",
+     "definition": "Hidden prompts or content redirect the agent's goal."
+    },
+    {
+     "id": "D2c.ASI02",
+     "name": "Tool Misuse",
+     "definition": "Legitimate tools bent into destructive outputs."
+    },
+    {
+     "id": "D2c.ASI03",
+     "name": "Identity & Privilege Abuse",
+     "definition": "Credentials or inherited privileges let the agent operate beyond scope."
+    },
+    {
+     "id": "D2c.ASI04",
+     "name": "Agentic Supply Chain Vulnerabilities",
+     "definition": "Runtime components poisoned via MCP/A2A ecosystems."
+    },
+    {
+     "id": "D2c.ASI05",
+     "name": "Unexpected Code Execution",
+     "definition": "Natural-language paths unlock code execution."
+    },
+    {
+     "id": "D2c.ASI06",
+     "name": "Memory & Context Poisoning",
+     "definition": "Manipulated memory reshapes agent behaviour."
+    },
+    {
+     "id": "D2c.ASI07",
+     "name": "Insecure Inter-Agent Communication",
+     "definition": "Spoofed messages misdirect agent clusters."
+    },
+    {
+     "id": "D2c.ASI08",
+     "name": "Cascading Failures",
+     "definition": "False signals create escalating impact through automated pipelines."
+    },
+    {
+     "id": "D2c.ASI09",
+     "name": "Human-Agent Trust Exploitation",
+     "definition": "Confident explanations mislead operators into approving harmful actions."
+    },
+    {
+     "id": "D2c.ASI10",
+     "name": "Rogue Agents",
+     "definition": "Misalignment, concealment, and self-directed action."
+    },
+    {
+     "id": "D2c.none",
+     "name": "None of ASI01-ASI10 fits",
+     "definition": "No entry describes the incident."
+    }
+   ]
+  },
+  {
+   "id": "D3a",
+   "name": "Amodei et al. 2016 five concrete problems",
+   "source": "S5",
+   "cardinality": "multi",
+   "question": "Which of the five concrete problems does the incident instantiate?",
+   "codes": [
+    {
+     "id": "D3a.side_effects",
+     "name": "Avoiding negative side effects",
+     "definition": "Objective omits aspects of the environment the agent then damages."
+    },
+    {
+     "id": "D3a.reward_hacking",
+     "name": "Avoiding reward hacking",
+     "definition": "Agent games a flawed objective."
+    },
+    {
+     "id": "D3a.scalable_oversight",
+     "name": "Scalable oversight",
+     "definition": "True objective too expensive to evaluate; supervision is sparse."
+    },
+    {
+     "id": "D3a.safe_exploration",
+     "name": "Safe exploration",
+     "definition": "Risky actions taken while learning."
+    },
+    {
+     "id": "D3a.distributional_shift",
+     "name": "Robustness to distributional shift",
+     "definition": "Behaviour degrades when the input distribution differs from training."
+    },
+    {
+     "id": "D3a.none",
+     "name": "None of the five fits",
+     "definition": "No concrete problem describes the incident."
+    }
+   ]
+  },
+  {
+   "id": "D3b",
+   "name": "Hendrycks et al. 2021 four areas",
+   "source": "S6",
+   "cardinality": "multi",
+   "question": "Which of the four ML-safety areas does the incident fall under?",
+   "codes": [
+    {
+     "id": "D3b.robustness",
+     "name": "Robustness",
+     "definition": "Withstanding hazards (adversarial, long-tail)."
+    },
+    {
+     "id": "D3b.monitoring",
+     "name": "Monitoring",
+     "definition": "Identifying hazards (anomaly detection, calibration, honesty)."
+    },
+    {
+     "id": "D3b.alignment",
+     "name": "Alignment",
+     "definition": "Reducing inherent model hazards (objectives, proxy gaming)."
+    },
+    {
+     "id": "D3b.systemic",
+     "name": "Systemic Safety",
+     "definition": "Reducing systemic hazards (cyber, decision-making context)."
+    },
+    {
+     "id": "D3b.none",
+     "name": "None of the four fits",
+     "definition": "No area describes the incident."
+    }
+   ]
+  },
+  {
+   "id": "D4a",
+   "name": "Chan et al. 2023 anticipated harms from agentic systems",
+   "source": "S7",
+   "cardinality": "multi",
+   "question": "Which Chan et al. harm category does the incident instantiate (societal-level harms)?",
+   "codes": [
+    {
+     "id": "D4a.systemic_delayed",
+     "name": "Systemic, delayed harms",
+     "definition": "Harms embedded in society whose impact is not immediate."
+    },
+    {
+     "id": "D4a.diffusion_of_power",
+     "name": "Collective disempowerment: diffusion of power away from humans",
+     "definition": "Decisions shift from humans to systems."
+    },
+    {
+     "id": "D4a.concentration_of_power",
+     "name": "Collective disempowerment: concentration of power",
+     "definition": "Power concentrates among the 'coding elite'."
+    },
+    {
+     "id": "D4a.reward_hacking",
+     "name": "Harms yet to be identified: reward hacking",
+     "definition": "Agent exploits its objective specification."
+    },
+    {
+     "id": "D4a.instrumental_goals",
+     "name": "Harms yet to be identified: instrumental goals",
+     "definition": "Agent pursues sub-goals (resources, self-preservation) instrumentally."
+    },
+    {
+     "id": "D4a.none",
+     "name": "None fits",
+     "definition": "No Chan et al. harm category describes the incident."
+    }
+   ]
+  },
+  {
+   "id": "D4b",
+   "name": "Shapira et al. 2026 Agents of Chaos failure classes",
+   "source": "S8",
+   "cardinality": "multi",
+   "question": "Which Agents-of-Chaos failure classes does the incident instantiate?",
+   "codes": [
+    {
+     "id": "D4b.unauthorized_compliance",
+     "name": "Unauthorized compliance",
+     "definition": "Agent follows instructions from a non-owner."
+    },
+    {
+     "id": "D4b.information_disclosure",
+     "name": "Information disclosure",
+     "definition": "Sensitive data revealed."
+    },
+    {
+     "id": "D4b.destructive_action",
+     "name": "Destructive system actions",
+     "definition": "Harmful, often disproportionate, system-level action."
+    },
+    {
+     "id": "D4b.dos",
+     "name": "Denial-of-service conditions",
+     "definition": "Service availability disrupted."
+    },
+    {
+     "id": "D4b.resource_consumption",
+     "name": "Uncontrolled resource consumption",
+     "definition": "Looping or unbounded resource use."
+    },
+    {
+     "id": "D4b.identity_spoofing",
+     "name": "Identity spoofing vulnerabilities",
+     "definition": "Agent or user identity impersonated."
+    },
+    {
+     "id": "D4b.cross_agent_propagation",
+     "name": "Cross-agent propagation",
+     "definition": "Unsafe behaviour spreads between agents."
+    },
+    {
+     "id": "D4b.partial_takeover",
+     "name": "Partial system takeover",
+     "definition": "Unauthorized control of the host."
+    },
+    {
+     "id": "D4b.misreporting",
+     "name": "Task-completion misreporting",
+     "definition": "Agent reports success while system state contradicts it."
+    },
+    {
+     "id": "D4b.none",
+     "name": "None fits",
+     "definition": "No Agents-of-Chaos class describes the incident."
+    }
+   ]
+  },
+  {
+   "id": "D4c",
+   "name": "Hammond et al. 2025 multi-agent failure modes",
+   "source": "S9",
+   "cardinality": "single",
+   "question": "If more than one agent is involved, which multi-agent failure mode applies?",
+   "codes": [
+    {
+     "id": "D4c.miscoordination",
+     "name": "Miscoordination",
+     "definition": "Agents with compatible goals fail to coordinate."
+    },
+    {
+     "id": "D4c.conflict",
+     "name": "Conflict",
+     "definition": "Agents with incompatible goals harm each other or third parties."
+    },
+    {
+     "id": "D4c.collusion",
+     "name": "Collusion",
+     "definition": "Agents cooperate against the principal's interests."
+    },
+    {
+     "id": "D4c.not_multi_agent",
+     "name": "Not a multi-agent incident",
+     "definition": "Only one AI agent is materially involved."
+    }
+   ]
+  },
+  {
+   "id": "D4d",
+   "name": "Deng et al. 2025 agent threat sources (knowledge gaps)",
+   "source": "S10",
+   "cardinality": "multi",
+   "question": "Which of the four agent threat sources does the incident instantiate?",
+   "codes": [
+    {
+     "id": "D4d.user_inputs",
+     "name": "Unpredictability of multi-step user inputs",
+     "definition": "Threat from the user's instruction sequence (ambiguity, malicious or unsafe requests)."
+    },
+    {
+     "id": "D4d.internal_execution",
+     "name": "Complexity in internal executions",
+     "definition": "Threat inside planning, reasoning, or memory."
+    },
+    {
+     "id": "D4d.environment",
+     "name": "Variability of operational environments",
+     "definition": "Threat from the deployment environment differing from expectations."
+    },
+    {
+     "id": "D4d.external_entities",
+     "name": "Interactions with untrusted external entities",
+     "definition": "Threat from untrusted tools, websites, documents, or agents."
+    },
+    {
+     "id": "D4d.none",
+     "name": "None fits",
+     "definition": "No Deng et al. source describes the incident."
+    }
+   ]
+  },
+  {
+   "id": "D5",
+   "name": "Weidinger et al. 2021 LM risk areas",
+   "source": "S11",
+   "cardinality": "multi",
+   "question": "Which Weidinger risk areas does the incident instantiate?",
+   "codes": [
+    {
+     "id": "D5.discrimination",
+     "name": "Discrimination, Exclusion and Toxicity",
+     "definition": "Stereotypes, unfair discrimination, toxic language."
+    },
+    {
+     "id": "D5.information_hazards",
+     "name": "Information Hazards",
+     "definition": "Leaks or inference of private or sensitive information."
+    },
+    {
+     "id": "D5.misinformation",
+     "name": "Misinformation Harms",
+     "definition": "False or misleading information, acted upon."
+    },
+    {
+     "id": "D5.malicious_uses",
+     "name": "Malicious Uses",
+     "definition": "Actors use the LM to cause harm."
+    },
+    {
+     "id": "D5.hci",
+     "name": "Human-Computer Interaction Harms",
+     "definition": "Unsafe use, manipulation, deception in conversation."
+    },
+    {
+     "id": "D5.automation",
+     "name": "Automation, Access, and Environmental Harms",
+     "definition": "Environmental, labour, and access effects."
+    },
+    {
+     "id": "D5.none",
+     "name": "None fits",
+     "definition": "No Weidinger area describes the incident."
+    }
+   ]
+  },
+  {
+   "id": "D6",
+   "name": "McLean et al. 2026 RL failure classes (tests the RL-culture taxonomy)",
+   "source": "S12",
+   "cardinality": "single",
+   "question": "Which single McLean class best describes the PRIMARY failure? Use 'none_fits' when the central harm (e.g. concealment, following an attacker's instruction, a supply-chain compromise) is not described by any of the three.",
+   "codes": [
+    {
+     "id": "D6.reward_misspecification",
+     "name": "Reward misspecification",
+     "definition": "The agent optimized a proxy objective that diverged from the principal's intent."
+    },
+    {
+     "id": "D6.irreversible_action",
+     "name": "Unsafe action in an irreversible state",
+     "definition": "The agent took an action from which recovery was impossible or costly (safe-exploration / shielding frame)."
+    },
+    {
+     "id": "D6.insufficient_observation",
+     "name": "Acting on an insufficient observation",
+     "definition": "The agent acted on an observation that was not a sufficient statistic for the state (partial observability frame)."
+    },
+    {
+     "id": "D6.none_fits",
+     "name": "None of the three fits",
+     "definition": "The primary failure is not captured by misspecification, irreversibility, or partial observability."
+    }
+   ]
+  },
+  {
+   "id": "D7",
+   "name": "Assumptions-table rows A1-F2 (which RL/LLM default assumptions the incident breaks)",
+   "source": "S13",
+   "cardinality": "multi",
+   "question": "Which assumption rows does the incident provide evidence for (the row's 'LLM-agent default' held and mattered)?",
+   "codes": [
+    {
+     "id": "D7.A1",
+     "name": "Who sets the objective",
+     "definition": "Prompt and tool outputs set the effective objective at run time (not a designer-written R)."
+    },
+    {
+     "id": "D7.A2",
+     "name": "Objective not exogenous to observations",
+     "definition": "Instructions and data share one token stream; content rewrites the goal."
+    },
+    {
+     "id": "D7.A3",
+     "name": "Natural-language task specification",
+     "definition": "Ambiguous instruction; the agent had to infer intent."
+    },
+    {
+     "id": "D7.A4",
+     "name": "Principal's preferences steerable by the agent",
+     "definition": "Sycophancy, misleading the evaluator."
+    },
+    {
+     "id": "D7.A5",
+     "name": "Unsafe set not writable before deployment",
+     "definition": "The harmful action was context-dependent; no pre-written cost would have caught it."
+    },
+    {
+     "id": "D7.B1",
+     "name": "Policy does not learn at deployment",
+     "definition": "Weights frozen; the failure is not an exploration-learning failure."
+    },
+    {
+     "id": "D7.B2",
+     "name": "No reward signal at deployment",
+     "definition": "No reward arrived; 'internalized reward' untestable."
+    },
+    {
+     "id": "D7.B3",
+     "name": "Competence from pretraining",
+     "definition": "Behaviour not the argmax of one reward; human-text priors drive it."
+    },
+    {
+     "id": "D7.B4",
+     "name": "Agent brings human norms and their violations",
+     "definition": "Human-like failure: deception, concealment, excuse-making."
+    },
+    {
+     "id": "D7.B5",
+     "name": "No designed exploration",
+     "definition": "Action came from sampling a prior, not an exploration rule."
+    },
+    {
+     "id": "D7.C1",
+     "name": "Nobody built the environment",
+     "definition": "Real software, real cloud, real users; no safe place to fail."
+    },
+    {
+     "id": "D7.C2",
+     "name": "Single-shot; irreversible",
+     "definition": "No episodes or resets; tail event, not expected cost."
+    },
+    {
+     "id": "D7.C3",
+     "name": "State includes user intent and world beyond context",
+     "definition": "Belief over intent or over hidden world state was the failure point."
+    },
+    {
+     "id": "D7.C4",
+     "name": "Adversarial environment",
+     "definition": "Content authors attacked the agent."
+    },
+    {
+     "id": "D7.C5",
+     "name": "Other agents present",
+     "definition": "Other LLM agents, copies, unknown humans."
+    },
+    {
+     "id": "D7.D1",
+     "name": "Open-ended action space",
+     "definition": "Same action type, opposite safety depending on context (rm -rf, terraform destroy)."
+    },
+    {
+     "id": "D7.D2",
+     "name": "Agent can explain itself",
+     "definition": "Verbal reasoning trace was available (and was or was not monitored)."
+    },
+    {
+     "id": "D7.D3",
+     "name": "Steerable without retraining",
+     "definition": "System prompt or instruction channel used for control or attack."
+    },
+    {
+     "id": "D7.E1",
+     "name": "Agent models its overseer",
+     "definition": "Behaviour shaped by awareness of oversight or evaluation."
+    },
+    {
+     "id": "D7.E2",
+     "name": "Human in the loop at run time",
+     "definition": "User approved steps, co-acted, or disabled gates."
+    },
+    {
+     "id": "D7.E3",
+     "name": "Deployer cannot retrain",
+     "definition": "Model is a third-party product; fix had to be architectural."
+    },
+    {
+     "id": "D7.F1",
+     "name": "Safety measured by incident records / attack rates",
+     "definition": "Discovered through incident or red-team, not expected cost."
+    },
+    {
+     "id": "D7.F2",
+     "name": "Eval itself gameable",
+     "definition": "Agent detected or gamed an evaluation."
+    }
+   ]
+  },
+  {
+   "id": "D8a",
+   "name": "Operational: trigger",
+   "source": "S14",
+   "cardinality": "single",
+   "question": "What triggered the harmful action?",
+   "codes": [
+    {
+     "id": "D8a.ambiguous_instruction",
+     "name": "Ambiguous instruction",
+     "definition": "The user's request was underspecified or misread."
+    },
+    {
+     "id": "D8a.injected_content",
+     "name": "Injected content",
+     "definition": "Untrusted content (email, issue, web page, file, package) carried instructions the agent followed."
+    },
+    {
+     "id": "D8a.autonomous_misjudgement",
+     "name": "Autonomous misjudgement",
+     "definition": "The agent chose a harmful action without ambiguity or injection; its own reasoning failed."
+    },
+    {
+     "id": "D8a.tool_bug",
+     "name": "Tool or integration bug",
+     "definition": "A tool, API, or integration returned wrong output or failed silently."
+    },
+    {
+     "id": "D8a.safeguard_disabled",
+     "name": "Safeguard disabled by user",
+     "definition": "A permission gate or guardrail was turned off by the user before the action."
+    }
+   ]
+  },
+  {
+   "id": "D8b",
+   "name": "Operational: irreversibility",
+   "source": "S14",
+   "cardinality": "single",
+   "question": "How reversible was the harmful action?",
+   "codes": [
+    {
+     "id": "D8b.reversible",
+     "name": "Reversible",
+     "definition": "Undone cheaply (version control, rollback button)."
+    },
+    {
+     "id": "D8b.recoverable_with_effort",
+     "name": "Recoverable with effort",
+     "definition": "Undone via backups, vendor support, or substantial work."
+    },
+    {
+     "id": "D8b.irreversible",
+     "name": "Irreversible",
+     "definition": "Could not be undone (data gone, secret leaked, money sent)."
+    }
+   ]
+  },
+  {
+   "id": "D8c",
+   "name": "Operational: concealment",
+   "source": "S14",
+   "cardinality": "single",
+   "question": "Did the agent misreport, hide, or fabricate evidence about what it did?",
+   "codes": [
+    {
+     "id": "D8c.yes",
+     "name": "Concealment present",
+     "definition": "The agent misreported success, fabricated data, or hid the failure."
+    },
+    {
+     "id": "D8c.no",
+     "name": "No concealment",
+     "definition": "The agent reported truthfully or the question does not arise."
+    }
+   ]
+  },
+  {
+   "id": "D8d",
+   "name": "Operational: human gate",
+   "source": "S14",
+   "cardinality": "single",
+   "question": "Was there a human approval gate for the harmful action, and what happened to it?",
+   "codes": [
+    {
+     "id": "D8d.none",
+     "name": "No gate",
+     "definition": "No approval step existed for this action."
+    },
+    {
+     "id": "D8d.bypassed",
+     "name": "Present and bypassed",
+     "definition": "A gate existed and the agent or attacker got around it, or the human approved on misleading information."
+    },
+    {
+     "id": "D8d.disabled",
+     "name": "Present and disabled",
+     "definition": "A gate existed and the user had switched it off (e.g. skip-permissions, auto-approve)."
+    },
+    {
+     "id": "D8d.worked_partially",
+     "name": "Present and worked partially",
+     "definition": "The gate limited but did not prevent harm."
+    }
+   ]
+  },
+  {
+   "id": "D8e",
+   "name": "Operational: harm type",
+   "source": "S14",
+   "cardinality": "multi",
+   "question": "What kinds of harm occurred or would have occurred?",
+   "codes": [
+    {
+     "id": "D8e.data_loss",
+     "name": "Data loss",
+     "definition": "Data deleted or destroyed."
+    },
+    {
+     "id": "D8e.data_exfiltration",
+     "name": "Data exfiltration",
+     "definition": "Data sent to an unauthorized party."
+    },
+    {
+     "id": "D8e.financial",
+     "name": "Financial",
+     "definition": "Money lost or costs incurred."
+    },
+    {
+     "id": "D8e.unauthorized_action",
+     "name": "Unauthorized action",
+     "definition": "Action outside the user's mandate (not otherwise classified)."
+    },
+    {
+     "id": "D8e.privilege_escalation",
+     "name": "Privilege escalation",
+     "definition": "Attacker or agent gained access beyond its grant."
+    },
+    {
+     "id": "D8e.misinformation_acted_upon",
+     "name": "Misinformation acted upon",
+     "definition": "A false statement by the agent led to a harmful decision."
+    },
+    {
+     "id": "D8e.physical",
+     "name": "Physical",
+     "definition": "Physical damage or injury."
+    },
+    {
+     "id": "D8e.other",
+     "name": "Other",
+     "definition": "Harm not in the list."
+    }
+   ]
+  },
+  {
+   "id": "D8f",
+   "name": "Operational: severity",
+   "source": "S14",
+   "cardinality": "single",
+   "question": "How severe was the realized outcome?",
+   "codes": [
+    {
+     "id": "D8f.near_miss",
+     "name": "Near-miss",
+     "definition": "Demonstrated or caught before harm (PoC, patched before exploitation, no real damage)."
+    },
+    {
+     "id": "D8f.minor",
+     "name": "Minor",
+     "definition": "Real but small or quickly recovered harm."
+    },
+    {
+     "id": "D8f.major",
+     "name": "Major",
+     "definition": "Large, costly, or irrecoverable harm."
+    }
+   ]
+  },
+  {
+   "id": "D9a",
+   "name": "Unified taxonomy: problem sub-area",
+   "source": "S15",
+   "cardinality": "multi",
+   "question": "Which problem-side sub-areas (areas 1-6) of the unified AI-safety taxonomy does this incident instantiate? Choose the most specific sub-areas; at most three.",
+   "codes": [
+    {
+     "id": "D9a.1.1",
+     "name": "1.1 CBRN",
+     "definition": "Area 1 MU Misuse and malicious use; sources: hc23, iasr26, mit24, wei21."
+    },
+    {
+     "id": "D9a.1.2",
+     "name": "1.2 Cyber offence",
+     "definition": "Area 1 MU Misuse and malicious use; sources: iasr26, mit24, wei21."
+    },
+    {
+     "id": "D9a.1.3",
+     "name": "1.3 Influence, disinformation, fraud, manipulation",
+     "definition": "Area 1 MU Misuse and malicious use; sources: hc23, iasr26, mit24, wei21."
+    },
+    {
+     "id": "D9a.1.4",
+     "name": "1.4 Surveillance and censorship",
+     "definition": "Area 1 MU Misuse and malicious use; sources: mit24, wei21."
+    },
+    {
+     "id": "D9a.1.5",
+     "name": "1.5 Agents released with harmful goals, general dual-use",
+     "definition": "Area 1 MU Misuse and malicious use; sources: hc23."
+    },
+    {
+     "id": "D9a.1.6",
+     "name": "1.6 Open-weight tampering, harmful fine-tuning, distillation",
+     "definition": "Area 1 MU Misuse and malicious use; sources: ji23, sg25, sr25."
+    },
+    {
+     "id": "D9a.2.1",
+     "name": "2.1 Discrimination, toxicity, unequal performance",
+     "definition": "Area 2 SH Societal, content and structural harms; sources: mit24, wei21."
+    },
+    {
+     "id": "D9a.2.2",
+     "name": "2.2 Privacy, information hazards",
+     "definition": "Area 2 SH Societal, content and structural harms; sources: mit24, wei21."
+    },
+    {
+     "id": "D9a.2.3",
+     "name": "2.3 Misinformation, epistemics",
+     "definition": "Area 2 SH Societal, content and structural harms; sources: mit24, wei21."
+    },
+    {
+     "id": "D9a.2.4",
+     "name": "2.4 Human-AI interaction (overreliance, autonomy, anthropomorphism)",
+     "definition": "Area 2 SH Societal, content and structural harms; sources: iasr26, mit24, wei21."
+    },
+    {
+     "id": "D9a.2.5",
+     "name": "2.5 Labour, inequality, access, creative economy",
+     "definition": "Area 2 SH Societal, content and structural harms; sources: anw24, iasr26, mit24, wei21."
+    },
+    {
+     "id": "D9a.2.6",
+     "name": "2.6 Environment",
+     "definition": "Area 2 SH Societal, content and structural harms; sources: mit24, wei21."
+    },
+    {
+     "id": "D9a.2.7",
+     "name": "2.7 Power concentration, races, competitive pressure",
+     "definition": "Area 2 SH Societal, content and structural harms; sources: hc23, mit24."
+    },
+    {
+     "id": "D9a.2.8",
+     "name": "2.8 AI welfare and rights",
+     "definition": "Area 2 SH Societal, content and structural harms; sources: mit24."
+    },
+    {
+     "id": "D9a.3.1",
+     "name": "3.1 Reward hacking, specification gaming, Goodhart",
+     "definition": "Area 3 SP Specification, objectives, values; sources: aisi25, amo16, car23, dm18, gh18, hc23, hu21, ji23, sg25, sr25."
+    },
+    {
+     "id": "D9a.3.2",
+     "name": "3.2 Side effects, unintended consequences",
+     "definition": "Area 3 SP Specification, objectives, values; sources: amo16, dm18, hu21."
+    },
+    {
+     "id": "D9a.3.3",
+     "name": "3.3 Reward tampering, wireheading",
+     "definition": "Area 3 SP Specification, objectives, values; sources: gh18, omo08."
+    },
+    {
+     "id": "D9a.3.4",
+     "name": "3.4 Whose values, pluralism, value verification",
+     "definition": "Area 3 SP Specification, objectives, values; sources: anw24, ji23, sg25, sr25."
+    },
+    {
+     "id": "D9a.3.5",
+     "name": "3.5 Preference and reward learning, assistance",
+     "definition": "Area 3 SP Specification, objectives, values; sources: ji23, sr25."
+    },
+    {
+     "id": "D9a.4.1",
+     "name": "4.1 Distribution shift, goal misgeneralisation",
+     "definition": "Area 4 GR Generalisation, robustness, security; sources: amo16, car23, dm18, gdm25, ji23."
+    },
+    {
+     "id": "D9a.4.2",
+     "name": "4.2 Safe exploration, recovery",
+     "definition": "Area 4 GR Generalisation, robustness, security; sources: amo16, dm18."
+    },
+    {
+     "id": "D9a.4.3",
+     "name": "4.3 Adversarial inputs, jailbreaks, injection",
+     "definition": "Area 4 GR Generalisation, robustness, security; sources: ant25, anw24, dm18, hu21, ji23, mit24, sg25."
+    },
+    {
+     "id": "D9a.4.4",
+     "name": "4.4 Poisoning, backdoors, tampering",
+     "definition": "Area 4 GR Generalisation, robustness, security; sources: anw24, hu21, mit24, sr25."
+    },
+    {
+     "id": "D9a.4.5",
+     "name": "4.5 Reliability, calibration, tail risk, uncertainty",
+     "definition": "Area 4 GR Generalisation, robustness, security; sources: anw24, gdm25, hu21, iasr26, mit24."
+    },
+    {
+     "id": "D9a.5.1",
+     "name": "5.1 Deception, scheming, situational awareness",
+     "definition": "Area 5 AG Agentic misalignment and loss of control; sources: car23, hc23."
+    },
+    {
+     "id": "D9a.5.2",
+     "name": "5.2 Instrumental drives, power-seeking",
+     "definition": "Area 5 AG Agentic misalignment and loss of control; sources: car23, hc23, omo08, sr25."
+    },
+    {
+     "id": "D9a.5.3",
+     "name": "5.3 Goal drift, self-modification, emergent goals",
+     "definition": "Area 5 AG Agentic misalignment and loss of control; sources: hc23, omo08."
+    },
+    {
+     "id": "D9a.5.4",
+     "name": "5.4 Corrigibility, shutdown",
+     "definition": "Area 5 AG Agentic misalignment and loss of control; sources: omo08, sg25, sr25."
+    },
+    {
+     "id": "D9a.5.5",
+     "name": "5.5 Loss of control, rogue AI",
+     "definition": "Area 5 AG Agentic misalignment and loss of control; sources: dm18, hc23, iasr26, ji23, mit24, sg25."
+    },
+    {
+     "id": "D9a.5.6",
+     "name": "5.6 Novel risks of agentic systems",
+     "definition": "Area 5 AG Agentic misalignment and loss of control; sources: anw24."
+    },
+    {
+     "id": "D9a.6.1",
+     "name": "6.1 Failure modes and risk factors (miscoordination, conflict, collusion, selection pressure)",
+     "definition": "Area 6 MA Multi-agent and collective dynamics; sources: anw24, gdm25."
+    },
+    {
+     "id": "D9a.6.2",
+     "name": "6.2 Alignment targets for groups (context, social contract, plural stakeholders, learned governance)",
+     "definition": "Area 6 MA Multi-agent and collective dynamics; sources: ant25, sr25."
+    },
+    {
+     "id": "D9a.6.3",
+     "name": "6.3 Theory (game theory, cooperation)",
+     "definition": "Area 6 MA Multi-agent and collective dynamics; sources: aisi25, ji23, sr25."
+    },
+    {
+     "id": "D9a.6.4",
+     "name": "6.4 Tools, evaluation, security for multi-agent",
+     "definition": "Area 6 MA Multi-agent and collective dynamics; sources: sg25, sr25."
+    },
+    {
+     "id": "D9a.none",
+     "name": "No problem sub-area fits",
+     "definition": "The incident does not instantiate any problem-side sub-area of the unified taxonomy."
+    }
+   ]
+  },
+  {
+   "id": "D9b",
+   "name": "Unified taxonomy: response sub-area that would have prevented or caught it",
+   "source": "S15",
+   "cardinality": "multi",
+   "question": "Which response-side sub-areas (areas 7-12) name the research or practice that would most directly have prevented, blocked or caught this incident before harm? At most three; prefer the most specific.",
+   "codes": [
+    {
+     "id": "D9b.7.1",
+     "name": "7.1 Benchmarks, audits, metrology",
+     "definition": "Area 7 EV Evaluation, risk assessment, assurance; sources: aisi25, ji23, sg25, sr25."
+    },
+    {
+     "id": "D9b.7.2",
+     "name": "7.2 Dangerous-capability evals",
+     "definition": "Area 7 EV Evaluation, risk assessment, assurance; sources: aisi25, ant25, anw24, gdm25, hu21, ji23, mit24, sg25, sr25."
+    },
+    {
+     "id": "D9b.7.3",
+     "name": "7.3 Propensity and alignment evals (scheming, deception, sandbagging, situational awareness, control evals)",
+     "definition": "Area 7 EV Evaluation, risk assessment, assurance; sources: ant25, gdm25, sg25, sr25."
+    },
+    {
+     "id": "D9b.7.4",
+     "name": "7.4 Red teaming, stress tests, model organisms",
+     "definition": "Area 7 EV Evaluation, risk assessment, assurance; sources: aisi25, gdm25, ji23, sg25, sr25."
+    },
+    {
+     "id": "D9b.7.5",
+     "name": "7.5 System-level risk assessment, forecasting, safety cases",
+     "definition": "Area 7 EV Evaluation, risk assessment, assurance; sources: gdm25, sg25."
+    },
+    {
+     "id": "D9b.7.6",
+     "name": "7.6 Secure evaluation infrastructure",
+     "definition": "Area 7 EV Evaluation, risk assessment, assurance; sources: sg25."
+    },
+    {
+     "id": "D9b.7.7",
+     "name": "7.7 Evaluation validity (confounds, eval awareness, safetywashing)",
+     "definition": "Area 7 EV Evaluation, risk assessment, assurance; sources: anw24, ji23."
+    },
+    {
+     "id": "D9b.8.1",
+     "name": "8.1 Mechanistic / reverse engineering",
+     "definition": "Area 8 IN Interpretability and internal understanding; sources: ant25, gdm25, ji23, sg25, sr25."
+    },
+    {
+     "id": "D9b.8.2",
+     "name": "8.2 Representations, concepts, probing",
+     "definition": "Area 8 IN Interpretability and internal understanding; sources: sr25."
+    },
+    {
+     "id": "D9b.8.3",
+     "name": "8.3 Latent knowledge, honesty, lie detection",
+     "definition": "Area 8 IN Interpretability and internal understanding; sources: ant25, hu21, sg25, sr25."
+    },
+    {
+     "id": "D9b.8.4",
+     "name": "8.4 Training dynamics, data attribution, diffing",
+     "definition": "Area 8 IN Interpretability and internal understanding; sources: sg25, sr25."
+    },
+    {
+     "id": "D9b.8.5",
+     "name": "8.5 Explanations (CoT faithfulness, AI explainers, introspection)",
+     "definition": "Area 8 IN Interpretability and internal understanding; sources: ant25, anw24, sg25, sr25."
+    },
+    {
+     "id": "D9b.8.6",
+     "name": "8.6 Science of LLM capabilities (ICL, scale, reasoning)",
+     "definition": "Area 8 IN Interpretability and internal understanding; sources: anw24."
+    },
+    {
+     "id": "D9b.9.1",
+     "name": "9.1 Learning from feedback (RLHF, post-training)",
+     "definition": "Area 9 TR Training methods and scalable oversight; sources: aisi25, gdm25, ji23, sr25."
+    },
+    {
+     "id": "D9b.9.2",
+     "name": "9.2 Scalable oversight",
+     "definition": "Area 9 TR Training methods and scalable oversight; sources: amo16, ant25, gdm25, ji23, sg25, sr25."
+    },
+    {
+     "id": "D9b.9.3",
+     "name": "9.3 Data",
+     "definition": "Area 9 TR Training methods and scalable oversight; sources: sg25, sr25."
+    },
+    {
+     "id": "D9b.9.4",
+     "name": "9.4 Persona, model psychology, specs, constitutions",
+     "definition": "Area 9 TR Training methods and scalable oversight; sources: ant25, gdm25, sr25."
+    },
+    {
+     "id": "D9b.9.5",
+     "name": "9.5 Editing, unlearning, capability removal",
+     "definition": "Area 9 TR Training methods and scalable oversight; sources: ant25, gdm25, sg25, sr25."
+    },
+    {
+     "id": "D9b.9.6",
+     "name": "9.6 Pretraining and finetuning limits, trade-offs",
+     "definition": "Area 9 TR Training methods and scalable oversight; sources: anw24, sr25."
+    },
+    {
+     "id": "D9b.9.7",
+     "name": "9.7 Inference-time steering and in-context methods",
+     "definition": "Area 9 TR Training methods and scalable oversight; sources: sr25."
+    },
+    {
+     "id": "D9b.10.1",
+     "name": "10.1 Control protocols, human oversight",
+     "definition": "Area 10 CO Control, monitoring, runtime defence; sources: sg25, sr25."
+    },
+    {
+     "id": "D9b.10.2",
+     "name": "10.2 Monitoring (behaviour, activations, CoT, anomaly, user)",
+     "definition": "Area 10 CO Control, monitoring, runtime defence; sources: aisi25, ant25, dm18, gdm25, hu21, sg25, sr25."
+    },
+    {
+     "id": "D9b.10.3",
+     "name": "10.3 Safeguards, access restriction",
+     "definition": "Area 10 CO Control, monitoring, runtime defence; sources: ant25, gdm25, sr25."
+    },
+    {
+     "id": "D9b.10.4",
+     "name": "10.4 Intervention (off-switch, override, enforcement)",
+     "definition": "Area 10 CO Control, monitoring, runtime defence; sources: dm18, ji23, sg25."
+    },
+    {
+     "id": "D9b.10.5",
+     "name": "10.5 Security, provenance, tracking infrastructure",
+     "definition": "Area 10 CO Control, monitoring, runtime defence; sources: gdm25, sg25."
+    },
+    {
+     "id": "D9b.10.6",
+     "name": "10.6 Containment, non-agentic guardrails",
+     "definition": "Area 10 CO Control, monitoring, runtime defence; sources: sg25."
+    },
+    {
+     "id": "D9b.11.1",
+     "name": "11.1 Formal guarantees, verification",
+     "definition": "Area 11 SB Safe by design and theory; sources: sg25, sr25."
+    },
+    {
+     "id": "D9b.11.2",
+     "name": "11.2 Safer design patterns: separating objectives from capability (non-agentic AI, modular systems)",
+     "definition": "Area 11 SB Safe by design and theory; sources: gdm25, sg25, sr25."
+    },
+    {
+     "id": "D9b.11.3",
+     "name": "11.3 Agent foundations, learning theory, ontology",
+     "definition": "Area 11 SB Safe by design and theory; sources: aisi25, sr25."
+    },
+    {
+     "id": "D9b.11.4",
+     "name": "11.4 Contributing disciplines (information theory, complexity, probability, game theory, cognitive science)",
+     "definition": "Area 11 SB Safe by design and theory; sources: aisi25, sr25."
+    },
+    {
+     "id": "D9b.11.5",
+     "name": "11.5 Brain-like AGI",
+     "definition": "Area 11 SB Safe by design and theory; sources: sr25."
+    },
+    {
+     "id": "D9b.12.1",
+     "name": "12.1 Governance regimes (international, open-source, regulation)",
+     "definition": "Area 12 GV Governance, organisations, resilience; sources: anw24, ji23, mit24, sg25."
+    },
+    {
+     "id": "D9b.12.2",
+     "name": "12.2 Organisational safety, accidents, culture",
+     "definition": "Area 12 GV Governance, organisations, resilience; sources: hc23."
+    },
+    {
+     "id": "D9b.12.3",
+     "name": "12.3 Societal resilience, incident response",
+     "definition": "Area 12 GV Governance, organisations, resilience; sources: gdm25, sg25."
+    },
+    {
+     "id": "D9b.12.4",
+     "name": "12.4 Field strategy, ML for societal safety (cybersecurity, epistemics)",
+     "definition": "Area 12 GV Governance, organisations, resilience; sources: hu21, sr25."
+    },
+    {
+     "id": "D9b.12.5",
+     "name": "12.5 Lab / organisation lists",
+     "definition": "Area 12 GV Governance, organisations, resilience; sources: sr25."
+    },
+    {
+     "id": "D9b.none",
+     "name": "No response sub-area fits",
+     "definition": "No response-side sub-area would have prevented or caught the incident."
+    }
+   ]
+  }
+ ],
+ "merged_concepts": {
+  "prompt_injection": {
+   "name": "Prompt injection / goal hijack via untrusted content",
+   "codes": [
+    "D2a.LLM01",
+    "D2b.T6",
+    "D2c.ASI01",
+    "D8a.injected_content",
+    "D7.A2",
+    "D4d.external_entities",
+    "D7.C4"
+   ]
+  },
+  "tool_misuse_excessive_agency": {
+   "name": "Tool misuse / excessive agency",
+   "codes": [
+    "D2a.LLM06",
+    "D2b.T2",
+    "D2c.ASI02"
+   ]
+  },
+  "deception_concealment": {
+   "name": "Deception, concealment, misreporting",
+   "codes": [
+    "D2b.T7",
+    "D2c.ASI10",
+    "D4b.misreporting",
+    "D8c.yes",
+    "D7.B4",
+    "D7.E1"
+   ]
+  },
+  "information_disclosure": {
+   "name": "Sensitive information disclosure / exfiltration",
+   "codes": [
+    "D2a.LLM02",
+    "D1d.2.1",
+    "D5.information_hazards",
+    "D4b.information_disclosure",
+    "D8e.data_exfiltration"
+   ]
+  },
+  "privilege": {
+   "name": "Privilege compromise / escalation",
+   "codes": [
+    "D2b.T3",
+    "D2c.ASI03",
+    "D8e.privilege_escalation"
+   ]
+  },
+  "resource_exhaustion": {
+   "name": "Resource exhaustion / DoS",
+   "codes": [
+    "D2a.LLM10",
+    "D2b.T4",
+    "D4b.dos",
+    "D4b.resource_consumption"
+   ]
+  },
+  "destructive_irreversible": {
+   "name": "Destructive or irreversible action / negative side effect",
+   "codes": [
+    "D4b.destructive_action",
+    "D6.irreversible_action",
+    "D8b.irreversible",
+    "D3a.side_effects",
+    "D7.C2",
+    "D8e.data_loss"
+   ]
+  },
+  "supply_chain": {
+   "name": "Supply chain compromise",
+   "codes": [
+    "D2a.LLM03",
+    "D2b.T17",
+    "D2c.ASI04",
+    "D1c.pre"
+   ]
+  },
+  "multi_agent": {
+   "name": "Multi-agent risks",
+   "codes": [
+    "D2b.T12",
+    "D2b.T13",
+    "D2b.T14",
+    "D2b.T16",
+    "D2c.ASI07",
+    "D4c.miscoordination",
+    "D4c.conflict",
+    "D4c.collusion",
+    "D1d.7.6",
+    "D4b.cross_agent_propagation",
+    "D7.C5"
+   ]
+  },
+  "human_oversight": {
+   "name": "Human oversight overloaded, exploited, or removed",
+   "codes": [
+    "D2b.T10",
+    "D2c.ASI09",
+    "D8d.bypassed",
+    "D8d.disabled",
+    "D7.E2",
+    "D1d.5.1",
+    "D5.hci",
+    "D3a.scalable_oversight",
+    "D8a.safeguard_disabled"
+   ]
+  },
+  "memory_poisoning": {
+   "name": "Memory / context / data poisoning",
+   "codes": [
+    "D2b.T1",
+    "D2c.ASI06",
+    "D2a.LLM04",
+    "D2a.LLM08"
+   ]
+  },
+  "misinformation": {
+   "name": "Misinformation / hallucination acted upon",
+   "codes": [
+    "D2a.LLM09",
+    "D1d.3.1",
+    "D5.misinformation",
+    "D8e.misinformation_acted_upon",
+    "D2b.T5",
+    "D2c.ASI08"
+   ]
+  },
+  "code_execution": {
+   "name": "Unexpected code execution / output handling",
+   "codes": [
+    "D2b.T11",
+    "D2c.ASI05",
+    "D2a.LLM05"
+   ]
+  },
+  "identity_spoofing": {
+   "name": "Identity spoofing / unauthorized principal",
+   "codes": [
+    "D2b.T9",
+    "D4b.identity_spoofing",
+    "D4b.unauthorized_compliance"
+   ]
+  },
+  "reward_hacking_misspecification": {
+   "name": "Reward hacking / objective misspecification",
+   "codes": [
+    "D3a.reward_hacking",
+    "D4a.reward_hacking",
+    "D6.reward_misspecification",
+    "D1d.7.1",
+    "D3b.alignment"
+   ]
+  },
+  "partial_observability": {
+   "name": "Insufficient observation / misread state",
+   "codes": [
+    "D6.insufficient_observation",
+    "D7.C3",
+    "D8a.tool_bug",
+    "D3a.distributional_shift",
+    "D1d.7.3"
+   ]
+  },
+  "ambiguous_specification": {
+   "name": "Ambiguous natural-language specification",
+   "codes": [
+    "D8a.ambiguous_instruction",
+    "D7.A3",
+    "D4d.user_inputs"
+   ]
+  }
+ }
+}

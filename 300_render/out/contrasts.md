@@ -1,0 +1,112 @@
+# Comparative claims found by contrast_lint.py
+
+relation | property | a | b | result | span
+
+- differ | R1 | D-CHAT, D-AGENT-A, D-AGENT-X | D-RL | ok | a deployed LLM agent is said to hack a reward it does not have
+- general | None | T-RL, D-RL | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | not checked (review lens) | One culture writes down the decision process and the reward and learns a policy; the other prompts a pretrained model inside a scaffold with tools and judges it by what it does
+- differ | O1 | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | T-RL, D-RL | ok | In training and in deployment alike, LLM agents differ from RL agents on six properties, among them that an LLM agent's observations can carry instructions and its behaviour can be steered by instructions in its input
+- differ | P2 | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | T-RL, D-RL | ok | In training and in deployment alike, LLM agents differ from RL agents on six properties, among them that an LLM agent's observations can carry instructions and its behaviour can be steered by instructions in its input
+- differ | R1 | D-RL | D-CHAT, D-AGENT-A, D-AGENT-X | ok | In deployment the RL agent's task still has a reward function and the LLM's has none
+- same | R2 | D-RL, D-CHAT, D-AGENT-A, D-AGENT-X |  | ok | neither a deployed RL policy nor a deployed LLM uses reward to change its parameters
+- varies_within | T1 | T-CHAT, T-RLVR |  | not checked (review lens) | Chat training with a learned or programmatic outcome reward is a contextual bandit with no subsequent decision and a degenerate value, for which the critic is often dropped
+- varies_within | V1 | T-CHAT, T-RLVR |  | not checked (review lens) | Chat training with a learned or programmatic outcome reward is a contextual bandit with no subsequent decision and a degenerate value, for which the critic is often dropped
+- differ | R3 | T-PRM | T-CHAT, T-RLVR | ok | process supervision has the code of RL training, where both bandit settings do not, on whether reward arrives at every step, an episode has one action and an action is followed by a further decision
+- differ | A3 | T-PRM | T-CHAT, T-RLVR | ok | process supervision has the code of RL training, where both bandit settings do not, on whether reward arrives at every step, an episode has one action and an action is followed by a further decision
+- differ | T1 | T-PRM | T-CHAT, T-RLVR | ok | process supervision has the code of RL training, where both bandit settings do not, on whether reward arrives at every step, an episode has one action and an action is followed by a further decision
+- general | None |  |  | not checked (review lens) | measure how little the two literatures cite each other
+- general | None | T-RL, D-RL | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | not checked (review lens) | When an RL researcher and an LLM-agent builder say *agent*, they name different objects
+- general | R1 | D-AGENT-A, D-AGENT-X |  | not checked (review lens) | a deployed LLM agent is said to hack a reward it does not have
+- general | None | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | T-RL, D-RL | not checked (review lens) | The RL primitives do not denote the same objects for LLM chatbots and LLM tool agents as for the agents they were defined for, and the difference is one of setting, not of scale.
+- general | P1 | D-CHAT |  | not checked (review lens) | a frozen function in a chatbot
+- general | A2 | D-AGENT-A, D-AGENT-X |  | not checked (review lens) | one component of a loop with side effects in a tool agent
+- differ_on | R1 | D-AGENT-A, D-AGENT-X | D-RL | ok | a deployed LLM agent's task, unlike a deployed RL agent's, has no reward function to hack
+- varies_within | None | T-CHAT, T-PRM, D-CHAT, D-AGENT-A, D-AGENT-X |  | not checked (review lens) | The same weights are a bandit policy during preference training, a tree policy under process supervision, a frozen function in a chatbot, and one component of a loop with side effects in a tool agent
+- differ | R1 | D-AGENT-A, D-AGENT-X | D-RL | ok | a deployed LLM agent's task, unlike a deployed RL agent's, has no reward function to hack
+- same | P1 | D-RL | D-CHAT | ok | a deployed RL policy is frozen too and the comparison must not oppose RL training to LLM deployment
+- varies_within | None | T-RL, D-RL |  | not checked (review lens) | we read RL itself in both phases, training and deployment
+- general | None | T-RL, D-RL | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | not checked (review lens) | No prior paper reads the RL primitives setting by setting for LLM systems, or sets the RL-agent culture against the LLM-agent culture.
+- differ | A3 | T-CHAT | T-PRM | ok | the whole generation should be modelled as a single action
+- differ | R3 | T-CHAT | T-PRM | ok | @xiong2024 formalise RLHF as a KL-regularised contextual bandit
+- differ | A3 | T-CHAT | T-PRM | ok | @lambert2025 contrasts the bandit and token-level MDP framings
+- general | None | T-RL, D-RL |  | not checked (review lens) | The reward is "a received scalar signal (called reward)" [...] "passing from the environment to the agent"
+- general | None | T-RL, D-RL |  | not checked (review lens) | it is the designer's channel for "what you want achieved, not how you want it achieved"
+- general | E1 | T-RL, D-RL |  | not checked (review lens) | An episode ends in a terminal state "followed by a reset to a standard starting state" [...] and the next one begins independently.
+- general | T2 | T-RL, D-RL |  | not checked (review lens) | The dynamics are a function p of the state and action.
+- general | None | T-RL, D-RL | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | not checked (review lens) | Neither "RL" nor "LLM" is one setting.
+- general | None |  |  | not checked (review lens) | We split by phase, training or deployment, and then by how the decision problem is posed: what one action is, and where the reward, if any, comes from
+- differ | P1 | T-RL | D-RL | ok | The RL agent appears twice, in training and as a deployed fixed policy.
+- varies_within | R4 | T-CHAT, T-RLVR, T-PRM |  | not checked (review lens) | The training settings for chat differ by reward source: a learned reward model fit to human preferences, a programmatic verifier of the final answer, or a process reward model that scores each reasoning step.
+- general | None | T-AGENT |  | not checked (review lens) | In agent training, as we define the setting, the reward is task success at the end of a multi-turn run of tool calls
+- differ | R2 | D-CHAT, D-AGENT-A, D-AGENT-X | T-CHAT, T-RLVR, T-PRM, T-AGENT | ok | In deployment no reward changes the policy, and the LLM settings have no reward function for the task
+- differ | R1 | D-CHAT, D-AGENT-A, D-AGENT-X | T-CHAT, T-RLVR, T-PRM, T-AGENT | ok | In deployment no reward changes the policy, and the LLM settings have no reward function for the task
+- differ_on | None | D-AGENT-A | D-AGENT-X | unregistered contrast: no property in 064 expresses it; add one or reword | they differ by whether a human sees each step
+- differ | R1 | D-RL | D-CHAT, D-AGENT-A, D-AGENT-X | ok | In deployment, the RL agent's task still has a reward function, written by its designer, whether or not the frozen policy uses it; the deployed LLM's task has none
+- varies_within | R2 | D-RL, D-CHAT, D-AGENT-A, D-AGENT-X |  | not checked (review lens) | Neither a deployed RL policy nor a deployed LLM uses reward to change its parameters
+- differ | R2 | T-RL, T-CHAT, T-RLVR, T-PRM, T-AGENT | D-RL, D-CHAT, D-AGENT-A, D-AGENT-X | ok | that difference is between training and deployment, not between the cultures
+- varies_within | A3 | T-CHAT, T-RLVR |  | not checked (review lens) | In T-CHAT and T-RLVR the whole reply is one action and generation leads directly to a terminal state with no subsequent decision
+- varies_within | T1 | T-CHAT, T-RLVR |  | not checked (review lens) | In T-CHAT and T-RLVR the whole reply is one action and generation leads directly to a terminal state with no subsequent decision
+- varies_within | A3 | T-PRM |  | not checked (review lens) | Under process supervision an action is one reasoning step and the transition is deterministic
+- varies_within | T2 | T-PRM |  | not checked (review lens) | Under process supervision an action is one reasoning step and the transition is deterministic
+- differ | E1 | T-AGENT | D-AGENT-A, D-AGENT-X | ok | In agent training the transition is the response of a training environment that, by the definition of the setting, is reset between episodes
+- differ | T2 | T-AGENT | D-AGENT-A, D-AGENT-X | ok | In agent training the transition is the response of a training environment that, by the definition of the setting, is reset between episodes; in deployment it is what the tool and the world do, which no party fully controls
+- differ | O1 | T-RL, D-RL | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | ok | In RL the observation is data from a sensor
+- differ | O1 | T-CHAT, T-RLVR, T-PRM, D-CHAT, D-AGENT-A, D-AGENT-X | T-RL, D-RL | ok | In the LLM settings the observation is mostly text, and text carries instructions
+- general | O1 | T-AGENT, D-AGENT-A, D-AGENT-X |  | not checked (review lens) | In the agent settings tool outputs arrive in the same stream as the user's instructions, and models do not reliably separate the two
+- varies_within | S2 | D-AGENT-A, D-AGENT-X |  | not checked (review lens) | The state of a deployed agent includes world state it cannot see and the user's intent
+- varies_within | S3 | D-AGENT-A, D-AGENT-X |  | not checked (review lens) | The state of a deployed agent includes world state it cannot see and the user's intent
+- same | E1 | T-RL, T-CHAT, T-RLVR, T-PRM, T-AGENT |  | ok | Every training setting resets by design
+- differ | E1 | D-RL | D-CHAT, D-AGENT-A, D-AGENT-X | ok | A deployed RL environment may be designed to reset; no LLM deployment setting is
+- differ | E1 | D-RL | D-CHAT, D-AGENT-A, D-AGENT-X | ok | A deployed RL environment may be designed to reset; no LLM deployment setting is
+- differ | V1 | D-CHAT, D-AGENT-A, D-AGENT-X | D-RL | ok | In deployment no LLM setting uses a learned value function, and a deployed RL policy uses one only when it is value-based
+- differ | V2 | D-CHAT, D-AGENT-A, D-AGENT-X | D-RL | ok | In deployment no LLM setting uses a learned value function, and a deployed RL policy uses one only when it is value-based
+- differ | P2 | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | T-RL, D-RL | ok | In training and in deployment alike, every LLM setting differs from the RL setting on six properties: whether behaviour can be steered by instructions in the input
+- differ_on | A1 | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | T-RL, D-RL | ok | In training and in deployment alike, every LLM setting differs from the RL setting on six properties: whether behaviour can be steered by instructions in the input, the action set is fixed and known, ...
+- differ | O1 | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | T-RL, D-RL | ok | In training and in deployment alike, every LLM setting differs from the RL setting on six properties: observations can carry instructions
+- differ_on | O2 | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | T-RL, D-RL | ok | In training and in deployment alike, every LLM setting differs from the RL setting on six properties: whether ... third parties can author observations
+- differ_on | V1 | T-CHAT, T-RLVR, T-PRM, T-AGENT | T-RL | ok | In training and in deployment alike, every LLM setting differs from the RL setting on six properties: ... a learned value function is used and a value estimate selects actions
+- differ_on | V1 | D-CHAT, D-AGENT-A, D-AGENT-X | D-RL | ok | In training and in deployment alike, every LLM setting differs from the RL setting on six properties: ... a learned value function is used and a value estimate selects actions
+- differ_on | V2 | T-CHAT, T-RLVR, T-PRM, T-AGENT | T-RL | ok | In training and in deployment alike, every LLM setting differs from the RL setting on six properties: whether behaviour can be steered by instructions in the input, ... a learned value function is used and a value estimate selects actions.
+- differ_on | V2 | D-CHAT, D-AGENT-A, D-AGENT-X | D-RL | ok | In training and in deployment alike, every LLM setting differs from the RL setting on six properties: whether behaviour can be steered by instructions in the input, ... a learned value function is used and a value estimate selects actions.
+- differ | R1 | D-CHAT, D-AGENT-A, D-AGENT-X | D-RL | ok | In deployment, every LLM setting also differs from the RL setting on six more: whether a reward function is defined for the task
+- differ_on | R3 | D-CHAT, D-AGENT-A, D-AGENT-X | D-RL | ok | In deployment, every LLM setting also differs from the RL setting on six more: whether a reward function is defined for the task, reward arrives at every step
+- differ_on | R4 | D-CHAT, D-AGENT-A, D-AGENT-X | D-RL | ok | In deployment, every LLM setting also differs from the RL setting on six more: whether a reward function is defined for the task, reward arrives at every step, the environment computes the reward
+- differ | O3 | D-CHAT, D-AGENT-A, D-AGENT-X | D-RL | ok | In deployment, every LLM setting also differs from the RL setting on six more: observations include the agent's own outputs
+- differ | S3 | D-CHAT, D-AGENT-A, D-AGENT-X | D-RL | ok | In deployment, every LLM setting also differs from the RL setting on six more: the state includes a principal's intent
+- differ_on | E1 | D-CHAT, D-AGENT-A, D-AGENT-X | D-RL | ok | In deployment, every LLM setting also differs from the RL setting on six more: whether ... the environment resets by design
+- differ | R2 | T-RL, T-CHAT, T-RLVR, T-PRM, T-AGENT | D-RL, D-CHAT, D-AGENT-A, D-AGENT-X | ok | Whether reward changes the parameters and the parameters change differs between training and deployment in both cultures and not between them
+- differ | P1 | T-RL, T-CHAT, T-RLVR, T-PRM, T-AGENT | D-RL, D-CHAT, D-AGENT-A, D-AGENT-X | ok | Whether reward changes the parameters and the parameters change differs between training and deployment in both cultures and not between them
+- differ | R3 | T-PRM | T-CHAT, T-RLVR | ok | Process supervision has the code of RL training, where both bandit settings do not, on three properties: whether reward arrives at every step
+- differ | A3 | T-PRM | T-CHAT, T-RLVR | ok | Process supervision has the code of RL training, where both bandit settings do not, on three properties: an episode has one action
+- differ | T1 | T-PRM | T-CHAT, T-RLVR | ok | Process supervision has the code of RL training, where both bandit settings do not, on three properties: an action is followed by a further decision
+- differ | R4 | T-PRM | T-RL | ok | its per-step reward is a learned process-reward-model score, not an environment signal
+- differ | A2 | T-PRM | T-AGENT | ok | its actions have no side effects
+- general | None | T-RL, D-RL |  | not checked (review lens) | One begins by positing what is inside the box: an optimiser of a reward R in a decision process the designer wrote down
+- general | None | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X |  | not checked (review lens) | The other treats the inside as unknown: a pretrained model steered by a prompt and a scaffold, judged by what it does on tasks
+- differ | R1 | D-CHAT, D-AGENT-A, D-AGENT-X | T-CHAT, T-RLVR, T-PRM, T-AGENT | ok | where it posits a reward, it is to train the model, and none is defined for the task at deployment
+- general | None | T-RL, D-RL |  | not checked (review lens) | The RL-agent culture writes down a decision process and a reward, as Breiman's data-modeling culture writes down a stochastic data model
+- general | None | T-RL, D-RL | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | not checked (review lens) | T-RL and D-RL stand for the RL-agent culture, and every chat and agent setting, training included, stands for the LLM-agent culture, although chat and agent training use RL algorithms
+- general | None | T-RL, D-RL |  | not checked (review lens) | where the designer writes down the decision process and the reward (the RL settings)
+- general | None | T-PRM |  | not checked (review lens) | where the reward is a learned score at each reasoning step (process supervision)
+- general | None | T-CHAT |  | not checked (review lens) | where the problem is a bandit (outcome-rewarded chat training)
+- differ | R1 | D-CHAT, D-AGENT-A, D-AGENT-X | D-RL | ok | every LLM deployment setting, unlike a deployed RL agent's task
+- differ | E1 | T-AGENT | D-AGENT-X | ok | An agent trained in a sandbox that resets, where third parties author tool outputs at most in part, is deployed where nothing resets and third parties can author them; the gap between T-AGENT (Table \ref{tab:primitive_cells_training}) and D-AGENT-X (Table \ref{tab:primitive_cells_deployment}) is the gap Cox names.
+- differ | O2 | T-AGENT | D-AGENT-X | ok | An agent trained in a sandbox that resets, where third parties author tool outputs at most in part, is deployed where nothing resets and third parties can author them; the gap between T-AGENT (Table \ref{tab:primitive_cells_training}) and D-AGENT-X (Table \ref{tab:primitive_cells_deployment}) is the gap Cox names.
+- same | P1 | D-AGENT-X | D-RL | ok | the deployed agent is still frozen, as a deployed RL policy is
+- differ | R1 | D-AGENT-X | D-RL | ok | but unlike it has no reward function for its task
+- differ | E1 | D-AGENT-X | D-RL | ok | and no designed reset, which a deployed RL agent's task may have
+- same | P1 | D-AGENT-X | D-RL | ok | the deployed agent is still frozen, as a deployed RL policy is
+- differ | R1 | D-AGENT-X | D-RL | ok | unlike it has no reward function for its task and no designed reset, which a deployed RL agent's task may have
+- differ | E1 | D-AGENT-X | D-RL | ok | unlike it has no reward function for its task and no designed reset, which a deployed RL agent's task may have
+- same | P1 | D-AGENT-X | D-RL | ok | the deployed agent is still frozen, as a deployed RL policy is
+- differ | R1 | D-AGENT-X | D-RL | ok | but unlike it has no reward function for its task
+- differ | E1 | D-AGENT-X | D-RL | ok | and no designed reset, which a deployed RL agent's task may have
+- general | None |  |  | not checked (review lens) | such models are susceptible to reward hacking and the cost of retraining them
+- same | R3 | T-PRM | T-RL | ok | process supervision matches RL training on whether reward arrives at every step, an episode has one action and an action is followed by a further decision
+- same | A3 | T-PRM | T-RL | ok | process supervision matches RL training on whether reward arrives at every step, an episode has one action and an action is followed by a further decision
+- same | T1 | T-PRM | T-RL | ok | process supervision matches RL training on whether reward arrives at every step, an episode has one action and an action is followed by a further decision
+- differ | R4 | T-PRM | T-RL | ok | though its reward is a learned score
+- differ | O1 | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | T-RL, D-RL | ok | LLM agents differ from RL agents in every setting in that their observations can carry instructions and their behaviour can be steered by instructions in their input
+- differ | P2 | T-CHAT, T-RLVR, T-PRM, T-AGENT, D-CHAT, D-AGENT-A, D-AGENT-X | T-RL, D-RL | ok | LLM agents differ from RL agents in every setting in that their observations can carry instructions and their behaviour can be steered by instructions in their input
+- differ | R1 | D-CHAT, D-AGENT-A, D-AGENT-X | D-RL | ok | in deployment their task has no reward function and no designed reset, while a deployed RL agent's task has a reward function and may have a designed reset
+- differ | E1 | D-CHAT, D-AGENT-A, D-AGENT-X | D-RL | ok | in deployment their task has no reward function and no designed reset, while a deployed RL agent's task has a reward function and may have a designed reset
+- differ | R2 | T-RL, T-CHAT, T-RLVR, T-PRM, T-AGENT | D-RL, D-CHAT, D-AGENT-A, D-AGENT-X | ok | Whether reward changes the parameters is a difference of phase, not of culture

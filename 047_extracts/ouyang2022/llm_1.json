@@ -1,0 +1,137 @@
+[
+ {
+  "topic": "setting",
+  "locator": "3.5",
+  "text": "The environment is a bandit environment which presents a random customer prompt and expects a response to the prompt. Given the prompt and response, it produces a reward determined by the reward model and ends the episode."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.5",
+  "text": "Starting from the SFT model with the final unembedding layer removed, we trained a model to take in a prompt and response, and output a scalar reward."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.1",
+  "text": "Step 3: Optimize a policy against the reward model using PPO. We use the output of the RM as a scalar reward. We fine-tune the supervised policy to optimize this reward using the PPO algorithm (Schulman et al., 2017)."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.5",
+  "text": "In addition, we add a per-token KL penalty from the SFT model at each token to mitigate overoptimization of the reward model. The value function is initialized from the RM."
+ },
+ {
+  "topic": "value",
+  "locator": "3.5",
+  "text": "we found that 175B RM training could be unstable and thus was less suitable to be used as the value function during RL (see Appendix C for more details)."
+ },
+ {
+  "topic": "episode",
+  "locator": "3.5",
+  "text": "Given the prompt and response, it produces a reward determined by the reward model and ends the episode."
+ },
+ {
+  "topic": "policy",
+  "locator": "3.1",
+  "text": "Step 1: Collect demonstration data, and train a supervised policy. Our labelers provide demonstrations of the desired behavior on the input prompt distribution (see Section 3.2 for details on this distribution)."
+ },
+ {
+  "topic": "policy",
+  "locator": "3.1",
+  "text": "Steps 2 and 3 can be iterated continuously; more comparison data is collected on the current best policy, which is used to train a new RM and then a new policy."
+ },
+ {
+  "topic": "objective",
+  "locator": "3.6",
+  "text": "Following Leike et al. (2018), our aim is to train models that act in accordance with user intentions."
+ },
+ {
+  "topic": "principal",
+  "locator": "5.2",
+  "text": "In this work, we have aligned to a set of labelers’ preferences that were influenced, among others things, by the instructions they were given, the context in which they received them (as a paid job), and who they received them from."
+ },
+ {
+  "topic": "principal",
+  "locator": "5.2",
+  "text": "Second, we are aligning to our preferences, as the researchers designing this study (and thus by proxy to our broader research organization, OpenAI): we write the labeling instructions that labelers use as a guide when writing demonstrations and choosing their preferred output"
+ },
+ {
+  "topic": "principal",
+  "locator": "5.2",
+  "text": "There are many stakeholders to consider—the organization training the model, the customers using the model to develop products, the end users of these products, and the broader population who may be directly or indirectly affected."
+ },
+ {
+  "topic": "principal",
+  "locator": "5.2",
+  "text": "In practice, our labelers don’t have visibility into the contexts in which a given prompt or completion will be seen."
+ },
+ {
+  "topic": "principal",
+  "locator": "3.6",
+  "text": "However, since our labelers are not the users who generated the prompts, there could be a divergence between what a user actually intended and what the labeler thought was intended from only reading the prompt."
+ },
+ {
+  "topic": "failure",
+  "locator": "3.6",
+  "text": "Instead, we measure truthfulness—whether the model’s statements about the world are true—using two metrics: (1) evaluating our model’s tendency to make up information on closed domain tasks (“hallucinations”), and (2) using the TruthfulQA dataset (Lin et al., 2021)."
+ },
+ {
+  "topic": "failure",
+  "locator": "3.6",
+  "text": "Therefore we use a suite of more specific proxy criteria that aim to capture different aspects of behavior in a deployed model that could end up being harmful"
+ },
+ {
+  "topic": "failure",
+  "locator": "2",
+  "text": "Kenton et al. (2021) catalog behavioral issues in LMs that result from misalignment, including producing harmful content and gaming misspecified objectives."
+ },
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "In human evaluations on our prompt distribution, outputs from the 1.3B parameter InstructGPT model are preferred to outputs from the 175B GPT-3, despite having 100x fewer parameters."
+ },
+ {
+  "topic": "claim",
+  "locator": "1",
+  "text": "Overall, our results indicate that fine-tuning large language models using human preferences significantly improves their behavior on a wide range of tasks, though much work remains to be done to improve their safety and reliability."
+ },
+ {
+  "topic": "claim",
+  "locator": "5.2",
+  "text": "The goal of this paper is to demonstrate that this alignment technique can align to an specific human reference group for a specific application."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5.3",
+  "text": "Models. Our models are neither fully aligned nor fully safe; they still generate toxic or biased outputs, make up facts, and generate sexual and violent content without explicit prompting."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5.3",
+  "text": "Perhaps the greatest limitation of our models is that, in most cases, they follow the user’s instruction, even if that could lead to harm in the real world."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5.4",
+  "text": "Our proposal for mitigating the alignment tax, by incorporating pretraining data into RLHF finetuning, does not completely mitigate performance regressions, and may make certain undesirable behaviors more likely for some tasks"
+ },
+ {
+  "topic": "limitation",
+  "locator": "5.1",
+  "text": "A disadvantage of this approach is that we are not directly facing alignment problems that occur only when aligning superhuman systems (Bostrom, 2014)."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3.6",
+  "text": "Needless to say, this only captures a small part of what is actually meant by truthfulness."
+ },
+ {
+  "topic": "llm",
+  "locator": "5.5",
+  "text": "By default, language models optimize the next word prediction objective, which is only a proxy for what we want these models to do."
+ },
+ {
+  "topic": "observation",
+  "locator": "3.3",
+  "text": "For each natural language prompt, the task is most often specified directly through a natural language instruction (e.g. “Write a story about a wise frog”), but could also be indirectly through either few-shot examples"
+ }
+]

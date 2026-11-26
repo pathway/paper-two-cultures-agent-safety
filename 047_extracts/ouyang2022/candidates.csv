@@ -1,0 +1,28 @@
+id,pass,topic,locator,line,text
+c1,llm_wf,setting,3.5,552,"The environment is a bandit environment which presents a random customer prompt and expects a response to the prompt. Given the prompt and response, it produces a reward determined by the reward model and ends the episode."
+c2,llm_wf,reward,3.5,472,"Starting from the SFT model with the final unembedding layer removed, we trained a model to take in a prompt and response, and output a scalar reward."
+c3,llm_wf,reward,3.1,359,"Step 3: Optimize a policy against the reward model using PPO. We use the output of the RM as a scalar reward. We fine-tune the supervised policy to optimize this reward using the PPO algorithm (Schulman et al., 2017)."
+c4,llm_wf,reward,3.5,555,"In addition, we add a per-token KL penalty from the SFT model at each token to mitigate overoptimization of the reward model. The value function is initialized from the RM."
+c5,llm_wf,value,3.5,474,we found that 175B RM training could be unstable and thus was less suitable to be used as the value function during RL (see Appendix C for more details).
+c6,llm_wf,episode,3.5,553,"Given the prompt and response, it produces a reward determined by the reward model and ends the episode."
+c7,llm_wf,policy,3.1,354,"Step 1: Collect demonstration data, and train a supervised policy. Our labelers provide demonstrations of the desired behavior on the input prompt distribution (see Section 3.2 for details on this distribution)."
+c8,llm_wf,policy,3.1,362,"Steps 2 and 3 can be iterated continuously; more comparison data is collected on the current best policy, which is used to train a new RM and then a new policy."
+c9,llm_wf,objective,3.6,596,"Following Leike et al. (2018), our aim is to train models that act in accordance with user intentions."
+c10,llm_wf,principal,5.2,1203,"In this work, we have aligned to a set of labelers’ preferences that were influenced, among others things, by the instructions they were given, the context in which they received them (as a paid job), and who they received them from."
+c11,llm_wf,principal,5.2,1211,"Second, we are aligning to our preferences, as the researchers designing this study (and thus by proxy to our broader research organization, OpenAI): we write the labeling instructions that labelers use as a guide when writing demonstrations and choosing their preferred output"
+c12,llm_wf,principal,5.2,1232,"There are many stakeholders to consider—the organization training the model, the customers using the model to develop products, the end users of these products, and the broader population who may be directly or indirectly affected."
+c13,llm_wf,principal,5.2,1222,"In practice, our labelers don’t have visibility into the contexts in which a given prompt or completion will be seen."
+c14,llm_wf,principal,3.6,603,"However, since our labelers are not the users who generated the prompts, there could be a divergence between what a user actually intended and what the labeler thought was intended from only reading the prompt."
+c15,llm_wf,failure,3.6,608,"Instead, we measure truthfulness—whether the model’s statements about the world are true—using two metrics: (1) evaluating our model’s tendency to make up information on closed domain tasks (“hallucinations”), and (2) using the TruthfulQA dataset (Lin et al., 2021)."
+c16,llm_wf,failure,3.6,620,Therefore we use a suite of more specific proxy criteria that aim to capture different aspects of behavior in a deployed model that could end up being harmful
+c17,llm_wf,failure,2,236,"Kenton et al. (2021) catalog behavioral issues in LMs that result from misalignment, including producing harmful content and gaming misspecified objectives."
+c18,llm_wf,claim,Abstract,58,"In human evaluations on our prompt distribution, outputs from the 1.3B parameter InstructGPT model are preferred to outputs from the 175B GPT-3, despite having 100x fewer parameters."
+c19,llm_wf,claim,1,207,"Overall, our results indicate that fine-tuning large language models using human preferences significantly improves their behavior on a wide range of tasks, though much work remains to be done to improve their safety and reliability."
+c20,llm_wf,claim,5.2,1229,The goal of this paper is to demonstrate that this alignment technique can align to an specific human reference group for a specific application.
+c21,llm_wf,limitation,5.3,1270,"Models. Our models are neither fully aligned nor fully safe; they still generate toxic or biased outputs, make up facts, and generate sexual and violent content without explicit prompting."
+c22,llm_wf,limitation,5.3,1273,"Perhaps the greatest limitation of our models is that, in most cases, they follow the user’s instruction, even if that could lead to harm in the real world."
+c23,llm_wf,limitation,5.4,1313,"Our proposal for mitigating the alignment tax, by incorporating pretraining data into RLHF finetuning, does not completely mitigate performance regressions, and may make certain undesirable behaviors more likely for some tasks"
+c24,llm_wf,limitation,5.1,1151,"A disadvantage of this approach is that we are not directly facing alignment problems that occur only when aligning superhuman systems (Bostrom, 2014)."
+c25,llm_wf,limitation,3.6,610,"Needless to say, this only captures a small part of what is actually meant by truthfulness."
+c26,llm_wf,llm,5.5,1333,"By default, language models optimize the next word prediction objective, which is only a proxy for what we want these models to do."
+c27,llm_wf,observation,3.3,420,"For each natural language prompt, the task is most often specified directly through a natural language instruction (e.g. “Write a story about a wise frog”), but could also be indirectly through either few-shot examples"

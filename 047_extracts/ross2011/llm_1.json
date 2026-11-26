@@ -1,0 +1,132 @@
+[
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "In this paper, we propose a new iterative algorithm, which trains a stationary deterministic policy, that can be seen as a no regret algorithm in an online learning setting."
+ },
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "We show that any such no regret algorithm, combined with additional reduction assumptions, must find a policy with good performance under the distribution of observations it induces in such sequential settings."
+ },
+ {
+  "topic": "setting",
+  "locator": "Abstract",
+  "text": "Sequential prediction problems such as imitation learning, where future observations depend on previous predictions (actions), violate the common i.i.d. assumptions made in statistical learning."
+ },
+ {
+  "topic": "limitation",
+  "locator": "Abstract",
+  "text": "but remain somewhat unsatisfactory as they train either non-stationary or stochastic policies and require a large number of iterations."
+ },
+ {
+  "topic": "setting",
+  "locator": "1 Introduction",
+  "text": "A typical approach to imitation learning is to train a classifier or regressor to predict an expert’s behavior given training data of the encountered observations (input) and actions (output) performed by the expert."
+ },
+ {
+  "topic": "failure",
+  "locator": "1 Introduction",
+  "text": "Intuitively this is because as soon as the learner makes a mistake, it may encounter completely different observations than those under expert demonstration, leading to a compounding of errors."
+ },
+ {
+  "topic": "policy",
+  "locator": "1 Introduction",
+  "text": "We propose a new meta-algorithm for imitation learning which learns a stationary deterministic policy guaranteed to perform well under its induced distribution of states"
+ },
+ {
+  "topic": "episode",
+  "locator": "2 Preliminaries",
+  "text": "We denote by Π the class of policies the learner is considering and T the task horizon."
+ },
+ {
+  "topic": "reward",
+  "locator": "2 Preliminaries",
+  "text": "Given a state s, we denote C(s, a) the expected immediate cost of performing action a in state s for the task we are considering and denote Cπ (s) = Ea∼π(s) [C(s, a)] the expected immediate cost of π in s. We assume C is bounded in [0, 1]."
+ },
+ {
+  "topic": "reward",
+  "locator": "2 Preliminaries",
+  "text": "In imitation learning, we may not necessarily know or observe true costs C(s, a) for the particular task. Instead, we observe expert demonstrations and seek to bound J(π) for any cost function C based on how well π mimics the expert’s policy π ∗ ."
+ },
+ {
+  "topic": "objective",
+  "locator": "2 Preliminaries",
+  "text": "Denote ` the observed surrogate loss function we minimize instead of C. For instance `(s, π) may be the expected 0-1 loss of π with respect to π ∗ in state s, or a squared/hinge loss of π with respect to π ∗ in s."
+ },
+ {
+  "topic": "transition",
+  "locator": "2 Preliminaries",
+  "text": "As system dynamics are assumed both unknown and complex, we cannot compute dπ and can only sample it by executing π in the system. Hence this is a non-i.i.d. supervised learning problem due to the dependence of the input distribution on the policy π itself."
+ },
+ {
+  "topic": "episode",
+  "locator": "2.2 Forward Training",
+  "text": "A drawback of the forward algorithm is that it is impractical when T is large (or undefined) as we must train T different policies sequentially and cannot stop the algorithm before we complete all T iterations."
+ },
+ {
+  "topic": "policy",
+  "locator": "3 Dataset Aggregation",
+  "text": "In its simplest form, the algorithm proceeds as follows. At the first iteration, it uses the expert’s policy to gather a dataset of trajectories D and train a policy π̂2 that best mimics the expert on those trajectories."
+ },
+ {
+  "topic": "policy",
+  "locator": "3 Dataset Aggregation",
+  "text": "In other words, DAGGER proceeds by collecting a dataset at each iteration under the current policy and trains the next policy under the aggregate of all collected datasets."
+ },
+ {
+  "topic": "oversight",
+  "locator": "3 Dataset Aggregation",
+  "text": "To better leverage the presence of the expert in our imitation learning setting, we optionally allow the algorithm to use a modified policy πi = βi π ∗ + (1 − βi )π̂i at iteration i that queries the expert to choose controls a fraction of the time while collecting the next dataset."
+ },
+ {
+  "topic": "state",
+  "locator": "3 Dataset Aggregation",
+  "text": "This is the case for instance in Markov Desision Processes (MDPs) when the Markov Chain defined by the system dynamics and policy π ∗ is rapidly mixing."
+ },
+ {
+  "topic": "limitation",
+  "locator": "4.2 No Regret Algorithms Guarantees",
+  "text": "we require a no-regret method or strongly convex surrogate loss function, a stronger (albeit common) assumption."
+ },
+ {
+  "topic": "principal",
+  "locator": "5.1 Super Tux Kart",
+  "text": "A human expert is used to provide demonstrations of the correct steering (analog joystick value in [-1,1]) for each of the observed game images."
+ },
+ {
+  "topic": "principal",
+  "locator": "5.2 Super Mario Bros.",
+  "text": "Our expert in this scenario is a near-optimal planning algorithm that has full access to the game’s internal state and can simulate exactly the consequence of future actions."
+ },
+ {
+  "topic": "action",
+  "locator": "5.2 Super Mario Bros.",
+  "text": "An action consists of 4 binary variables indicating which subset of buttons we should press in {left,right,jump,speed}."
+ },
+ {
+  "topic": "episode",
+  "locator": "5.2 Super Mario Bros.",
+  "text": "We compare performance in terms of the average distance travelled by Mario per stage before dying, running out of time or completing the stage, on randomly generated stages of difficulty 1 with a time limit of 60 seconds to complete the stage."
+ },
+ {
+  "topic": "failure",
+  "locator": "5.2 Super Mario Bros.",
+  "text": "In particular, a reason the supervised approach gets such a low score is that under the learned controller, Mario is often stuck at some location against an obstacle instead of jumping over it."
+ },
+ {
+  "topic": "transition",
+  "locator": "5.3 Handwriting Recognition",
+  "text": "We follow Daumé III et al. (2009) in adopting a view of structured prediction as a degenerate form of imitation learning where the system dynamics are deterministic and trivial in simply passing on earlier predictions made as inputs for future predictions."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5.3 Handwriting Recognition",
+  "text": "Surprisingly, we observe SEARN with α = 1, which is a pure policy iteration approach performs very well on this experiment, similarly to the best α = 0.8 and DAgger."
+ },
+ {
+  "topic": "value",
+  "locator": "6 Future Work",
+  "text": "Further we believe techniques similar to those presented, by leveraging a cost-to-go estimate, may provide an understanding of the success of online methods for reinforcement learning and suggest a similar data-aggregation method that can guarantee performance in such settings."
+ }
+]

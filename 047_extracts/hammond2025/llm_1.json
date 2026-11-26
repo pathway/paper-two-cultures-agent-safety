@@ -1,0 +1,162 @@
+[
+ {
+  "topic": "claim",
+  "locator": "Executive Summary",
+  "text": "we introduce a taxonomy of AI risks that are new, much\nmore challenging, or qualitatively different in the multi-agent setting, together with a\npreliminary assessment of what can be done to mitigate them."
+ },
+ {
+  "topic": "claim",
+  "locator": "1 Introduction",
+  "text": "In this report we take a first step in this direction by providing a\ntaxonomy of risks that either: emerge, are much more challenging, or are qualitatively different in the\nmulti-agent setting (see Table 1)."
+ },
+ {
+  "topic": "failure",
+  "locator": "Executive Summary",
+  "text": "We identify three high-level\nfailure modes, which depend on the nature of the agents’ objectives and the intended behaviour of the\nsystem: miscoordination, conflict, and collusion."
+ },
+ {
+  "topic": "failure",
+  "locator": "2 Failure Modes",
+  "text": "there are many potential risks from advanced multi-agent systems that do not\nnecessarily arise through agents competently pursuing their objectives, but due to their incompetencies\nor vulnerabilities."
+ },
+ {
+  "topic": "principal",
+  "locator": "1.2 Scope",
+  "text": "we will often use the word ‘principal’ for the actor on whose behalf an agent acts (be they an\nindividual, a group, or some other entity)."
+ },
+ {
+  "topic": "principal",
+  "locator": "2.1 Miscoordination",
+  "text": "Perhaps the most likely way that common-interest settings may arise in practice is where a single principal deploys multiple AI agents on their behalf in order to jointly solve a task."
+ },
+ {
+  "topic": "principal",
+  "locator": "2.1 Miscoordination",
+  "text": "Alternatively, we might see multi-principal multi-agent\nsettings in which the agents’ goals are sufficiently aligned to be viewed as (approximately) identical."
+ },
+ {
+  "topic": "principal",
+  "locator": "4.1 Safety",
+  "text": "Alignment refers to the problem of ensuring that an individual AI system\nacts according to the values and preferences of its principal."
+ },
+ {
+  "topic": "principal",
+  "locator": "3.7 Multi-Agent Security",
+  "text": "In other words, agents can be\nconsidered vulnerable extensions of their principals, introducing a novel attack surface"
+ },
+ {
+  "topic": "objective",
+  "locator": "2 Failure Modes",
+  "text": "Multi-agent systems can fail in various ways, depending on the intended behaviour of the system and the\nobjectives of the agents."
+ },
+ {
+  "topic": "objective",
+  "locator": "3.3 Selection Pressures",
+  "text": "The most salient selection pressure in the construction of today’s most powerful AI systems is that\nprovided by gradient descent with respect to a training objective."
+ },
+ {
+  "topic": "policy",
+  "locator": "3.3 Selection Pressures",
+  "text": "Artificial agents whose parameters can be efficiently\nupdated via gradient descent, whose software components can be re-written and re-combined almost\narbitrarily, and who can rapidly transmit vast amounts of information, do not face such limitations."
+ },
+ {
+  "topic": "policy",
+  "locator": "3.3 Selection Pressures",
+  "text": "Indeed, the advent of in-context learning (Brown et al., 2020), the evolution of prompts (Fernando et al.,\n2023), and the evolution of agentic prompt-based architectures (Hu et al., 2024) can lead to even more\nrapid changes in behaviour."
+ },
+ {
+  "topic": "policy",
+  "locator": "3.4 Destabilising Dynamics",
+  "text": "this documentation applies to single trained systems that\nare frozen before deployment. To monitor the dynamics of multi-agent systems, including those that\nlearn online"
+ },
+ {
+  "topic": "reward",
+  "locator": "3.3 Selection Pressures",
+  "text": "if an agent is trained in situations where cooperative behaviour is rewarded, then it is\nmore likely to learn cooperative dispositions."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.3 Selection Pressures",
+  "text": "For example, are agents rewarded based on their relative performance more conflict-prone than those\ntrained based on their absolute performance (see Section 3.3)?"
+ },
+ {
+  "topic": "reward",
+  "locator": "B.3",
+  "text": "we run RL to demonstrate that the\nrate of attempted jailbreaks increases when we use the imperfect overseer as the reward model."
+ },
+ {
+  "topic": "reward",
+  "locator": "B.3",
+  "text": "We further refined the generator through RL using the scoring function as the reward model. Our\napproach uses the PPO implementation from the trlx library"
+ },
+ {
+  "topic": "setting",
+  "locator": "2.3 Collusion",
+  "text": "a\ngeneral framework that casts the problem of mitigating collusion as one of intervening on aspects of a\npartially observable stochastic game, such as the actions, observations, or rewards of the agents"
+ },
+ {
+  "topic": "setting",
+  "locator": "2.1 Miscoordination",
+  "text": "common-interest (and mixed-motive) settings often allow a vast number of\nmutually incompatible solutions (Schelling, 1980), which is worsened in partially observable environments"
+ },
+ {
+  "topic": "observation",
+  "locator": "Case Study 1",
+  "text": "A GPT-4 Vision model processed the environmental inputs and provided scene descriptions to both fine-tuned GPT-3.5 models for action generation."
+ },
+ {
+  "topic": "action",
+  "locator": "Case Study 1",
+  "text": "Following recent advances in robotics that combine vision models for scene comprehension with large language models (LLMs) for discrete action planning"
+ },
+ {
+  "topic": "oversight",
+  "locator": "3.6 / Case Study 5",
+  "text": "LLMs can exchange steganographic\nmessages under the watch of equally capable oversight systems, and that more powerful models\ncan do so more capably."
+ },
+ {
+  "topic": "oversight",
+  "locator": "3.7 Case Study 13",
+  "text": "When the model believed it was being evaluated by another\nLLM, it spontaneously attempted to jailbreak the scoring system in 4% of cases"
+ },
+ {
+  "topic": "oversight",
+  "locator": "B.3",
+  "text": "In contrast, when told its output\nwould be scored by humans, the model never attempted such manipulations."
+ },
+ {
+  "topic": "oversight",
+  "locator": "4.1 Safety",
+  "text": "These schemes\ntend to rely crucially on the fact that the different systems or agents do not have the same objective as\none another, and so are immediately undermined by the presence of collusion"
+ },
+ {
+  "topic": "episode",
+  "locator": "3.4 Destabilising Dynamics",
+  "text": "Competitive pressures necessitate automated trading agents that act much faster\nthan their human overseers, meaning that when things go wrong, it is harder for humans to react."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5 Conclusion",
+  "text": "Even with the restricted scope of this report\n(see Section 1.2), we faced an inevitable trade-off between breadth and depth."
+ },
+ {
+  "topic": "limitation",
+  "locator": "1.2 Scope",
+  "text": "we primarily discuss risks from a technical perspective, while acknowledging that\nthis perspective is limited."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5 Conclusion",
+  "text": "some of the dynamics we have discussed (e.g., emergent agency; see\nSection 3.6) remain challenging to test using contemporary systems, even in toy settings."
+ },
+ {
+  "topic": "limitation",
+  "locator": "1.2 Scope",
+  "text": "if the risk could arise in essentially the same way in the context of a single AI\nsystem, then we deem it to be out of scope for this report"
+ },
+ {
+  "topic": "llm",
+  "locator": "Case Study 1",
+  "text": "unspecialized base models failed in only 5% of scenarios (2/40 simulations),\nwhile specialized models exhibited a 77.5% failure rate (31/40 simulations)"
+ }
+]

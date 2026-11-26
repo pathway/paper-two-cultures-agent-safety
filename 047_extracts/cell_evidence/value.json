@@ -1,0 +1,104 @@
+[
+ {
+  "primitive": "value",
+  "setting": "T-RL",
+  "evidence_source": "sutton2018",
+  "candidate_ids": [
+   "e17"
+  ],
+  "quote": "value functions are defined with respect to particular ways of acting, called policies",
+  "reason": "\"value functions are defined with respect to particular ways of acting, called policies\"; the central object of RL methods [@sutton2018].",
+  "fits": true,
+  "note": "already quote"
+ },
+ {
+  "primitive": "value",
+  "setting": "T-CHAT",
+  "evidence_source": "shao2024",
+  "candidate_ids": [
+   "c3"
+  ],
+  "quote": "GRPO foregoes the critic model, instead estimating the baseline from group scores, significantly reducing training resources compared to Proximal Policy Optimization (PPO).",
+  "reason": "With one terminal reward the critic is unnecessary: \"GRPO foregoes the critic model, instead estimating the baseline from group scores, significantly reducing training resources compared to Proximal Policy Optimization (PPO).\" [@shao2024]; RLOO and ReMax also drop it [@ahmadian2024; @li2024].",
+  "fits": true,
+  "note": "Quote supports critic dropped in GRPO. Q(x,y)=r is not in this passage; RLOO and ReMax not quoted."
+ },
+ {
+  "primitive": "value",
+  "setting": "T-RLVR",
+  "evidence_source": "shao2024",
+  "candidate_ids": [
+   "c6"
+  ],
+  "quote": "usually only the last token is assigned a reward score by the reward model, which may complicate the training of a value function that is accurate at each token.",
+  "reason": "Only the final token is rewarded: \"usually only the last token is assigned a reward score by the reward model, which may complicate the training of a value function that is accurate at each token.\" [@shao2024]",
+  "fits": true,
+  "note": "Passage is about a reward model, not a verifiable rule reward; supports a degenerate per-token value only by analogy."
+ },
+ {
+  "primitive": "value",
+  "setting": "T-PRM",
+  "evidence_source": "snell2024",
+  "candidate_ids": [
+   "c7"
+  ],
+  "quote": "score the generated steps according to the PRM’s predicted step-wise reward-to-go estimate (which also corresponds to the total reward from the prefix since the reward is sparse in this setting)",
+  "reason": "The PRM acts as a value over prefixes: \"score the generated steps according to the PRM’s predicted step-wise reward-to-go estimate (which also corresponds to the total reward from the prefix since the reward is sparse in this setting)\" [@snell2024]; it drives search of the AlphaZero shape [@feng2023; @silver2017].",
+  "fits": true,
+  "note": "Supports PRM as prefix value. Beam and tree search and AlphaZero shape are not in this quote."
+ },
+ {
+  "primitive": "value",
+  "setting": "T-AGENT",
+  "evidence_source": "zhou2024b",
+  "candidate_ids": [
+   "c2"
+  ],
+  "quote": "a high-level off-policy RL algorithm that trains a value function to aggregate reward over utterances",
+  "reason": "Some methods add a turn-level value: \"a high-level off-policy RL algorithm that trains a value function to aggregate reward over utterances\" [@zhou2024b]; the base reward is terminal.",
+  "fits": true,
+  "note": "Supports turn-level value heads. Terminal reward is not in this quote."
+ },
+ {
+  "primitive": "value",
+  "setting": "D-RL",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "A fixed policy acts, so no value estimate is needed at run time (judgement; the cell cites no work).",
+  "fits": false,
+  "note": "Reason cites no work, so no quote can be taken."
+ },
+ {
+  "primitive": "value",
+  "setting": "D-CHAT",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "No value function; the model's verbal judgement and the user's acceptance stand in (judgement; the cell cites no work).",
+  "fits": false,
+  "note": "Reason cites no work, so no quote can be taken."
+ },
+ {
+  "primitive": "value",
+  "setting": "D-AGENT-A",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "As D-CHAT: no value function (judgement; the cell cites no work).",
+  "fits": false,
+  "note": "Reason cites no work, so no quote can be taken."
+ },
+ {
+  "primitive": "value",
+  "setting": "D-AGENT-X",
+  "evidence_source": "shinn2023",
+  "candidate_ids": [
+   "c8"
+  ],
+  "quote": "effective value and reward functions that apply to semantic spaces is difficult, so we investigate",
+  "reason": "Value functions are replaced by verbal feedback: \"effective value and reward functions that apply to semantic spaces is difficult, so we investigate\" [@shinn2023]; retry and self-verification replace them, with no simulator [@zhou2024a].",
+  "fits": true,
+  "note": "Quote is a truncated sentence; supports no learned value for language agents. Self-verification and no-simulator claims not quoted."
+ }
+]

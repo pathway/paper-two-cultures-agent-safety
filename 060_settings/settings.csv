@@ -1,0 +1,10 @@
+id,phase,group,label,posed_as,human_each_step,reward_source,action_unit,decision,culture,matched_rl
+T-RL,training,RL,"RL agent, training",MDP or POMDP; the agent acts and learns in one loop,no,environment,environment action,D3,RL,
+T-CHAT,training,chat,"Chatbot, outcome reward model","Contextual bandit: the whole reply is one action, scored by a learned reward model; KL penalty to the reference model",no,learned reward model,whole reply,D3,LLM,T-RL
+T-RLVR,training,chat,"Chatbot, verifiable reward","Contextual bandit: trace plus answer is one action, scored by a programmatic checker; reasoning steps are not scored for correctness (a format reward may apply)",no,programmatic verifier,whole reply,D3,LLM,T-RL
+T-PRM,training,chat,"Chatbot, process reward","Finite-horizon deterministic tree MDP: each reasoning step is one action, scored by a process reward model",no,process reward model,reasoning step,D3,LLM,T-RL
+T-AGENT,training,agent,"Tool agent, trajectory reward","Episodic POMDP in a sandbox that is reset between episodes: tool calls are actions, reward on task success at the end",no,task success test,tool call,D3,LLM,T-RL
+D-RL,deployment,RL,"RL agent, deployment",MDP or POMDP; the policy is fixed; no learning,no,"designer's R, unused",environment action,D3,RL,
+D-CHAT,deployment,chat,Deployed chatbot,One reply per user turn; no reward; the weights are frozen,yes,none,whole reply,D3,LLM,D-RL
+D-AGENT-A,deployment,agent,"Deployed tool agent, human sees each step",Episodic POMDP with a human turn between tool calls; side effects visible before the next call,yes,none,tool call,D3,LLM,D-RL
+D-AGENT-X,deployment,agent,"Deployed tool agent, autonomous",Long-horizon POMDP; no human between calls; memory and sub-agents; no reset,no,none,tool call,D3,LLM,D-RL

@@ -1,0 +1,101 @@
+[
+ {
+  "primitive": "episode",
+  "setting": "T-RL",
+  "evidence_source": "sutton2018",
+  "candidate_ids": [
+   "e11",
+   "e12"
+  ],
+  "quote": "ends in a special state called the terminal state, followed by a reset",
+  "reason": "Each episode \"ends in a special state called the terminal state, followed by a reset\"; the next \"begins independently\" [@sutton2018].",
+  "fits": true,
+  "note": "already quote"
+ },
+ {
+  "primitive": "episode",
+  "setting": "T-CHAT",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "Horizon 1: one reply is one episode, and the reset is trivial (no cited source).",
+  "fits": false,
+  "note": "Reason cites no work, so no quote can be taken from a cited key."
+ },
+ {
+  "primitive": "episode",
+  "setting": "T-RLVR",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "Horizon 1: one reply is one episode (no cited source).",
+  "fits": false,
+  "note": "Reason cites no work, so no quote can be taken from a cited key."
+ },
+ {
+  "primitive": "episode",
+  "setting": "T-PRM",
+  "evidence_source": "snell2024",
+  "candidate_ids": [
+   "c6"
+  ],
+  "quote": "using estimates of per-step correctness obtained from running Monte Carlo rollouts from each step in the solution",
+  "reason": "A step-level verifier is trained by \"using estimates of per-step correctness obtained from running Monte Carlo rollouts from each step in the solution\" [@snell2024], so any prefix can be resampled; tree search over partial solutions branches the same way [@yao2023a].",
+  "fits": true,
+  "note": "Supports resampling from any prefix. Does not support 'tens of steps'; that part of the old reason was dropped."
+ },
+ {
+  "primitive": "episode",
+  "setting": "T-AGENT",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "One task per episode [@wei2025]; the sandbox reset between tasks is not stated in the cited text.",
+  "fits": false,
+  "note": "wei2025 candidates and full text have no passage on sandbox or reset between tasks (grep found none). SWE-RL scores one generated patch per prompt, which is a single reply, not a sandboxed run."
+ },
+ {
+  "primitive": "episode",
+  "setting": "D-RL",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "As the task defines; the environment resets or continues (no cited source).",
+  "fits": false,
+  "note": "Reason cites no work, so no quote can be taken from a cited key."
+ },
+ {
+  "primitive": "episode",
+  "setting": "D-CHAT",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "A conversation ends when the user leaves (no cited source).",
+  "fits": false,
+  "note": "Reason cites no work, so no quote can be taken from a cited key."
+ },
+ {
+  "primitive": "episode",
+  "setting": "D-AGENT-A",
+  "evidence_source": "yao2024",
+  "candidate_ids": [
+   "c15"
+  ],
+  "quote": "real-world agents only have one chance to serve the user",
+  "reason": "Real agents face a user who gets one attempt: \"real-world agents only have one chance to serve the user\" [@yao2024]; this supports no restart, not the cell's 'one turn, then human'.",
+  "fits": false,
+  "note": "The passage supports side effects without a restart. yao2024 describes an episode as a multi-call conversation (c6), not one tool call then a human turn, so the value as worded is not supported."
+ },
+ {
+  "primitive": "episode",
+  "setting": "D-AGENT-X",
+  "evidence_source": "grinsztajn2021",
+  "candidate_ids": [
+   "c17"
+  ],
+  "quote": "contrary to human players, the agent does not have the option to reset the game when stuck",
+  "reason": "In deployment-like settings \"contrary to human players, the agent does not have the option to reset the game when stuck\" [@grinsztajn2021]; so a run has no reset [@kwa2025; @sharma2022].",
+  "fits": true,
+  "note": "Supports 'no reset' only, in a game RL setting. Hundreds of calls, hours and step cap are not quoted."
+ }
+]

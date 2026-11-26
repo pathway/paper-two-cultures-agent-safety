@@ -1,0 +1,127 @@
+[
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "Here we show that scaling up language models greatly improves task-agnostic, few-shot performance, sometimes even reaching competitiveness with prior state-of-the-art finetuning approaches."
+ },
+ {
+  "topic": "policy",
+  "locator": "Abstract",
+  "text": "For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model."
+ },
+ {
+  "topic": "policy",
+  "locator": "1",
+  "text": "Recent work [RWC+ 19] attempts to do this via what we call “in-context learning”, using the text input of a pretrained language model as a form of task specification:"
+ },
+ {
+  "topic": "objective",
+  "locator": "1",
+  "text": "the model is conditioned on a natural language instruction and/or a few demonstrations of the task and is then expected to complete further instances of the task simply by predicting what comes next."
+ },
+ {
+  "topic": "policy",
+  "locator": "1",
+  "text": "We emphasize that these “learning” curves involve no gradient updates or fine-tuning, just increasing numbers of demonstrations given as conditioning."
+ },
+ {
+  "topic": "policy",
+  "locator": "2",
+  "text": "Few-Shot (FS) is the term we will use in this work to refer to the setting where the model is given a few demonstrations of the task at inference time as conditioning [RWC+ 19], but no weight updates are allowed."
+ },
+ {
+  "topic": "setting",
+  "locator": "2",
+  "text": "Zero-Shot (0S) is the same as one-shot except that no demonstrations are allowed, and the model is only given a natural language instruction describing the task."
+ },
+ {
+  "topic": "observation",
+  "locator": "2",
+  "text": "K can be any value from 0 to the maximum amount allowed by the model’s context window, which is nctx = 2048 for all models and typically fits 10 to 100 examples."
+ },
+ {
+  "topic": "action",
+  "locator": "2.4",
+  "text": "On tasks with free-form completion, we use beam search with the same parameters as [RSR+ 19]: a beam width of 4 and a length penalty of α = 0.6."
+ },
+ {
+  "topic": "action",
+  "locator": "2.4",
+  "text": "On tasks that involve choosing one correct completion from several options (multiple choice), we provide K examples of context plus correct completion, followed by one example of context only, and compare the LM likelihood of each completion."
+ },
+ {
+  "topic": "objective",
+  "locator": "5",
+  "text": "Our current objective weights every token equally and lacks a notion of what is most important to predict and what is less important."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5",
+  "text": "with self-supervised objectives, task specification relies on forcing the desired task into a prediction problem, whereas ultimately, useful language systems (for example virtual assistants) might be better thought of as taking goal-directed actions rather than just making predictions."
+ },
+ {
+  "topic": "reward",
+  "locator": "5",
+  "text": "Promising future directions in this vein might include learning the objective function from humans [ZSW+ 19a], fine-tuning with reinforcement learning, or adding additional modalities such as images to provide grounding and a better model of the world [CLY+ 19]."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5",
+  "text": "Finally, large pretrained language models are not grounded in other domains of experience, such as video or real-world physical interaction, and thus lack a large amount of context about the world [BHT+ 20]."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5",
+  "text": "A limitation, or at least uncertainty, associated with few-shot learning in GPT-3 is ambiguity about whether few-shot learning actually learns new tasks “from scratch” at inference time, or if it simply recognizes and identifies tasks that it has learned during training."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5",
+  "text": "it is not necessarily well-calibrated in its predictions on novel inputs as observed by the much higher variance in performance than humans on standard benchmarks, and it retains the biases of the data it has been trained on."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5",
+  "text": "Making a bidirectional model at the scale of GPT-3, and/or trying to make bidirectional models work with few- or zero-shot learning, is a promising direction for future research, and could help achieve the “best of both worlds”."
+ },
+ {
+  "topic": "failure",
+  "locator": "6.1.1",
+  "text": "Examples include misinformation, spam, phishing, abuse of legal and governmental processes, fraudulent academic essay writing and social engineering pretexting."
+ },
+ {
+  "topic": "failure",
+  "locator": "6.1.2",
+  "text": "we have been monitoring forums and chat groups where misinformation tactics, malware distribution, and computer fraud are frequently discussed."
+ },
+ {
+  "topic": "oversight",
+  "locator": "6.1.3",
+  "text": "The outputs of language models are stochastic, however, and though developers can constrain these (e.g. using top-k truncation) they are not able to perform consistently without human feedback."
+ },
+ {
+  "topic": "principal",
+  "locator": "6.1.3",
+  "text": "But a human is still needed to filter the outputs, which restricts how scalable the operation can be."
+ },
+ {
+  "topic": "llm",
+  "locator": "6.1.3",
+  "text": "we suspect AI researchers will eventually develop language models that are sufficiently consistent and steerable that they will be of greater interest to malicious actors."
+ },
+ {
+  "topic": "setting",
+  "locator": "1",
+  "text": "In this paper, we test this hypothesis by training a 175 billion parameter autoregressive language model, which we call GPT-3, and measuring its in-context learning abilities."
+ },
+ {
+  "topic": "claim",
+  "locator": "8",
+  "text": "We presented a 175 billion parameter language model which shows strong performance on many NLP tasks and benchmarks in the zero-shot, one-shot, and few-shot settings"
+ },
+ {
+  "topic": "limitation",
+  "locator": "2.2",
+  "text": "Unfortunately, a bug in the filtering caused us to ignore some overlaps, and due to the cost of training it was not feasible to retrain the model."
+ }
+]

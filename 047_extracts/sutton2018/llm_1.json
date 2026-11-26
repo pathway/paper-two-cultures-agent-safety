@@ -1,0 +1,167 @@
+[
+ {
+  "topic": "reward",
+  "locator": "1.1",
+  "text": "Reinforcement learning is learning what to do—how to map situations to actions—so as to maximize a numerical reward signal. The learner is not told which actions to take, but instead must discover which actions yield the most reward by trying them."
+ },
+ {
+  "topic": "setting",
+  "locator": "1.1",
+  "text": "We formalize the problem of reinforcement learning using ideas from dynamical systems theory, specifically, as the optimal control of incompletely-known Markov decision processes."
+ },
+ {
+  "topic": "setting",
+  "locator": "1.1",
+  "text": "A learning agent must be able to sense the state of its environment to some extent and must be able to take actions that a↵ect the state. The agent also must have a goal or goals relating to the state of the environment."
+ },
+ {
+  "topic": "objective",
+  "locator": "1.1",
+  "text": "All reinforcement learning agents have explicit goals, can sense aspects of their environments, and can choose actions to influence their environments."
+ },
+ {
+  "topic": "observation",
+  "locator": "1.1",
+  "text": "Moreover, it is usually assumed from the beginning that the agent has to operate despite significant uncertainty about the environment it faces."
+ },
+ {
+  "topic": "setting",
+  "locator": "1.1",
+  "text": "a complete, interactive, goal-seeking agent can also be a component of a larger behaving system. In this case, the agent directly interacts with the rest of the larger system and indirectly interacts with the larger system’s environment."
+ },
+ {
+  "topic": "objective",
+  "locator": "1.2",
+  "text": "All these examples involve goals that are explicit in the sense that the agent can judge progress toward its goal based on what it can sense directly."
+ },
+ {
+  "topic": "transition",
+  "locator": "1.2",
+  "text": "At the same time, in all of these examples the e↵ects of actions cannot be fully predicted; thus the agent must monitor its environment frequently and react appropriately."
+ },
+ {
+  "topic": "policy",
+  "locator": "1.3",
+  "text": "A policy defines the learning agent’s way of behaving at a given time. Roughly speaking, a policy is a mapping from perceived states of the environment to actions to be taken when in those states."
+ },
+ {
+  "topic": "policy",
+  "locator": "1.3",
+  "text": "The policy is the core of a reinforcement learning agent in the sense that it alone is sufficient to determine behavior. In general, policies may be stochastic, specifying probabilities for each action."
+ },
+ {
+  "topic": "reward",
+  "locator": "1.3",
+  "text": "A reward signal defines the goal of a reinforcement learning problem. On each time step, the environment sends to the reinforcement learning agent a single number called the reward."
+ },
+ {
+  "topic": "objective",
+  "locator": "1.3",
+  "text": "The agent’s sole objective is to maximize the total reward it receives over the long run. The reward signal thus defines what are the good and bad events for the agent."
+ },
+ {
+  "topic": "reward",
+  "locator": "1.3",
+  "text": "The reward signal is the primary basis for altering the policy; if an action selected by the policy is followed by low reward, then the policy may be changed to select some other action in that situation in the future."
+ },
+ {
+  "topic": "reward",
+  "locator": "1.3",
+  "text": "In general, reward signals may be stochastic functions of the state of the environment and the actions taken."
+ },
+ {
+  "topic": "value",
+  "locator": "1.3",
+  "text": "Whereas the reward signal indicates what is good in an immediate sense, a value function specifies what is good in the long run. Roughly speaking, the value of a state is the total amount of reward an agent can expect to accumulate over the future, starting from that state."
+ },
+ {
+  "topic": "value",
+  "locator": "1.3",
+  "text": "Rewards are in a sense primary, whereas values, as predictions of rewards, are secondary. Without rewards there could be no values, and the only purpose of estimating values is to achieve more reward."
+ },
+ {
+  "topic": "transition",
+  "locator": "1.3",
+  "text": "The fourth and final element of some reinforcement learning systems is a model of the environment. This is something that mimics the behavior of the environment, or more generally, that allows inferences to be made about how the environment will behave."
+ },
+ {
+  "topic": "transition",
+  "locator": "1.3",
+  "text": "For example, given a state and action, the model might predict the resultant next state and next reward."
+ },
+ {
+  "topic": "state",
+  "locator": "1.4",
+  "text": "Informally, we can think of the state as a signal conveying to the agent some sense of “how the environment is” at a particular time."
+ },
+ {
+  "topic": "limitation",
+  "locator": "1.4",
+  "text": "In e↵ect, we assume that the state signal is produced by some preprocessing system that is nominally part of the agent’s environment. We do not address the issues of constructing, changing, or learning the state signal in this book (other than briefly in Section 17.3)."
+ },
+ {
+  "topic": "limitation",
+  "locator": "1.4",
+  "text": "Most of the reinforcement learning methods we consider in this book are structured around estimating value functions, but it is not strictly necessary to do this to solve reinforcement learning problems."
+ },
+ {
+  "topic": "policy",
+  "locator": "1.4",
+  "text": "Our focus is on reinforcement learning methods that learn while interacting with the environment, which evolutionary methods do not do."
+ },
+ {
+  "topic": "setting",
+  "locator": "1.5",
+  "text": "Although tic-tac-toe is a two-person game, reinforcement learning also applies in the case in which there is no external adversary, that is, in the case of a “game against nature.”"
+ },
+ {
+  "topic": "episode",
+  "locator": "1.5",
+  "text": "Reinforcement learning also is not restricted to problems in which behavior breaks down into separate episodes, like the separate games of tic-tac-toe, with reward only at the end of each episode. It is just as applicable when behavior continues indefinitely and when rewards of various magnitudes can be received at any time."
+ },
+ {
+  "topic": "state",
+  "locator": "1.5",
+  "text": "We also have access to the true state in the tic-tac-toe example, whereas reinforcement learning can also be applied when part of the state is hidden, or when di↵erent states appear to the learner to be the same."
+ },
+ {
+  "topic": "transition",
+  "locator": "1.5",
+  "text": "A model is not required, but models can easily be used if they are available or can be learned (Chapter 8)."
+ },
+ {
+  "topic": "action",
+  "locator": "1.5",
+  "text": "Reinforcement learning can be used at both high and low levels in a system. Although the tic-tac-toe player learned only about the basic moves of the game, nothing prevents reinforcement learning from working at higher levels where each of the “actions” may itself be the application of a possibly elaborate problem-solving method."
+ },
+ {
+  "topic": "setting",
+  "locator": "1.6",
+  "text": "Reinforcement learning uses the formal framework of Markov decision processes to define the interaction between a learning agent and its environment in terms of states, actions, and rewards."
+ },
+ {
+  "topic": "claim",
+  "locator": "1.6",
+  "text": "In our opinion, reinforcement learning is the first field to seriously address the computational issues that arise when learning from interaction with an environment in order to achieve long-term goals."
+ },
+ {
+  "topic": "claim",
+  "locator": "1.6",
+  "text": "We take the position that value functions are important for efficient search in the space of policies."
+ },
+ {
+  "topic": "limitation",
+  "locator": "1.7",
+  "text": "Because almost all of the conventional methods require complete knowledge of the system to be controlled, it feels a little unnatural to say that they are part of reinforcement learning."
+ },
+ {
+  "topic": "reward",
+  "locator": "1.7",
+  "text": "They applied BOXES to the task of learning to balance a pole hinged to a movable cart on the basis of a failure signal occurring only when the pole fell or the cart reached the end of a track."
+ },
+ {
+  "topic": "value",
+  "locator": "1.7",
+  "text": "They called this form of learning “selective bootstrap adaptation” and described it as “learning with a critic” instead of “learning with a teacher.”"
+ }
+]

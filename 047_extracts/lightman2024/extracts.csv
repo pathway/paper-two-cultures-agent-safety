@@ -1,0 +1,4 @@
+id,kind,locator,text,tex
+e1,cell,2.3 Generator,"To make parsing individual steps easier, we train the generator to produce solutions in a newline delimited step-by-step format.",
+e2,cell,2.3 Generator,"To make parsing individual steps easier, we train the generator to produce solutions in a newline delimited step-by-step format",
+e3,cell,1 Introduction,"Outcome-supervised reward models (ORMs) are trained using only the final result of the model’s chain-of-thought, while process-supervised reward models (PRMs) receive feedback for each step in the chain-of-thought.",

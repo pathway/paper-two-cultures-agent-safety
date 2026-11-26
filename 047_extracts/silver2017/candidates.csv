@@ -1,0 +1,22 @@
+id,pass,topic,locator,line,text
+c1,llm_wf,policy,Main text,67,"a deep neural network (p, v) = fθ (s) with parameters θ. This neural network takes the board position s as an input and outputs a vector of move probabilities p with components pa = P r(a|s)"
+c2,llm_wf,value,Main text,70,"for each action a, and a scalar value v estimating the expected outcome z from position s,"
+c3,llm_wf,value,Main text,71,AlphaZero learns these move probabilities and value estimates entirely from selfplay; these are then used to guide its search.
+c4,llm_wf,policy,Main text,72,"Instead of an alpha-beta search with domain-specific enhancements, AlphaZero uses a generalpurpose Monte-Carlo tree search (MCTS) algorithm."
+c5,llm_wf,policy,Main text,77,"The parameters θ of the deep neural network in AlphaZero are trained by self-play reinforcement learning, starting from randomly initialised parameters θ."
+c6,llm_wf,reward,Main text,79,"scored according to the rules of the game to compute the game outcome z: −1 for a loss, 0 for"
+c7,llm_wf,policy,Main text,106,"In contrast, AlphaZero simply maintains a single neural network that is updated continually, rather than waiting for an iteration to complete."
+c8,llm_wf,state,Main text,118,"Like AlphaGo Zero, the board state is encoded by spatial planes based only on the basic"
+c9,llm_wf,action,Main text,53,"action space is simple (a stone may be placed at each possible location), and the game outcomes"
+c10,llm_wf,setting,Main text,115,In AlphaZero we reuse the same hyper-parameters for all games without game-specific tuning.
+c11,llm_wf,setting,Main text,122,We trained a separate instance of AlphaZero for each game.
+c12,llm_wf,limitation,Footnote 3,230,"The prevalence of draws in high-level chess tends to compress the Elo scale, compared to shogi or Go."
+c13,llm_wf,reward,Main text,61,chess and shogi may result in draws in addition to wins and losses; indeed it is believed that the
+c14,llm_wf,action,Main text,59,The action space for chess includes all legal destinations for all of the players’
+c15,llm_wf,setting,Main text,131,"We evaluated the fully trained instances of AlphaZero against Stockfish, Elmo and the previous version of AlphaGo Zero (trained for 3 days) in chess, shogi and Go respectively, playing"
+c16,llm_wf,claim,Main text,227,"reinforcement learning algorithm – originally devised for the game of Go – that achieved superior results within a few hours, searching a thousand times fewer positions, given no domain"
+c17,llm_wf,claim,Main text,219,"scaled more effectively with thinking time than either Stockfish or Elmo, calling into question"
+c18,llm_wf,claim,Main text,211,"all opponents, losing zero games to Stockfish and eight games to Elmo"
+c19,llm_wf,limitation,Main text,215,"80 thousand positions per second in chess and 40 thousand in shogi, compared to 70 million"
+c20,llm_wf,setting,Main text,102,and in general symmetries cannot be assumed. AlphaZero does not augment the training data
+c21,llm_wf,objective,Main text,96,"outcomes. AlphaZero instead estimates and optimises the expected outcome, taking account of"

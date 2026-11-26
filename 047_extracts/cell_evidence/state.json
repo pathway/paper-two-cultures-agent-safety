@@ -1,0 +1,102 @@
+[
+ {
+  "primitive": "state",
+  "setting": "T-RL",
+  "evidence_source": "sutton2018",
+  "candidate_ids": [
+   "e5"
+  ],
+  "quote": "In a Markov decision process, the probabilities given by p completely characterize the environment's dynamics.",
+  "reason": "The quantity the dynamics are conditioned on; the probabilities given by p \"completely characterize the environment's dynamics\" [@sutton2018].",
+  "fits": true,
+  "note": "already quote"
+ },
+ {
+  "primitive": "state",
+  "setting": "T-CHAT",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "The prompt; it does not change within the episode (no cited work supports this; judgement).",
+  "fits": false,
+  "note": "Reason cites no work, so no quote can be taken."
+ },
+ {
+  "primitive": "state",
+  "setting": "T-RLVR",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "As T-CHAT: the prompt, fixed (judgement; no cited work).",
+  "fits": false,
+  "note": "Reason cites no work."
+ },
+ {
+  "primitive": "state",
+  "setting": "T-PRM",
+  "evidence_source": "feng2023",
+  "candidate_ids": [
+   "c1"
+  ],
+  "quote": "The particularity of natural language tasks is that both the action and state are in language space.",
+  "reason": "The state is text: \"both the action and state are in language space\" [@feng2023], so the prefix of prompt plus steps so far can serve as the state.",
+  "fits": false,
+  "note": "Quote supports only that the state is in language space within an MDP; it does not say the prefix is the whole history or that the state is Markov."
+ },
+ {
+  "primitive": "state",
+  "setting": "T-AGENT",
+  "evidence_source": "wei2025",
+  "candidate_ids": [
+   "c15"
+  ],
+  "quote": "where an LLM drives the decision-making process based on its past actions and observations through tool-based interaction with the environment",
+  "reason": "The agent acts \"based on its past actions and observations through tool-based interaction with the environment\" [@wei2025], so the context window holds that history; the sandbox state is judgement.",
+  "fits": false,
+  "note": "Quote supports an agent acting on its past actions and observations; it says nothing of a sandbox state, hidden or resettable."
+ },
+ {
+  "primitive": "state",
+  "setting": "D-RL",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "As in training: Markov s_t (judgement; no cited work).",
+  "fits": false,
+  "note": "Reason cites no work."
+ },
+ {
+  "primitive": "state",
+  "setting": "D-CHAT",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "The context window; nothing persists across conversations unless the deployer adds memory (judgement; no cited work).",
+  "fits": false,
+  "note": "Reason cites no work."
+ },
+ {
+  "primitive": "state",
+  "setting": "D-AGENT-A",
+  "evidence_source": "yao2024",
+  "candidate_ids": [
+   "c2"
+  ],
+  "quote": "contents of the database form the state sdb (Figure 2a), which is hidden from the agent and the user",
+  "reason": "World state the model cannot see: \"contents of the database form the state sdb (Figure 2a), which is hidden from the agent and the user\" [@yao2024]; with only the context visible the process is non-Markov in the context [@kaelbling1998].",
+  "fits": true,
+  "note": "Quote supports the hidden world state; non-Markov in the context rests on [@kaelbling1998] (POMDP), not quoted; user intent not covered by this quote."
+ },
+ {
+  "primitive": "state",
+  "setting": "D-AGENT-X",
+  "evidence_source": "chen2024",
+  "candidate_ids": [
+   "c8"
+  ],
+  "quote": "retrieve knowledge and past experiences from a memory unit to make informed action plan",
+  "reason": "Agents \"retrieve knowledge and past experiences from a memory unit to make informed action plan\" [@chen2024], so memory-store contents are part of the state; the changed-world and bounded-belief parts are judgement [@kaelbling1998].",
+  "fits": false,
+  "note": "Quote supports only memory stores as part of agent state; own earlier effects and lossy bounded belief are not supported."
+ }
+]

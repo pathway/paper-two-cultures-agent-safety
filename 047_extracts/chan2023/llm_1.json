@@ -1,0 +1,122 @@
+[
+ {
+  "topic": "claim",
+  "locator": "abstract",
+  "text": "Rather, we use the term agency to highlight the increasingly evident fact that ML systems are not fully under human control."
+ },
+ {
+  "topic": "claim",
+  "locator": "1",
+  "text": "This paper is not about the moral agency or consciousness of algorithms or machines. Instead, we focus on identifying a property of emerging ML systems, argue for the need to anticipate harms from systems that increasingly satisfy this property"
+ },
+ {
+  "topic": "setting",
+  "locator": "2.1",
+  "text": "Underspecification: the degree to which the algorithmic system can accomplish a goal provided by operators or designers, without a concrete specification of how the goal is to be accomplished [D’Amour et al. 2020a]."
+ },
+ {
+  "topic": "action",
+  "locator": "2.1",
+  "text": "Directness of impact: the degree to which the algorithmic system’s actions affect the world without mediation or intervention by a human, i.e. without a human in the loop."
+ },
+ {
+  "topic": "objective",
+  "locator": "2.1",
+  "text": "Goal-directedness: the degree to which the system acts as if it is designed/trained to achieve a particular quantifiable objective."
+ },
+ {
+  "topic": "episode",
+  "locator": "2.1",
+  "text": "Long-term planning: the degree to which the algorithmic system is designed/trained to make decisions that are temporally dependent upon one another to achieve a goal and/or make predictions over a long time horizon."
+ },
+ {
+  "topic": "principal",
+  "locator": "2.2",
+  "text": "In our context, we view the principal as humans and the agent as algorithmic systems, as done in prior work [Hadfield-Menell and Hadfield 2019]."
+ },
+ {
+  "topic": "principal",
+  "locator": "2.2",
+  "text": "Crucially, the agent and principal have different incentives2 and information: the principal does not tell the agent how to complete the tasks (underspecification)."
+ },
+ {
+  "topic": "reward",
+  "locator": "2.2",
+  "text": "The environment also gives rise to rewards, special numerical values that the agent seeks to maximize over time through its choice of actions.”"
+ },
+ {
+  "topic": "llm",
+  "locator": "2.2",
+  "text": "Note that reinforcement learning is not the only way of constructing agents, however. For instance, recent work has shown that foundation models can perform planning tasks [Huang et al. 2022]."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.1.1",
+  "text": "RL is about designing systems to learn, without human intervention, to achieve a goal encoded in a reward function."
+ },
+ {
+  "topic": "llm",
+  "locator": "3.1.2",
+  "text": "Although language models are only trained on next-token prediction, they can be leveraged to interact with APIs and accomplish a wide variety of multi-step digital tasks with increasingly less explicit human intervention"
+ },
+ {
+  "topic": "action",
+  "locator": "3.1.2",
+  "text": "AutoGPT [noa 2023] chains together an arbitrary number of GPT-4 calls to accomplish a high-level task on one’s computer without one’s intervention."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3.1.2",
+  "text": "large language models can perform poorly on planning and reasoning tasks, and such systems are prone to hallucinate unintended text, which fails to meet users’ intents on many real-world scenarios."
+ },
+ {
+  "topic": "llm",
+  "locator": "3.2.5",
+  "text": "For example, LLMs are trained to model a distribution of internet text; this training leads to emergent behavior such as learning from very few examples [Olsson et al. 2022], or arithmetic [Brown et al. 2020], or even the ability itself to perform sequential reasoning [Wei et al. 2023]."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3.3.1",
+  "text": "We are also not claiming that systems of significantly greater agency than those in development already (e.g., compared to ACT-1 [Adept 2022], GATO [Reed et al. 2022]) will be coming soon."
+ },
+ {
+  "topic": "failure",
+  "locator": "4.1",
+  "text": "show that long time-horizon systems, such as RLRS, will have incentives to change or manipulate users’ internal states (e.g. preferences, beliefs, and psychology) for the purposes of increasing the metrics the RLRS systems are optimizing."
+ },
+ {
+  "topic": "objective",
+  "locator": "4.2.1",
+  "text": "Specifying a correct objective function is quite difficult [Krakovna et al. 2020; Skalse et al. 2022]. Even a system successfully trained under a correctly specified objective function may do something completely different in a different environment [Langosco et al. 2022; Shah et al. 2022]."
+ },
+ {
+  "topic": "failure",
+  "locator": "4.3.1",
+  "text": "This kind of failure is called reward hacking [Krakovna et al. 2020; Skalse et al. 2022], which is when a system exploits a reward signal to achieve a goal in an unforeseen, perhaps undesirable way."
+ },
+ {
+  "topic": "llm",
+  "locator": "4.3.2",
+  "text": "show that increased training of a LLM with RL techniques can increase the proportion of the time that the LLM expresses the pursuit of convergent instrumental goals, such as gaining wealth and persuading the operator not to shut it off, without any apparent designer or operator instruction to do so."
+ },
+ {
+  "topic": "limitation",
+  "locator": "4.3.2",
+  "text": "It is important not to overstate this early evidence; expressing a desire to pursue a goal is different from actually pursuing the goal in the world."
+ },
+ {
+  "topic": "oversight",
+  "locator": "5.1",
+  "text": "Since one typically audits a deployed system, it will be difficult to perform thorough audits of increasingly agentic systems before they are widely deployed."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5.1",
+  "text": "Small-scale studies and simulations will almost certainly fail to capture perfectly what would happen if the system was actually deployed on a large."
+ },
+ {
+  "topic": "reward",
+  "locator": "5.1",
+  "text": "Gilbert et al. [2022] introduces reward reports to document what it appears that systems are optimizing for, which may help to reduce the likelihood of unintended negative consequences from system operation."
+ }
+]

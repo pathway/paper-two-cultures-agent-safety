@@ -1,0 +1,34 @@
+id,pass,topic,locator,line,text
+c1,llm_wf,setting,2,105,"An MDP is a model of an agent interacting synchronously with a world. As shown in Fig. 1, the agent takes as input the state of the world and generates as output actions, which themselves affect the state of the world."
+c2,llm_wf,state,2,108,"In the MDP framework, it is assumed that, although there may be a great deal of uncertainty about the effects of an agent’s actions, there is never any uncertainty about the agent’s current state—it has complete and perfect perceptual abilities."
+c3,llm_wf,transition,2.1,117,"T : S × A → Π(S) is the state-transition function, giving for each world state and agent action, a probability distribution over world states"
+c4,llm_wf,reward,2.1,128,"R : S × A → R is the reward function, giving the expected immediate reward gained by the agent for taking each action in each state (we write R(s, a) for the expected reward for taking action a in state s)."
+c5,llm_wf,state,2.1,131,"In this model, the next state and the expected reward depend only on the previous state and the action taken; even if we were to condition on additional previous states, the transition probabilities and the expected rewards would remain the same."
+c6,llm_wf,objective,2.2,140,We would like our agents to act in such a way as to maximize some measure of the long-run reward received.
+c7,llm_wf,episode,2.2,164,This sum is also the expected amount of reward received if a decision to terminate the run is made on each step with probability 1 − γ .
+c8,llm_wf,policy,2.2,170,"A policy is a description of the behavior of an agent. We consider two kinds of policies: stationary and nonstationary. A stationary policy, π : S → A, is a situation-action mapping that specifies, for each state, an action to be taken."
+c9,llm_wf,value,2.2,202,"In the infinite-horizon discounted case, we write Vπ (s) for the expected discounted sum of future reward for starting in state s and executing policy π ."
+c10,llm_wf,value,2.2,185,"Given a policy, we can evaluate it based on the long-run value that the agent expects to gain from executing it."
+c11,llm_wf,setting,1,66,"This is essentially a planning problem: given a complete and correct model of the world dynamics and a reward structure, find an optimal way to behave."
+c12,llm_wf,policy,1,71,"Rather than taking plans to be sequences of actions, which may only rarely execute as expected, we take them to be mappings from situations to actions that specify the agent’s behavior no matter what may happen."
+c13,llm_wf,limitation,1,75,"A weakness of the methods described in this paper is that they require the states of the world to be represented enumeratively, rather than through compositional representations such as Bayes nets or probabilistic operator descriptions."
+c14,llm_wf,claim,1,95,"This paper is intended to make two contributions. The first is to recapitulate work from the operations-research literature [36,42,56,59,64] and to describe its connection to closely related work in AI."
+c15,llm_wf,action,1,81,"One important facet of the POMDP approach is that there is no distinction drawn between actions taken to change the state of the world and actions taken to gain information. This is important because, in general, every action has both types of effect."
+c16,llm_wf,setting,3.1,351,"A POMDP is an MDP in which the agent is unable to observe the current state. Instead, it makes an observation based on the action and resulting state."
+c17,llm_wf,observation,3.1,347,"O : S × A → Π(Ω) is the observation function, which gives, for each action and resulting state, a probability distribution over possible observations"
+c18,llm_wf,state,3.2,379,Our choice for belief states will be probability distributions over states of the world. These distributions encode the agent’s subjective probability about the state of the world and provide a basis for acting under uncertainty.
+c19,llm_wf,state,3.2,384,"This means that the process over belief states is Markov, and that no additional data about the past would help to increase the agent’s expected reward."
+c20,llm_wf,reward,3.4,490,"However, because the state estimator is constructed from a correct observation and transition model of the world, the belief state represents the true occupation probabilities for all states s ∈ S, and therefore the reward function ρ represents the true expected reward to the agent."
+c21,llm_wf,failure,5.1,974,"If the agent opens the door with the tiger, then a large penalty is received (presumably in the form of some amount of bodily injury)."
+c22,llm_wf,reward,5.1,981,The reward for opening the correct door is +10 and the penalty for choosing the door with the tiger behind it is −100. The cost of listening is −1.
+c23,llm_wf,episode,5.1,984,"Immediately after the agent opens a door and receives a reward or penalty, the problem resets, randomly relocating the tiger behind one of the two doors."
+c24,llm_wf,transition,5.1,987,The LISTEN action does not change the state of the world. The LEFT and RIGHT actions cause a transition to world state sl with probability 0.5 and to state sr with probability 0.5 (essentially resetting the problem).
+c25,llm_wf,policy,5.4,1131,A plan graph is essentially a finite-state controller. It uses the minimal possible amount of memory to act optimally in a partially observable environment.
+c26,llm_wf,limitation,5.4,1107,"One drawback of the POMDP approach is that the agent must maintain a belief state and use it to select an optimal action on every step; if the underlying state space or V is large, then this computation can be expensive."
+c27,llm_wf,limitation,5.4,1163,It is also important to note that there is no known a priori bound on the size of the optimal plan graph in terms of the size of the problem.
+c28,llm_wf,objective,6.5,1283,This shows that the total-reward criterion is no less general than goal achievement in completely observable domains. The same holds for finite-horizon partially observable domains.
+c29,llm_wf,episode,6.5,1296,"Quite frequently, POMDPs are used to model situations in which the agent is expected to go on behaving indefinitely, rather than simply until a goal is achieved."
+c30,llm_wf,value,6.5,1301,"Using a discounted-optimal policy in a truly infinite-duration setting is a convenient approximation, similar to the use of a situation-action mapping from a finite-horizon policy in receding horizon control."
+c31,llm_wf,limitation,7,1379,"However, experimental results [34] suggest that even the witness algorithm becomes impractical for problems of modest size (|S| > 15 and |Ω| > 15)."
+c32,llm_wf,limitation,7,1387,Another area that is not addressed in this paper is the acquisition of a world model.
+c33,llm_wf,claim,Abstract,17,"We then outline a novel algorithm for solving POMDPs off line and show how, in some cases, a finite-memory controller can be extracted from the solution to a POMDP."

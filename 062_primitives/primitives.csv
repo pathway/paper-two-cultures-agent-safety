@@ -1,0 +1,9 @@
+id,label,rl_definition,evidence,by
+reward,Reward,A scalar signal from the environment at each step; the agent's goal is to maximise its expected cumulative sum.,e2; e8; e9,LLM
+policy,Policy,A mapping from states to probabilities of actions; the object that learning changes.,e13; e14; e15,LLM
+action,Action,What the agent selects at each step; low-level controls or high-level decisions from a set A(s).,e3; e7,LLM
+observation,Observation,The representation of the environment's state that the agent receives at each step.,e3,LLM
+state,State,What the dynamics p are conditioned on; Markov when it carries all past information that matters for the future.,e5,LLM
+transition,Transition,"The dynamics p(s', r | s, a) of the environment.",e4,LLM
+episode,Episode,A subsequence of interaction that ends in a terminal state and is followed by a reset; the next episode begins independently.,e6; e11; e12,LLM
+value,Value,Expected return under a policy; the central computational object of RL methods.,e17,LLM

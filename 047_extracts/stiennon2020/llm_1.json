@@ -1,0 +1,127 @@
+[
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "we show that it is possible to significantly improve summary quality by training a model to optimize for human preferences."
+ },
+ {
+  "topic": "reward",
+  "locator": "Abstract",
+  "text": "train a model to predict the human-preferred summary, and use that model as a reward function to fine-tune a summarization policy using reinforcement learning."
+ },
+ {
+  "topic": "policy",
+  "locator": "1",
+  "text": "the policy generates a token of text at each ‘time step’, and is updated using the PPO algorithm [58] based on the RM ‘reward’ given to the entire generated summary."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.1",
+  "text": "We treat the logit output of the reward model as a reward that we optimize using reinforcement learning, specifically with the PPO algorithm [58]."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.4",
+  "text": "we start from a supervised baseline, as described above, then add a randomly initialized linear head that outputs a scalar value."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.4",
+  "text": "The full reward R can be written as: R(x, y) = rθ (x, y) − β log[πφRL (y|x)/π SFT (y|x)]"
+ },
+ {
+  "topic": "action",
+  "locator": "3.4",
+  "text": "treating the output of the reward model as a reward for the entire summary that we maximize with the PPO algorithm [58], where each time step is a BPE token."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.4 fn8",
+  "text": "Note that the reward model only gives rewards for entire summaries, and not at intermediate time steps."
+ },
+ {
+  "topic": "episode",
+  "locator": "3.4 fn8",
+  "text": "In RL terminology, each episode terminates when the policy outputs the EOS token, and the discount factor γ = 1."
+ },
+ {
+  "topic": "value",
+  "locator": "3.4",
+  "text": "For the PPO value function, we use a Transformer with completely separate parameters from the policy."
+ },
+ {
+  "topic": "policy",
+  "locator": "3.1",
+  "text": "We start with an initial policy that is fine-tuned via supervised learning on the desired dataset (in our case, the Reddit TL;DR summarization dataset)."
+ },
+ {
+  "topic": "oversight",
+  "locator": "3.3",
+  "text": "we maintain a hands-on relationship with labelers:7 we on-board them with detailed instructions, answer their questions in a shared chat room, and provide regular feedback on their performance."
+ },
+ {
+  "topic": "principal",
+  "locator": "3.2",
+  "text": "Since we have limited capacity to do comparisons, we hire labelers to do the comparisons for us."
+ },
+ {
+  "topic": "objective",
+  "locator": "3.2",
+  "text": "We define our ground-truth task as producing a model that generates summaries fewer than 48 tokens long that are as good as possible, according to our judgments."
+ },
+ {
+  "topic": "transition",
+  "locator": "3.3",
+  "text": "we transition entirely to the offline setting, where we alternate between sending large batches of comparison data6 to our human labelers and re-training our models on the cumulative collected data."
+ },
+ {
+  "topic": "failure",
+  "locator": "4.3",
+  "text": "However, as we optimize further, true preferences fall off compared to the prediction, and eventually the reward model becomes anti-correlated with human preferences."
+ },
+ {
+  "topic": "failure",
+  "locator": "4.3",
+  "text": "But the reward model isn’t a perfect representation of our labeler preferences, as it has limited capacity and only sees a small amount of comparison data from a relatively narrow distribution of summaries."
+ },
+ {
+  "topic": "failure",
+  "locator": "4.3",
+  "text": "However, our RMs are biased towards longer summaries: our 6.7B RM prefers improving edits that make the summary shorter only 62.6% of the time (vs. 76.4% for humans)."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5",
+  "text": "One limitation of our work is the time and cost required to produce our final models. Notably, fine-tuning our 6.7B model with RL required approximately 320 GPU-days."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5",
+  "text": "we were unable to collect baselines such as an equivalent amount of high-quality human demonstrations for supervised baselines."
+ },
+ {
+  "topic": "principal",
+  "locator": "Broader impacts",
+  "text": "it is likely not appropriate to use researcher labels as the ‘gold standard’; rather, individuals from groups impacted by the technology should be included in the process to define ‘good’ behavior"
+ },
+ {
+  "topic": "llm",
+  "locator": "1",
+  "text": "We follow the works of [48, 4] and use large pretrained GPT-3 models with as many as 6.7 billion parameters."
+ },
+ {
+  "topic": "setting",
+  "locator": "3.1",
+  "text": "The process (illustrated in Figure 2) then consists of three steps that can be repeated iteratively."
+ },
+ {
+  "topic": "objective",
+  "locator": "1",
+  "text": "there is still a misalignment between this fine-tuning objective—maximizing the likelihood of human-written text—and what we care about—generating high-quality outputs as determined by humans."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5",
+  "text": "In this setting, it is particularly challenging to identify whether an ML system is aligned with the human designer’s intentions."
+ }
+]

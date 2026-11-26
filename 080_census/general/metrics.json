@@ -1,0 +1,1229 @@
+{
+ "generated": "2026-11-26 01:42 UTC",
+ "queries": {
+  "A": [
+   "reinforcement learning agent",
+   "deep reinforcement learning",
+   "policy gradient reinforcement learning",
+   "Markov decision process reinforcement learning",
+   "model-based reinforcement learning",
+   "multi-agent reinforcement learning",
+   "offline reinforcement learning"
+  ],
+  "B": [
+   "LLM agent",
+   "large language model agent",
+   "tool-use language model",
+   "LLM-based autonomous agent",
+   "agentic workflow large language model",
+   "reasoning and acting language model agent",
+   "multi-agent LLM system"
+  ]
+ },
+ "years": "2012-2026",
+ "per_query_cap": 200,
+ "sizes": {
+  "A": 1117,
+  "B": 703,
+  "bridge": 0
+ },
+ "cross_citation": {
+  "A": {
+   "total_refs": 52183,
+   "to_A": 3382,
+   "to_B": 3,
+   "frac_to_A": 0.06481037885901539,
+   "frac_to_B": 5.748998716056953e-05,
+   "papers": 1117,
+   "papers_citing_A": 852,
+   "papers_citing_B": 2,
+   "within": 3382,
+   "cross": 3,
+   "in_corpus_refs": 3385,
+   "cross_share_of_in_corpus": 0.0008862629246676514
+  },
+  "B": {
+   "total_refs": 22865,
+   "to_A": 50,
+   "to_B": 464,
+   "frac_to_A": 0.002186748305270063,
+   "frac_to_B": 0.020293024272906187,
+   "papers": 703,
+   "papers_citing_A": 35,
+   "papers_citing_B": 249,
+   "within": 464,
+   "cross": 50,
+   "in_corpus_refs": 514,
+   "cross_share_of_in_corpus": 0.09727626459143969
+  }
+ },
+ "author_overlap": {
+  "authors_A": 3838,
+  "authors_B": 2857,
+  "authors_both": 52,
+  "frac_of_A_authors": 0.01354872329338197,
+  "frac_of_B_authors": 0.018200910045502276,
+  "jaccard": 0.007827788649706457,
+  "papers_A_with_bridging_author": 81,
+  "papers_B_with_bridging_author": 50,
+  "top_bridging": [
+   {
+    "id": "https://openalex.org/A5026322200",
+    "name": "Sergey Levine",
+    "papers_A": 12,
+    "papers_B": 1
+   },
+   {
+    "id": "https://openalex.org/A5001594330",
+    "name": "Peter Stone",
+    "papers_A": 5,
+    "papers_B": 1
+   },
+   {
+    "id": "https://openalex.org/A5090073634",
+    "name": "Yaodong Yang",
+    "papers_A": 5,
+    "papers_B": 1
+   },
+   {
+    "id": "https://openalex.org/A5090720315",
+    "name": "Weinan Zhang",
+    "papers_A": 4,
+    "papers_B": 2
+   },
+   {
+    "id": "https://openalex.org/A5091266202",
+    "name": "Dusit Tao Niyato",
+    "papers_A": 4,
+    "papers_B": 2
+   },
+   {
+    "id": "https://openalex.org/A5074103823",
+    "name": "Dacheng Tao",
+    "papers_A": 3,
+    "papers_B": 2
+   },
+   {
+    "id": "https://openalex.org/A5059094093",
+    "name": "Jakob Foerster",
+    "papers_A": 4,
+    "papers_B": 1
+   },
+   {
+    "id": "https://openalex.org/A5100400497",
+    "name": "Meng Fang",
+    "papers_A": 2,
+    "papers_B": 2
+   },
+   {
+    "id": "https://openalex.org/A5100433167",
+    "name": "Jun Zhang",
+    "papers_A": 1,
+    "papers_B": 3
+   },
+   {
+    "id": "https://openalex.org/A5037613999",
+    "name": "Zuxin Liu",
+    "papers_A": 3,
+    "papers_B": 1
+   },
+   {
+    "id": "https://openalex.org/A5036357902",
+    "name": "Philip S. Yu",
+    "papers_A": 1,
+    "papers_B": 3
+   },
+   {
+    "id": "https://openalex.org/A5001087292",
+    "name": "Marc G. Bellemare",
+    "papers_A": 3,
+    "papers_B": 1
+   },
+   {
+    "id": "https://openalex.org/A5108047889",
+    "name": "Yi-Xiang Wang",
+    "papers_A": 3,
+    "papers_B": 1
+   },
+   {
+    "id": "https://openalex.org/A5005327587",
+    "name": "Zehui Xiong",
+    "papers_A": 1,
+    "papers_B": 3
+   },
+   {
+    "id": "https://openalex.org/A5100384838",
+    "name": "Jun Wang",
+    "papers_A": 1,
+    "papers_B": 3
+   },
+   {
+    "id": "https://openalex.org/A5056145687",
+    "name": "Merouane Abdelkader Debbah",
+    "papers_A": 2,
+    "papers_B": 2
+   },
+   {
+    "id": "https://openalex.org/A5048237545",
+    "name": "Enhong Chen",
+    "papers_A": 1,
+    "papers_B": 2
+   },
+   {
+    "id": "https://openalex.org/A5063667378",
+    "name": "Zhu Han",
+    "papers_A": 2,
+    "papers_B": 1
+   },
+   {
+    "id": "https://openalex.org/A5075795654",
+    "name": "Laixi Shi",
+    "papers_A": 2,
+    "papers_B": 1
+   },
+   {
+    "id": "https://openalex.org/A5006181255",
+    "name": "Vladlen Koltun",
+    "papers_A": 2,
+    "papers_B": 1
+   }
+  ]
+ },
+ "venue_overlap": {
+  "top_A": [
+   [
+    "arXiv",
+    391
+   ],
+   [
+    "Transactions on machine learning research",
+    26
+   ],
+   [
+    "IEEE Access",
+    21
+   ],
+   [
+    "IEEE Transactions on Neural Networks and Learning Systems",
+    17
+   ],
+   [
+    "IEEE Robotics and Automation Letters",
+    15
+   ],
+   [
+    "Neurocomputing",
+    14
+   ],
+   [
+    "IEEE Transactions on Intelligent Transportation Systems",
+    12
+   ],
+   [
+    "SSRN Electronic Journal",
+    12
+   ],
+   [
+    "IEEE Transactions on Wireless Communications",
+    12
+   ],
+   [
+    "Knowledge-Based Systems",
+    11
+   ],
+   [
+    "IEEE Transactions on Smart Grid",
+    11
+   ],
+   [
+    "IEEE Transactions on Vehicular Technology",
+    11
+   ],
+   [
+    "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    10
+   ],
+   [
+    "IEEE Internet of Things Journal",
+    10
+   ],
+   [
+    "IEEE Transactions on Cybernetics",
+    8
+   ]
+  ],
+  "top_B": [
+   [
+    "arXiv",
+    371
+   ],
+   [
+    "Zenodo (CERN European Organization for Nuclear Research)",
+    90
+   ],
+   [
+    "SSRN Electronic Journal",
+    31
+   ],
+   [
+    "Research Square",
+    12
+   ],
+   [
+    "IEEE Access",
+    9
+   ],
+   [
+    "Preprints.org",
+    8
+   ],
+   [
+    "Applied Sciences",
+    4
+   ],
+   [
+    "OSF Preprints (OSF Preprints)",
+    3
+   ],
+   [
+    "IEEE Transactions on Visualization and Computer Graphics",
+    3
+   ],
+   [
+    "Figshare",
+    3
+   ],
+   [
+    "Journal of Advanced Artificial Intelligence Research",
+    3
+   ],
+   [
+    "Proceedings of the ACM on software engineering.",
+    2
+   ],
+   [
+    "IEEE Transactions on Computational Social Systems",
+    2
+   ],
+   [
+    "Journal of Information Security",
+    2
+   ],
+   [
+    "Science China Information Sciences",
+    2
+   ]
+  ],
+  "n_venues_A": 321,
+  "n_venues_B": 136,
+  "shared": 44,
+  "jaccard_all": 0.10653753026634383,
+  "jaccard_min2": 0.09090909090909091,
+  "shared_min2": [
+   "Applied Sciences",
+   "Electronics",
+   "Energy and Buildings",
+   "IEEE Access",
+   "Information Fusion",
+   "Research Square",
+   "SSRN Electronic Journal",
+   "Science China Information Sciences",
+   "TechRxiv",
+   "Zenodo (CERN European Organization for Nuclear Research)",
+   "arXiv"
+  ],
+  "no_venue_A": 20,
+  "no_venue_B": 24
+ },
+ "community": {
+  "nodes_total": 1820,
+  "isolated_nodes": 570,
+  "nodes_connected": 1250,
+  "edges": 3885,
+  "cross_label_edges": 53,
+  "cross_edge_frac": 0.013642213642213642,
+  "n_communities": 28,
+  "purity": 0.9832,
+  "nmi": 0.3803116483096977,
+  "modularity_louvain": 0.5322591758885195,
+  "modularity_AB_labels": 0.2069868765621661,
+  "n_components": 20,
+  "largest_component": 1205,
+  "largest_communities": [
+   {
+    "community": 3,
+    "size": 276,
+    "A": 275,
+    "B": 1,
+    "top_queries": "deep reinforcement learning (114); reinforcement learning agent (62); policy gradient reinforcement learning (37)"
+   },
+   {
+    "community": 21,
+    "size": 275,
+    "A": 0,
+    "B": 275,
+    "top_queries": "LLM agent (129); large language model agent (56); multi-agent LLM system (49)"
+   },
+   {
+    "community": 10,
+    "size": 189,
+    "A": 188,
+    "B": 1,
+    "top_queries": "offline reinforcement learning (158); model-based reinforcement learning (14); deep reinforcement learning (8)"
+   },
+   {
+    "community": 4,
+    "size": 166,
+    "A": 159,
+    "B": 7,
+    "top_queries": "multi-agent reinforcement learning (120); deep reinforcement learning (18); reinforcement learning agent (10)"
+   },
+   {
+    "community": 7,
+    "size": 114,
+    "A": 113,
+    "B": 1,
+    "top_queries": "model-based reinforcement learning (92); offline reinforcement learning (6); reinforcement learning agent (5)"
+   },
+   {
+    "community": 8,
+    "size": 79,
+    "A": 74,
+    "B": 5,
+    "top_queries": "reinforcement learning agent (29); deep reinforcement learning (19); multi-agent reinforcement learning (12)"
+   },
+   {
+    "community": 2,
+    "size": 65,
+    "A": 65,
+    "B": 0,
+    "top_queries": "deep reinforcement learning (22); reinforcement learning agent (18); policy gradient reinforcement learning (11)"
+   },
+   {
+    "community": 15,
+    "size": 37,
+    "A": 31,
+    "B": 6,
+    "top_queries": "deep reinforcement learning (12); multi-agent reinforcement learning (7); large language model agent (6)"
+   },
+   {
+    "community": 5,
+    "size": 4,
+    "A": 4,
+    "B": 0,
+    "top_queries": "policy gradient reinforcement learning (4)"
+   },
+   {
+    "community": 6,
+    "size": 4,
+    "A": 4,
+    "B": 0,
+    "top_queries": "policy gradient reinforcement learning (4)"
+   }
+  ]
+ },
+ "time_series": [
+  {
+   "year": 2012,
+   "B_papers": 0,
+   "B_refs": 0,
+   "B_to_A": 0,
+   "B_to_B": 0,
+   "B_to_A_rate": null,
+   "B_papers_citing_A": 0,
+   "A_papers": 9,
+   "A_refs": 184,
+   "A_to_B": 0,
+   "A_to_A": 0,
+   "A_to_B_rate": 0.0,
+   "A_papers_citing_B": 0
+  },
+  {
+   "year": 2013,
+   "B_papers": 0,
+   "B_refs": 0,
+   "B_to_A": 0,
+   "B_to_B": 0,
+   "B_to_A_rate": null,
+   "B_papers_citing_A": 0,
+   "A_papers": 6,
+   "A_refs": 103,
+   "A_to_B": 0,
+   "A_to_A": 0,
+   "A_to_B_rate": 0.0,
+   "A_papers_citing_B": 0
+  },
+  {
+   "year": 2014,
+   "B_papers": 0,
+   "B_refs": 0,
+   "B_to_A": 0,
+   "B_to_B": 0,
+   "B_to_A_rate": null,
+   "B_papers_citing_A": 0,
+   "A_papers": 8,
+   "A_refs": 412,
+   "A_to_B": 0,
+   "A_to_A": 0,
+   "A_to_B_rate": 0.0,
+   "A_papers_citing_B": 0
+  },
+  {
+   "year": 2015,
+   "B_papers": 0,
+   "B_refs": 0,
+   "B_to_A": 0,
+   "B_to_B": 0,
+   "B_to_A_rate": null,
+   "B_papers_citing_A": 0,
+   "A_papers": 11,
+   "A_refs": 284,
+   "A_to_B": 0,
+   "A_to_A": 12,
+   "A_to_B_rate": 0.0,
+   "A_papers_citing_B": 0
+  },
+  {
+   "year": 2016,
+   "B_papers": 0,
+   "B_refs": 0,
+   "B_to_A": 0,
+   "B_to_B": 0,
+   "B_to_A_rate": null,
+   "B_papers_citing_A": 0,
+   "A_papers": 27,
+   "A_refs": 786,
+   "A_to_B": 0,
+   "A_to_A": 34,
+   "A_to_B_rate": 0.0,
+   "A_papers_citing_B": 0
+  },
+  {
+   "year": 2017,
+   "B_papers": 0,
+   "B_refs": 0,
+   "B_to_A": 0,
+   "B_to_B": 0,
+   "B_to_A_rate": null,
+   "B_papers_citing_A": 0,
+   "A_papers": 38,
+   "A_refs": 1980,
+   "A_to_B": 0,
+   "A_to_A": 85,
+   "A_to_B_rate": 0.0,
+   "A_papers_citing_B": 0
+  },
+  {
+   "year": 2018,
+   "B_papers": 0,
+   "B_refs": 0,
+   "B_to_A": 0,
+   "B_to_B": 0,
+   "B_to_A_rate": null,
+   "B_papers_citing_A": 0,
+   "A_papers": 63,
+   "A_refs": 3179,
+   "A_to_B": 0,
+   "A_to_A": 148,
+   "A_to_B_rate": 0.0,
+   "A_papers_citing_B": 0
+  },
+  {
+   "year": 2019,
+   "B_papers": 0,
+   "B_refs": 0,
+   "B_to_A": 0,
+   "B_to_B": 0,
+   "B_to_A_rate": null,
+   "B_papers_citing_A": 0,
+   "A_papers": 81,
+   "A_refs": 3477,
+   "A_to_B": 0,
+   "A_to_A": 211,
+   "A_to_B_rate": 0.0,
+   "A_papers_citing_B": 0
+  },
+  {
+   "year": 2020,
+   "B_papers": 0,
+   "B_refs": 0,
+   "B_to_A": 0,
+   "B_to_B": 0,
+   "B_to_A_rate": null,
+   "B_papers_citing_A": 0,
+   "A_papers": 105,
+   "A_refs": 4671,
+   "A_to_B": 0,
+   "A_to_A": 289,
+   "A_to_B_rate": 0.0,
+   "A_papers_citing_B": 0
+  },
+  {
+   "year": 2021,
+   "B_papers": 0,
+   "B_refs": 0,
+   "B_to_A": 0,
+   "B_to_B": 0,
+   "B_to_A_rate": null,
+   "B_papers_citing_A": 0,
+   "A_papers": 141,
+   "A_refs": 7149,
+   "A_to_B": 0,
+   "A_to_A": 491,
+   "A_to_B_rate": 0.0,
+   "A_papers_citing_B": 0
+  },
+  {
+   "year": 2022,
+   "B_papers": 0,
+   "B_refs": 0,
+   "B_to_A": 0,
+   "B_to_B": 0,
+   "B_to_A_rate": null,
+   "B_papers_citing_A": 0,
+   "A_papers": 125,
+   "A_refs": 6628,
+   "A_to_B": 0,
+   "A_to_A": 506,
+   "A_to_B_rate": 0.0,
+   "A_papers_citing_B": 0
+  },
+  {
+   "year": 2023,
+   "B_papers": 8,
+   "B_refs": 275,
+   "B_to_A": 1,
+   "B_to_B": 4,
+   "B_to_A_rate": 0.0036363636363636364,
+   "B_papers_citing_A": 1,
+   "A_papers": 134,
+   "A_refs": 7100,
+   "A_to_B": 0,
+   "A_to_A": 481,
+   "A_to_B_rate": 0.0,
+   "A_papers_citing_B": 0
+  },
+  {
+   "year": 2024,
+   "B_papers": 71,
+   "B_refs": 3032,
+   "B_to_A": 5,
+   "B_to_B": 37,
+   "B_to_A_rate": 0.0016490765171503958,
+   "B_papers_citing_A": 4,
+   "A_papers": 139,
+   "A_refs": 7165,
+   "A_to_B": 1,
+   "A_to_A": 569,
+   "A_to_B_rate": 0.00013956734124214934,
+   "A_papers_citing_B": 1
+  },
+  {
+   "year": 2025,
+   "B_papers": 138,
+   "B_refs": 6785,
+   "B_to_A": 17,
+   "B_to_B": 110,
+   "B_to_A_rate": 0.002505526897568165,
+   "B_papers_citing_A": 11,
+   "A_papers": 109,
+   "A_refs": 5741,
+   "A_to_B": 2,
+   "A_to_A": 381,
+   "A_to_B_rate": 0.00034837136387388956,
+   "A_papers_citing_B": 1
+  },
+  {
+   "year": 2026,
+   "B_papers": 486,
+   "B_refs": 12773,
+   "B_to_A": 27,
+   "B_to_B": 313,
+   "B_to_A_rate": 0.002113833868315979,
+   "B_papers_citing_A": 19,
+   "A_papers": 121,
+   "A_refs": 3324,
+   "A_to_B": 0,
+   "A_to_A": 175,
+   "A_to_B_rate": 0.0,
+   "A_papers_citing_B": 0
+  }
+ ],
+ "canonical": {
+  "B_cites_canonA": {
+   "rows": [
+    {
+     "work": "Achiam et al. 2017 Constrained Policy Optimization",
+     "openalex_ids": [
+      "https://openalex.org/W2616964725"
+     ],
+     "citers": 1
+    },
+    {
+     "work": "Alshiekh et al. 2018 Safe RL via Shielding",
+     "openalex_ids": [
+      "https://openalex.org/W2751422670"
+     ],
+     "citers": 0
+    },
+    {
+     "work": "Moldovan & Abbeel 2012 Safe Exploration in MDPs",
+     "openalex_ids": [
+      "https://openalex.org/W2151237105"
+     ],
+     "citers": 0
+    },
+    {
+     "work": "Ray, Achiam, Amodei 2019 Safety Gym",
+     "openalex_ids": [],
+     "citers": 0
+    },
+    {
+     "work": "Garcia & Fernandez 2015 survey",
+     "openalex_ids": [
+      "https://openalex.org/W1845972764"
+     ],
+     "citers": 0
+    },
+    {
+     "work": "Amodei et al. 2016 Concrete Problems",
+     "openalex_ids": [
+      "https://openalex.org/W2462906003"
+     ],
+     "citers": 8
+    }
+   ],
+   "papers_citing_any": 9,
+   "denominator": 703,
+   "frac": 0.012802275960170697
+  },
+  "A_cites_canonB": {
+   "rows": [
+    {
+     "work": "Greshake et al. 2023 indirect prompt injection",
+     "openalex_ids": [
+      "https://openalex.org/W4388886073"
+     ],
+     "citers": 0
+    },
+    {
+     "work": "Debenedetti et al. 2024 AgentDojo",
+     "openalex_ids": [
+      "https://openalex.org/W7128378279"
+     ],
+     "citers": 0
+    },
+    {
+     "work": "Greenblatt et al. 2024 Alignment Faking",
+     "openalex_ids": [
+      "https://openalex.org/W4405627013"
+     ],
+     "citers": 0
+    },
+    {
+     "work": "Greenblatt et al. 2023 AI Control",
+     "openalex_ids": [
+      "https://openalex.org/W4389714039"
+     ],
+     "citers": 0
+    },
+    {
+     "work": "Meinke et al. 2024 In-context scheming",
+     "openalex_ids": [
+      "https://openalex.org/W4405173927"
+     ],
+     "citers": 0
+    }
+   ],
+   "papers_citing_any": 0,
+   "denominator": 1117,
+   "frac": 0.0
+  },
+  "canon_meta": {
+   "Achiam et al. 2017 Constrained Policy Optimization": {
+    "id": "https://openalex.org/W2616964725",
+    "doi": "https://doi.org/10.48550/arxiv.1705.10528",
+    "title": "Constrained Policy Optimization",
+    "publication_year": 2017,
+    "cited_by_count": 2083
+   },
+   "Alshiekh et al. 2018 Safe RL via Shielding": {
+    "id": "https://openalex.org/W2751422670",
+    "doi": "https://doi.org/10.1609/aaai.v32i1.11797",
+    "title": "Safe Reinforcement Learning via Shielding",
+    "publication_year": 2018,
+    "cited_by_count": 691
+   },
+   "Moldovan & Abbeel 2012 Safe Exploration in MDPs": {
+    "id": "https://openalex.org/W2151237105",
+    "doi": "https://doi.org/10.48550/arxiv.1205.4810",
+    "title": "Safe Exploration in Markov Decision Processes",
+    "publication_year": 2012,
+    "cited_by_count": 378
+   },
+   "Ray, Achiam, Amodei 2019 Safety Gym": {
+    "error": "not found",
+    "ref": "title:Benchmarking Safe Exploration in Deep Reinforcement Learning"
+   },
+   "Garcia & Fernandez 2015 survey": {
+    "id": "https://openalex.org/W1845972764",
+    "doi": "https://doi.org/10.5555/2789272.2886795",
+    "title": "A comprehensive survey on safe reinforcement learning",
+    "publication_year": 2015,
+    "cited_by_count": 2835
+   },
+   "Amodei et al. 2016 Concrete Problems": {
+    "id": "https://openalex.org/W2462906003",
+    "doi": "https://doi.org/10.48550/arxiv.1606.06565",
+    "title": "Concrete Problems in AI Safety",
+    "publication_year": 2016,
+    "cited_by_count": 5438
+   },
+   "Greshake et al. 2023 indirect prompt injection": {
+    "id": "https://openalex.org/W4388886073",
+    "doi": "https://doi.org/10.1145/3605764.3623985",
+    "title": "Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection",
+    "publication_year": 2023,
+    "cited_by_count": 3567
+   },
+   "Debenedetti et al. 2024 AgentDojo": {
+    "id": "https://openalex.org/W7128378279",
+    "doi": "https://doi.org/10.48550/arxiv.2406.13352",
+    "title": "AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents",
+    "publication_year": 2024,
+    "cited_by_count": 670
+   },
+   "Greenblatt et al. 2024 Alignment Faking": {
+    "id": "https://openalex.org/W4405627013",
+    "doi": "https://doi.org/10.48550/arxiv.2412.14093",
+    "title": "Alignment faking in large language models",
+    "publication_year": 2024,
+    "cited_by_count": 914
+   },
+   "Greenblatt et al. 2023 AI Control": {
+    "id": "https://openalex.org/W4389714039",
+    "doi": "https://doi.org/10.48550/arxiv.2312.06942",
+    "title": "AI Control: Improving Safety Despite Intentional Subversion",
+    "publication_year": 2024,
+    "cited_by_count": 426
+   },
+   "Meinke et al. 2024 In-context scheming": {
+    "id": "https://openalex.org/W4405173927",
+    "doi": "https://doi.org/10.48550/arxiv.2412.04984",
+    "title": "Frontier Models are Capable of In-context Scheming",
+    "publication_year": 2024,
+    "cited_by_count": 592
+   }
+  }
+ },
+ "robustness": {
+  "queries_A": [
+   "constrained policy optimization",
+   "shielding reinforcement learning",
+   "safe exploration Markov decision process"
+  ],
+  "queries_B": [
+   "indirect prompt injection",
+   "alignment faking",
+   "jailbreak LLM agents"
+  ],
+  "sizes": {
+   "A": 140,
+   "B": 292,
+   "bridge": 0
+  },
+  "cross_citation": {
+   "A": {
+    "total_refs": 5160,
+    "to_A": 99,
+    "to_B": 0,
+    "frac_to_A": 0.01918604651162791,
+    "frac_to_B": 0.0,
+    "papers": 140,
+    "papers_citing_A": 71,
+    "papers_citing_B": 0,
+    "within": 99,
+    "cross": 0,
+    "in_corpus_refs": 99,
+    "cross_share_of_in_corpus": 0.0
+   },
+   "B": {
+    "total_refs": 5307,
+    "to_A": 0,
+    "to_B": 230,
+    "frac_to_A": 0.0,
+    "frac_to_B": 0.04333898624458263,
+    "papers": 292,
+    "papers_citing_A": 0,
+    "papers_citing_B": 104,
+    "within": 230,
+    "cross": 0,
+    "in_corpus_refs": 230,
+    "cross_share_of_in_corpus": 0.0
+   }
+  },
+  "community": {
+   "nodes_total": 432,
+   "isolated_nodes": 234,
+   "nodes_connected": 198,
+   "edges": 329,
+   "cross_label_edges": 0,
+   "cross_edge_frac": 0.0,
+   "n_communities": 11,
+   "purity": 1.0,
+   "nmi": 0.542138159607482,
+   "modularity_louvain": 0.6492364261231881,
+   "modularity_AB_labels": 0.4207278203268633,
+   "n_components": 8,
+   "largest_component": 86,
+   "largest_communities": [
+    {
+     "community": 6,
+     "size": 71,
+     "A": 71,
+     "B": 0,
+     "top_queries": "constrained policy optimization (68); shielding reinforcement learning (3)"
+    },
+    {
+     "community": 0,
+     "size": 40,
+     "A": 0,
+     "B": 40,
+     "top_queries": "indirect prompt injection (40)"
+    },
+    {
+     "community": 2,
+     "size": 30,
+     "A": 0,
+     "B": 30,
+     "top_queries": "alignment faking (30)"
+    },
+    {
+     "community": 10,
+     "size": 24,
+     "A": 0,
+     "B": 24,
+     "top_queries": "indirect prompt injection (23); jailbreak LLM agents (1)"
+    },
+    {
+     "community": 8,
+     "size": 19,
+     "A": 0,
+     "B": 19,
+     "top_queries": "indirect prompt injection (19)"
+    },
+    {
+     "community": 7,
+     "size": 3,
+     "A": 0,
+     "B": 3,
+     "top_queries": "indirect prompt injection (3)"
+    },
+    {
+     "community": 9,
+     "size": 3,
+     "A": 0,
+     "B": 3,
+     "top_queries": "indirect prompt injection (3)"
+    },
+    {
+     "community": 1,
+     "size": 2,
+     "A": 0,
+     "B": 2,
+     "top_queries": "indirect prompt injection (2)"
+    },
+    {
+     "community": 3,
+     "size": 2,
+     "A": 2,
+     "B": 0,
+     "top_queries": "constrained policy optimization (2)"
+    },
+    {
+     "community": 4,
+     "size": 2,
+     "A": 0,
+     "B": 2,
+     "top_queries": "indirect prompt injection (2)"
+    }
+   ]
+  }
+ },
+ "sensitivity": {
+  "cross_by_query": {
+   "A_to_B": [
+    [
+     "multi-agent reinforcement learning",
+     3
+    ]
+   ],
+   "B_to_A": [
+    [
+     "large language model agent",
+     24
+    ],
+    [
+     "LLM agent",
+     11
+    ],
+    [
+     "multi-agent LLM system",
+     10
+    ],
+    [
+     "LLM-based autonomous agent",
+     5
+    ]
+   ]
+  },
+  "A_without_reward_hacking": {
+   "sizes": {
+    "A": 1117,
+    "B": 703
+   },
+   "cross_citation": {
+    "A": {
+     "total_refs": 52183,
+     "to_A": 3382,
+     "to_B": 3,
+     "frac_to_A": 0.06481037885901539,
+     "frac_to_B": 5.748998716056953e-05,
+     "papers": 1117,
+     "papers_citing_A": 852,
+     "papers_citing_B": 2,
+     "within": 3382,
+     "cross": 3,
+     "in_corpus_refs": 3385,
+     "cross_share_of_in_corpus": 0.0008862629246676514
+    },
+    "B": {
+     "total_refs": 22865,
+     "to_A": 50,
+     "to_B": 464,
+     "frac_to_A": 0.002186748305270063,
+     "frac_to_B": 0.020293024272906187,
+     "papers": 703,
+     "papers_citing_A": 35,
+     "papers_citing_B": 249,
+     "within": 464,
+     "cross": 50,
+     "in_corpus_refs": 514,
+     "cross_share_of_in_corpus": 0.09727626459143969
+    }
+   },
+   "community": {
+    "nodes_total": 1820,
+    "isolated_nodes": 570,
+    "nodes_connected": 1250,
+    "edges": 3885,
+    "cross_label_edges": 53,
+    "cross_edge_frac": 0.013642213642213642,
+    "n_communities": 28,
+    "purity": 0.9832,
+    "nmi": 0.3803116483096977,
+    "modularity_louvain": 0.5322591758885195,
+    "modularity_AB_labels": 0.2069868765621661,
+    "n_components": 20,
+    "largest_component": 1205,
+    "largest_communities": [
+     {
+      "community": 3,
+      "size": 276,
+      "A": 275,
+      "B": 1,
+      "top_queries": "deep reinforcement learning (114); reinforcement learning agent (62); policy gradient reinforcement learning (37)"
+     },
+     {
+      "community": 21,
+      "size": 275,
+      "A": 0,
+      "B": 275,
+      "top_queries": "LLM agent (129); large language model agent (56); multi-agent LLM system (49)"
+     },
+     {
+      "community": 10,
+      "size": 189,
+      "A": 188,
+      "B": 1,
+      "top_queries": "offline reinforcement learning (158); model-based reinforcement learning (14); deep reinforcement learning (8)"
+     },
+     {
+      "community": 4,
+      "size": 166,
+      "A": 159,
+      "B": 7,
+      "top_queries": "multi-agent reinforcement learning (120); deep reinforcement learning (18); reinforcement learning agent (10)"
+     },
+     {
+      "community": 7,
+      "size": 114,
+      "A": 113,
+      "B": 1,
+      "top_queries": "model-based reinforcement learning (92); offline reinforcement learning (6); reinforcement learning agent (5)"
+     },
+     {
+      "community": 8,
+      "size": 79,
+      "A": 74,
+      "B": 5,
+      "top_queries": "reinforcement learning agent (29); deep reinforcement learning (19); multi-agent reinforcement learning (12)"
+     },
+     {
+      "community": 2,
+      "size": 65,
+      "A": 65,
+      "B": 0,
+      "top_queries": "deep reinforcement learning (22); reinforcement learning agent (18); policy gradient reinforcement learning (11)"
+     },
+     {
+      "community": 15,
+      "size": 37,
+      "A": 31,
+      "B": 6,
+      "top_queries": "deep reinforcement learning (12); multi-agent reinforcement learning (7); large language model agent (6)"
+     },
+     {
+      "community": 5,
+      "size": 4,
+      "A": 4,
+      "B": 0,
+      "top_queries": "policy gradient reinforcement learning (4)"
+     },
+     {
+      "community": 6,
+      "size": 4,
+      "A": 4,
+      "B": 0,
+      "top_queries": "policy gradient reinforcement learning (4)"
+     }
+    ]
+   }
+  },
+  "cited_only": {
+   "sizes": {
+    "A": 1009,
+    "B": 428
+   },
+   "cross_citation": {
+    "A": {
+     "total_refs": 49786,
+     "to_A": 3249,
+     "to_B": 3,
+     "frac_to_A": 0.06525930984614149,
+     "frac_to_B": 6.025790382838549e-05,
+     "papers": 1009,
+     "papers_citing_A": 799,
+     "papers_citing_B": 2,
+     "within": 3249,
+     "cross": 3,
+     "in_corpus_refs": 3252,
+     "cross_share_of_in_corpus": 0.0009225092250922509
+    },
+    "B": {
+     "total_refs": 18576,
+     "to_A": 39,
+     "to_B": 385,
+     "frac_to_A": 0.002099483204134367,
+     "frac_to_B": 0.02072566752799311,
+     "papers": 428,
+     "papers_citing_A": 27,
+     "papers_citing_B": 198,
+     "within": 385,
+     "cross": 39,
+     "in_corpus_refs": 424,
+     "cross_share_of_in_corpus": 0.09198113207547169
+    }
+   },
+   "community": {
+    "nodes_total": 1437,
+    "isolated_nodes": 308,
+    "nodes_connected": 1129,
+    "edges": 3662,
+    "cross_label_edges": 42,
+    "cross_edge_frac": 0.011469142545057346,
+    "n_communities": 23,
+    "purity": 0.9893711248892826,
+    "nmi": 0.370083156914905,
+    "modularity_louvain": 0.518800105352296,
+    "modularity_AB_labels": 0.1856840188739295,
+    "n_components": 15,
+    "largest_component": 1097,
+    "largest_communities": [
+     {
+      "community": 1,
+      "size": 267,
+      "A": 267,
+      "B": 0,
+      "top_queries": "deep reinforcement learning (96); reinforcement learning agent (60); policy gradient reinforcement learning (39)"
+     },
+     {
+      "community": 12,
+      "size": 199,
+      "A": 0,
+      "B": 199,
+      "top_queries": "LLM agent (105); large language model agent (37); multi-agent LLM system (35)"
+     },
+     {
+      "community": 10,
+      "size": 158,
+      "A": 157,
+      "B": 1,
+      "top_queries": "offline reinforcement learning (138); model-based reinforcement learning (9); deep reinforcement learning (8)"
+     },
+     {
+      "community": 9,
+      "size": 155,
+      "A": 152,
+      "B": 3,
+      "top_queries": "multi-agent reinforcement learning (117); deep reinforcement learning (18); reinforcement learning agent (6)"
+     },
+     {
+      "community": 6,
+      "size": 96,
+      "A": 96,
+      "B": 0,
+      "top_queries": "model-based reinforcement learning (75); reinforcement learning agent (7); offline reinforcement learning (5)"
+     },
+     {
+      "community": 2,
+      "size": 95,
+      "A": 93,
+      "B": 2,
+      "top_queries": "reinforcement learning agent (32); deep reinforcement learning (31); model-based reinforcement learning (11)"
+     },
+     {
+      "community": 4,
+      "size": 55,
+      "A": 49,
+      "B": 6,
+      "top_queries": "deep reinforcement learning (24); multi-agent reinforcement learning (9); reinforcement learning agent (6)"
+     },
+     {
+      "community": 3,
+      "size": 42,
+      "A": 42,
+      "B": 0,
+      "top_queries": "deep reinforcement learning (16); reinforcement learning agent (11); multi-agent reinforcement learning (7)"
+     },
+     {
+      "community": 15,
+      "size": 30,
+      "A": 0,
+      "B": 30,
+      "top_queries": "LLM agent (23); multi-agent LLM system (3); tool-use language model (2)"
+     },
+     {
+      "community": 5,
+      "size": 4,
+      "A": 4,
+      "B": 0,
+      "top_queries": "policy gradient reinforcement learning (4)"
+     }
+    ]
+   }
+  }
+ },
+ "bridge_list": [],
+ "n_failures": 0
+}

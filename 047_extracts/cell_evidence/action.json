@@ -1,0 +1,107 @@
+[
+ {
+  "primitive": "action",
+  "setting": "T-RL",
+  "evidence_source": "sutton2018",
+  "candidate_ids": [
+   "e3",
+   "e7"
+  ],
+  "quote": "The actions can be low-level controls, such as the voltages applied to the motors of a robot arm, or high-level decisions, such as whether or not to have lunch or to go to graduate school.",
+  "reason": "Selected at each step from a set A(s); \"low-level controls\" or \"high-level decisions\" [@sutton2018].",
+  "fits": true,
+  "note": "already quote"
+ },
+ {
+  "primitive": "action",
+  "setting": "T-CHAT",
+  "evidence_source": "ahmadian2024",
+  "candidate_ids": [
+   "c4"
+  ],
+  "quote": "Thus, it is more appropriate and efficient to model the entire generation as a single action with the initial state determined by the prompt.",
+  "reason": "The whole completion is one action with a terminal reward: \"Thus, it is more appropriate and efficient to model the entire generation as a single action with the initial state determined by the prompt.\" [@ahmadian2024]. PPO treats tokens as actions, but RLOO, ReMax and GRPO use the bandit view [@ahmadian2024; @li2024; @shao2024; @rafailov2024].",
+  "fits": true,
+  "note": "Quote states the whole generation is one action; ReMax/GRPO/token-level PPO parts rest on the other cited works."
+ },
+ {
+  "primitive": "action",
+  "setting": "T-RLVR",
+  "evidence_source": "deepseekai2025",
+  "candidate_ids": [
+   "c8"
+  ],
+  "quote": "A conversation between User and Assistant. The user asks a question, and the Assistant solves it. The assistant first thinks about the reasoning process in the mind and then provides the user with the answer.",
+  "reason": "One sample holds a reasoning trace and an answer: \"A conversation between User and Assistant. The user asks a question, and the Assistant solves it. The assistant first thinks about the reasoning process in the mind and then provides the user with the answer.\" [@deepseekai2025]. The trace length is inside the action, not a horizon.",
+  "fits": true,
+  "note": "Prompt template shows trace then answer in one output; \"length inside the action\" is inference."
+ },
+ {
+  "primitive": "action",
+  "setting": "T-PRM",
+  "evidence_source": "lightman2024",
+  "candidate_ids": [
+   "c6"
+  ],
+  "quote": "To make parsing individual steps easier, we train the generator to produce solutions in a newline delimited step-by-step format.",
+  "reason": "A step is a delimited unit: \"To make parsing individual steps easier, we train the generator to produce solutions in a newline delimited step-by-step format.\" [@lightman2024]. Per-episode step count and absence of side effects follow from the text-only setting.",
+  "fits": true,
+  "note": "Quote supports delimited steps only; \"tens per episode\" and \"no side effect\" are not in the quote."
+ },
+ {
+  "primitive": "action",
+  "setting": "T-AGENT",
+  "evidence_source": "yao2023b",
+  "candidate_ids": [
+   "c10"
+  ],
+  "quote": "We design a simple Wikipedia web API with three types of actions to support interactive information retrieval: (1) search[entity], which returns the first 5 sentences from the corresponding entity wiki page if it exists,",
+  "reason": "The agent acts through named tool calls: \"We design a simple Wikipedia web API with three types of actions to support interactive information retrieval: (1) search[entity], which returns the first 5 sentences from the corresponding entity wiki page if it exists,\" [@yao2023b]. The scaffold executes them in a sandbox [@jimenez2024].",
+  "fits": true,
+  "note": "Quote shows actions as tool-call strings (search[entity]); scaffold parsing and sandbox execution are not in the quote, and jimenez2024 gave no fitting passage."
+ },
+ {
+  "primitive": "action",
+  "setting": "D-RL",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "As in training; fixed semantics.",
+  "fits": false,
+  "note": "Reason cites no work, so no quote can be taken. Weaker reason: same action definition as T-RL, no new evidence."
+ },
+ {
+  "primitive": "action",
+  "setting": "D-CHAT",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "One reply per turn; its only effect is on the reader.",
+  "fits": false,
+  "note": "Reason cites no work, so no quote can be taken. Treat as author judgement."
+ },
+ {
+  "primitive": "action",
+  "setting": "D-AGENT-A",
+  "evidence_source": "yao2024",
+  "candidate_ids": [
+   "c6"
+  ],
+  "quote": "Each task episode consists of the simulated user starting with a request, which the agent handles in a conversational manner while being able to call tools at any point and refer to the provided policy.",
+  "reason": "A tool call can happen at any point: \"Each task episode consists of the simulated user starting with a request, which the agent handles in a conversational manner while being able to call tools at any point and refer to the provided policy.\" [@yao2024]. Whether the user sees each result before the next call is not shown.",
+  "fits": false,
+  "note": "Quote supports tool calls only. Candidate c5 says the user cannot see agent-tool interaction in tau-bench, which conflicts with \"visible\"; the side-effect claim is also unsupported."
+ },
+ {
+  "primitive": "action",
+  "setting": "D-AGENT-X",
+  "evidence_source": "ruan2024",
+  "candidate_ids": [
+   "c3"
+  ],
+  "quote": "the LM agent takes an action an ∈ A composed of the specific tool being invoked fn ∈ F and additional input arguments for the tool (e.g., specific terminal commands)",
+  "reason": "Each action is a tool call with arguments: \"the LM agent takes an action an ∈ A composed of the specific tool being invoked fn ∈ F and additional input arguments for the tool (e.g., specific terminal commands)\" [@ruan2024]. The chain length of hundreds and unattended accumulation are not shown [@kwa2025].",
+  "fits": false,
+  "note": "Quote supports tool call with open-ended arguments only; no candidate in kwa2025 or ruan2024 supports hundreds of calls or no human between them."
+ }
+]

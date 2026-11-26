@@ -1,0 +1,16 @@
+id,axis,a,b,held_fixed,note
+C:T-CHAT,culture,T-RL,T-CHAT,phase,
+C:T-RLVR,culture,T-RL,T-RLVR,phase,
+C:T-PRM,culture,T-RL,T-PRM,phase,
+C:T-AGENT,culture,T-RL,T-AGENT,phase,
+C:D-CHAT,culture,D-RL,D-CHAT,phase,
+C:D-AGENT-A,culture,D-RL,D-AGENT-A,phase,
+C:D-AGENT-X,culture,D-RL,D-AGENT-X,phase,
+P:RL,phase,T-RL,D-RL,culture,
+P:CHAT,phase,T-CHAT,D-CHAT,culture,learned-reward chat training vs deployed chat
+P:RLVR,phase,T-RLVR,D-CHAT,culture,verifier chat training vs deployed chat
+P:PRM,phase,T-PRM,D-CHAT,culture,process-reward chat training vs deployed chat
+P:AGENT-A,phase,T-AGENT,D-AGENT-A,culture,agent training vs deployed agent with a human per step
+P:AGENT-X,phase,T-AGENT,D-AGENT-X,culture,agent training vs autonomous deployed agent
+T:DEPLOY,tools,D-CHAT,D-AGENT-A,culture; phase,adds tools; human still between steps
+H:DEPLOY,human,D-AGENT-A,D-AGENT-X,culture; phase; tools,removes the human between steps

@@ -1,0 +1,3 @@
+id,kind,locator,text,tex
+e1,cell,3.1,"We design a simple Wikipedia web API with three types of actions to support interactive information retrieval: (1) search[entity], which returns the first 5 sentences from the corresponding entity wiki page if it exists,",
+e2,cell,2,"a frozen large language model, PaLM-540B (Chowdhery et al., 2022)1 , is prompted with few-shot in-context examples to generate both domain-specific actions and free-form language thoughts for task solving",

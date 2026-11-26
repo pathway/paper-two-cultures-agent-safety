@@ -1,0 +1,20 @@
+id,pass,topic,locator,line,text
+c1,llm_wf,claim,Abstract,32,"we introduce a new framework for language model inference, “Tree of Thoughts” (ToT), which generalizes over the popular “Chain of Thought” approach to prompting language models, and enables exploration over coherent units of text (“thoughts”) that serve as intermediate steps toward problem solving."
+c2,llm_wf,claim,Abstract,42,"For instance, in Game of 24, while GPT-4 with chain-of-thought prompting only solved 4% of tasks, our method achieved a success rate of 74%."
+c3,llm_wf,llm,1 Introduction,52,"It is perhaps surprising that underlying all this progress is still the original autoregressive mechanism for generating text, which makes token-level decisions one by one and in a left-to-right fashion."
+c4,llm_wf,action,1 Introduction,137,each thought is a coherent language sequence that serves as an intermediate step toward problem solving (Table 1).
+c5,llm_wf,value,1 Introduction,140,"This implementation of search heuristics via LM self-evaluation and deliberation is novel, as previous search heuristics are either programmed or learned."
+c6,llm_wf,state,3,214,"ToT frames any problem as a search over a tree, where each node is a state s = [x, z1···i ] representing a partial solution with the input and the sequence of thoughts so far."
+c7,llm_wf,setting,3,216,A specific instantiation of ToT involves answering four questions: 1. How to decompose the intermediate process into thought steps; 2. How to generate potential thoughts from each state; 3. How to heuristically evaluate states; 4. What search algorithm to use.
+c8,llm_wf,transition,3,226,"Given a tree state s = [x, z1···i ], we consider two strategies to generate k candidates for the next thought step:"
+c9,llm_wf,value,3,248,"We propose a third alternative, by using the LM to deliberately reason about states. When applicable, such a deliberate heuristic can be more flexible than programmed rules, and more sample-efficient than learned models."
+c10,llm_wf,reward,3,260,"Such valuations do not need to be perfect, and only need to be approximately helpful for decision making."
+c11,llm_wf,policy,3,307,"(4) Convenience. No extra training is needed, just a pre-trained LM is sufficient."
+c12,llm_wf,reward,4.1,501,"For each task, we consider the output as success if it is a valid equation that equals 24 and uses the input numbers each exactly once."
+c13,llm_wf,reward,4.2,615,"we focus on evaluating passage coherency in two ways: using a GPT-4 zero-shot prompt to provide a 1-10 scalar score, or using human judgments to compare pairs of outputs from different methods."
+c14,llm_wf,episode,4.3,890,"We limit DFS search steps to 100, and simply render the deepest explored state (the first explored one if multiple) into the final output."
+c15,llm_wf,limitation,6,973,"Also, search methods like ToT requires more resources (e.g. GPT-4 API cost) than sampling methods in order to improve task performances,"
+c16,llm_wf,value,5,922,"traditional decision-making procedures usually require training dedicated reward and policy models as in reinforcement learning (for example CHAI [33]), whereas we use the LM itself to provide the value estimates for decision making."
+c17,llm_wf,failure,Broader Impact,991,"future applications involving interaction with external environments or humans could bring potential danger, e.g. facilitating harmful uses of LMs."
+c18,llm_wf,oversight,Broader Impact,993,"ToT also improves the interpretability of model decisions and the opportunity for human alignment, as the resulting representations are readable, high-level language reasoning instead of implicit, low-level token values."
+c19,llm_wf,llm,2 Background,28,"Language models are increasingly being deployed for general problem solving across a wide range of tasks, but are still confined to token-level, left-to-right decision-making processes during inference."

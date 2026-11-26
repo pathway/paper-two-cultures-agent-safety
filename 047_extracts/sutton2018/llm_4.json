@@ -1,0 +1,162 @@
+[
+ {
+  "topic": "value",
+  "locator": "17.1",
+  "text": "Whatever signal is added up in this way in a value-function-like prediction, we call it the cumulant of that prediction."
+ },
+ {
+  "topic": "value",
+  "locator": "17.1",
+  "text": "Because a GVF has no necessary connection to reward, it is perhaps a misnomer to call it a value function."
+ },
+ {
+  "topic": "action",
+  "locator": "17.2",
+  "text": "We define a pair of these as a generalized notion of action termed an option."
+ },
+ {
+  "topic": "action",
+  "locator": "17.2",
+  "text": "Options e↵ectively extend the action space. The agent can either select a low-level action/option, terminating after one time step, or select an extended option that might execute for many time steps before terminating."
+ },
+ {
+  "topic": "policy",
+  "locator": "17.2",
+  "text": "We can also generalize the notion of policy to a hierarchical policy that selects from options rather than actions, where options, when selected, execute until termination."
+ },
+ {
+  "topic": "transition",
+  "locator": "17.2",
+  "text": "The conventional model of an action is the state-transition probabilities and the expected immediate reward for taking the action in each state."
+ },
+ {
+  "topic": "limitation",
+  "locator": "17.2",
+  "text": "Although each of these steps is seemingly natural, putting them all together (including function approximation and other essential components) is quite challenging and beyond the current state of the art."
+ },
+ {
+  "topic": "setting",
+  "locator": "17.3",
+  "text": "Throughout this book we have written the learned approximate value functions (and the policies in Chapter 13) as functions of the environment’s state."
+ },
+ {
+  "topic": "state",
+  "locator": "17.3",
+  "text": "that case is tantamount to assuming that the state of the environment is completely observed by the agent."
+ },
+ {
+  "topic": "observation",
+  "locator": "17.3",
+  "text": "But in many cases of interest, and certainly in the lives of all natural intelligences, the sensory input gives only partial information about the state of the world."
+ },
+ {
+  "topic": "setting",
+  "locator": "17.3",
+  "text": "The environment would emit not its states, but only observations—signals that depend on its state but, like a robot’s sensors, provide only partial information about it."
+ },
+ {
+  "topic": "reward",
+  "locator": "17.3",
+  "text": "For convenience, without loss of generality, we assume that the reward is a direct, known function of the observation (perhaps the observation is a vector, and the reward is one of its components)."
+ },
+ {
+  "topic": "episode",
+  "locator": "17.3",
+  "text": "going on forever (cf. Equation 3.1) or forming episodes each ending with a special terminal observation."
+ },
+ {
+  "topic": "state",
+  "locator": "17.3",
+  "text": "The idea of state is that of a compact summary of the history that is useful for predicting future sequences."
+ },
+ {
+  "topic": "state",
+  "locator": "17.3",
+  "text": "A Markov state summarizes all the information in the history necessary for determining any test’s probability."
+ },
+ {
+  "topic": "state",
+  "locator": "17.3",
+  "text": "In practice, the states of real agents will not be Markov but may approach it as an ideal."
+ },
+ {
+  "topic": "state",
+  "locator": "17.3",
+  "text": "In this approach the environment is assumed to have a well defined latent state Xt that underlies and produces the environment’s observations, but is never available to the agent (and is not to be confused with the state St used by the agent to make predictions and decisions)."
+ },
+ {
+  "topic": "limitation",
+  "locator": "17.3",
+  "text": "This approach is popular in theoretical work and has many significant applications, but its assumptions and computational complexity scale poorly, and we do not recommend it as an approach to artificial intelligence."
+ },
+ {
+  "topic": "reward",
+  "locator": "17.4",
+  "text": "A major advantage of reinforcement learning over supervised learning is that reinforcement learning does not rely on detailed instructional information: generating a reward signal does not depend on knowledge of what the agent’s correct actions should be."
+ },
+ {
+  "topic": "reward",
+  "locator": "17.4",
+  "text": "By designing a reward signal we mean designing the part of an agent’s environment that is responsible for computing each scalar reward Rt and sending it to the agent at each time t."
+ },
+ {
+  "topic": "failure",
+  "locator": "17.4",
+  "text": "Further, reinforcement learning agents can discover unexpected ways to make their environments deliver reward, some of which might be undesirable, or even dangerous."
+ },
+ {
+  "topic": "objective",
+  "locator": "17.4",
+  "text": "In practice, designing a reward signal is often left to an informal trial-and-error search for a signal that produces acceptable results."
+ },
+ {
+  "topic": "reward",
+  "locator": "17.4",
+  "text": "From an application perspective, the reward signal is a parameter of the learning algorithm."
+ },
+ {
+  "topic": "principal",
+  "locator": "17.4",
+  "text": "These experiments have also demonstrated that an agent’s goal should not always be the same as the goal of the agent’s designer."
+ },
+ {
+  "topic": "reward",
+  "locator": "17.4",
+  "text": "This means that reward signals may be influenced by things inside the larger behaving agent, such as motivational states, memories, ideas, or even hallucinations."
+ },
+ {
+  "topic": "limitation",
+  "locator": "17.5",
+  "text": "An honest assessment has to be that current deep learning methods are not well suited to online learning."
+ },
+ {
+  "topic": "setting",
+  "locator": "17.6",
+  "text": "Simulators provide safe environments in which an agent can explore and learn without risking real damage to itself or to its environment."
+ },
+ {
+  "topic": "transition",
+  "locator": "17.6",
+  "text": "This is especially true for environments whose dynamics depend on the behavior of humans, such as in education, healthcare, transportation, and public policy—domains that can surely benefit from improved decision making."
+ },
+ {
+  "topic": "failure",
+  "locator": "17.6",
+  "text": "Because reinforcement learning is based on optimization, it inherits the plusses and minuses of all optimization methods."
+ },
+ {
+  "topic": "objective",
+  "locator": "17.6",
+  "text": "When we specify what we want a system to learn only indirectly, as we do in designing a reinforcement learning system’s reward signal, we will not know how closely the agent will fulfill our desire until its learning is complete."
+ },
+ {
+  "topic": "oversight",
+  "locator": "17.6",
+  "text": "Careful design of reward signals is essential if an agent is to act in the real world with no opportunity for human vetting of its actions or means to easily interrupt its behavior."
+ },
+ {
+  "topic": "principal",
+  "locator": "17.6",
+  "text": "The problem of ensuring that a reinforcement learning agent’s goal is attuned to our own remains a challenge."
+ }
+]

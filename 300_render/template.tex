@@ -1,0 +1,102 @@
+% Built by build.py from ../draft_conditions_short.md. Edit the markdown, not paper.tex.
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{tabularx}
+\usepackage{placeins}  % \FloatBarrier keeps tables before the references
+\usepackage{xurl}  % lets long URLs break at any character
+\usepackage{hyperref}
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+\usepackage{icml2026}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{newunicodechar}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{✗}{\ensuremath{\times}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{⊆}{\ensuremath{\subseteq}}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∑}{\ensuremath{\sum}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\newunicodechar{′}{\ensuremath{^\prime}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{ℓ}{\ensuremath{\ell}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{Ω}{\ensuremath{\Omega}}
+\newunicodechar{φ}{\ensuremath{\phi}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{η}{\ensuremath{\eta}}
+\newunicodechar{κ}{\ensuremath{\kappa}}
+\newunicodechar{ψ}{\ensuremath{\psi}}
+\newunicodechar{∂}{\ensuremath{\partial}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{∼}{\ensuremath{\sim}}
+\newunicodechar{⟨}{\ensuremath{\langle}}
+\newunicodechar{⟩}{\ensuremath{\rangle}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{²}{\ensuremath{^2}}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+% pandoc output helpers
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\newcommand{\passthrough}[1]{#1}
+
+\icmltitlerunning{%%RUNNING%%}
+
+\begin{document}
+%%HEADSTART%%
+  \icmltitle{%%TITLE%%}
+  \begin{icmlauthorlist}
+    \icmlauthor{Anonymous Authors}{anon}
+  \end{icmlauthorlist}
+  \icmlaffiliation{anon}{Anonymous Institution}
+  \icmlcorrespondingauthor{Anonymous Authors}{anon@example.com}
+  \icmlkeywords{reinforcement learning, LLM agents, two cultures, position paper}
+  \vskip 0.3in
+%%HEADEND%%
+\printAffiliationsAndNotice{}
+
+\begin{abstract}
+%%ABSTRACT%%
+\end{abstract}
+
+%%BODY%%
+
+\FloatBarrier
+\section*{Impact Statement}
+This paper explains what reinforcement-learning terms denote when the agent is a language model, in training and in deployment. Its aim is to let the two research communities that build agents read each other's claims with the objects attached. It proposes no new capability.
+
+\section*{AI Disclosure Statement}
+The text was drafted by a large language model (Claude, Anthropic) under the authors' direction. The model also built the citation census, proposed the settings and the cells of Tables~\ref{tab:primitive_cells_training} and~\ref{tab:primitive_cells_deployment}, coded the properties of Table~\ref{tab:gap} (two independent instances of Claude Sonnet as raters and a further instance as adjudicator; later review rounds, also run by instances of the model, revised some of these codes against the raters' or the adjudicator's value, as Section~\ref{sec:primitives} states; no human rater), and selected the quotations. A program checks that each quotation is verbatim in a stored copy of its source and that each cited work exists. Other instances of the model proposed the passages to quote and reviewed the draft in rounds; the authors have not independently verified the citations, the quotations or the cells.
+
+\begin{thebibliography}{99}
+\small
+%%BIBITEMS%%
+\end{thebibliography}
+
+\newpage
+\appendix
+%%APPENDIX%%
+
+\end{document}

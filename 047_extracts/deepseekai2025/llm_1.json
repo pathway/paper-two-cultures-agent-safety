@@ -1,0 +1,137 @@
+[
+ {
+  "topic": "reward",
+  "locator": "2.2",
+  "text": "The reward is the source of the training signal, which decides the direction of RL optimization. For DeepSeek-R1-Zero, we employ rule-based rewards to deliver precise feedback for data in mathematical, coding, and logical reasoning domains."
+ },
+ {
+  "topic": "reward",
+  "locator": "2.2",
+  "text": "Accuracy rewards evaluate whether the response is correct. For example, in the case of math problems with deterministic results, the model is required to provide the final answer in a specified format (e.g., within a box), enabling reliable rule-based verification of correctness."
+ },
+ {
+  "topic": "reward",
+  "locator": "1",
+  "text": "The reward signal is solely based on the correctness of final predictions against ground-truth answers, without imposing constraints on the reasoning process itself."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.1",
+  "text": "The architecture of our reward model is consistent with that of DeepSeek-R1, with the addition of a reward head designed to predict scalar preference scores."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.2.1",
+  "text": "we introduce a language consistency reward during RL training, which is calculated as the proportion of target language words in the CoT."
+ },
+ {
+  "topic": "policy",
+  "locator": "2.1",
+  "text": "For each question 𝑞, GRPO samples a group of outputs { 𝑜1 , 𝑜2 , · · · , 𝑜𝐺 } from the old policy 𝜋𝜃𝑜𝑙𝑑 and then optimizes the policy model 𝜋𝜃 by maximizing the following objective:"
+ },
+ {
+  "topic": "action",
+  "locator": "2.1",
+  "text": "For each question, we sample 16 outputs with a maximum length of 32,768 tokens before the 8.2k step and 65,536 tokens afterward."
+ },
+ {
+  "topic": "observation",
+  "locator": "2.1",
+  "text": "A conversation between User and Assistant. The user asks a question, and the Assistant solves it. The assistant first thinks about the reasoning process in the mind and then provides the user with the answer."
+ },
+ {
+  "topic": "value",
+  "locator": "G.2",
+  "text": "Training a fine-grained value model is inherently difficult, which makes it challenging for the model to iteratively improve."
+ },
+ {
+  "topic": "episode",
+  "locator": "2.1",
+  "text": "Each training step consists of 32 unique questions, resulting in a training batch size of 512."
+ },
+ {
+  "topic": "objective",
+  "locator": "A.2",
+  "text": "In this stage, the model interacts with an environment—often a reward model trained on human feedback—and adjusts its behavior to maximize cumulative rewards."
+ },
+ {
+  "topic": "principal",
+  "locator": "3.1",
+  "text": "For general data, we resort to reward models to capture human preferences in complex and nuanced scenarios."
+ },
+ {
+  "topic": "oversight",
+  "locator": "D.3.1",
+  "text": "Generally, beyond the intrinsic safety of models, model-based services typically implement an external risk control system to enhance system-level security."
+ },
+ {
+  "topic": "oversight",
+  "locator": "5",
+  "text": "Besides, when coupled with the risk control system, the model’s safety level is elevated to a superior standard."
+ },
+ {
+  "topic": "failure",
+  "locator": "2.2",
+  "text": "This decision is predicated on our observation that neural reward models are susceptible to reward hacking during large-scale reinforcement learning."
+ },
+ {
+  "topic": "failure",
+  "locator": "B.5",
+  "text": "In the context of LLM training, reward hacking refers to the phenomenon wherein a model exploits flaws or biases in the reward function, thereby achieving high reward scores without truly aligning with the underlying human intent."
+ },
+ {
+  "topic": "failure",
+  "locator": "5",
+  "text": "For example, R1 can be subject to jailbreak attacks, leading to the generation of dangerous content such as explosive manufacturing plans, while the enhanced reasoning capabilities enable the model to provide plans with better operational feasibility and executability."
+ },
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "Here we show that the reasoning abilities of LLMs can be incentivized through pure reinforcement learning (RL), obviating the need for human-labeled reasoning trajectories."
+ },
+ {
+  "topic": "claim",
+  "locator": "6",
+  "text": "We believe that the key to unlocking this potential lies not in large-scale human annotation but in the provision of hard reasoning questions, a reliable verifier, and sufficient computational resources for reinforcement learning."
+ },
+ {
+  "topic": "setting",
+  "locator": "3",
+  "text": "To further align the model with human preferences, we implement a secondary RL stage designed to enhance the model’s helpfulness and harmlessness while simultaneously refining its reasoning capabilities."
+ },
+ {
+  "topic": "limitation",
+  "locator": "6",
+  "text": "If the reward signal is assigned by a model instead of predefined rules, it becomes more susceptible to exploitation as training progresses, which means the policy model may find shortcuts to hack the reward model."
+ },
+ {
+  "topic": "limitation",
+  "locator": "6",
+  "text": "Consequently, for complex tasks that cannot be effectively evaluated by a reliable reward model, scaling up pure RL methods remains an open challenge."
+ },
+ {
+  "topic": "limitation",
+  "locator": "6",
+  "text": "DeepSeek-R1 cannot leverage tools, such as search engines and calculators, to improve the performance of output."
+ },
+ {
+  "topic": "limitation",
+  "locator": "6",
+  "text": "Due to the long evaluation times, which impact the efficiency of the RL process, large-scale RL has not been applied extensively in software engineering tasks."
+ },
+ {
+  "topic": "llm",
+  "locator": "2.3",
+  "text": "DeepSeek-R1-Zero exhibits a steady increase in thinking time throughout training, driven solely by intrinsic adaptation rather than external modifications."
+ },
+ {
+  "topic": "llm",
+  "locator": "3.2.2",
+  "text": "We find that more training steps with the model based preference reward signal may lead to reward hacking, which is documented in Supplementary B.5."
+ },
+ {
+  "topic": "policy",
+  "locator": "5",
+  "text": "Besides, a public model is also vulnerable to further fine-tuning that could compromise inherent safety protections."
+ }
+]

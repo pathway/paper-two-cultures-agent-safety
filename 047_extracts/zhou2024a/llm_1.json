@@ -1,0 +1,132 @@
+[
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "In this paper, we introduce Language Agent Tree Search (LATS) – the first general framework that synergizes the capabilities of LMs in reasoning, acting, and planning."
+ },
+ {
+  "topic": "claim",
+  "locator": "1",
+  "text": "Our key insight underpinning LATS is adapting Monte Carlo Tree Search (MCTS), inspired by its success in model-based reinforcement learning (Silver et al., 2017) and the observation that many LM tasks allow reverting to earlier steps,"
+ },
+ {
+  "topic": "llm",
+  "locator": "1",
+  "text": "Leveraging the general capabilities and in-context learning abilities of modern LMs, we use language as an interface between each component, allowing LATS to adapt planning to environmental conditions without additional training."
+ },
+ {
+  "topic": "policy",
+  "locator": "4.1",
+  "text": "At time step t, an agent receives an observation ot ∈ O from the environment and takes an action at ∈ A following some policy π(at |x, o1···t−1 , a1···t−1 ). We initialize the agent with pθ to leverage the useful language representations of an LM as a base decision-maker."
+ },
+ {
+  "topic": "action",
+  "locator": "4.1",
+  "text": "Actions directly affect the environment and result in observation, while thoughts are used to formalize decisions by organizing information, planning future actions, or injecting internal knowledge."
+ },
+ {
+  "topic": "action",
+  "locator": "4.1",
+  "text": "for decision-making tasks actions might consist of commands on a website, while for reasoning tasks the action space might be limited to a few external tools or APIs."
+ },
+ {
+  "topic": "state",
+  "locator": "4.2",
+  "text": "each node s = [x, a1···i , o1···i ] represents a state comprising the original input x, action sequence a1·i , and observation sequence o1·i , where i is a token in the text sequence."
+ },
+ {
+  "topic": "transition",
+  "locator": "4.2",
+  "text": "While standard MCTS and RAP (Hao et al., 2023) rely on internal dynamics models to facilitate simulation, LATS uses environment interaction and does not require a world model."
+ },
+ {
+  "topic": "episode",
+  "locator": "3.2",
+  "text": "However, this limitation does not exist for many LM tasks, as we can conveniently reset to"
+ },
+ {
+  "topic": "setting",
+  "locator": "2",
+  "text": "This is because we can conveniently revert to any state by setting the input to be the context and the corresponding previous output from the LM for many tasks."
+ },
+ {
+  "topic": "value",
+  "locator": "4.2",
+  "text": "As LATS does not involve training, we propose a novel value function for this setting based on two components: (1) a self-generated LM score and (2) a self-consistency score."
+ },
+ {
+  "topic": "value",
+  "locator": "4.2",
+  "text": "Inspired by ToT, we repurpose pθ into a value function by prompting it to reason about a given state. To obtain a scalar value, we instruct pθ to end its reasoning trace with a score indicating the correctness of the trajectory."
+ },
+ {
+  "topic": "reward",
+  "locator": "4.2",
+  "text": "Reaching a terminal state provides objective feedback on the correctness of a trajectory. If the task is completed successfully, then LATS terminates the search."
+ },
+ {
+  "topic": "reward",
+  "locator": "4.2",
+  "text": "The success of a trajectory is determined by the design of the specific environment, such as finalizing a purchase in web navigation environments."
+ },
+ {
+  "topic": "reward",
+  "locator": "5.2",
+  "text": "For LATS, since each action corresponds to a complete solution, we skip the simulation step of LATS and directly use the percentage of passed tests as the backpropagated reward."
+ },
+ {
+  "topic": "reward",
+  "locator": "5.1",
+  "text": "we use an oracle setup for HotPotQA, in which the environment provides feedback about the answer’s correctness upon receiving an answer."
+ },
+ {
+  "topic": "observation",
+  "locator": "5.1",
+  "text": "For the action space, in addition to LM thoughts, we follow the setup from Yao et al. (2023b), which provides the agent with API calls to search and retrieve information. The output of these API calls and self-generated reflections form the observation space."
+ },
+ {
+  "topic": "observation",
+  "locator": "5.2",
+  "text": "the solution is evaluated on this test suite, and the results, including successful and failed tests and compiler output, are added to the context as an observation."
+ },
+ {
+  "topic": "policy",
+  "locator": "4.2",
+  "text": "In subsequent iterations, these are integrated as additional context to the agent and value function, refining both through in-context learning."
+ },
+ {
+  "topic": "oversight",
+  "locator": "4.2",
+  "text": "This imparts a semantic gradient signal more useful than a scalar value, enabling the agent to learn from trial and error without the cost of expensive optimization such as reinforcement learning."
+ },
+ {
+  "topic": "limitation",
+  "locator": "6",
+  "text": "First, it has a higher computational cost compared to simpler prompting methods like ReAct or Reflexion, which may limit its practicality in certain situations."
+ },
+ {
+  "topic": "limitation",
+  "locator": "6",
+  "text": "Second, LATS assumes the ability to revert to earlier states in decisionmaking environments, which may not be universally applicable in all possible environments."
+ },
+ {
+  "topic": "failure",
+  "locator": "Impact Statement",
+  "text": "LATS is a framework that enhances LM performance through interactions with an environment. This improvement in autonomous decision-making may facilitate harmful uses of LMs."
+ },
+ {
+  "topic": "failure",
+  "locator": "Impact Statement",
+  "text": "Finally, enhancing the capabilities of LM agents may raise security risks, such as executing malware."
+ },
+ {
+  "topic": "failure",
+  "locator": "5.3",
+  "text": "Similar to Shinn et al. (2023), we find that generated reflections are often generic and do not provide useful feedback, resulting in a tendency for the agent to become stuck in local minima."
+ },
+ {
+  "topic": "llm",
+  "locator": "5.2",
+  "text": "We follow Chen et al. (2023a) and use an LM to generate a synthetic test suite of syntactically valid “assert” statements for each question."
+ }
+]

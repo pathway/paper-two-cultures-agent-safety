@@ -1,0 +1,2 @@
+id,kind,locator,text,tex
+e1,cell,1 Introduction,use RL to optimize a language model policy to produce responses assigned high reward without drifting excessively far from the original model,

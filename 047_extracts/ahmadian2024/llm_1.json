@@ -1,0 +1,127 @@
+[
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "Keeping simplicity as a guiding principle, we show that many\ncomponents of PPO are unnecessary in an RLHF context and that far simpler REINFORCE-style\noptimization variants outperform both PPO and newly proposed “RL-free” methods such as DPO\nand RAFT."
+ },
+ {
+  "topic": "reward",
+  "locator": "1",
+  "text": "maximize the\nreward score produced by a reward model that is typically trained as a binary classifier on pairs of\ncompletions labeled by human annotators."
+ },
+ {
+  "topic": "action",
+  "locator": "1",
+  "text": "where generating each token is modeled as an action, and each partial sequence, starting with the\nprompt, is seen as a state."
+ },
+ {
+  "topic": "action",
+  "locator": "1",
+  "text": "Thus, it is more appropriate and efficient to model the entire generation as a single\naction with the initial state determined by the prompt."
+ },
+ {
+  "topic": "reward",
+  "locator": "1",
+  "text": "rewards are only attributed to full generations, with no true rewards for any intermediary tokens in\nthe generation."
+ },
+ {
+  "topic": "value",
+  "locator": "1",
+  "text": "Unlike PPO, we can use REINFORCE to directly optimize the full trajectory (sequence)\nreturn coupled with unbiased baselines, whereas actor-critic algorithms (Sutton et al., 1999), such\nas PPO, bootstrap off intermediary state value-functions to reduce variance at the cost of introducing bias into the estimator."
+ },
+ {
+  "topic": "claim",
+  "locator": "1",
+  "text": "PPO is not the right tool for doing RL in RLHF. We break apart PPO and show that\nthe most “basic” policy gradient algorithm, Vanilla Policy Gradient REINFORCE (Sutton &\nBarto, 2020), is consistently outperforming PPO by 3.2% to 20.3% interms of win-rate, across\nall dataset and base model pairing ."
+ },
+ {
+  "topic": "setting",
+  "locator": "2",
+  "text": "(1) SFT Stage: A pre-trained LM is instruction-tuned using a dataset consisting of a given\ninstruction prompt, and (typically) a human-written completion. The LM/policy is trained with\na cross-entropy loss over the completion only."
+ },
+ {
+  "topic": "reward",
+  "locator": "2",
+  "text": "RLHF methods leverage a reward model rϕ (x, y) trained using a\ndataset of preferences D = {(x, y+ , y− )}N\ni=1 where y+ and y− denote the preferred and not-preferred\ncompletions for the prompt x."
+ },
+ {
+  "topic": "objective",
+  "locator": "2",
+  "text": "In this stage, the reward model is used to provide online feedback in the optimization\nof the policy with the following objective:"
+ },
+ {
+  "topic": "state",
+  "locator": "2.1",
+  "text": "When using PPO in the RL stage, the initial state is determined by the prompt, each generated\ntoken is modeled as an action, and partial sequences are seen as states, with a discount factor\n(γ ∈ [0, 1]) of 1 used."
+ },
+ {
+  "topic": "reward",
+  "locator": "2.1",
+  "text": "In this framework, only generating the <EOS> token carries a reward as\noutput by the reward model which is combined with KL penalty, while for all other tokens in the\nvocabulary, only the KL component is non-zero:"
+ },
+ {
+  "topic": "action",
+  "locator": "2.2",
+  "text": "Given that in LLM applications, r(x, y) is only obtained at the end of the full sequence, it may\nbe more appropriate to model the entire generation as a single action, as opposed to each token."
+ },
+ {
+  "topic": "value",
+  "locator": "2.3",
+  "text": "RLOOk considers each y(i) individually\nand uses the remaining k − 1 samples to create an unbiased estimate of the expected return for\nthe prompt, akin to a parameter-free value-function, but estimated at each training step."
+ },
+ {
+  "topic": "transition",
+  "locator": "3.3",
+  "text": "From a pure RL point of view, the environment dynamics are fully deterministic (PD ({y<t+1,x }|st , yt ) =\n1), meaning that our environment (context) changes deterministically based on the new token/action\npredicted."
+ },
+ {
+  "topic": "setting",
+  "locator": "3.3",
+  "text": "Hence, the problem can be reduced to a bandit problem, where the Markov Decision Process (MDP) consists of only the initial state as determined by the prompt, and the terminal state,\nwhich is always reached after the generation"
+ },
+ {
+  "topic": "llm",
+  "locator": "3.1",
+  "text": "We posit that this is\nnot a practical concern in fine-tuning LLMs due to the extremely strong initialization of the policy\n(a pre-trained LLM)."
+ },
+ {
+  "topic": "failure",
+  "locator": "5.2.2",
+  "text": "The reward model is itself a noisy proxy of reward signal due\nto the inherently noisy nature of human preference"
+ },
+ {
+  "topic": "oversight",
+  "locator": "4.2",
+  "text": "we report simulated win-rates\nin accordance with Alpacafarm framework (Dubois et al., 2024) where we use GPT-4 as a proxy\nfor human evaluation."
+ },
+ {
+  "topic": "failure",
+  "locator": "5.2.1",
+  "text": "Lower reward variance is desirable for applications such as safety and harmlessness where there is a high risk associated with generating a low-reward sample."
+ },
+ {
+  "topic": "claim",
+  "locator": "6",
+  "text": "this work posits that the RLHF setting of fine-tuning an LLM has a strong initialization of the policy, which coupled with further conditioning on a prompt, alleviates historical\nconcerns with high variance and large action spaces."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7",
+  "text": "we do not study reward model (RM) over-optimization,\nwhich refers to the problem when the optimization trajectory of the proxy reward, diverges from\nthe “gold” reward objective (Gao et al., 2022). This aspect has not been studied yet also for iterative\nfine-tuning methods such as RAFT and deserves a dedicated study."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7",
+  "text": "Another limitation is the exploration of the LOO baseline in a single token action framework, where\npartial sequences are modeled and intermediary rewards are provided."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7",
+  "text": "Finally, we limit our work to simulated win-rates from an LLM but do not measure correlation with\nfinal human evaluation preferences."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7",
+  "text": "We also did not explore RL training using other rewards such\nas ROUGE, BLEU, or other metrics used in NLP."
+ }
+]

@@ -1,0 +1,27 @@
+id,pass,topic,locator,line,text
+c1,llm_wf,setting,3.1,156,"We define the token level MDP as a tuple M = (S, A, f , r, ρ0 ), where the state space S consists of all tokens generated so far (i.e. st = {x0 , . . . , xm , y0 , . . . , yt }) and the action space is the vocabulary of tokens A."
+c2,llm_wf,transition,3.1,158,"The dynamics f are the deterministic transition model between tokens f (s, a ) = s|a, where | is concatenation."
+c3,llm_wf,state,3.1,159,"The initial state distribution ρ0 is a distribution over prompts x, where an initial state s0 is comprised of the tokens from x."
+c4,llm_wf,reward,3.1,161,"In RLHF, the reward function is learned from human feedback over preferences between responses which we will denote using trajectories τ at the token level."
+c5,llm_wf,episode,3.1,163,"we assume that preference trajectories start at the same state (initial propmpt) and end in a terminal state (EOS token), from which future rewards are zero."
+c6,llm_wf,reward,3.2,228,and is thus only applied at the final timestep for the last action where a is EOS.
+c7,llm_wf,reward,3.2,236,"This leads to an interesting contradiction where the reward function r is treated like a bandit, but the actual RL value function and optimization is done per-token in practice."
+c8,llm_wf,claim,Abstract,29,"Standard RLHF deploys reinforcement learning in a specific token-level MDP, while DPO is derived as a bandit problem in which the whole response of the model is treated as a single arm. In this work we rectify this difference."
+c9,llm_wf,claim,Abstract,32,"We theoretically show that we can derive DPO in the token-level MDP as a general inverse Q-learning algorithm, which satisfies the Bellman equation."
+c10,llm_wf,value,1,71,"classical RLHF methods optimize token-level value functions with a sparse reward at the terminal state. DPO on the other hand, operates only in a contextual bandits setting, treating the entire response as a single arm."
+c11,llm_wf,claim,1,79,"We then show that DPO training implicitly learns a token-level reward function, for which the language models logits define the optimal Q function, or expected total future reward."
+c12,llm_wf,llm,4.1,328,This leads us to a rather interesting conclusion – that an LLM is always the optimal soft Q-functions for some reward function in the token MDP.
+c13,llm_wf,policy,4.1,330,"As is common practice, we take the sampling policy π to be the softmax over tokens modulated by temperature parameter β – which is precisely eq. (5) where Q∗ = lθ because the value optimal function V ∗ is precisely β log Z (st ), normalizing the distribution."
+c14,llm_wf,claim,4.2,529,"Moreover, this Theorem implies that we can use DPO to learn the optimal policy for any per-token reward function, provided preference queries start at the same state and end at a terminal state."
+c15,llm_wf,limitation,4.2,533,This is in contrast to methods that estimate the reward function and then additionally employ some policy improvement mechanism. Which algorithm performs better remains largely an open or empirical question.
+c16,llm_wf,limitation,4.2,537,"While this interpretation does not generally hold in continuous spaces, we can extend many of our results to other specially structured MDPs, like those present in diffusion."
+c17,llm_wf,limitation,5.1,582,"We believe these are encouraging results, which warrant further large-scale study beyond our qualitative observations."
+c18,llm_wf,limitation,6,734,"Most importantly, we show qualitative early signs that DPO is able to learn credit assignment directly from feedback data. While larger-scale empirical exploration is necessary, we believe this an encouraging early sign."
+c19,llm_wf,value,5.4,723,"DPO does not train a policy to maximize reward, and thus we do not argue about whether its implied value functions should increase or decrease over time."
+c20,llm_wf,value,5.2,591,"Following the standard literature, these methods rely on a (usually sparse) reward signal or model rθ (st , at ) which they use to train a separate value function Vθ (st ). During inference time they deploy a graph-search algorithm in the token MDP as outlined in Section 3.1 to maximize the sum of rewards."
+c21,llm_wf,failure,5.2,617,"Increasing the number of beams also produces answer with exploding length, which is a sign of reward over-optimization Gao et al. (2023); Park et al. (2024); Rafailov et al. (2024) and would explain the degradation in performance."
+c22,llm_wf,failure,5.2,627,"We hypothesize this is beneficial in preventing reward hacking, which is potentially an issue with deeper search as shown in Fig. 2."
+c23,llm_wf,action,6,745,"LLM agents, such as WebGPT (Nakano et al., 2022) are equipped to take autonomous actions, such as browsing the Web and collecting information before providing an answer."
+c24,llm_wf,principal,6,747,The user then provides feedback based on the final output. Our derivations indicate that DPO training (on the full model trajectories) could learn optimal exploration behaviour.
+c25,llm_wf,episode,6,740,"Multi-turn conversations: Teaching language models to be an interactive conversationalists has been difficult, as RLHF is optimized as a single-turn bandit formulation."
+c26,llm_wf,policy,5.3,635,These approaches start with a (unaligned) base model πbase and a proxy model πproxy and a target distribution reference model πref . The inference time re-alignment of the base model is carried by re-weighting the conditional probabilities of each token:

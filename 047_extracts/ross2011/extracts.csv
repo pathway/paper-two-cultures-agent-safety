@@ -1,0 +1,2 @@
+id,kind,locator,text,tex
+e1,cell,2 Preliminaries,Hence this is a non-i.i.d. supervised learning problem due to the dependence of the input distribution on the policy π itself.,

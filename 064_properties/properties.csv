@@ -1,0 +1,24 @@
+id,primitive,name,question,codes,phrase
+R1,reward,defined_for_task,"Is a reward function (designer's R, reward model, verifier or process reward model) defined for the task the agent is performing in this setting?",yes; no; partly,a reward function is defined for the task
+R2,reward,used_for_learning,Does a reward signal change the policy's parameters in this setting?,yes; no; partly,reward changes the parameters
+R3,reward,per_step,"Is a reward assigned at every decision step (not only at the end, and not absent)?",yes; no; partly,reward arrives at every step
+R4,reward,from_environment,"Is the reward computed by the environment the agent acts in, as opposed to a learned model, a human or nothing?",yes; no; partly,the environment computes the reward
+P1,policy,parameters_change,Do the policy's parameters change in this setting?,yes; no; partly,the parameters change
+P2,policy,steerable_by_input,"Can the operator change the agent's behaviour through natural-language instructions in its input (prompt, instructions, scaffold text) without changing parameters, in the setting as usually run?",yes; no; partly,behaviour can be steered by instructions in the input
+P3,policy,non_learned_components,"Does the acting system include components that were not learned (scaffold code, tool code, memory store)?",yes; no; partly,the acting system has non-learned components
+A1,action,fixed_known_set,"Does the designer fix the set of actions in advance, with semantics the designer knows (as opposed to free-form output)?",yes; no; partly,the action set is fixed and known
+A2,action,side_effects,"Do actions change state outside the agent's own output (files, accounts, the physical world)?",yes; no; partly,actions have side effects
+A3,action,one_per_episode,Is there exactly one action per episode?,yes; no; partly,an episode has one action
+O1,observation,can_carry_instructions,Can an observation contain instructions that the agent may follow?,yes; no; partly,observations can carry instructions
+O2,observation,third_party_authored,"Can observation content be authored by parties other than the designer, the operator and the agent?",yes; no; partly,third parties can author observations
+O3,observation,self_generated,Are some observations the agent's own earlier outputs?,yes; no; partly,observations include the agent's own outputs
+S1,state,markov_input,Is the agent's input a Markov state of the decision process?,yes; no; partly,the input is a Markov state
+S2,state,hidden_world_state,Does relevant world state exist that the agent cannot observe?,yes; no; partly,world state is hidden
+S3,state,includes_principal_intent,Does the relevant state include the intent of a principal (user or operator) that is not fully given in the input?,yes; no; partly,the state includes a principal's intent
+T1,transition,next_decision,"After an action, does the agent face a further decision in the same episode?",yes; no; partly,an action is followed by a further decision
+T2,transition,dynamics_known,"Are the transition dynamics known to the designer (given, simulated or deterministic by construction)?",yes; no; partly,the dynamics are known
+T3,transition,stationary,Are the dynamics stationary over the setting's lifetime?,yes; no; partly,the dynamics are stationary
+E1,episode,designed_reset,Does the environment reset to a start state between episodes by design?,yes; no; partly,the environment resets by design
+E2,episode,irreversible_possible,Can an action produce an effect that no later action of the agent can undo?,yes; no; partly,irreversible effects are possible
+V1,value,learned_value,Is a learned value function or critic used in this setting?,yes; no; partly,a learned value function is used
+V2,value,value_at_decision,Does a value estimate select or rank actions at decision time?,yes; no; partly,a value estimate selects actions

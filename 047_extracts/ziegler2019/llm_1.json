@@ -1,0 +1,142 @@
+[
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "In this paper, we build on advances in generative pretraining of language models to apply reward learning to four natural language tasks: continuing text with positive sentiment or physically descriptive language, and summarization tasks on the TL;DR and CNN/Daily Mail datasets."
+ },
+ {
+  "topic": "reward",
+  "locator": "1",
+  "text": "We would like to apply reinforcement learning to complex tasks defined only by human judgment, where we can only tell whether a result is good or bad by asking humans. To do this, we can first use human labels to train a model of reward, and then optimize that model."
+ },
+ {
+  "topic": "policy",
+  "locator": "2",
+  "text": "We initialize a policy π = ρ, and then fine-tune π to perform the task well using RL."
+ },
+ {
+  "topic": "setting",
+  "locator": "2",
+  "text": "We will apply this model to a task with input space X = Σ≤m , data distribution D over X, and output space Y = Σn ."
+ },
+ {
+  "topic": "action",
+  "locator": "2",
+  "text": "ρ defines a probabilistic policy for this task via ρ(y|x) = ρ(xy)/ρ(x): fixing the beginning of the sample to x and generating subsequent tokens using ρ."
+ },
+ {
+  "topic": "reward",
+  "locator": "2",
+  "text": "However, we want to perform tasks defined by human judgments, where we can only learn about the reward by asking humans. To do this, we will first use human labels to train a reward model, and then optimize that reward model."
+ },
+ {
+  "topic": "reward",
+  "locator": "2",
+  "text": "We ask humans to choose between four options (y0 , y1 , y2 , y3 ); considering more options allows a human to amortize the cost of reading and understanding the prompt x."
+ },
+ {
+  "topic": "objective",
+  "locator": "2",
+  "text": "This term has several purposes: it plays the role of an entropy bonus, it prevents the policy from moving too far from the range where r is valid, and in the case of our style continuation tasks it also is an important part of the task definition"
+ },
+ {
+  "topic": "reward",
+  "locator": "2",
+  "text": "To keep π from moving too far from ρ, we add a penalty with expectation β KL(π, ρ) (see table 10 for what happens without this). That is, we perform RL on the modified reward"
+ },
+ {
+  "topic": "episode",
+  "locator": "2.2",
+  "text": "We use 2M episodes (x, y pairs), γ = 1, four PPO epochs per batch with one minibatch each, and default values for the other parameters."
+ },
+ {
+  "topic": "transition",
+  "locator": "2.2",
+  "text": "We use 2M episodes (x, y pairs), γ = 1, four PPO epochs per batch with one minibatch each, and default values for the other parameters."
+ },
+ {
+  "topic": "policy",
+  "locator": "2.3",
+  "text": "If the trained policy π is very different from the zero-shot policy ρ, the reward model will suffer a large distributional shift from training on samples from ρ to evaluation on samples from π."
+ },
+ {
+  "topic": "oversight",
+  "locator": "2.4",
+  "text": "Unlike many tasks in ML, our queries do not have unambiguous ground truth, especially for pairs of similar outputs"
+ },
+ {
+  "topic": "failure",
+  "locator": "2.4",
+  "text": "it demonstrates that r and π have succeeded in fitting to the human reward, but does not show that those human evaluations capture what we really care about, and our models are incentivized to exploit idiosyncracies of the labeling process."
+ },
+ {
+  "topic": "setting",
+  "locator": "3.1",
+  "text": "where the policy is presented with an excerpt from the BookCorpus dataset (Zhu et al., 2015) and generates a continuation of the text. The reward function evaluates the style of the concatenated text, either automatically or based on human judgments."
+ },
+ {
+  "topic": "claim",
+  "locator": "3.1.2",
+  "text": "We find that very little human data is required for fine-tuning: performance with 5k, 10k, and 20k reward model training samples is similar, degrading only for less than 5k samples."
+ },
+ {
+  "topic": "failure",
+  "locator": "3.2",
+  "text": "This reveals a mismatch between the notion of quality we wanted our model to learn, and what the humans labelers actually evaluated."
+ },
+ {
+  "topic": "failure",
+  "locator": "3.2",
+  "text": "Checking for copying is very easy, so labelers who check primarily for copying can work quickly. Since the online data collection setting made quality control more difficult, we failed to detect and penalize this behavior."
+ },
+ {
+  "topic": "episode",
+  "locator": "2.3",
+  "text": "Since validation samples are only used to evaluate the current π, we can add them to the training set for r."
+ },
+ {
+  "topic": "oversight",
+  "locator": "4.1",
+  "text": "Quality control issues: Significant work was required on Scale’s part to make their data quality mechanisms work in the low latency, online setting."
+ },
+ {
+  "topic": "policy",
+  "locator": "4.1",
+  "text": "Collect a batch of data from the pretrained policy ρ, train the reward model r on this batch, then fine-tune the policy π with r frozen."
+ },
+ {
+  "topic": "limitation",
+  "locator": "4.2",
+  "text": "The problem comes from the massive imbalance of data: we have at most 60k samples for the reward model, but 2M episodes for the policy."
+ },
+ {
+  "topic": "limitation",
+  "locator": "4.3",
+  "text": "This makes consistent labeling difficult for honest labelers (including the authors!), and makes it difficult to quickly detect problematic labelers."
+ },
+ {
+  "topic": "failure",
+  "locator": "4.4",
+  "text": "One of our code refactors introduced a bug which flipped the sign of the reward. Flipping the reward would usually produce incoherent text, but the same bug also flipped the sign of the KL penalty."
+ },
+ {
+  "topic": "failure",
+  "locator": "4.4",
+  "text": "A mechanism such as Toyota’s Andon cord could have prevented this, by allowing any labeler to stop a problematic training process."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5",
+  "text": "Our results are mixed. On the continuation tasks we achieve good results vs. the zero-shot baseline as evaluated by humans with very few samples: 2.5k for sentiment and 5k for descriptiveness."
+ },
+ {
+  "topic": "llm",
+  "locator": "5",
+  "text": "The advantage of copying is truthfulness: by comparison the zero-shot and supervised models produce natural, plausible-looking summaries that are often lies."
+ },
+ {
+  "topic": "principal",
+  "locator": "5",
+  "text": "On the AI safety side, interactive communication between humans and ML models is a requirement for scalable reward learning methods such as amplification, debate, and recursive reward modeling"
+ }
+]

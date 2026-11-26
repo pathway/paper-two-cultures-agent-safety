@@ -1,0 +1,3287 @@
+{
+ "coded": [
+  {
+   "p": "reward",
+   "rater": "A",
+   "codes": [
+    {
+     "property": "R1",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "The MDP is defined by the designer's reward function R, a number passed from the environment each step.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "R1",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "A learned reward model fit to human preferences is defined to score replies.",
+     "sources": "[@stiennon2020; @ouyang2022]"
+    },
+    {
+     "property": "R1",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "A programmatic checker of the final answer is defined as the reward.",
+     "sources": "[@lambert2024; @deepseekai2025]"
+    },
+    {
+     "property": "R1",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "A process reward model is defined to score each reasoning step.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "R1",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "A task-success test in the sandbox is defined as the trajectory reward.",
+     "sources": "[@zhou2024b]"
+    },
+    {
+     "property": "R1",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "The MDP the policy was trained on has an R and a simulator or benchmark usually still defines it, but many real deployments define no R at run time.",
+     "sources": "[@sutton2018]; by definition of the setting"
+    },
+    {
+     "property": "R1",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "No reward function is defined for the user's open-ended request; the reward model of training is not applied.",
+     "sources": "[@mclean2026]; by definition of the setting"
+    },
+    {
+     "property": "R1",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "No reward function, model or verifier is defined for the user's task at run time.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "R1",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "No reward function or verifier is defined at run time; task completion is only the model's own claim.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "R2",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "Reward is the signal that changes the policy through experience.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "R2",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "Policy-gradient training maximises the reward model score (with KL penalty).",
+     "sources": "[@stiennon2020; @ouyang2022; @ziegler2019]"
+    },
+    {
+     "property": "R2",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "The verifier reward drives the policy update.",
+     "sources": "[@lambert2024; @deepseekai2025]"
+    },
+    {
+     "property": "R2",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "Step scores from the PRM are the reward used to train the policy.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "R2",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The terminal success signal is the reward used to update the agent.",
+     "sources": "[@zhou2024b]"
+    },
+    {
+     "property": "R2",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The policy is fixed; any reward the environment emits does not change parameters.",
+     "sources": "[@sutton2018]; by definition of the setting"
+    },
+    {
+     "property": "R2",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "Weights are frozen and the reward model is no longer used.",
+     "sources": "[@mclean2026]; by definition of the setting"
+    },
+    {
+     "property": "R2",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "Weights are frozen; user corrections do not update them.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "R2",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "Weights are frozen and no reward exists at run time.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "R3",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "A scalar reward is passed at each step.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "R3",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The reward model scores only the entire reply; there are no intermediate rewards.",
+     "sources": "[@stiennon2020]"
+    },
+    {
+     "property": "R3",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "The verifier checks only the final answer; reasoning steps get no reward.",
+     "sources": "[@lambert2024; @deepseekai2025]"
+    },
+    {
+     "property": "R3",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "The PRM scores every reasoning step, and each step is one action.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "R3",
+     "setting": "T-AGENT",
+     "code": "no",
+     "reason": "Reward is given on task success at the end of the run, not per tool call.",
+     "sources": "[@zhou2024b]"
+    },
+    {
+     "property": "R3",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "The environment may still emit a per-step reward in simulation, but nothing uses it and real deployments often emit none.",
+     "sources": "[@sutton2018]; by definition of the setting"
+    },
+    {
+     "property": "R3",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "No reward is assigned at any step.",
+     "sources": "[@mclean2026]; by definition of the setting"
+    },
+    {
+     "property": "R3",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "No reward is assigned; human reaction after a turn is not a reward signal.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "R3",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "No reward is assigned at any step.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "R4",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "The reward passes from the environment to the agent.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "R4",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The reward comes from a learned reward model, not from the environment.",
+     "sources": "[@stiennon2020; @ouyang2022]"
+    },
+    {
+     "property": "R4",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "A rule-based checker computes the reward from the outcome, as an environment reward function does; it is neither learned nor human.",
+     "sources": "[@lambert2024; @deepseekai2025]"
+    },
+    {
+     "property": "R4",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "A learned process reward model scores the steps.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "R4",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The sandbox test computes task success from the environment state.",
+     "sources": "[@zhou2024b]"
+    },
+    {
+     "property": "R4",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "A simulator or game may still compute the reward, but in a real deployment there is often none; it is unused either way.",
+     "sources": "[@sutton2018]; by definition of the setting"
+    },
+    {
+     "property": "R4",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "No reward exists at run time.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "R4",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "No reward exists; the only feedback is the human's reaction.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "R4",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "No reward exists; completion is the model's own claim.",
+     "sources": "by definition of the setting"
+    }
+   ]
+  },
+  {
+   "p": "reward",
+   "rater": "B",
+   "codes": [
+    {
+     "property": "R1",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "The MDP includes a designer's reward function.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "R1",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "A learned reward model is defined and scores each reply.",
+     "sources": "[@stiennon2020]"
+    },
+    {
+     "property": "R1",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "A programmatic verifier defines the reward for the answer.",
+     "sources": "[@lambert2024; @deepseekai2025]"
+    },
+    {
+     "property": "R1",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "A process reward model is defined and scores each step.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "R1",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "A task-success test defines the reward.",
+     "sources": "[@zhou2024b]"
+    },
+    {
+     "property": "R1",
+     "setting": "D-RL",
+     "code": "yes",
+     "reason": "The MDP the policy acts in still has its reward function defined, though it may not be computed or observed in the field.",
+     "sources": "[@sutton2018]; by definition of the setting (MDP or POMDP)"
+    },
+    {
+     "property": "R1",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "No reward function exists for the user's open-ended task at run time; the reward model is no longer used.",
+     "sources": "[@mclean2026]; by definition of the setting"
+    },
+    {
+     "property": "R1",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "No reward function is defined; the human's reaction is not a defined reward.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "R1",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "No reward function or verifier is defined; success is the model's own claim.",
+     "sources": "[@baker2025; @kapoor2024]; by definition of the setting"
+    },
+    {
+     "property": "R2",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "Reward drives the policy update.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "R2",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "The reward model score drives the policy update (RLHF).",
+     "sources": "[@stiennon2020; @ouyang2022]"
+    },
+    {
+     "property": "R2",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "Verifier reward drives the policy update.",
+     "sources": "[@lambert2024; @deepseekai2025]"
+    },
+    {
+     "property": "R2",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "Step scores drive the policy update.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "R2",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "Terminal task success drives the policy update.",
+     "sources": "[@zhou2024b]"
+    },
+    {
+     "property": "R2",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The policy is fixed; any reward the environment emits does not change parameters.",
+     "sources": "[@sutton2018]; by definition of the setting"
+    },
+    {
+     "property": "R2",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "Weights are frozen; no reward is used.",
+     "sources": "[@mclean2026]; by definition of the setting"
+    },
+    {
+     "property": "R2",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "User feedback does not update the weights.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "R2",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "Weights are frozen and no reward exists.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "R3",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "A scalar reward arrives at each step.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "R3",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The reward model scores only the whole reply; the per-token KL term is a penalty to the reference model, not the task reward.",
+     "sources": "[@stiennon2020; @ziegler2019; @ouyang2022]"
+    },
+    {
+     "property": "R3",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "The verifier scores only the final answer; reasoning steps get no correctness reward.",
+     "sources": "[@lambert2024; @deepseekai2025]"
+    },
+    {
+     "property": "R3",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "The process reward model scores every reasoning step.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "R3",
+     "setting": "T-AGENT",
+     "code": "no",
+     "reason": "Reward comes only at the end of the multi-turn run.",
+     "sources": "[@zhou2024b]"
+    },
+    {
+     "property": "R3",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "An environment that computes reward does so each step, but many deployments compute none; the setting's reward source is none.",
+     "sources": "[@sutton2018]; by definition of the setting"
+    },
+    {
+     "property": "R3",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "No reward is assigned at any step.",
+     "sources": "[@mclean2026]; by definition of the setting"
+    },
+    {
+     "property": "R3",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "No reward is assigned; only occasional human reactions occur.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "R3",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "No reward is assigned at any step.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "R4",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "Reward passes from the environment to the agent.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "R4",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "A learned reward model fit to human preferences computes the reward, not the environment.",
+     "sources": "[@stiennon2020]"
+    },
+    {
+     "property": "R4",
+     "setting": "T-RLVR",
+     "code": "partly",
+     "reason": "A programmatic checker, not a learned model or human, computes it, but the checker is a scorer outside any acting environment (no environment dynamics).",
+     "sources": "[@lambert2024; @deepseekai2025]"
+    },
+    {
+     "property": "R4",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "A learned process reward model computes the reward.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "R4",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The sandbox environment's task-success test computes the reward.",
+     "sources": "[@zhou2024b]"
+    },
+    {
+     "property": "R4",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "If any reward exists it is computed by the environment, but the setting as usually run uses none.",
+     "sources": "[@sutton2018]; by definition of the setting"
+    },
+    {
+     "property": "R4",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "No reward is computed by anything.",
+     "sources": "[@mclean2026]; by definition of the setting"
+    },
+    {
+     "property": "R4",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "No environment reward; only the human reacts.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "R4",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "No environment reward; the training verifier is absent.",
+     "sources": "[@baker2025]; by definition of the setting"
+    }
+   ]
+  },
+  {
+   "p": "policy",
+   "rater": "A",
+   "codes": [
+    {
+     "property": "P1",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "Learning updates the policy parameters in the loop.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "P1",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "Policy-gradient or DPO updates change the model weights.",
+     "sources": "[@rafailov2023]; [@ouyang2022]"
+    },
+    {
+     "property": "P1",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "GRPO updates the model weights.",
+     "sources": "[@shao2024]"
+    },
+    {
+     "property": "P1",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "The generator is trained, so its weights change.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "P1",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "RL updates the model weights.",
+     "sources": "[@zhou2024b]"
+    },
+    {
+     "property": "P1",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The policy is fixed and there is no learning.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "P1",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "Weights are frozen; adaptation is in context only.",
+     "sources": "[@brown2020]"
+    },
+    {
+     "property": "P1",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "The model is frozen and steered from outside the weights.",
+     "sources": "[@yao2023b]"
+    },
+    {
+     "property": "P1",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "Memory content changes but the model parameters stay frozen.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "P2",
+     "setting": "T-RL",
+     "code": "no",
+     "reason": "A usual RL policy maps state to action and has no instruction channel; behaviour changes only by changing the reward, environment or parameters.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "P2",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "The policy is a language model conditioned on the prompt, so the operator can change behaviour by changing the prompt.",
+     "sources": "[@rafailov2023]; [@brown2020]"
+    },
+    {
+     "property": "P2",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "The policy is a language model conditioned on the prompt, so the input steers it.",
+     "sources": "[@shao2024]; [@brown2020]"
+    },
+    {
+     "property": "P2",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "The generator is a language model conditioned on the prompt and prior steps.",
+     "sources": "[@lightman2024]; [@brown2020]"
+    },
+    {
+     "property": "P2",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The agent is a prompted model in a scaffold; instructions and scaffold text steer it.",
+     "sources": "[@yao2023b]"
+    },
+    {
+     "property": "P2",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The frozen policy maps state to action with no instruction channel; its behaviour changes only by changing the policy or the environment.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "P2",
+     "setting": "D-CHAT",
+     "code": "yes",
+     "reason": "Prompts and few-shot text steer the frozen model with no gradient updates.",
+     "sources": "[@brown2020]"
+    },
+    {
+     "property": "P2",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "A frozen model is steered by prompt, few-shot examples and scaffold.",
+     "sources": "[@yao2023b]"
+    },
+    {
+     "property": "P2",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "Prompt, scaffold and memory content steer the frozen model.",
+     "sources": "[@yao2023b]; [@chen2024]"
+    },
+    {
+     "property": "P3",
+     "setting": "T-RL",
+     "code": "no",
+     "reason": "The acting system is the learned policy network; the environment is not part of the policy.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "P3",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The acting system is the model alone; one whole reply is sampled from it.",
+     "sources": "[@rafailov2023]"
+    },
+    {
+     "property": "P3",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "The acting system is the model; the programmatic checker is the reward source, not part of the acting system.",
+     "sources": "[@shao2024]"
+    },
+    {
+     "property": "P3",
+     "setting": "T-PRM",
+     "code": "partly",
+     "reason": "The generator is learned, but step segmentation by newline is fixed code; the process reward model is a learned scorer outside the policy.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "P3",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The model runs inside a scaffold that parses tool calls and runs tool code in a sandbox.",
+     "sources": "[@zhou2024b]; [@yao2023b]"
+    },
+    {
+     "property": "P3",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The acting system is the frozen learned network; any wrapper is incidental, not part of the setting as usually run.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "P3",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "As usually posed, one reply per turn comes from the frozen model alone; system prompt is text, not code.",
+     "sources": "[@brown2020]"
+    },
+    {
+     "property": "P3",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "The agent includes scaffold code and tool code around the frozen model.",
+     "sources": "[@yao2023b]; [@schick2023]"
+    },
+    {
+     "property": "P3",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "The agent includes scaffold code, tool code, a memory store and sub-agent spawning.",
+     "sources": "[@chen2024]; [@hammond2025]"
+    }
+   ]
+  },
+  {
+   "p": "policy",
+   "rater": "B",
+   "codes": [
+    {
+     "property": "P1",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "The agent learns in the loop, so the policy parameters change.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "P1",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "RLHF (PPO or DPO) updates the language model weights.",
+     "sources": "[@rafailov2023] [@ouyang2022]"
+    },
+    {
+     "property": "P1",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "GRPO updates the model weights from verifier rewards.",
+     "sources": "[@shao2024] [@deepseekai2025]"
+    },
+    {
+     "property": "P1",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "The generator is trained with step-level rewards, so weights change.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "P1",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "RL on trajectory reward updates the model weights.",
+     "sources": "[@zhou2024b]"
+    },
+    {
+     "property": "P1",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The policy is fixed and no learning occurs.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "P1",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "Weights are frozen; only the context changes.",
+     "sources": "by definition of the setting; [@brown2020]"
+    },
+    {
+     "property": "P1",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "The model is frozen; adaptation is via prompts and tool results.",
+     "sources": "[@yao2023b]"
+    },
+    {
+     "property": "P1",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "Weights stay frozen; memory is a non-parameter store, not policy parameters.",
+     "sources": "by definition of the setting; [@chen2024]"
+    },
+    {
+     "property": "P2",
+     "setting": "T-RL",
+     "code": "no",
+     "reason": "A standard RL policy maps observed state to action; the operator has no instruction channel to steer it without changing parameters.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "P2",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "The language model policy is conditioned on a text prompt, so instructions change its behaviour with no weight change.",
+     "sources": "[@brown2020]; [@rafailov2023]"
+    },
+    {
+     "property": "P2",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "The policy is the same instruction-following language model, steerable by prompt.",
+     "sources": "[@shao2024]"
+    },
+    {
+     "property": "P2",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "The generator is a language model that responds to prompt content.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "P2",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The model inside the scaffold is steered by prompt and scaffold instructions.",
+     "sources": "[@yao2023b]"
+    },
+    {
+     "property": "P2",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The frozen policy has no instruction channel; its input is the environment observation.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "P2",
+     "setting": "D-CHAT",
+     "code": "yes",
+     "reason": "Behaviour is changed by prompt, instructions and few-shot examples with frozen weights.",
+     "sources": "[@brown2020]"
+    },
+    {
+     "property": "P2",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "A frozen model is steered by few-shot prompts and scaffold.",
+     "sources": "[@yao2023b]"
+    },
+    {
+     "property": "P2",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "Prompt, scaffold and memory contents steer a frozen model.",
+     "sources": "[@yao2023b]; [@chen2024]"
+    },
+    {
+     "property": "P3",
+     "setting": "T-RL",
+     "code": "no",
+     "reason": "The acting system is the learned policy mapping state to action; no scaffold or tool code is part of it.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "P3",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The acting system is the model alone producing the whole reply.",
+     "sources": "[@rafailov2023]"
+    },
+    {
+     "property": "P3",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "The acting system is the model; the programmatic checker scores output and is not part of acting.",
+     "sources": "[@shao2024]"
+    },
+    {
+     "property": "P3",
+     "setting": "T-PRM",
+     "code": "partly",
+     "reason": "The model acts alone, but step-by-step generation needs non-learned step parsing and splitting code (the process reward model is a scorer, not an actor).",
+     "sources": "[@lightman2024]; [@snell2024]"
+    },
+    {
+     "property": "P3",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The sandbox scaffold parses tool calls and runs the tool code, which is not learned.",
+     "sources": "[@zhou2024b]; [@yao2023b]"
+    },
+    {
+     "property": "P3",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The deployed system is the frozen learned policy; no scaffold, tool code or memory store is part of it.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "P3",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "The acting system is the frozen model producing one reply per turn, with no tool or memory component in the setting.",
+     "sources": "[@brown2020]"
+    },
+    {
+     "property": "P3",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "Scaffold code and tool code are part of the acting system.",
+     "sources": "[@yao2023b]; [@schick2023]"
+    },
+    {
+     "property": "P3",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "Scaffold, tool code, memory store and sub-agent orchestration are non-learned components.",
+     "sources": "[@chen2024]; [@hammond2025]"
+    }
+   ]
+  },
+  {
+   "p": "action",
+   "rater": "A",
+   "codes": [
+    {
+     "property": "A1",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "The environment defines a set A(s) of actions with designer-known semantics.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "A1",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The action is a whole free-text reply, an unbounded string space that cannot be enumerated.",
+     "sources": "[@ahmadian2024]"
+    },
+    {
+     "property": "A1",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "The action is a free-form reasoning trace plus answer, not enumerable.",
+     "sources": "[@deepseekai2025]"
+    },
+    {
+     "property": "A1",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "A step is a free-text newline-delimited unit, so the action space is open.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "A1",
+     "setting": "T-AGENT",
+     "code": "partly",
+     "reason": "Tool names and signatures are fixed and known, but the arguments are free text, so the full action set is not enumerable.",
+     "sources": "[@yao2023b; @jimenez2024]"
+    },
+    {
+     "property": "A1",
+     "setting": "D-RL",
+     "code": "yes",
+     "reason": "The policy is frozen and acts on the same fixed action set A(s) with fixed semantics.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "A1",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "Each action is a free-text reply, not enumerable.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A1",
+     "setting": "D-AGENT-A",
+     "code": "partly",
+     "reason": "The tool set is fixed and known, but arguments are free-form, so the actions cannot be fully enumerated.",
+     "sources": "[@yao2023b]"
+    },
+    {
+     "property": "A1",
+     "setting": "D-AGENT-X",
+     "code": "partly",
+     "reason": "Tools are named and known, but arguments are free-form and tool chains and sub-agents make the action space open-ended and compositional.",
+     "sources": "[@ruan2024; @kwa2025]"
+    },
+    {
+     "property": "A2",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "Actions change the environment state, which lies outside the agent's output.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "A2",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The reply is text only; nothing outside the output changes.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A2",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "The trace and answer are text only; the checker only reads them.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A2",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "Reasoning steps are text only and have no side effects.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "A2",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "Tool calls change files and state in the sandbox, even though the sandbox is disposable.",
+     "sources": "[@jimenez2024]"
+    },
+    {
+     "property": "A2",
+     "setting": "D-RL",
+     "code": "yes",
+     "reason": "Actions still change the environment state, which may be physical or simulated.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A2",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "The reply affects only the reader; the system itself changes nothing outside its output.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A2",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "Tool calls change real files and accounts, visible to the human before the next call.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A2",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "Tool calls change real state, and the effects accumulate with no human between calls.",
+     "sources": "[@kwa2025; @ruan2024]"
+    },
+    {
+     "property": "A3",
+     "setting": "T-RL",
+     "code": "no",
+     "reason": "An episode is a sequence of many steps, each with an action.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "A3",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "The whole reply is one action scored once, as a contextual bandit.",
+     "sources": "[@ahmadian2024; @stiennon2020]"
+    },
+    {
+     "property": "A3",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "Trace plus answer is one action scored once by the checker.",
+     "sources": "[@deepseekai2025]"
+    },
+    {
+     "property": "A3",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "Each reasoning step is an action, so an episode has many.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "A3",
+     "setting": "T-AGENT",
+     "code": "no",
+     "reason": "An episode is a series of tool calls with reward at the end.",
+     "sources": "[@yao2023b]"
+    },
+    {
+     "property": "A3",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The policy takes many actions in a sequence, as in training.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A3",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "There is one reply per user turn, but a usual conversation holds many turns and no episode is defined.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A3",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "An episode has many tool calls with a human turn between them.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A3",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "A long chain of many tool calls with no reset.",
+     "sources": "[@kwa2025]"
+    }
+   ]
+  },
+  {
+   "p": "action",
+   "rater": "B",
+   "codes": [
+    {
+     "property": "A1",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "The agent picks a_t from a designer-defined set A(s) with known semantics.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "A1",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The action is a free-text reply drawn from an open token space, and the designer cannot enumerate or know its semantics in advance.",
+     "sources": "[@ahmadian2024]"
+    },
+    {
+     "property": "A1",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "The action is a free-form reasoning trace plus answer, not an enumerable set with known semantics.",
+     "sources": "[@deepseekai2025]"
+    },
+    {
+     "property": "A1",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "A step is a free-text newline-delimited unit, so the set of possible steps is open and not enumerable.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "A1",
+     "setting": "T-AGENT",
+     "code": "partly",
+     "reason": "The tool names and their meaning are fixed by the designer, but each call carries free-text arguments.",
+     "sources": "[@yao2023b; @jimenez2024]"
+    },
+    {
+     "property": "A1",
+     "setting": "D-RL",
+     "code": "yes",
+     "reason": "The deployed policy uses the same fixed action set A(s) with fixed semantics as in training.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A1",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "The action is a free-text reply, which is open and not enumerable.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A1",
+     "setting": "D-AGENT-A",
+     "code": "partly",
+     "reason": "The tool list is designer-fixed, but the arguments are free text, so the full action set is open.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A1",
+     "setting": "D-AGENT-X",
+     "code": "partly",
+     "reason": "Tools are designer-fixed, but arguments are free text and chains of calls are open-ended and compositional, so the set is less bounded than in D-AGENT-A.",
+     "sources": "[@ruan2024]"
+    },
+    {
+     "property": "A2",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "Actions change the environment state, even when the environment is a simulator.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "A2",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The reply is only text that is scored; it changes no state outside the agent's output.",
+     "sources": "[@stiennon2020; @ahmadian2024]"
+    },
+    {
+     "property": "A2",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "The trace and answer are text that a checker reads, and no external state changes.",
+     "sources": "[@deepseekai2025]"
+    },
+    {
+     "property": "A2",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "Steps are text only, with no effects outside the output.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "A2",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "Tool calls change files and state in the sandbox, though the sandbox is reset and contained.",
+     "sources": "[@yao2023b; @jimenez2024]"
+    },
+    {
+     "property": "A2",
+     "setting": "D-RL",
+     "code": "yes",
+     "reason": "The deployed policy's actions change the environment or physical world.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A2",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "The reply affects only the reader; the model changes no outside state.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A2",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "Tool calls have real side effects in the world, which the human sees before the next call.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A2",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "Tool calls have real side effects that accumulate with no human between them.",
+     "sources": "[@kwa2025; @ruan2024]"
+    },
+    {
+     "property": "A3",
+     "setting": "T-RL",
+     "code": "no",
+     "reason": "The agent acts at every step of a multi-step episode.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "A3",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "The whole reply is one action in a contextual bandit, with one reward per episode.",
+     "sources": "[@ahmadian2024; @stiennon2020]"
+    },
+    {
+     "property": "A3",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "The trace plus answer is one action in a contextual bandit, scored once by the checker.",
+     "sources": "[@deepseekai2025]"
+    },
+    {
+     "property": "A3",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "Each reasoning step is an action, so an episode has many actions.",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "A3",
+     "setting": "T-AGENT",
+     "code": "no",
+     "reason": "An episode is a sequence of tool calls.",
+     "sources": "[@yao2023b]"
+    },
+    {
+     "property": "A3",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The policy acts at every step of the episode or continuing task.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A3",
+     "setting": "D-CHAT",
+     "code": "yes",
+     "reason": "The setting is posed as one reply per user turn, so one action per episode.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A3",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "An episode holds many tool calls with a human turn between them.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "A3",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "A long-horizon run holds a long chain of tool calls.",
+     "sources": "[@kwa2025]"
+    }
+   ]
+  },
+  {
+   "p": "observation",
+   "rater": "A",
+   "codes": [
+    {
+     "property": "O1",
+     "setting": "T-RL",
+     "code": "no",
+     "reason": "Observation is a state sensor reading given as data; a standard RL policy has no channel that reads instructions from it.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "O1",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "Instructions and data share one input, so the prompt holds instructions the model may follow.",
+     "sources": "[@zverev2025]"
+    },
+    {
+     "property": "O1",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "The observation is the same single prompt, where instructions and data share one input.",
+     "sources": "[@zverev2025]"
+    },
+    {
+     "property": "O1",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "Each step is conditioned on the prompt and prior steps in one text input, and the prompt holds instructions.",
+     "sources": "[@zverev2025]"
+    },
+    {
+     "property": "O1",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "Tool output goes into the same context as instructions, so it can carry instructions even if the sandbox is usually benign.",
+     "sources": "[@wallace2024]; [@greshake2023]"
+    },
+    {
+     "property": "O1",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The frozen policy maps sensor states to actions and has no instruction-reading channel.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "O1",
+     "setting": "D-CHAT",
+     "code": "yes",
+     "reason": "The user turn is the instruction and may also contain pasted text with instructions, all in one input.",
+     "sources": "[@zverev2025]"
+    },
+    {
+     "property": "O1",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "Tool outputs and user turns mix in one stream and injected instructions can steer the model.",
+     "sources": "[@greshake2023]; [@zverev2025]"
+    },
+    {
+     "property": "O1",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "Untrusted tool output can carry commands that the agent follows, with no human between calls to catch it.",
+     "sources": "[@debenedetti2024]; [@greshake2023]"
+    },
+    {
+     "property": "O2",
+     "setting": "T-RL",
+     "code": "no",
+     "reason": "The environment and its dynamics are built by the designer; observations are simulator or sensor state, not text from outsiders.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "O2",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "Training prompts usually come from datasets or customer prompts written by labelers, web users or posters, who are none of designer, operator or agent.",
+     "sources": "[@stiennon2020]; [@ouyang2022]"
+    },
+    {
+     "property": "O2",
+     "setting": "T-RLVR",
+     "code": "partly",
+     "reason": "Prompts are usually problems from outside datasets, but they are curated by the trainer, so outside authorship is common but filtered.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O2",
+     "setting": "T-PRM",
+     "code": "partly",
+     "reason": "Prompts are usually curated problems from outside sets, and the later steps are agent-made, so the content is mixed.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O2",
+     "setting": "T-AGENT",
+     "code": "partly",
+     "reason": "The sandbox is built by the trainer, but tasks and file or web content often come from third-party repositories; planted instructions are usually trainer-made.",
+     "sources": "[@wallace2024]"
+    },
+    {
+     "property": "O2",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The deployed environment supplies sensor state; the content is not authored by outside parties as usually run.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "O2",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "The user is the principal and usually writes the turn, but users often paste third-party text such as emails and web pages.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O2",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "Tool outputs such as web pages, emails and files are authored by outside parties.",
+     "sources": "[@greshake2023]"
+    },
+    {
+     "property": "O2",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "Tools return untrusted data from outside parties with no human to filter it.",
+     "sources": "[@debenedetti2024]; [@greshake2023]"
+    },
+    {
+     "property": "O3",
+     "setting": "T-RL",
+     "code": "no",
+     "reason": "Observations are environment state; the agent's actions affect the next state but are not themselves observations.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "O3",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The whole reply is one action on a fixed prompt, so no earlier agent output is observed.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O3",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "The trace and answer form one action on a fixed prompt, so the observation holds no earlier output.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O3",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "Each reasoning step is conditioned on the prompt and the model's own previous steps.",
+     "sources": "[@ross2011]"
+    },
+    {
+     "property": "O3",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The context carries the agent's earlier tool calls and messages along with the tool results.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O3",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The policy observes environment state, not its own earlier actions as such.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "O3",
+     "setting": "D-CHAT",
+     "code": "yes",
+     "reason": "Multi-turn chat context includes the model's own earlier replies.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O3",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "The context holds the agent's earlier tool calls and messages across turns.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O3",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "The long-horizon context and memory hold the agent's own earlier outputs and sub-agent results.",
+     "sources": "by definition of the setting"
+    }
+   ]
+  },
+  {
+   "p": "observation",
+   "rater": "B",
+   "codes": [
+    {
+     "property": "O1",
+     "setting": "T-RL",
+     "code": "no",
+     "reason": "The observation is a sensor reading of environment state, data with no instruction channel.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "O1",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "The prompt is the observation and holds instructions, with instructions and data in one input.",
+     "sources": "[@zverev2025]"
+    },
+    {
+     "property": "O1",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "The observation is the prompt, which carries the task instructions, as in T-CHAT.",
+     "sources": "[@zverev2025]"
+    },
+    {
+     "property": "O1",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "The observation is the prompt plus own previous steps, and the prompt carries instructions.",
+     "sources": "[@zverev2025]"
+    },
+    {
+     "property": "O1",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The task prompt is an instruction the agent follows, and sandbox tool output can also carry instructions, though planted ones are rare.",
+     "sources": "[@wallace2024]"
+    },
+    {
+     "property": "O1",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "A frozen RL policy reads sensor state, not natural-language instructions.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O1",
+     "setting": "D-CHAT",
+     "code": "yes",
+     "reason": "The user turn is an instruction the model follows.",
+     "sources": "[@zverev2025]"
+    },
+    {
+     "property": "O1",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "Tool outputs and user turns share one stream, and injected instructions can steer the model.",
+     "sources": "[@greshake2023] [@zverev2025]"
+    },
+    {
+     "property": "O1",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "Untrusted tool output can carry commands that the agent executes, with no human to catch them.",
+     "sources": "[@debenedetti2024] [@greshake2023]"
+    },
+    {
+     "property": "O2",
+     "setting": "T-RL",
+     "code": "no",
+     "reason": "The trainer builds the simulator, so the designer authors all observation content.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "O2",
+     "setting": "T-CHAT",
+     "code": "partly",
+     "reason": "Training prompts usually come from crowdworkers, users or web datasets, so many are not authored by the designer or operator, but the set is curated.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O2",
+     "setting": "T-RLVR",
+     "code": "partly",
+     "reason": "Problems usually come from curated third-party datasets (for example competition math), and the trainer selects them.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O2",
+     "setting": "T-PRM",
+     "code": "partly",
+     "reason": "Prompts come from curated datasets as in T-CHAT, and the rest of the observation is the agent's own steps.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O2",
+     "setting": "T-AGENT",
+     "code": "partly",
+     "reason": "The trainer builds the sandbox, but task content such as repositories and web pages is often written by third parties.",
+     "sources": "[@wallace2024]"
+    },
+    {
+     "property": "O2",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "Observations are sensor or state readings from the designed environment, with no third-party authored content.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O2",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "The user is the principal and the only usual source of observations, though pasted documents can add third-party text.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O2",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "Tool outputs such as web pages, files and emails are written by outside parties.",
+     "sources": "[@greshake2023]"
+    },
+    {
+     "property": "O2",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "Untrusted tool output from the open world is authored by outside parties.",
+     "sources": "[@debenedetti2024] [@greshake2023]"
+    },
+    {
+     "property": "O3",
+     "setting": "T-RL",
+     "code": "no",
+     "reason": "Observations are environment state readings, not the agent's own outputs, even though they depend on its actions.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "O3",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The prompt is the whole observation and the reply is one action, so no earlier output is observed.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O3",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "One action per prompt, and no earlier agent output is an observation.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O3",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "Each reasoning step is conditioned on the prompt and the agent's own previous steps.",
+     "sources": "[@ross2011]"
+    },
+    {
+     "property": "O3",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The context holds the agent's own earlier tool calls and reasoning across steps.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O3",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The policy observes sensor state; its own actions affect state but are not observed as outputs.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O3",
+     "setting": "D-CHAT",
+     "code": "yes",
+     "reason": "Later turns include the model's earlier replies in the conversation history.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "O3",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "The context holds the agent's own earlier calls and messages.",
+     "sources": "[@ruan2024]"
+    },
+    {
+     "property": "O3",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "The long-horizon context and memory hold the agent's own earlier outputs.",
+     "sources": "by definition of the setting"
+    }
+   ]
+  },
+  {
+   "p": "state",
+   "rater": "A",
+   "codes": [
+    {
+     "property": "S1",
+     "setting": "T-RL",
+     "code": "partly",
+     "reason": "The setting is posed as MDP or POMDP, so the input is the Markov state in fully observed tasks and only an observation in partially observed ones.",
+     "sources": "[@sutton2018]; [@kaelbling1998]"
+    },
+    {
+     "property": "S1",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "One reply per prompt with no transitions, so the prompt is the whole state of the one-step bandit.",
+     "sources": "[@stiennon2020]; by definition of the setting"
+    },
+    {
+     "property": "S1",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "Same one-step bandit; the prompt is the whole state and the checker scores the trace plus answer.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S1",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "The prefix of prompt plus steps is the whole history in a deterministic tree MDP, so it is Markov.",
+     "sources": "[@feng2023]"
+    },
+    {
+     "property": "S1",
+     "setting": "T-AGENT",
+     "code": "no",
+     "reason": "The context shows only observations of a sandbox whose state is partly hidden, so the input alone does not fix the next-state distribution.",
+     "sources": "[@yao2024]; [@kaelbling1998]"
+    },
+    {
+     "property": "S1",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "Posed as MDP or POMDP with a frozen policy; Markov in fully observed environments and not in partially observed ones, the same mix as in training.",
+     "sources": "[@sutton2018]; [@kaelbling1998]"
+    },
+    {
+     "property": "S1",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "The context window is the history of a conversation whose next turn depends on a hidden user state, and old turns can fall out of the window.",
+     "sources": "[@kaelbling1998]; by definition of the setting"
+    },
+    {
+     "property": "S1",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "The database or world state is hidden from the agent, so the context alone is non-Markov.",
+     "sources": "[@yao2024]; [@kaelbling1998]"
+    },
+    {
+     "property": "S1",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "The context is a bounded, lossy belief over a hidden world that also changes through the agent's own earlier calls and other actors.",
+     "sources": "[@kaelbling1998]; [@chen2024]"
+    },
+    {
+     "property": "S2",
+     "setting": "T-RL",
+     "code": "partly",
+     "reason": "Some benchmarks are fully observed MDPs and others (partial-view games, robotics) hide world state, and the setting is posed as MDP or POMDP.",
+     "sources": "[@sutton2018]; [@kaelbling1998]"
+    },
+    {
+     "property": "S2",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "No environment exists beyond the prompt; the whole reply is one action and nothing evolves out of view.",
+     "sources": "[@stiennon2020]; by definition of the setting"
+    },
+    {
+     "property": "S2",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "No world beyond the prompt; the reference answer sits in the checker and is reward-side information, not world state.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S2",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "The prefix is fully observed and the tree is deterministic.",
+     "sources": "[@feng2023]"
+    },
+    {
+     "property": "S2",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The sandbox (files, services, process state) exceeds what tool outputs reveal, and the episode is a POMDP.",
+     "sources": "[@yao2024]; [@jimenez2024]"
+    },
+    {
+     "property": "S2",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "Same mix as training: fully observed in some deployments and partly hidden in others.",
+     "sources": "[@sutton2018]; [@kaelbling1998]"
+    },
+    {
+     "property": "S2",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "No tools or external world, but the user's real situation exists unobserved and the model sees only what is typed.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S2",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "Database and world contents are hidden from the agent; side effects are visible to the human but not fully to the agent.",
+     "sources": "[@yao2024]"
+    },
+    {
+     "property": "S2",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "Hidden world state plus changes made by the agent's own earlier calls and by others, over a long horizon with no reset.",
+     "sources": "[@yao2024]; [@chen2024]"
+    },
+    {
+     "property": "S3",
+     "setting": "T-RL",
+     "code": "no",
+     "reason": "The designer's intent is fixed in the reward function; the state is the environment's, and no principal's latent intent is part of it.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "S3",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "Prompts come from users or labelers and leave intent underspecified; the reward model stands in for it.",
+     "sources": "[@ouyang2022]; [@stiennon2020]"
+    },
+    {
+     "property": "S3",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "Tasks (math, code with a checker) are specified so that intent is fully given by the prompt and the check.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S3",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "Tasks are well-posed reasoning problems with a defined goal; no principal's unstated intent drives the steps.",
+     "sources": "[@feng2023]"
+    },
+    {
+     "property": "S3",
+     "setting": "T-AGENT",
+     "code": "partly",
+     "reason": "Task text such as an issue may leave intent underspecified, but success is defined by a test, which fixes the intent for scoring.",
+     "sources": "[@jimenez2024]; [@yao2024]"
+    },
+    {
+     "property": "S3",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The frozen policy acts in an environment with no principal in the loop; the designer's intent is already built into the policy.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S3",
+     "setting": "D-CHAT",
+     "code": "yes",
+     "reason": "A live user has goals, constraints and context beyond what the message states.",
+     "sources": "[@ouyang2022]; by definition of the setting"
+    },
+    {
+     "property": "S3",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "The user's intent is only partly stated in the task, and the human between steps can clarify or redirect it.",
+     "sources": "[@yao2024]"
+    },
+    {
+     "property": "S3",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "The operator or user's intent is only partly stated and no human corrects it between calls over a long horizon.",
+     "sources": "[@yao2024]; [@chen2024]"
+    }
+   ]
+  },
+  {
+   "p": "state",
+   "rater": "B",
+   "codes": [
+    {
+     "property": "S1",
+     "setting": "T-RL",
+     "code": "partly",
+     "reason": "The setting is posed as MDP or POMDP: the input is a Markov state in an MDP [@sutton2018] but only an observation in a POMDP [@kaelbling1998].",
+     "sources": "[@sutton2018; @kaelbling1998]"
+    },
+    {
+     "property": "S1",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "The prompt is the whole state of a one-step bandit with no transitions, so it is trivially sufficient.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S1",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "Same one-step bandit: the prompt is the whole state and nothing evolves.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S1",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "The prefix of prompt plus steps is the full history of a deterministic, fully observed tree MDP, so it is Markov [@feng2023].",
+     "sources": "[@feng2023]"
+    },
+    {
+     "property": "S1",
+     "setting": "T-AGENT",
+     "code": "no",
+     "reason": "The setting is a POMDP: the context holds only observations, the sandbox state is partly hidden, so the input is not a Markov state of the world [@yao2024; @kaelbling1998].",
+     "sources": "[@yao2024; @kaelbling1998]"
+    },
+    {
+     "property": "S1",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "Same as T-RL: MDP or POMDP, with the policy frozen; the input is Markov only in the MDP case [@sutton2018; @kaelbling1998].",
+     "sources": "[@sutton2018; @kaelbling1998]"
+    },
+    {
+     "property": "S1",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "A single reply to a prompt is trivially Markov, but multi-turn use depends on a hidden user and the context window carries no state beyond the conversation.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S1",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "The database state is hidden from the agent and the user, so the context is non-Markov in the world state [@yao2024; @kaelbling1998].",
+     "sources": "[@yao2024; @kaelbling1998]"
+    },
+    {
+     "property": "S1",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "Long-horizon POMDP with no reset and others changing the world; the bounded context is a lossy belief, not a Markov state [@kaelbling1998; @chen2024].",
+     "sources": "[@kaelbling1998; @chen2024]"
+    },
+    {
+     "property": "S2",
+     "setting": "T-RL",
+     "code": "partly",
+     "reason": "Hidden state exists in the POMDP case and not in the MDP case, and the setting is posed as either [@kaelbling1998].",
+     "sources": "[@kaelbling1998]"
+    },
+    {
+     "property": "S2",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The prompt is the whole state of the bandit; no environment state is relevant to the scored reply.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S2",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "The prompt is the whole state; the checker is the reward, not a world state the process depends on.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S2",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "Deterministic tree MDP with a fully observed prefix; nothing is hidden [@feng2023].",
+     "sources": "[@feng2023]"
+    },
+    {
+     "property": "S2",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The sandbox state (files, services, tests) is only partly visible to the agent through tool outputs [@yao2024; @jimenez2024].",
+     "sources": "[@yao2024; @jimenez2024]"
+    },
+    {
+     "property": "S2",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "As in training: hidden state exists in POMDPs (the usual real-world case) but not in MDPs [@kaelbling1998].",
+     "sources": "[@kaelbling1998]"
+    },
+    {
+     "property": "S2",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "The plain chatbot sees only the conversation while the user's situation and the outside world stay unseen, but there are no tool-reachable world states in the usual run.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S2",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "The database contents are \"hidden from the agent and the user\" [@yao2024].",
+     "sources": "[@yao2024]"
+    },
+    {
+     "property": "S2",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "The world changed by the agent's earlier calls and by others, and memory stores, are only partly observed [@yao2024; @chen2024].",
+     "sources": "[@yao2024; @chen2024]"
+    },
+    {
+     "property": "S3",
+     "setting": "T-RL",
+     "code": "no",
+     "reason": "The designer's reward defines the task fully; no principal's intent lies outside the environment.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S3",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "Prompts come from users whose intent is underspecified, and the learned reward model is only a proxy for it [@ouyang2022; @stiennon2020].",
+     "sources": "[@ouyang2022; @stiennon2020]"
+    },
+    {
+     "property": "S3",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "The problem statement and checker define the target fully; the prompt carries the intent.",
+     "sources": "[@deepseekai2025]"
+    },
+    {
+     "property": "S3",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "The problem is fully specified in the prompt and steps are scored for correctness, not for a principal's intent [@lightman2024].",
+     "sources": "[@lightman2024]"
+    },
+    {
+     "property": "S3",
+     "setting": "T-AGENT",
+     "code": "partly",
+     "reason": "The task text is given but the success test encodes intent that the issue text may not state fully, so it is mixed [@jimenez2024].",
+     "sources": "[@jimenez2024]"
+    },
+    {
+     "property": "S3",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The policy is fixed and serves a designer's reward with no principal in the loop.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S3",
+     "setting": "D-CHAT",
+     "code": "yes",
+     "reason": "The user's real goal is usually only partly stated in the prompt, and a human reads each reply.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S3",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "The user's goal is not fully in the instruction; the human sees each step and may correct it.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "S3",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "The principal's intent is only partly stated and no human corrects it between calls, so a gap is likely to go unnoticed.",
+     "sources": "by definition of the setting"
+    }
+   ]
+  },
+  {
+   "p": "transition",
+   "rater": "A",
+   "codes": [
+    {
+     "property": "T1",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "The MDP continues after each action until the episode ends.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "T1",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The whole reply is one action and generation leads straight to a terminal state.",
+     "sources": "[@ahmadian2024; @xiong2024]"
+    },
+    {
+     "property": "T1",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "Trace plus answer is one action, followed by a terminal state.",
+     "sources": "[@ahmadian2024]; by definition of the setting"
+    },
+    {
+     "property": "T1",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "Each reasoning step is an action, so a next step follows until the answer ends.",
+     "sources": "[@feng2023]; by definition of the setting"
+    },
+    {
+     "property": "T1",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "Each tool call is followed by further calls until the task ends.",
+     "sources": "[@jimenez2024]; by definition of the setting"
+    },
+    {
+     "property": "T1",
+     "setting": "D-RL",
+     "code": "yes",
+     "reason": "The fixed policy keeps acting in the MDP episode.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "T1",
+     "setting": "D-CHAT",
+     "code": "yes",
+     "reason": "The user's reply is the next observation, so a conversation faces a further reply decision.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "T1",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "Each tool call yields an observation and then another decision.",
+     "sources": "[@ruan2024]"
+    },
+    {
+     "property": "T1",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "Long-horizon run with many calls and no reset.",
+     "sources": "[@greshake2023]; by definition of the setting"
+    },
+    {
+     "property": "T2",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "RL training is usually run in simulators or games the designer built; unknown dynamics are mostly unknown to the agent, not the designer.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "T2",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "There is no transition beyond the generation ending in a terminal state, known by construction.",
+     "sources": "[@ahmadian2024]"
+    },
+    {
+     "property": "T2",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "There is no transition beyond the one-step terminal state, known by construction.",
+     "sources": "[@ahmadian2024]; by definition of the setting"
+    },
+    {
+     "property": "T2",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "Next state is prefix plus step, deterministic by construction.",
+     "sources": "[@feng2023]"
+    },
+    {
+     "property": "T2",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The designer builds and resets the sandbox that executes the calls.",
+     "sources": "[@jimenez2024]"
+    },
+    {
+     "property": "T2",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "Deployed policies run in either simulators or real worlds whose dynamics the designer cannot fully state, so the setting is mixed.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "T2",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "The next state is the user's reply, which the designer does not know or control.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "T2",
+     "setting": "D-AGENT-A",
+     "code": "partly",
+     "reason": "Local tool execution is mostly deterministic, but real-world, external and stochastic effects are not known.",
+     "sources": "[@ruan2024]"
+    },
+    {
+     "property": "T2",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "The world moves between calls and is a dynamic, black-box environment.",
+     "sources": "[@greshake2023; @chan2023]"
+    },
+    {
+     "property": "T3",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "The training environment is a fixed MDP whose dynamics do not change.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "T3",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "The trivial append-to-terminal dynamics never change; only the prompt distribution is sampled.",
+     "sources": "[@ahmadian2024]"
+    },
+    {
+     "property": "T3",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "The one-step terminal dynamics are fixed by construction.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "T3",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "The append dynamics are fixed by construction.",
+     "sources": "[@feng2023]"
+    },
+    {
+     "property": "T3",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The sandbox is reset to the base commit each episode, so dynamics stay fixed.",
+     "sources": "[@jimenez2024]"
+    },
+    {
+     "property": "T3",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "The MDP is assumed fixed, but deployed real environments often drift while the policy stays frozen.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "T3",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "The user as environment varies across users and over a conversation, though each reply is a short step.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "T3",
+     "setting": "D-AGENT-A",
+     "code": "partly",
+     "reason": "Episodes are bounded and supervised, but the external world still changes between runs.",
+     "sources": "[@ruan2024]"
+    },
+    {
+     "property": "T3",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "Long horizon with no reset in a world that moves between calls.",
+     "sources": "[@greshake2023]"
+    }
+   ]
+  },
+  {
+   "p": "transition",
+   "rater": "B",
+   "codes": [
+    {
+     "property": "T1",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "The agent acts in a multi-step MDP, so each action leads to a next state with a further decision.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "T1",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The whole reply is one action and generation leads straight to a terminal state.",
+     "sources": "[@ahmadian2024] [@xiong2024]"
+    },
+    {
+     "property": "T1",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "Trace plus answer is one action, followed by a terminal state and no further decision.",
+     "sources": "[@ahmadian2024]; by definition of the setting"
+    },
+    {
+     "property": "T1",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "Each reasoning step is an action and the next step is a further decision in the same tree episode.",
+     "sources": "[@feng2023]; by definition of the setting"
+    },
+    {
+     "property": "T1",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "Each tool call is followed by the next call within the same sandbox episode until the task ends.",
+     "sources": "[@jimenez2024]"
+    },
+    {
+     "property": "T1",
+     "setting": "D-RL",
+     "code": "yes",
+     "reason": "The frozen policy still acts in an MDP or POMDP and faces the next state's decision.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "T1",
+     "setting": "D-CHAT",
+     "code": "yes",
+     "reason": "After a reply the user answers and the model must reply again in the same conversation, though each reply is a single action.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "T1",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "The episode is a sequence of tool calls with a human turn between them, so each call is followed by another decision.",
+     "sources": "[@ruan2024]"
+    },
+    {
+     "property": "T1",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "It runs a long horizon with many sequential calls and no reset, so a further decision always follows.",
+     "sources": "[@greshake2023]; by definition of the setting"
+    },
+    {
+     "property": "T2",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "Training normally runs in a simulator or designed environment whose dynamics the designer can write down or run, though the agent often does not know them.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "T2",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "There is no transition: the terminal state is reached deterministically by construction.",
+     "sources": "[@ahmadian2024]"
+    },
+    {
+     "property": "T2",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "The one-step terminal transition is deterministic by construction.",
+     "sources": "[@ahmadian2024]; by definition of the setting"
+    },
+    {
+     "property": "T2",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "The next state is the prefix plus the step, a deterministic rule the designer defines.",
+     "sources": "[@feng2023]"
+    },
+    {
+     "property": "T2",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The sandbox is built and resettable by the designer, so its execution is simulated and controlled.",
+     "sources": "[@jimenez2024]"
+    },
+    {
+     "property": "T2",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "Deployment may be a known simulator or game, or a real physical environment whose dynamics the designer cannot fully specify.",
+     "sources": "[@sutton2018]; by definition of the setting"
+    },
+    {
+     "property": "T2",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "The next state is a real user's reply, which the designer cannot specify or simulate faithfully.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "T2",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "Real tools run with real side effects and the external world is not supported by emulation.",
+     "sources": "[@ruan2024]"
+    },
+    {
+     "property": "T2",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "The real world changes between calls and is a black box with no control.",
+     "sources": "[@greshake2023]; [@chan2023]"
+    },
+    {
+     "property": "T3",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "The MDP is defined with a fixed p(s',r|s,a) over training.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "T3",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "The only transition is a fixed reply-to-terminal step, so nothing can drift.",
+     "sources": "[@ahmadian2024]; by definition of the setting"
+    },
+    {
+     "property": "T3",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "The one-step terminal transition is fixed.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "T3",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "The append rule is fixed over training.",
+     "sources": "[@feng2023]"
+    },
+    {
+     "property": "T3",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The sandbox is reset to the same base commit for each episode, so dynamics are fixed.",
+     "sources": "[@jimenez2024]"
+    },
+    {
+     "property": "T3",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "Simulated or game deployments are fixed, but real physical environments can drift while the policy stays frozen.",
+     "sources": "[@sutton2018]; by definition of the setting"
+    },
+    {
+     "property": "T3",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "User behaviour and the user population shift over the long deployment while the weights stay frozen.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "T3",
+     "setting": "D-AGENT-A",
+     "code": "partly",
+     "reason": "Local tool behaviour is mostly fixed, but external services and the world change over the deployment.",
+     "sources": "[@ruan2024]; by definition of the setting"
+    },
+    {
+     "property": "T3",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "The world is dynamic, there is no reset, and the horizon is long, so dynamics change.",
+     "sources": "[@greshake2023]"
+    }
+   ]
+  },
+  {
+   "p": "episode",
+   "rater": "A",
+   "codes": [
+    {
+     "property": "E1",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "Training episodes end in a terminal state and the environment resets to a start state.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "E1",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "Each prompt is a fresh one-reply episode with no carried state, so every episode starts from the prompt distribution by design.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E1",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "Each prompt is a fresh one-reply episode with no carried state.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E1",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "Each problem starts from the prompt, and any prefix can be resampled from the start state.",
+     "sources": "[@snell2024; @yao2023a]"
+    },
+    {
+     "property": "E1",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The sandbox is reset between tasks.",
+     "sources": "[@jimenez2024]"
+    },
+    {
+     "property": "E1",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "Episodic tasks reset by design, but deployed continuing tasks never reset; the setting as usually run is mixed.",
+     "sources": "by definition of the setting; cell reason"
+    },
+    {
+     "property": "E1",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "A conversation starts with empty context, but no environment is reset; the world and the user carry on.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E1",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "The conversation can restart, but the environment is not reset and side effects remain.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E1",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "The setting is defined as having no reset; actions persist in the live environment.",
+     "sources": "by definition of the setting; [@kwa2025]"
+    },
+    {
+     "property": "E2",
+     "setting": "T-RL",
+     "code": "partly",
+     "reason": "Many simulated environments have absorbing or terminal states (death, falls), but others are fully reversible, and a reset follows anyway.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "E2",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "A sampled reply is text scored and discarded; it changes nothing in any world.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E2",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "A sampled reply is text scored by a checker; it changes nothing in any world.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E2",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "Reasoning steps are text in a tree that can be resampled from any prefix.",
+     "sources": "[@snell2024; @yao2023a]"
+    },
+    {
+     "property": "E2",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "Tool calls in a sandbox can delete or overwrite state the agent cannot restore within the episode, even though the sandbox resets afterwards.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E2",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "Real-world control tasks often include irreversible events (damage, absorbing failure), but some deployed tasks are fully reversible.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E2",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "A reply is text and mostly harmless, but advice or disclosed content the user acts on or reads cannot be undone; the usual use is mixed.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E2",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "Tool calls have real side effects (sent mail, deleted files) that are visible but not undoable by the agent.",
+     "sources": "by definition of the setting; cell reason"
+    },
+    {
+     "property": "E2",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "Actions persist in the live environment and many are irreversible.",
+     "sources": "[@grinsztajn2021; @sharma2022]"
+    }
+   ]
+  },
+  {
+   "p": "episode",
+   "rater": "B",
+   "codes": [
+    {
+     "property": "E1",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "Each episode ends in a terminal state followed by a reset, and the next begins independently.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "E1",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "Each sampled prompt starts a fresh one-reply episode with no state carried over.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E1",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "Each prompt is an independent one-reply episode that starts from the prompt only.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E1",
+     "setting": "T-PRM",
+     "code": "yes",
+     "reason": "Each rollout restarts from the problem statement, and any prefix can be resampled by design.",
+     "sources": "[@snell2024]; by definition of the setting"
+    },
+    {
+     "property": "E1",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "The sandbox is reset between tasks by design, which supplies the reset that deployment lacks.",
+     "sources": "[@jimenez2024]"
+    },
+    {
+     "property": "E1",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "Episodic tasks reset by design and continuing tasks do not, so the setting as usually run is mixed.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E1",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "No environment state is reset by design; a new conversation only clears context and the world is untouched.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E1",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "The conversation can restart, but the environment is not reset and side effects remain.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E1",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "The setting is defined as no reset; actions persist in the live environment.",
+     "sources": "by definition of the setting; [@kwa2025]"
+    },
+    {
+     "property": "E2",
+     "setting": "T-RL",
+     "code": "partly",
+     "reason": "Terminal and absorbing states make some actions irreversible within an episode, but many MDPs are reversible, and the reset undoes everything between episodes.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "E2",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The single reply is the only action and has no effect outside the agent's output.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E2",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "The single reply is the only action and has no effect outside the agent's output.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E2",
+     "setting": "T-PRM",
+     "code": "partly",
+     "reason": "Steps cannot be retracted within a trajectory, since the tree only grows, but there is no external effect and rollouts can be resampled.",
+     "sources": "[@snell2024]; [@yao2023a]"
+    },
+    {
+     "property": "E2",
+     "setting": "T-AGENT",
+     "code": "yes",
+     "reason": "Tool calls in a sandbox can delete or overwrite state the agent cannot restore, although the sandbox is reset between tasks.",
+     "sources": "[@jimenez2024]; by definition of the setting"
+    },
+    {
+     "property": "E2",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "Whether an action is irreversible depends on the task, such as a physical system that can be damaged versus a simulated or reversible one.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E2",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "The reply changes no state outside the agent's output, so nothing the agent does is irreversible.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E2",
+     "setting": "D-AGENT-A",
+     "code": "yes",
+     "reason": "Tool calls have real side effects, and a human seeing them first does not make a performed deletion or send undoable.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "E2",
+     "setting": "D-AGENT-X",
+     "code": "yes",
+     "reason": "Actions persist in the live world with no reset, and many are irreversible.",
+     "sources": "[@grinsztajn2021; @sharma2022]; by definition of the setting"
+    }
+   ]
+  },
+  {
+   "p": "value",
+   "rater": "A",
+   "codes": [
+    {
+     "property": "V1",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "Value functions V and Q are the central learned objects of RL training (critics, Q-networks).",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "V1",
+     "setting": "T-CHAT",
+     "code": "partly",
+     "reason": "Classic RLHF with PPO trains a value head, but GRPO, RLOO and ReMax drop the critic, so usual practice is mixed.",
+     "sources": "[@ouyang2022; @shao2024; @ahmadian2024]"
+    },
+    {
+     "property": "V1",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "Verifiable-reward training is usually run with critic-free GRPO or RLOO, since one terminal reward needs no critic.",
+     "sources": "[@shao2024]"
+    },
+    {
+     "property": "V1",
+     "setting": "T-PRM",
+     "code": "partly",
+     "reason": "A PRM is a learned step scorer, not in general a value function, but a PRM trained on continuation success estimates prefix value.",
+     "sources": "[@snell2024; @zhang2025]"
+    },
+    {
+     "property": "V1",
+     "setting": "T-AGENT",
+     "code": "partly",
+     "reason": "Base reward is terminal and many methods use no critic, but some add a learned turn-level value function.",
+     "sources": "[@zhou2024b]"
+    },
+    {
+     "property": "V1",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "A frozen policy acts and no learned value function is needed or used at run time, though value-based policies embed a Q-network as the policy itself (not the usual case counted here).",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "V1",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "Frozen weights answer one reply per turn with no value function or critic in the loop.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "V1",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "No learned value function is used; the human watching each step is the check.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "V1",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "No learned value function is used; retry, reflection and verbal self-check stand in for it.",
+     "sources": "[@shinn2023]"
+    },
+    {
+     "property": "V2",
+     "setting": "T-RL",
+     "code": "partly",
+     "reason": "Value-based methods (DQN) select actions by argmax Q, while actor-critic methods use the critic only for the update, not to pick actions.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "V2",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The policy samples the whole reply directly; any critic or reward model is used for the update, not to rank actions at decision time.",
+     "sources": "[@stiennon2020; @shao2024]"
+    },
+    {
+     "property": "V2",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "The policy samples a trace and answer directly; a programmatic checker scores afterwards and no value ranks actions.",
+     "sources": "[@shao2024]"
+    },
+    {
+     "property": "V2",
+     "setting": "T-PRM",
+     "code": "partly",
+     "reason": "A PRM or rollout-value verifier often ranks steps in beam or tree search, but a PRM used only as a training reward does not select actions.",
+     "sources": "[@snell2024; @zhang2025; @feng2023; @silver2017]"
+    },
+    {
+     "property": "V2",
+     "setting": "T-AGENT",
+     "code": "no",
+     "reason": "Tool calls are sampled from the policy; a value head, where present, serves the update, not action selection.",
+     "sources": "[@zhou2024b]"
+    },
+    {
+     "property": "V2",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "A fixed Q-network policy picks the argmax-Q action and AlphaZero-style agents search with a value, but a deployed actor policy samples actions directly.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "V2",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "One reply is generated per user turn with no value estimate ranking candidates (best-of-n with a reward model is not the usual run).",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "V2",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "The agent emits one tool call at a time with no value estimate; the human reviews each step.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "V2",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "No learned value ranks actions; self-verification is verbal, and scoring candidates by reverting to earlier states is not possible in a live run.",
+     "sources": "[@shinn2023; @zhou2024a]"
+    }
+   ]
+  },
+  {
+   "p": "value",
+   "rater": "B",
+   "codes": [
+    {
+     "property": "V1",
+     "setting": "T-RL",
+     "code": "yes",
+     "reason": "Value functions V and Q are the central learned objects of RL methods (actor-critic, Q-learning).",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "V1",
+     "setting": "T-CHAT",
+     "code": "partly",
+     "reason": "PPO-style RLHF learns a critic, but GRPO, RLOO and ReMax drop it, so practice is mixed.",
+     "sources": "[@shao2024; @ahmadian2024; @li2024; @ouyang2022]"
+    },
+    {
+     "property": "V1",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "One terminal verifier reward makes a critic unneeded and the usual method (GRPO, RLOO) drops it.",
+     "sources": "[@shao2024; @deepseekai2025]"
+    },
+    {
+     "property": "V1",
+     "setting": "T-PRM",
+     "code": "partly",
+     "reason": "A PRM scores step correctness and is not in general a value, but a PRM trained on continuation success acts as a learned value of the prefix.",
+     "sources": "[@snell2024; @lightman2024]"
+    },
+    {
+     "property": "V1",
+     "setting": "T-AGENT",
+     "code": "partly",
+     "reason": "The base reward is terminal and often critic-free, but some methods add a learned turn-level value function.",
+     "sources": "[@zhou2024b]"
+    },
+    {
+     "property": "V1",
+     "setting": "D-RL",
+     "code": "no",
+     "reason": "The policy is fixed and no learning occurs, so no critic is trained or used at run time.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "V1",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "Weights are frozen, there is no reward, and no value function is used.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "V1",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "Frozen weights and no reward; the human sees each step and no value function is used.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "V1",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "No learned value function is used; reflection and self-verification are verbal, not a learned critic.",
+     "sources": "[@shinn2023]"
+    },
+    {
+     "property": "V2",
+     "setting": "T-RL",
+     "code": "partly",
+     "reason": "Value-based methods select actions by argmax Q, but policy-gradient and actor-critic methods use value only as a baseline or critic, not to pick actions.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "V2",
+     "setting": "T-CHAT",
+     "code": "no",
+     "reason": "The policy samples the whole reply; no value estimate ranks actions at decision time.",
+     "sources": "[@shao2024]"
+    },
+    {
+     "property": "V2",
+     "setting": "T-RLVR",
+     "code": "no",
+     "reason": "The policy samples trace and answer directly; the verifier scores only afterwards and no value ranks actions.",
+     "sources": "[@shao2024]"
+    },
+    {
+     "property": "V2",
+     "setting": "T-PRM",
+     "code": "partly",
+     "reason": "A PRM or value-like verifier drives best-of-n, beam and tree search over steps in some setups, but is plainly a reward signal in plain PRM training.",
+     "sources": "[@snell2024; @zhang2025; @feng2023; @silver2017]"
+    },
+    {
+     "property": "V2",
+     "setting": "T-AGENT",
+     "code": "no",
+     "reason": "Tool calls are sampled from the policy and reward arrives at the end; value heads, where present, serve learning, not action choice.",
+     "sources": "[@zhou2024b]"
+    },
+    {
+     "property": "V2",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "A deployed value-based policy (for example DQN) picks argmax Q, while a deployed actor-critic policy discards the critic and acts without value.",
+     "sources": "[@sutton2018]"
+    },
+    {
+     "property": "V2",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "One reply is generated per turn with no value estimate ranking actions.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "V2",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "The agent picks the next tool call from the model; the human reviews it, and no value estimate ranks actions.",
+     "sources": "by definition of the setting"
+    },
+    {
+     "property": "V2",
+     "setting": "D-AGENT-X",
+     "code": "no",
+     "reason": "Verbal self-checks are not value estimates, and value-guided search by reverting states is not possible in a live deployment with persistent effects.",
+     "sources": "[@shinn2023; @zhou2024a]"
+    }
+   ]
+  }
+ ],
+ "disagreements": {
+  "reward": [
+   {
+    "key": "R1|D-RL",
+    "A": {
+     "property": "R1",
+     "setting": "D-RL",
+     "code": "partly",
+     "reason": "The MDP the policy was trained on has an R and a simulator or benchmark usually still defines it, but many real deployments define no R at run time.",
+     "sources": "[@sutton2018]; by definition of the setting"
+    },
+    "B": {
+     "property": "R1",
+     "setting": "D-RL",
+     "code": "yes",
+     "reason": "The MDP the policy acts in still has its reward function defined, though it may not be computed or observed in the field.",
+     "sources": "[@sutton2018]; by definition of the setting (MDP or POMDP)"
+    }
+   },
+   {
+    "key": "R4|T-RLVR",
+    "A": {
+     "property": "R4",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "A rule-based checker computes the reward from the outcome, as an environment reward function does; it is neither learned nor human.",
+     "sources": "[@lambert2024; @deepseekai2025]"
+    },
+    "B": {
+     "property": "R4",
+     "setting": "T-RLVR",
+     "code": "partly",
+     "reason": "A programmatic checker, not a learned model or human, computes it, but the checker is a scorer outside any acting environment (no environment dynamics).",
+     "sources": "[@lambert2024; @deepseekai2025]"
+    }
+   }
+  ],
+  "policy": [],
+  "action": [
+   {
+    "key": "A3|D-CHAT",
+    "A": {
+     "property": "A3",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "There is one reply per user turn, but a usual conversation holds many turns and no episode is defined.",
+     "sources": "by definition of the setting"
+    },
+    "B": {
+     "property": "A3",
+     "setting": "D-CHAT",
+     "code": "yes",
+     "reason": "The setting is posed as one reply per user turn, so one action per episode.",
+     "sources": "by definition of the setting"
+    }
+   }
+  ],
+  "observation": [
+   {
+    "key": "O2|T-CHAT",
+    "A": {
+     "property": "O2",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "Training prompts usually come from datasets or customer prompts written by labelers, web users or posters, who are none of designer, operator or agent.",
+     "sources": "[@stiennon2020]; [@ouyang2022]"
+    },
+    "B": {
+     "property": "O2",
+     "setting": "T-CHAT",
+     "code": "partly",
+     "reason": "Training prompts usually come from crowdworkers, users or web datasets, so many are not authored by the designer or operator, but the set is curated.",
+     "sources": "by definition of the setting"
+    }
+   },
+   {
+    "key": "O2|D-CHAT",
+    "A": {
+     "property": "O2",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "The user is the principal and usually writes the turn, but users often paste third-party text such as emails and web pages.",
+     "sources": "by definition of the setting"
+    },
+    "B": {
+     "property": "O2",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "The user is the principal and the only usual source of observations, though pasted documents can add third-party text.",
+     "sources": "by definition of the setting"
+    }
+   }
+  ],
+  "state": [
+   {
+    "key": "S1|D-CHAT",
+    "A": {
+     "property": "S1",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "The context window is the history of a conversation whose next turn depends on a hidden user state, and old turns can fall out of the window.",
+     "sources": "[@kaelbling1998]; by definition of the setting"
+    },
+    "B": {
+     "property": "S1",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "A single reply to a prompt is trivially Markov, but multi-turn use depends on a hidden user and the context window carries no state beyond the conversation.",
+     "sources": "by definition of the setting"
+    }
+   }
+  ],
+  "transition": [
+   {
+    "key": "T2|D-AGENT-A",
+    "A": {
+     "property": "T2",
+     "setting": "D-AGENT-A",
+     "code": "partly",
+     "reason": "Local tool execution is mostly deterministic, but real-world, external and stochastic effects are not known.",
+     "sources": "[@ruan2024]"
+    },
+    "B": {
+     "property": "T2",
+     "setting": "D-AGENT-A",
+     "code": "no",
+     "reason": "Real tools run with real side effects and the external world is not supported by emulation.",
+     "sources": "[@ruan2024]"
+    }
+   },
+   {
+    "key": "T3|D-CHAT",
+    "A": {
+     "property": "T3",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "The user as environment varies across users and over a conversation, though each reply is a short step.",
+     "sources": "by definition of the setting"
+    },
+    "B": {
+     "property": "T3",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "User behaviour and the user population shift over the long deployment while the weights stay frozen.",
+     "sources": "by definition of the setting"
+    }
+   }
+  ],
+  "episode": [
+   {
+    "key": "E2|T-PRM",
+    "A": {
+     "property": "E2",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "Reasoning steps are text in a tree that can be resampled from any prefix.",
+     "sources": "[@snell2024; @yao2023a]"
+    },
+    "B": {
+     "property": "E2",
+     "setting": "T-PRM",
+     "code": "partly",
+     "reason": "Steps cannot be retracted within a trajectory, since the tree only grows, but there is no external effect and rollouts can be resampled.",
+     "sources": "[@snell2024]; [@yao2023a]"
+    }
+   },
+   {
+    "key": "E2|D-CHAT",
+    "A": {
+     "property": "E2",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "A reply is text and mostly harmless, but advice or disclosed content the user acts on or reads cannot be undone; the usual use is mixed.",
+     "sources": "by definition of the setting"
+    },
+    "B": {
+     "property": "E2",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "The reply changes no state outside the agent's output, so nothing the agent does is irreversible.",
+     "sources": "by definition of the setting"
+    }
+   }
+  ],
+  "value": []
+ },
+ "adjudicated": [
+  {
+   "p": "reward",
+   "codes": [
+    {
+     "property": "R1",
+     "setting": "D-RL",
+     "code": "yes",
+     "reason": "The setting is defined as an MDP or POMDP, and R is part of that definition, so a reward function is defined for the task. The policy is fixed and the reward is not used, but the question asks only whether R is defined. Real deployments with no R at run time are a different setting, and deployment phase must not stand in for culture. D-CHAT has no reward by definition, while D-RL does.",
+     "sources": "[@sutton2018] (MDP definition includes R); 060_settings/settings.csv D-RL row (MDP or POMDP); 065_primitive_cells/cells.csv reward,D-RL (environment may still emit rewards)"
+    },
+    {
+     "property": "R4",
+     "setting": "T-RLVR",
+     "code": "yes",
+     "reason": "The question contrasts environment reward with a learned model, a human or nothing. A rule-based checker (tests, exact match) is none of these. It scores the outcome of the agent's action, as an environment reward function does in a contextual bandit. A bandit has no dynamics by design, and the question does not ask for dynamics. Format reward is also rule-based.",
+     "sources": "[@lambert2024; @deepseekai2025]; 060_settings/settings.csv T-RLVR row (programmatic verifier); 065_primitive_cells/cells.csv reward,T-RLVR"
+    }
+   ]
+  },
+  {
+   "p": "action",
+   "codes": [
+    {
+     "key": "A3|D-CHAT",
+     "property": "A3",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "The setting fixes one reply (the action) per user turn, but it defines no episode. Chat is usually run as a multi-turn conversation: context carries over and each reply is a new decision. If the episode is a turn, there is exactly one action (yes). If the episode is a conversation, there are many (no). Two other settings point the same way. D-AGENT-A treats a human turn between actions as inside one episode, so a user turn in chat does not by itself end an episode. T-CHAT does use prompt to reply as the episode, which is a bandit. Deployment has no reward or reset to mark an episode, so the turn-level reading is a modelling choice, not a fact of the setting. The cell for action in D-CHAT says 'One reply per turn', so it supports the per-turn count only. D-RL is not the model here: there the episode is explicit, with many actions per episode.",
+     "sources": "060_settings/settings.csv (D-CHAT: 'One reply per user turn; no reward; the weights are frozen'; D-AGENT-A: 'human turn between tool calls'); 065_primitive_cells/cells.csv (action,D-CHAT: 'One reply per turn'; action,T-CHAT: 'whole completion is one action' [@ahmadian2024]); 064_properties/properties.csv (A3 question; T1 and E1 use 'episode' with no chat definition)"
+    }
+   ]
+  },
+  {
+   "p": "observation",
+   "codes": [
+    {
+     "property": "O2",
+     "setting": "T-CHAT",
+     "code": "yes",
+     "reason": "Training prompts usually come from web datasets (Reddit TL;DR) or customer prompts. Their authors are web users and customers, who are none of designer, operator or agent. Curation does not change who wrote the content.",
+     "sources": "[@stiennon2020] (Reddit TL;DR dataset); [@ouyang2022] (customers as a prompt source); 060_settings/settings.csv; 065_primitive_cells/cells.csv"
+    },
+    {
+     "property": "O2",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "The question asks whether observation content can be authored by others. The usual observation is the user's own turn, and the user is the principal, not the designer, operator or agent. Users routinely paste emails, web pages and documents. That content is written by third parties. So third-party authorship is common but not the default.",
+     "sources": "065_primitive_cells/cells.csv (observation, D-CHAT: user turn, user is principal and source); 060_settings/settings.csv; [@zverev2025]"
+    }
+   ]
+  },
+  {
+   "p": "state",
+   "codes": [
+    {
+     "property": "S1",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "The context window holds the full conversation so far, so it is a sufficient statistic of the observable interaction and the process is Markov in that history while nothing falls out of the window. It is not a Markov state of the whole decision process, because the next user turn depends on a hidden user state (intent, knowledge) that the window does not contain, and long conversations drop old turns. 'No' is too strong because the history is the standard state for the observable part. For comparison, D-RL is rated 'yes' because its cell says Markov s_t, as posed in training. A POMDP deployment would also be 'partly' for the same reason (the hidden world state is outside the input). The rating follows the setting's input, not the phase.",
+     "sources": "065_primitive_cells/cells.csv (state,D-CHAT: context window; nothing persists across conversations); 060_settings/settings.csv (D-CHAT: one reply per user turn, frozen weights; D-RL: MDP or POMDP); 064_properties/properties.csv (S1 wording); Kaelbling et al. 1998 on POMDP hidden state, as cited by coder A (not re-checked in 047_extracts)"
+    }
+   ]
+  },
+  {
+   "p": "transition",
+   "codes": [
+    {
+     "property": "T2",
+     "setting": "D-AGENT-A",
+     "code": "partly",
+     "reason": "The tool code is known and mostly deterministic (the cell says the tool executes). Real deployment also has external, real-world and stochastic effects that the designer does not know. They are not given or simulated; ruan2024 only emulates them. So some parts are known and some are not. Not 'no': D-RL deployment is judged on the same basis, and the tool-execution step is known by construction.",
+     "sources": "[@ruan2024]; 065_primitive_cells/cells.csv transition,D-AGENT-A; 060_settings/settings.csv D-AGENT-A"
+    },
+    {
+     "property": "T3",
+     "setting": "D-CHAT",
+     "code": "no",
+     "reason": "The dynamics are the user's replies. Different users and a drifting user population produce different replies over the long deployment, and the conversation history changes the next reply. The frozen weights fix the agent, not the environment. Nothing in the setting makes the dynamics stationary. A short step does not make them stationary over the lifetime.",
+     "sources": "by definition of D-CHAT (060_settings/settings.csv); 065_primitive_cells/cells.csv transition,D-CHAT ('the user is the environment')"
+    }
+   ]
+  },
+  {
+   "p": "episode",
+   "codes": [
+    {
+     "property": "E2",
+     "setting": "T-PRM",
+     "code": "no",
+     "reason": "A step only appends text to a prefix. Nothing outside the text changes, and nothing persists past the episode. The search and verifier machinery can discard or resample from any prefix, so no step has a lasting effect. A step cannot be retracted by a later step, but that effect is inside a disposable simulated state, not a lasting one. This matches T-CHAT and T-RLVR (text only, reset).",
+     "sources": "[@snell2024] (rollouts from each step); [@yao2023a] (tree search over partial solutions); [@lightman2024] (step is a text unit); cells.csv action/episode T-PRM"
+    },
+    {
+     "property": "E2",
+     "setting": "D-CHAT",
+     "code": "partly",
+     "reason": "A reply can have an effect no later reply can undo: the user may act on bad advice, or may have read disclosed content. This happens only through the user, not through the agent's own environment, and most replies are harmless. So the answer is possible but not typical, which is partly.",
+     "sources": "by definition of the setting; cells.csv action D-CHAT (only effect is on the reader), episode D-CHAT"
+    }
+   ]
+  }
+ ]
+}

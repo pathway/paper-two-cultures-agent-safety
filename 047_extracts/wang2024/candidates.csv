@@ -1,0 +1,28 @@
+id,pass,topic,locator,line,text
+c1,llm_wf,claim,Abstract,20,"In this paper, we present an innovative process-oriented math process reward model called M ATH -S HEPHERD, which assigns a reward score to each step of math problem solutions."
+c2,llm_wf,claim,Abstract,28,"For instance, the step-by-step PPO with M ATH -S HEPHERD significantly improves the accuracy of Mistral-7B (77.9%→84.1% on GSM8K and 28.6%→33.0% on MATH)."
+c3,llm_wf,claim,1,166,We propose a framework to automatically construct process supervision datasets without human annotations for math reasoning tasks.
+c4,llm_wf,claim,7,1160,"Remarkably, this automatic methodology correlates strongly with human annotations. Extensive experiments in both verification and reinforcement learning scenarios demonstrate the effectiveness of our method."
+c5,llm_wf,reward,1,134,"The ORM assigns a confidence score based on the entire generation sequence, whereas the PRM evaluates the reasoning path step-by-step."
+c6,llm_wf,reward,3.2,234,"Given a mathematical problem p and its solution s, ORM (P × S → R) assigns a single real-value to s to indicate whether s is correct."
+c7,llm_wf,reward,3.5,415,"This method differs from the conventional strategy that utilizes PPO with ORM, which only offers a reward at the end of the response. Conversely, our step-by-step PPO offers rewards at the end of each reasoning step."
+c8,llm_wf,reward,1,147,"By leveraging the correctness of the answer, we can automatically gather step-wise supervision. Specifically, given a math problem with a golden answer and a step-by-step solution, to achieve the label of a specific step, we utilize a fine-tuned LLM to decode multiple subsequent reasoning paths from this step."
+c9,llm_wf,reward,3.3.2,364,HE supposes that a reasoning step is good as long as it can reach the correct answer a∗ :
+c10,llm_wf,reward,3.3.2,374,SE assumes the quality of a step as the frequency with which it reaches the correct answer:
+c11,llm_wf,reward,1,142,"Nevertheless, annotation by humans, particularly for intricate multi-step reasoning tasks that require advanced annotator skills, can be quite costly, which hinders the advancement and practical application of PRM."
+c12,llm_wf,objective,3.3.1,282,we define the quality of a reasoning step as its potential to deduce the correct answer. This criterion stems from the primary objective of the reasoning process
+c13,llm_wf,transition,3.3.2,292,"To quantify and estimate the potential for a give reasoning step si , as shown in Figure 2, we use a ‘completer’ to finalize N subsequent reasoning processes from this step:"
+c14,llm_wf,setting,3.1,221,"given a problem p in the testing set, we sample N candidate solutions from a generator. These candidates are then scored using a reward model, and the highest-scoring solution is selected as the final answer."
+c15,llm_wf,setting,3.1,227,"We also use the automatically constructed PRM to supervise LLMs with step-by-step PPO. In this scenario, we evaluate the accuracy of the LLMs’ greedy decoding output."
+c16,llm_wf,value,3.4,392,"Following (Lightman et al., 2023), we use the minimum score across all steps to represent the final score of a solution assigned by PRM."
+c17,llm_wf,policy,2,189,"aim to elicit the mathematical reasoning ability of LLMs by designing prompting strategy without updating the model parameters, which is very convenient and practical."
+c18,llm_wf,oversight,1,128,"A verification model can rerank candidate responses, ensuring higher accuracy and consistency in the outputs of LLMs."
+c19,llm_wf,oversight,5.3,1008,"Conversely, when a smaller reward model is employed to validate the output of a larger generator, the verification process adversely impacts the model’s performance compared to SC."
+c20,llm_wf,failure,3.2,244,"Although false positives solutions that reach the correct answer with incorrect reasoning will be misgraded, previous studies have proven that it is still effective for training a good ORM"
+c21,llm_wf,failure,4.1,683,"reason is that the initial reward model is not sufficient to supervise the more powerful model after PPO. These results can also show the potential of iterative reinforcement learning, which we leave for future work."
+c22,llm_wf,limitation,3.3.1,286,"Analogous to ORM, this definition also introduces some degree of noise. Nevertheless, we find that it is beneficial for effectively training a good PRM."
+c23,llm_wf,limitation,6,1135,"To determine the label of each reasoning step, we utilize a ‘completer’ to decode N subsequent reasoning processes. We observe that as N increases, so does the quality of automatic annotations."
+c24,llm_wf,limitation,6,1137,"However, this completion process demands a lot of computing resources, potentially imposing a limitation on the usage of our method."
+c25,llm_wf,limitation,6,1142,"The automatic process annotation consists of noise. Similar to the automatic outcome annotation, our automatic process annotation also has noise."
+c26,llm_wf,limitation,6,1146,"However, a noticeable gap remains between PRM800K and the candidate responses generated by the open-source models utilized in this study, which may result in the invalidation of PRM800K."
+c27,llm_wf,limitation,6,1148,"As a result, the impact of this potential noise on PRM performance is still undetermined. A comprehensive comparison between human and automated annotations is envisaged for future studies."

@@ -1,0 +1,109 @@
+[
+ {
+  "primitive": "policy",
+  "setting": "T-RL",
+  "evidence_source": "sutton2018",
+  "candidate_ids": [
+   "e13",
+   "e14"
+  ],
+  "quote": "a mapping from states to probabilities of selecting each possible action",
+  "reason": "\"a mapping from states to probabilities of selecting each possible action\", the object that learning changes [@sutton2018].",
+  "fits": true,
+  "note": "already quote"
+ },
+ {
+  "primitive": "policy",
+  "setting": "T-CHAT",
+  "evidence_source": "rafailov2023",
+  "candidate_ids": [
+   "c3"
+  ],
+  "quote": "use RL to optimize a language model policy to produce responses assigned high reward without drifting excessively far from the original model",
+  "reason": "The language model itself is the policy: RLHF methods \"use RL to optimize a language model policy to produce responses assigned high reward without drifting excessively far from the original model\" [@rafailov2023]; PPO and DPO both move it from the pretrained prior [@ouyang2022].",
+  "fits": true,
+  "note": "Supports model-as-policy and a drift limit from the original model. The named KL form and PPO are not in this quote."
+ },
+ {
+  "primitive": "policy",
+  "setting": "T-RLVR",
+  "evidence_source": "shao2024",
+  "candidate_ids": [
+   "c2"
+  ],
+  "quote": "GRPO foregoes the critic model, instead estimating the baseline from group scores, significantly reducing training resources",
+  "reason": "The model is the policy, and \"GRPO foregoes the critic model, instead estimating the baseline from group scores, significantly reducing training resources\" [@shao2024]; the same method is used for reasoning training in [@deepseekai2025].",
+  "fits": true,
+  "note": "Supports the critic-free group-relative part. The claim that the trace is part of the output is not in this quote, so the reason drops it."
+ },
+ {
+  "primitive": "policy",
+  "setting": "T-PRM",
+  "evidence_source": "lightman2024",
+  "candidate_ids": [
+   "c6"
+  ],
+  "quote": "To make parsing individual steps easier, we train the generator to produce solutions in a newline delimited step-by-step format",
+  "reason": "The policy is the generator model with a step boundary: \"To make parsing individual steps easier, we train the generator to produce solutions in a newline delimited step-by-step format\" [@lightman2024]; at inference a process verifier scores each step [@snell2024].",
+  "fits": true,
+  "note": "Supports model plus step delimiter. PRM-as-value-for-search is from snell2024, not quoted."
+ },
+ {
+  "primitive": "policy",
+  "setting": "T-AGENT",
+  "evidence_source": "yao2023b",
+  "candidate_ids": [
+   "c20"
+  ],
+  "quote": "it is becoming more popular to take advantage of LLMs as a policy model for decision making, especially in interactive environments",
+  "reason": "In an agent the model acts as the policy: \"it is becoming more popular to take advantage of LLMs as a policy model for decision making, especially in interactive environments\" [@yao2023b]; RL on such a model updates weights [@wei2025].",
+  "fits": false,
+  "note": "Supports LLM-as-policy in interactive settings only. Nothing quoted says the scaffold parses tool calls, is fixed code, or that RL leaves it unchanged. Reason weakened."
+ },
+ {
+  "primitive": "policy",
+  "setting": "D-RL",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "A trained policy is held fixed at deployment; this is a convention of the setting and no cited work states it.",
+  "fits": false,
+  "note": "The cell reason cites no work, so no quote may be taken."
+ },
+ {
+  "primitive": "policy",
+  "setting": "D-CHAT",
+  "evidence_source": "brown2020",
+  "candidate_ids": [
+   "c2"
+  ],
+  "quote": "For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model",
+  "reason": "The weights stay frozen and adaptation is in context: \"For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model\" [@brown2020].",
+  "fits": true,
+  "note": "Directly supports frozen weights with adaptation through text."
+ },
+ {
+  "primitive": "policy",
+  "setting": "D-AGENT-A",
+  "evidence_source": "yao2023b",
+  "candidate_ids": [
+   "c4"
+  ],
+  "quote": "a frozen large language model, PaLM-540B (Chowdhery et al., 2022)1 , is prompted with few-shot in-context examples to generate both domain-specific actions and free-form language thoughts for task solving",
+  "reason": "The agent policy is a frozen model steered from outside the weights: \"a frozen large language model, PaLM-540B (Chowdhery et al., 2022)1 , is prompted with few-shot in-context examples to generate both domain-specific actions and free-form language thoughts for task solving\" [@yao2023b]; tool use is added in [@schick2023].",
+  "fits": true,
+  "note": "Supports frozen model changed by prompt. Scaffold and tool set are not in the quote; schick2023 is cited for tools."
+ },
+ {
+  "primitive": "policy",
+  "setting": "D-AGENT-X",
+  "evidence_source": "chen2024",
+  "candidate_ids": [
+   "c15"
+  ],
+  "quote": "For EHRAgent, it originally initializes its knowledge base with only four experiences and updates its memory dynamically",
+  "reason": "An agent can carry memory it updates over time: \"For EHRAgent, it originally initializes its knowledge base with only four experiences and updates its memory dynamically\" [@chen2024]; the wider setting is discussed in [@hammond2025].",
+  "fits": false,
+  "note": "Supports a memory store that the agent updates. Sub-agents and policy inputs being its own earlier outputs are not supported by the quote. Reason weakened."
+ }
+]

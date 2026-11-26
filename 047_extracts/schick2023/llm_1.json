@@ -1,0 +1,117 @@
+[
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "In this paper, we show that LMs can teach themselves to use external tools via simple APIs and achieve the best of both worlds. We introduce Toolformer, a model trained to decide which APIs to call, when to call them, what arguments to pass, and how to best incorporate the results into future token prediction."
+ },
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "This is done in a self-supervised way, requiring nothing more than a handful of demonstrations for each API."
+ },
+ {
+  "topic": "objective",
+  "locator": "1 Introduction",
+  "text": "The use of tools should be learned in a self-supervised way without requiring large amounts of human annotations."
+ },
+ {
+  "topic": "objective",
+  "locator": "1 Introduction",
+  "text": "The LM should not lose any of its generality and should be able to decide for itself when and how to use which tool."
+ },
+ {
+  "topic": "objective",
+  "locator": "1 Introduction",
+  "text": "Given just a handful of human-written examples of how an API can be used, we let a LM annotate a huge language modeling dataset with potential API calls. We then use a self-supervised loss to determine which of these API calls actually help the model in predicting future tokens."
+ },
+ {
+  "topic": "policy",
+  "locator": "1 Introduction",
+  "text": "Finally, we finetune the LM itself on the API calls that it considers useful. As illustrated in Figure 1, through this simple approach, LMs can learn to control a variety of tools, and to choose for themselves which tool to use when and how."
+ },
+ {
+  "topic": "setting",
+  "locator": "2 Approach",
+  "text": "Our aim is to equip a language model M with the ability to use different tools by means of API calls. We require that inputs and outputs for each API can be represented as text sequences."
+ },
+ {
+  "topic": "action",
+  "locator": "2 Approach",
+  "text": "We represent each API call as a tuple c = (ac , ic ) where ac is the name of the API and ic is the corresponding input."
+ },
+ {
+  "topic": "transition",
+  "locator": "2 Approach",
+  "text": "How this is done depends entirely on the API itself – for example, it can involve calling another neural network, executing a Python script or using a retrieval system to perform search over a large corpus."
+ },
+ {
+  "topic": "reward",
+  "locator": "2 Approach",
+  "text": "Intuitively, an API call is helpful to M if providing it with both the input and the output of this call makes it easier for the model to predict future tokens, compared to not receiving the API call at all, or receiving only its input."
+ },
+ {
+  "topic": "reward",
+  "locator": "2 Approach",
+  "text": "i.e., adding the API call and its result reduces the loss by at least τf , compared to not doing any API call or obtaining no result from it."
+ },
+ {
+  "topic": "policy",
+  "locator": "2 Approach",
+  "text": "Moreover, as API calls are inserted in exactly those positions and with exactly those inputs that help M predict future tokens, finetuning on C ∗ enables the language model to decide when and how to use which tool, based purely on its own feedback."
+ },
+ {
+  "topic": "episode",
+  "locator": "2 Approach",
+  "text": "At this point, we interrupt the decoding process, call the appropriate API to get a response, and continue the decoding process after inserting both the response and the </API> token."
+ },
+ {
+  "topic": "observation",
+  "locator": "3 Tools",
+  "text": "Our final tool is a calendar API that, when queried, returns the current date without taking any input."
+ },
+ {
+  "topic": "setting",
+  "locator": "3 Tools",
+  "text": "The only constraints we impose on these tools is that (i) both their inputs and outputs can be represented as text sequences, and (ii) we can obtain a few demonstrations of their intended use."
+ },
+ {
+  "topic": "setting",
+  "locator": "4.2 Downstream Tasks",
+  "text": "We choose the more challenging zero-shot setup as we are interested in seeing whether Toolformer works in precisely those cases where a user does not specify in advance which tools should be used in which way for solving a specific problem."
+ },
+ {
+  "topic": "llm",
+  "locator": "1 Introduction",
+  "text": "As our approach is agnostic of the dataset being used, we can apply it to the exact same dataset that was used to pretrain a model in the first place. This ensures that the model does not lose any of its generality and language modeling abilities."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7 Limitations",
+  "text": "This is due to the fact that API calls for each tool are generated independently; as a consequence, there are no examples of chained tool use in the finetuning dataset."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7 Limitations",
+  "text": "Our current approach also does not allow the LM to use a tool in an interactive way – especially for tools such as search engines, that could potentially return hundreds of different results,"
+ },
+ {
+  "topic": "limitation",
+  "locator": "7 Limitations",
+  "text": "Depending on the tool, our method is also very sample-inefficient; for example, processing more than a million documents results in only a few thousand examples of useful calls to the calculator API."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7 Limitations",
+  "text": "Finally, when deciding whether or not to make an API call, Toolformer currently does not take into account the tool-dependent, computational cost incurred from making an API call."
+ },
+ {
+  "topic": "claim",
+  "locator": "8 Conclusion",
+  "text": "We have introduced Toolformer, a language model that learns in a self-supervised way how to use different tools such as search engines, calculators, and translation systems via simple API calls."
+ },
+ {
+  "topic": "claim",
+  "locator": "8 Conclusion",
+  "text": "Toolformer considerably improves zero-shot performance of a 6.7B parameter GPT-J model, enabling it to even outperform a much larger GPT-3 model on a range of different downstream tasks."
+ }
+]

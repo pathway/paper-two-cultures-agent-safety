@@ -1,0 +1,177 @@
+[
+ {
+  "topic": "reward",
+  "locator": "3.5",
+  "text": "we count a penalty (negative reward) of 1 for each stroke until we hit the ball into the hole. The state is the location of the ball."
+ },
+ {
+  "topic": "value",
+  "locator": "3.5",
+  "text": "Note that A’s expected return is less than its immediate reward of 10, because from A the agent is taken to state A0 from which it is likely to run into the edge of the grid."
+ },
+ {
+  "topic": "value",
+  "locator": "3.5",
+  "text": "Figure 3.2 (right) shows the value function, v⇡ , for this policy, for the discounted reward case with = 0.9. This value function was computed by solving the system of linear equations (3.14)."
+ },
+ {
+  "topic": "objective",
+  "locator": "3.6",
+  "text": "Solving a reinforcement learning task means, roughly, finding a policy that achieves a lot of reward over the long run."
+ },
+ {
+  "topic": "value",
+  "locator": "3.6",
+  "text": "Value functions define a partial ordering over policies. A policy ⇡ is defined to be better than or equal to a policy ⇡ 0 if its expected return is greater than or equal to that of ⇡ 0 for all states."
+ },
+ {
+  "topic": "policy",
+  "locator": "3.6",
+  "text": "There is always at least one policy that is better than or equal to all other policies. This is an optimal policy. Although there may be more than one, we denote all the optimal policies by ⇡⇤ ."
+ },
+ {
+  "topic": "value",
+  "locator": "3.6",
+  "text": "For the state–action pair (s, a), this function gives the expected return for taking action a in state s and thereafter following an optimal policy."
+ },
+ {
+  "topic": "value",
+  "locator": "3.6",
+  "text": "Because v⇤ is the value function for a policy, it must satisfy the self-consistency condition given by the Bellman equation for state values (3.14)."
+ },
+ {
+  "topic": "value",
+  "locator": "3.6",
+  "text": "Intuitively, the Bellman optimality equation expresses the fact that the value of a state under an optimal policy must equal the expected return for the best action from that state:"
+ },
+ {
+  "topic": "setting",
+  "locator": "3.6",
+  "text": "For finite MDPs, the Bellman optimality equation for v⇤ (3.19) has a unique solution. The Bellman optimality equation is actually a system of equations, one for each state, so if there are n states, then there are n equations in n unknowns."
+ },
+ {
+  "topic": "transition",
+  "locator": "3.6",
+  "text": "If the dynamics p of the environment are known, then in principle one can solve this system of equations for v⇤ using any one of a variety of methods for solving systems of nonlinear equations."
+ },
+ {
+  "topic": "policy",
+  "locator": "3.6",
+  "text": "Any policy that assigns nonzero probability only to these actions is an optimal policy. You can think of this as a one-step search."
+ },
+ {
+  "topic": "value",
+  "locator": "3.6",
+  "text": "The beauty of v⇤ is that if one uses it to evaluate the short-term consequences of actions—specifically, the one-step consequences—then a greedy policy is actually optimal in the long-term sense in which we are interested because v⇤ already takes into account the reward consequences of all possible future behavior."
+ },
+ {
+  "topic": "value",
+  "locator": "3.6",
+  "text": "The action-value function e↵ectively caches the results of all one-step-ahead searches. It provides the optimal expected long-term return as a value that is locally and immediately available for each state–action pair."
+ },
+ {
+  "topic": "transition",
+  "locator": "3.6",
+  "text": "about possible successor states and their values, that is, without having to know anything about the environment’s dynamics."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3.6",
+  "text": "Explicitly solving the Bellman optimality equation provides one route to finding an optimal policy, and thus to solving the reinforcement learning problem. However, this solution is rarely directly useful."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3.6",
+  "text": "This solution relies on at least three assumptions that are rarely true in practice: (1) the dynamics of the environment are accurately known; (2) computational resources are sufficient to complete the calculation; and (3) the states have the Markov property."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3.6",
+  "text": "Because the game has about 1020 states, it would take thousands of years on today’s fastest computers to solve the Bellman equation for v⇤ , and the same is true for finding q⇤ . In reinforcement learning one typically has to settle for approximate solutions."
+ },
+ {
+  "topic": "transition",
+  "locator": "3.6",
+  "text": "Many reinforcement learning methods can be clearly understood as approximately solving the Bellman optimality equation, using actual experienced transitions in place of knowledge of the expected transitions."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3.7",
+  "text": "A well-defined notion of optimality organizes the approach to learning we describe in this book and provides a way to understand the theoretical properties of various learning algorithms, but it is an ideal that agents can only approximate."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3.7",
+  "text": "A critical aspect of the problem facing the agent is always the computational power available to it, in particular, the amount of computation it can perform in a single time step."
+ },
+ {
+  "topic": "setting",
+  "locator": "3.7",
+  "text": "In tasks with small, finite state sets, it is possible to form these approximations using arrays or tables with one entry for each state (or state–action pair). This we call the tabular case, and the corresponding methods we call tabular methods."
+ },
+ {
+  "topic": "claim",
+  "locator": "3.7",
+  "text": "The online nature of reinforcement learning makes it possible to approximate optimal policies in ways that put more e↵ort into learning to make good decisions for frequently encountered states, at the expense of less e↵ort for infrequently encountered states."
+ },
+ {
+  "topic": "setting",
+  "locator": "3.8",
+  "text": "Reinforcement learning is about learning from interaction how to behave in order to achieve a goal. The reinforcement learning agent and its environment interact over a sequence of discrete time steps."
+ },
+ {
+  "topic": "setting",
+  "locator": "3.8",
+  "text": "The specification of their interface defines a particular task: the actions are the choices made by the agent; the states are the basis for making the choices; and the rewards are the basis for evaluating the choices."
+ },
+ {
+  "topic": "transition",
+  "locator": "3.8",
+  "text": "Everything inside the agent is known and controllable. Its environment, on the other hand, is incompletely controllable and may or may not be completely known."
+ },
+ {
+  "topic": "policy",
+  "locator": "3.8",
+  "text": "A policy is a stochastic rule by which the agent selects actions as a function of states. The agent’s objective is to maximize the amount of reward it receives over time."
+ },
+ {
+  "topic": "setting",
+  "locator": "3.8",
+  "text": "When the reinforcement learning setup described above is formulated with well defined transition probabilities it constitutes a Markov decision process (MDP). A finite MDP is an MDP with finite state, action, and (as we formulate it here) reward sets."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3.8",
+  "text": "Much of the current theory of reinforcement learning is restricted to finite MDPs, but the methods and ideas apply more generally."
+ },
+ {
+  "topic": "objective",
+  "locator": "3.8",
+  "text": "The return is the function of future rewards that the agent seeks to maximize (in expected value)."
+ },
+ {
+  "topic": "episode",
+  "locator": "3.8",
+  "text": "The undiscounted formulation is appropriate for episodic tasks, in which the agent–environment interaction breaks naturally into episodes; the discounted formulation is appropriate for tabular continuing tasks, in which the interaction does not naturally break into episodes but continues without limit"
+ },
+ {
+  "topic": "value",
+  "locator": "3.8",
+  "text": "A policy’s value functions (v⇡ and q⇡ ) assign to each state, or state–action pair, the expected return from that state, or state–action pair, given that the agent uses the policy."
+ },
+ {
+  "topic": "value",
+  "locator": "3.8",
+  "text": "The optimal value functions (v⇤ and q⇤ ) assign to each state, or state–action pair, the largest expected return achievable by any policy. A policy whose value functions are optimal is an optimal policy."
+ },
+ {
+  "topic": "setting",
+  "locator": "3.8",
+  "text": "In problems of complete knowledge, the agent has a complete and accurate model of the environment’s dynamics."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3.8",
+  "text": "Even if the agent had a complete and accurate environment model, the agent would typically be unable to fully use it because of limitations on its memory and computation per time step."
+ }
+]

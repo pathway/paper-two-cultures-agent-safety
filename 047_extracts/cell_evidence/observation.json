@@ -1,0 +1,102 @@
+[
+ {
+  "primitive": "observation",
+  "setting": "T-RL",
+  "evidence_source": "sutton2018",
+  "candidate_ids": [
+   "e3"
+  ],
+  "quote": "",
+  "reason": "\"some representation of the environment's state\", given by the environment as data [@sutton2018].",
+  "fits": true,
+  "note": "already quote"
+ },
+ {
+  "primitive": "observation",
+  "setting": "T-CHAT",
+  "evidence_source": "zverev2025",
+  "candidate_ids": [],
+  "quote": "for which instructions can occur anywhere in their input, be it a system prompt or a user one (OpenAI, 2023).",
+  "reason": "Instructions and data share one input: \"for which instructions can occur anywhere in their input, be it a system prompt or a user one (OpenAI, 2023).\" [@zverev2025].",
+  "fits": true,
+  "note": "Quote taken from full text (line 99); supports data and instruction in one input stream. It does not state that the prompt is the only input."
+ },
+ {
+  "primitive": "observation",
+  "setting": "T-RLVR",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "As T-CHAT.",
+  "fits": false,
+  "note": "Reason cites no work; any quote would come from an uncited work. Keep as T-CHAT after T-CHAT is cited."
+ },
+ {
+  "primitive": "observation",
+  "setting": "T-PRM",
+  "evidence_source": "ross2011",
+  "candidate_ids": [
+   "c12"
+  ],
+  "quote": "Hence this is a non-i.i.d. supervised learning problem due to the dependence of the input distribution on the policy π itself.",
+  "reason": "The agent's own earlier steps are the observations: \"Hence this is a non-i.i.d. supervised learning problem due to the dependence of the input distribution on the policy π itself.\" [@ross2011].",
+  "fits": true,
+  "note": "Candidate c12 second sentence; input distribution depends on the policy, which fits policy-induced observations."
+ },
+ {
+  "primitive": "observation",
+  "setting": "T-AGENT",
+  "evidence_source": "wallace2024",
+  "candidate_ids": [
+   "c7"
+  ],
+  "quote": "Tool Outputs may contain internet search results, execution results from a code interpreter, or results from a third-party API query (e.g., fourth message of Figure 1).",
+  "reason": "Tool outputs are an input type: \"Tool Outputs may contain internet search results, execution results from a code interpreter, or results from a third-party API query (e.g., fourth message of Figure 1).\" [@wallace2024].",
+  "fits": false,
+  "note": "Quote supports tool outputs as observations only. Nothing found on a trainer-built sandbox or on instructions being absent or planted. c16 (instructions during tool use treated as Misaligned) is training policy, not about the sandbox."
+ },
+ {
+  "primitive": "observation",
+  "setting": "D-RL",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "As in training.",
+  "fits": false,
+  "note": "Reason cites no work; no quote allowed."
+ },
+ {
+  "primitive": "observation",
+  "setting": "D-CHAT",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "The user's message; the user is both principal and source of observations.",
+  "fits": false,
+  "note": "Reason cites no work; no quote allowed."
+ },
+ {
+  "primitive": "observation",
+  "setting": "D-AGENT-A",
+  "evidence_source": "greshake2023",
+  "candidate_ids": [
+   "c12"
+  ],
+  "quote": "1) instructions injected indirectly can successfully steer the model; the data and instruction modalities are not disentangled,",
+  "reason": "Tool outputs and user turns mix with instructions in one stream: \"1) instructions injected indirectly can successfully steer the model; the data and instruction modalities are not disentangled,\" [@greshake2023]. Models do not reliably separate the two [@zverev2025].",
+  "fits": true,
+  "note": "Quote supports instruction and data not separated; zverev2025 cited in reason kept without quote."
+ },
+ {
+  "primitive": "observation",
+  "setting": "D-AGENT-X",
+  "evidence_source": "debenedetti2024",
+  "candidate_ids": [
+   "c8"
+  ],
+  "quote": "Untrusted data processed and returned by the tools called by an AI agent are an effective vector for (indirect) prompt injections that execute malicious actions on behalf of the user [13, 18, 23].",
+  "reason": "Tool outputs are untrusted and can carry commands: \"Untrusted data processed and returned by the tools called by an AI agent are an effective vector for (indirect) prompt injections that execute malicious actions on behalf of the user [13, 18, 23].\" [@debenedetti2024]. [@greshake2023]",
+  "fits": true,
+  "note": "Supports untrusted tool output carrying malicious instructions. Not covered: no party controls the source, no user turn to filter."
+ }
+]

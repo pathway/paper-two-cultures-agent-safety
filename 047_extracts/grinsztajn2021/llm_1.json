@@ -1,0 +1,117 @@
+[
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "We propose to learn to distinguish reversible from irreversible actions for better\ninformed decision-making in Reinforcement Learning (RL)."
+ },
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "Intuitively, pairs of events that are always observed in the same order are\nlikely to be separated by an irreversible sequence of actions."
+ },
+ {
+  "topic": "claim",
+  "locator": "1",
+  "text": "In fine, we reduce reversibility to a simple classification\ntask that consists in predicting the temporal order of events."
+ },
+ {
+  "topic": "setting",
+  "locator": "3",
+  "text": "Intuitively, an\naction is reversible if it can be undone, meaning that there is a sequence of actions that can bring us\nback to the original state."
+ },
+ {
+  "topic": "setting",
+  "locator": "3",
+  "text": "In deterministic environments, an action is either reversible or irreversible: given a state-action couple\n(s, a) and the unique resulting state s0 , φK (s, a) is equal to 1 if there is a sequence of less than K\nactions which brings the agent from s0 to s, and is otherwise equal to zero."
+ },
+ {
+  "topic": "transition",
+  "locator": "3",
+  "text": "In stochastic environments,\na given sequence of actions can only reverse a transition up to some probability, hence the need for\nthe notion of degree of reversibility."
+ },
+ {
+  "topic": "policy",
+  "locator": "5",
+  "text": "These assumptions, when put\ntogether, alleviate the risk of overfitting to the idiosyncrasies of a single, non-representative policy."
+ },
+ {
+  "topic": "reward",
+  "locator": "5",
+  "text": "In our experiments, the reward function is a piecewise linear\nfunction of the estimated reversibility and a fixed threshold, as in Fig. 3: it grants the agent a negative\nreward if the transition is deemed too hard to reverse. The agent optimizes the sum of the extrinsic\nand auxiliary rewards."
+ },
+ {
+  "topic": "action",
+  "locator": "5",
+  "text": "From a single observation, RAC\nestimates the degree of reversibility of all available actions, and “takes control” if the action sampled\nfrom the policy is not reversible enough (i.e. has a reversibility inferior to a threshold β)."
+ },
+ {
+  "topic": "action",
+  "locator": "5",
+  "text": "In practice, we opt for rejection sampling: we sample from the policy\nuntil an action that is reversible enough is sampled."
+ },
+ {
+  "topic": "oversight",
+  "locator": "5",
+  "text": "In contrast, RAC shines in safety-first, real-world scenarios, where irreversible behavior is\nto be banned entirely."
+ },
+ {
+  "topic": "observation",
+  "locator": "5",
+  "text": "Learning which observation comes first in a trajectory\nis achieved by binary supervised classification, from pairs of observations sampled uniformly in\na sliding window on observed trajectories."
+ },
+ {
+  "topic": "reward",
+  "locator": "6.1",
+  "text": "Here, instead, we remove this reward signal and give a PPO agent [42] an intrinsic reward based\non the estimated reversibility, which is learned online from agent trajectories."
+ },
+ {
+  "topic": "reward",
+  "locator": "6.1",
+  "text": "In the usual\nsetting, the agent gets a reward of 1 at every time step, such that the total undiscounted episode reward\nis equal to the episode length"
+ },
+ {
+  "topic": "failure",
+  "locator": "6.2",
+  "text": "Handcrafting such safety constraints would be time-consuming, difficult to scale for complex\nproblems, and might lead to reward hacking; so a reasonable proxy consists in limiting irreversible\nside-effects in the environment [27]."
+ },
+ {
+  "topic": "failure",
+  "locator": "6.2",
+  "text": "Stepping on grass (green) will spoil it,\ncausing it to turn brown. Stepping on the stone path (grey) does not induce any side-effect."
+ },
+ {
+  "topic": "episode",
+  "locator": "6.3",
+  "text": "It is worth recalling that\ncontrary to human players, the agent does not have the option to reset the game when stuck."
+ },
+ {
+  "topic": "episode",
+  "locator": "6.3",
+  "text": "During this phase, the agent will lock itself\nin unrecoverable states many times, and further exploration is wasted."
+ },
+ {
+  "topic": "objective",
+  "locator": "6.1",
+  "text": "Note that creating insightful rewards is quite difficult: too\nfrequent negative rewards could lead the agent to try and terminate the episode as soon as possible."
+ },
+ {
+  "topic": "setting",
+  "locator": "6.4",
+  "text": "We learn reversibility offline, using\ntrajectories collected from a random policy. Fig. 7a shows that a random policy augmented with RAC\nachieves seemingly infinite scores."
+ },
+ {
+  "topic": "limitation",
+  "locator": "Broader impact",
+  "text": "We\nargue that further research and applications should verify that the induced reversible behavior holds\nin almost all situations and does not lead to unintended effects."
+ },
+ {
+  "topic": "limitation",
+  "locator": "Broader impact",
+  "text": "Our method could be deflected from\nits goal and used to identify and encourage actions with irreversible effects."
+ },
+ {
+  "topic": "llm",
+  "locator": "Broader impact",
+  "text": "safer interactions with RL-powered components (e.g. robots,\nvirtual assistants, recommender systems) which, though rare today, could become the norm."
+ }
+]

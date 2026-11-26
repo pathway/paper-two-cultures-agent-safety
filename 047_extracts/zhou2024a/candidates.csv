@@ -1,0 +1,27 @@
+id,pass,topic,locator,line,text
+c1,llm_wf,claim,Abstract,11,"In this paper, we introduce Language Agent Tree Search (LATS) – the first general framework that synergizes the capabilities of LMs in reasoning, acting, and planning."
+c2,llm_wf,claim,1,108,"Our key insight underpinning LATS is adapting Monte Carlo Tree Search (MCTS), inspired by its success in model-based reinforcement learning (Silver et al., 2017) and the observation that many LM tasks allow reverting to earlier steps,"
+c3,llm_wf,llm,1,113,"Leveraging the general capabilities and in-context learning abilities of modern LMs, we use language as an interface between each component, allowing LATS to adapt planning to environmental conditions without additional training."
+c4,llm_wf,policy,4.1,349,"At time step t, an agent receives an observation ot ∈ O from the environment and takes an action at ∈ A following some policy π(at |x, o1···t−1 , a1···t−1 ). We initialize the agent with pθ to leverage the useful language representations of an LM as a base decision-maker."
+c5,llm_wf,action,4.1,356,"Actions directly affect the environment and result in observation, while thoughts are used to formalize decisions by organizing information, planning future actions, or injecting internal knowledge."
+c6,llm_wf,action,4.1,360,"for decision-making tasks actions might consist of commands on a website, while for reasoning tasks the action space might be limited to a few external tools or APIs."
+c7,llm_wf,state,4.2,401,"each node s = [x, a1···i , o1···i ] represents a state comprising the original input x, action sequence a1·i , and observation sequence o1·i , where i is a token in the text sequence."
+c8,llm_wf,transition,4.2,421,"While standard MCTS and RAP (Hao et al., 2023) rely on internal dynamics models to facilitate simulation, LATS uses environment interaction and does not require a world model."
+c9,llm_wf,episode,3.2,417,"However, this limitation does not exist for many LM tasks, as we can conveniently reset to"
+c10,llm_wf,setting,2,245,This is because we can conveniently revert to any state by setting the input to be the context and the corresponding previous output from the LM for many tasks.
+c11,llm_wf,value,4.2,477,"As LATS does not involve training, we propose a novel value function for this setting based on two components: (1) a self-generated LM score and (2) a self-consistency score."
+c12,llm_wf,value,4.2,491,"Inspired by ToT, we repurpose pθ into a value function by prompting it to reason about a given state. To obtain a scalar value, we instruct pθ to end its reasoning trace with a score indicating the correctness of the trajectory."
+c13,llm_wf,reward,4.2,460,"Reaching a terminal state provides objective feedback on the correctness of a trajectory. If the task is completed successfully, then LATS terminates the search."
+c14,llm_wf,reward,4.2,464,"The success of a trajectory is determined by the design of the specific environment, such as finalizing a purchase in web navigation environments."
+c15,llm_wf,reward,5.2,731,"For LATS, since each action corresponds to a complete solution, we skip the simulation step of LATS and directly use the percentage of passed tests as the backpropagated reward."
+c16,llm_wf,reward,5.1,580,"we use an oracle setup for HotPotQA, in which the environment provides feedback about the answer’s correctness upon receiving an answer."
+c17,llm_wf,observation,5.1,575,"For the action space, in addition to LM thoughts, we follow the setup from Yao et al. (2023b), which provides the agent with API calls to search and retrieve information. The output of these API calls and self-generated reflections form the observation space."
+c18,llm_wf,observation,5.2,696,"the solution is evaluated on this test suite, and the results, including successful and failed tests and compiler output, are added to the context as an observation."
+c19,llm_wf,policy,4.2,563,"In subsequent iterations, these are integrated as additional context to the agent and value function, refining both through in-context learning."
+c20,llm_wf,oversight,4.2,565,"This imparts a semantic gradient signal more useful than a scalar value, enabling the agent to learn from trial and error without the cost of expensive optimization such as reinforcement learning."
+c21,llm_wf,limitation,6,1012,"First, it has a higher computational cost compared to simpler prompting methods like ReAct or Reflexion, which may limit its practicality in certain situations."
+c22,llm_wf,limitation,6,1014,"Second, LATS assumes the ability to revert to earlier states in decisionmaking environments, which may not be universally applicable in all possible environments."
+c23,llm_wf,failure,Impact Statement,1052,LATS is a framework that enhances LM performance through interactions with an environment. This improvement in autonomous decision-making may facilitate harmful uses of LMs.
+c24,llm_wf,failure,Impact Statement,1056,"Finally, enhancing the capabilities of LM agents may raise security risks, such as executing malware."
+c25,llm_wf,failure,5.3,870,"Similar to Shinn et al. (2023), we find that generated reflections are often generic and do not provide useful feedback, resulting in a tendency for the agent to become stuck in local minima."
+c26,llm_wf,llm,5.2,693,We follow Chen et al. (2023a) and use an LM to generate a synthetic test suite of syntactically valid “assert” statements for each question.

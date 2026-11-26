@@ -1,0 +1,25 @@
+id,pass,topic,locator,line,text
+c1,llm_wf,setting,3,183,"Each individual task in τ -bench can be formulated as a partially observable Markov decision process (POMDP) (S, A, O, T , R, U) with state space S, action space A, observation space O, transition function T : S × A → S × O, reward function R : S → [0, 1], and instruction space U."
+c2,llm_wf,state,3,190,"The contents of the database form the state sdb (Figure 2a), which is hidden from the agent and the user, and can only be read from or written to using API actions adb , which are usually in the form tool_name(**kwargs)."
+c3,llm_wf,transition,3,193,"When an action is executed on the database, the transition Tdb : (sdb , adb ) 7→ (s′db , odb ) is deterministic and implemented as a Python function (Figure 2b)."
+c4,llm_wf,transition,3,204,"The transition Tuser : (suser , auser ) 7→ (s′user , ouser ) is stochastic and attaches the agent’s message to the chat history followed by sampling a new user message from the LM,"
+c5,llm_wf,state,3,201,The user state suser consists of an initial system prompt with the task instruction (Figure 2d) along with the entire conversation history between the user and the agent so far. The user cannot see the interaction history between the agent and API tools.
+c6,llm_wf,episode,3,277,"Each task episode consists of the simulated user starting with a request, which the agent handles in a conversational manner while being able to call tools at any point and refer to the provided policy."
+c7,llm_wf,episode,3,279,"Once the episode ends, the database state and agent-to-user messages are used to compute the reward."
+c8,llm_wf,reward,3,280,"The reward of a task episode r = raction × routput ∈ {0, 1} is based on (1) whether the final database is identical to the unique ground truth outcome database (raction ), and (2) whether the agent’s responses to the user contain all necessary information (routput )."
+c9,llm_wf,limitation,3,285,"Note that r = 1 might be a necessary but not sufficient condition for a successful episode e.g., the agent might issue the return without explicit user confirmation, which violates the policy."
+c10,llm_wf,reward,3,287,"Nevertheless, our proposed rule-based reward is fast to compute and faithful, and already poses significant challenges for current models and methods as we show in § 5."
+c11,llm_wf,objective,3,275,"The instruction sets up user identity, intent, and preferences in a way that guarantees only one possible outcome under the domain policy."
+c12,llm_wf,policy,5,420,"In FC mode, the model’s system prompt is set to be the domain policy, and at each turn, the model autonomously decides to generate a user response message or a tool call."
+c13,llm_wf,oversight,3,187,"In addition, the agent is provided a domain-specific policy document containing rules it must adhere to – one can think of this as partially describing the world model of the domain."
+c14,llm_wf,action,5,427,We limit each task to at most 30 agent actions (either tool calls or user responses).
+c15,llm_wf,episode,5,424,"Notably, some agent methods are not suitable for a user-in-the-loop setup, e.g., self-reflection [19] is unrealistic as real-world agents only have one chance to serve the user, and planning approaches [25] might be too slow to help a user in real time."
+c16,llm_wf,claim,Abstract,18,"We propose τ -bench, a benchmark emulating dynamic conversations between a user (simulated by language models) and a language agent provided with domain-specific API tools and policy guidelines."
+c17,llm_wf,claim,Abstract,24,"Our experiments show that even state-of-the-art function calling agents (like gpt-4o) succeed on < 50% of the tasks, and are quite inconsistent (pass^8 < 25% in retail)."
+c18,llm_wf,value,3,294,"we propose a new metric – pass^k (pass hat k), defined as the chance that all k i.i.d. task trials are successful, averaged across tasks."
+c19,llm_wf,failure,1,134,"Upon analyzing the failure cases, we find that current agents struggle with complex reasoning over databases, understanding and following ad-hoc policies, and handling compound (more than one) requests."
+c20,llm_wf,limitation,6,687,"While τ -bench is a step towards dynamic evaluation of agents in real-world scenarios, there are several directions for improvement. The simulated user can have some limitations:"
+c21,llm_wf,limitation,5,418,Only the last two models openly release weights. We do not test small models (7/13B) due to the difficulty of the benchmark.
+c22,llm_wf,llm,3,200,We use a language model (gpt-4-0613) to simulate a human user interacting with the agent.
+c23,llm_wf,transition,3,330,"In our case, for the same task, the user prompt and database transitions are the same, with just the LM sampling of the user and agent messages generating sufficient stochasticity."
+c24,llm_wf,reward,4.2,402,"In τ -bench, we trade off slow, careful task annotation for fast, faithful evaluation. By ensuring that only one database outcome is possible based on domain policies and user desires, subjective and noisy human judgments can be replaced by simple and objective database state comparisons."

@@ -1,0 +1,4 @@
+id,kind,locator,text,tex
+e1,cell,1,"Thus, it is more appropriate and efficient to model the entire generation as a single action with the initial state determined by the prompt.",
+e2,cell,3.3,"Hence, the problem can be reduced to a bandit problem, where the Markov Decision Process (MDP) consists of only the initial state as determined by the prompt, and the terminal state, which is always reached after the generation",
+e3,cell,3.3,"Hence, the problem can be reduced to a bandit problem, where the Markov Decision Process (MDP) consists of only the initial state as determined by the prompt, and the terminal state, which is always reached after the generation",

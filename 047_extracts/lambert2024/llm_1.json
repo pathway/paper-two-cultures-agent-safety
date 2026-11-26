@@ -1,0 +1,167 @@
+[
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "The training algorithms for our models include supervised finetuning (SFT), Direct Preference Optimization (DPO), and a novel method we call Reinforcement Learning with Verifiable Rewards (RLVR)."
+ },
+ {
+  "topic": "claim",
+  "locator": "1 Introduction",
+  "text": "we introduce Tülu 3, a family of open state-ofthe-art post-trained models, alongside all of the data, training recipes, code, infrastructure, and evaluation framework."
+ },
+ {
+  "topic": "reward",
+  "locator": "1 Introduction",
+  "text": "Reinforcement learning with verifiable rewards, an RL-based method that only gets a reward if the model’s completions are verified to be correct, and"
+ },
+ {
+  "topic": "reward",
+  "locator": "6",
+  "text": "RLVR leverages the existing RLHF objective but replaces the reward model with a verification function, as shown conceptually in Figure 18."
+ },
+ {
+  "topic": "reward",
+  "locator": "6",
+  "text": "RLVR is based on a simple principle, common in RL literature, applied to language models: the policy only"
+ },
+ {
+  "topic": "reward",
+  "locator": "6",
+  "text": "where v is the verifiable reward function. v takes in a prompt and completion pair (x, y), and checks if the answer is correct within the generated text:"
+ },
+ {
+  "topic": "reward",
+  "locator": "Figure 18",
+  "text": "If the answer is verifiably correct, we provide reward of α, otherwise 0. We then train against this reward using PPO."
+ },
+ {
+  "topic": "reward",
+  "locator": "6",
+  "text": "We set α = 10 based on pilot experiments and did not tune it further."
+ },
+ {
+  "topic": "reward",
+  "locator": "5.1.1",
+  "text": "Some judge(s) will choose one of y, y as their preferred response yc , and label the other as a rejected response yr ."
+ },
+ {
+  "topic": "reward",
+  "locator": "5.1.1",
+  "text": "This reward model can help train policy models to output contents preferred by the RM’s judgments."
+ },
+ {
+  "topic": "reward",
+  "locator": "6.2",
+  "text": "If the sampled response does not end with an EOS token, we give a -10 penalty to encourage the model to always complete its responses."
+ },
+ {
+  "topic": "policy",
+  "locator": "5.1.2",
+  "text": "Prior work (Ziegler et al., 2019; Stiennon et al., 2020; Ouyang et al., 2022) optimizes the policy πθ with the following objective:"
+ },
+ {
+  "topic": "policy",
+  "locator": "5.1.2",
+  "text": "where πref is the initial reference policy and the β coefficient helps control the Kullback-Lieber divergence (KL) divergence between the reference policy and the training policy."
+ },
+ {
+  "topic": "episode",
+  "locator": "6.2",
+  "text": "PPO can train for more episodes than the total available prompts, effectively training for multiple epochs."
+ },
+ {
+  "topic": "episode",
+  "locator": "6.2",
+  "text": "In our RLVR ablation experiments, we train for roughly 100, 000/7, 473 ≈ 13 epochs. We shuffle the prompts in between epochs."
+ },
+ {
+  "topic": "episode",
+  "locator": "8.2",
+  "text": "Training online DPO on top of one of our Tülu 3 DPO checkpoint for total of 200K episodes on math problems"
+ },
+ {
+  "topic": "value",
+  "locator": "6.2",
+  "text": "Initialize the Value model from a General RM We initialize the value model from the reward model for the RLVR setup"
+ },
+ {
+  "topic": "value",
+  "locator": "6.2.1",
+  "text": "Figure 21 shows that initializing the value from a general RM obtains the highest GSM8K test score and also higher average scores. This suggests the value function plays an important role in RLVR’s training."
+ },
+ {
+  "topic": "value",
+  "locator": "5.1.2",
+  "text": "reinforcement learning algorithms, which learn from an internal representation of value or reward, and direct alignment algorithms, which learn directly from the data."
+ },
+ {
+  "topic": "action",
+  "locator": "6",
+  "text": "We sample completions from a policy model given a set of prompts, and verify their correctness using a deterministic function."
+ },
+ {
+  "topic": "observation",
+  "locator": "Figure 18",
+  "text": "We sample completions from a policy model given a set of prompts, and verify their correctness using a deterministic function."
+ },
+ {
+  "topic": "objective",
+  "locator": "6.1",
+  "text": "Creating data for RLVR entails obtaining prompts with an accompanying binary verifier (i.e., constructing a set of inputs x with accompanying verifier functions v)."
+ },
+ {
+  "topic": "objective",
+  "locator": "1 Introduction",
+  "text": "In order to build Tülu 3, we identify a set of core skills to improve after training (e.g., reasoning, math, coding, safety, precise instruction following, knowledge recall, etc.)"
+ },
+ {
+  "topic": "setting",
+  "locator": "1 Introduction",
+  "text": "with each stage building upon the previous model and focusing on different types of data — namely, prompt-completion instances for supervised finetuning, preferences for preference tuning, or verifiable rewards for reinforcement learning."
+ },
+ {
+  "topic": "setting",
+  "locator": "5.1.2",
+  "text": "In each training iteration of PPO, the policy needs to generate some samples, generate rewards using the RM on those samples, and maximize R(x, y) using the PPO algorithm."
+ },
+ {
+  "topic": "failure",
+  "locator": "6.2.1",
+  "text": "Overoptimization Happens. As we lower the KL penalty β, the trained model incurs more KL from the initial model."
+ },
+ {
+  "topic": "failure",
+  "locator": "B.4",
+  "text": "We checked the output of our RLVR IFEval experiments and found some higher KL runs to have interesting overoptimized outputs."
+ },
+ {
+  "topic": "oversight",
+  "locator": "6.2",
+  "text": "For our final runs, we examine model checkpoints every 40-100 steps and choose the best checkpoint on our development evaluation set."
+ },
+ {
+  "topic": "limitation",
+  "locator": "8.3",
+  "text": "While we aimed to cover a broad set of skills for Tülu 3, due to various limitations, we left some skills for future iterations of Tülu."
+ },
+ {
+  "topic": "limitation",
+  "locator": "8.3",
+  "text": "Future work involves training or evaluating Tülu 3 for tool-use either on its own or as part of a larger framework."
+ },
+ {
+  "topic": "limitation",
+  "locator": "8.3",
+  "text": "While we evaluate Tülu 3 on its own, LMs are being increasingly deployed as parts of larger systems, in which they have access to tools (Qu et al., 2024)"
+ },
+ {
+  "topic": "llm",
+  "locator": "8.2",
+  "text": "We tried rejection sampling, but found that for our setup the performance gains were minimal for the amount of compute required, and thus we leave a deeper exploration for future work."
+ },
+ {
+  "topic": "llm",
+  "locator": "6.2.1",
+  "text": "Interestingly, in GSM8K and MATH, we found that incurring more KL budget does not necessarily lead to improvements in verifiable rewards."
+ }
+]

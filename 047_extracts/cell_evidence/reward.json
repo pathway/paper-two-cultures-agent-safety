@@ -1,0 +1,100 @@
+[
+ {
+  "primitive": "reward",
+  "setting": "T-RL",
+  "evidence_source": "sutton2018",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "A \"simple number\" at each step, \"passing from the environment to the agent\"; the goal is its expected cumulative sum [@sutton2018].",
+  "fits": true,
+  "note": "already quote"
+ },
+ {
+  "primitive": "reward",
+  "setting": "T-CHAT",
+  "evidence_source": "stiennon2020",
+  "candidate_ids": [
+   "c8"
+  ],
+  "quote": "Note that the reward model only gives rewards for entire summaries, and not at intermediate time steps.",
+  "reason": "A learned reward model fit to human pairwise preferences scores the whole reply once: \"Note that the reward model only gives rewards for entire summaries, and not at intermediate time steps.\" [@stiennon2020]. A per-token KL penalty to the reference model is added [@christiano2017; @ziegler2019; @ouyang2022].",
+  "fits": true,
+  "note": "Supports terminal RM score. KL penalty is in ouyang2022 c4 and ziegler2019 c9, not quoted."
+ },
+ {
+  "primitive": "reward",
+  "setting": "T-RLVR",
+  "evidence_source": "deepseekai2025",
+  "candidate_ids": [
+   "c3"
+  ],
+  "quote": "The reward signal is solely based on the correctness of final predictions against ground-truth answers, without imposing constraints on the reasoning process itself.",
+  "reason": "A programmatic check of the final answer gives the only reward: \"The reward signal is solely based on the correctness of final predictions against ground-truth answers, without imposing constraints on the reasoning process itself.\" [@deepseekai2025]. Verifiable rewards are also used in [@lambert2024].",
+  "fits": true,
+  "note": "Supports terminal verifier reward and unscored trace. Test cases and exact match not in the quote."
+ },
+ {
+  "primitive": "reward",
+  "setting": "T-PRM",
+  "evidence_source": "lightman2024",
+  "candidate_ids": [
+   "c1"
+  ],
+  "quote": "Outcome-supervised reward models (ORMs) are trained using only the final result of the model’s chain-of-thought, while process-supervised reward models (PRMs) receive feedback for each step in the chain-of-thought.",
+  "reason": "A process reward model scores each reasoning step: \"Outcome-supervised reward models (ORMs) are trained using only the final result of the model’s chain-of-thought, while process-supervised reward models (PRMs) receive feedback for each step in the chain-of-thought.\" [@lightman2024]. Related work is [@uesato2022; @wang2024].",
+  "fits": true,
+  "note": "Supports per-step score. \"dense\" and \"closest to T-RL\" are analyst inference, not in the quote."
+ },
+ {
+  "primitive": "reward",
+  "setting": "T-AGENT",
+  "evidence_source": "zhou2024b",
+  "candidate_ids": [
+   "c13"
+  ],
+  "quote": "A candidate reward function would be +1 if the correct item can be bought and 0 otherwise.",
+  "reason": "A trajectory-level success reward in a task environment rewards the whole run: \"A candidate reward function would be +1 if the correct item can be bought and 0 otherwise.\" [@zhou2024b]. The reward in [@wei2025] is a patch-similarity score, not a test pass.",
+  "fits": true,
+  "note": "Supports terminal success reward (WebShop-style). wei2025 reward is difflib similarity to the oracle patch, so \"tests pass\" is not supported by wei2025."
+ },
+ {
+  "primitive": "reward",
+  "setting": "D-RL",
+  "evidence_source": "sutton2018",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "No reward is used: RL methods \"specify how the agent's policy is changed as a result of its experience\", and a deployed policy is not changed [@sutton2018].",
+  "fits": true,
+  "note": "already quote"
+ },
+ {
+  "primitive": "reward",
+  "setting": "D-CHAT",
+  "evidence_source": "mclean2026",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "No reward signal exists at run time; the reward model and verifier are training artefacts that are \"no longer used\" after training [@mclean2026]. The effective objective is the instruction in the context.",
+  "fits": true,
+  "note": "already quote"
+ },
+ {
+  "primitive": "reward",
+  "setting": "D-AGENT-A",
+  "evidence_source": "kapoor2024",
+  "candidate_ids": [],
+  "quote": "the humans using a chatbot might steer it towards the correct answer, give feedback on where it went wrong, or ask it to change something about the output.",
+  "reason": "No scalar at run time; the user gives the only feedback: \"the humans using a chatbot might steer it towards the correct answer, give feedback on where it went wrong, or ask it to change something about the output.\" [@kapoor2024]. Feedback does not update the weights.",
+  "fits": true,
+  "note": "Supports user feedback as the only signal. No-weight-update claim is inference. Quote spans a line break in the file; whitespace normalised to a space."
+ },
+ {
+  "primitive": "reward",
+  "setting": "D-AGENT-X",
+  "evidence_source": "baker2025",
+  "candidate_ids": [],
+  "quote": "the agent exploited a bug that allowed it to exit from the environment early without running all unit tests",
+  "reason": "Success tests are gamed where present: \"the agent exploited a bug that allowed it to exit from the environment early without running all unit tests\" [@baker2025]. Unverified task completion is the model's own claim [@kapoor2024].",
+  "fits": false,
+  "note": "Quote supports only the gamed-tests clause, and it describes training. No cited passage says reward is absent at run time or that the model claims success. Reason weakened."
+ }
+]

@@ -1,0 +1,29 @@
+id,pass,topic,locator,line,text
+c1,llm_wf,claim,Abstract,34,"In this work, we close this gap by introducing a formal measure for instructiondata separation for single-turn language models and an empirical variant that is calculable from"
+c2,llm_wf,claim,Abstract,36,"Our results on various LLMs show that the problem of instructiondata separation is real: all models fail to achieve high separation, and canonical mitigation"
+c3,llm_wf,failure,1 Introduction,84,This example outlined above illustrates a fundamental limitation of current LLMs that undermine their trustworthiness even in the most straightforward setup without any exploitation.
+c4,llm_wf,failure,1 Introduction,90,Such attacks may lead to actual harms of data exfiltration or influencing the LLM’s output for other
+c5,llm_wf,observation,1 Introduction,55,"data. LLMs should process their inputs according to a strict set of rules, where the execution of any instructions"
+c6,llm_wf,objective,1 Introduction,47,"applications where LLMs may be fed arbitrary external data and tasks are defined at runtime. For example, users’"
+c7,llm_wf,objective,1 Introduction,60,Figure 1 explains this phenomenon with a simple example. An email client is created by specifying its rules and
+c8,llm_wf,action,Figure 1,78,"passive data (i.e., emails to the user) as an instruction, despite the received instruction being only to summarize"
+c9,llm_wf,action,2 Related Work,138,"agentic applications (Debenedetti et al., 2024) and how they can lead to undesired API calls or misinformation"
+c10,llm_wf,llm,1 Introduction,97,"On an architectural level, today’s LLMs do not possess a formal, principled separation of passive data from"
+c11,llm_wf,policy,3 Definition 1,160,"Definition 1. For an input alphabet A, we formalize a single-turn language model (LM) as a mapping"
+c12,llm_wf,policy,3 Definition 1,165,"agnostic to aspects of model architecture or implementation. In particular, we do not specify how the inputs are"
+c13,llm_wf,objective,3 Definition 2,188,"A small score means that even if probe strings are placed in the language model’s data argument, the effect is"
+c14,llm_wf,setting,3 Definition 4,239,One can see that Equations (2) are computed only from model outputs; no access to internal states or prediction
+c15,llm_wf,limitation,3,298,"Note that the empirical separation score, like the separation score itself, is principally agnostic to the quality of"
+c16,llm_wf,limitation,3,303,"Of course, in practice, not only the separation score but also the quality of the model outputs matter. In general,"
+c17,llm_wf,observation,5 Experimental Evaluation,580,"of context into system and user prompts as proxies, where we dedicate the system prompt to the instruction"
+c18,llm_wf,claim,5 Experimental Evaluation,596,"Notably, better or larger models do not show stronger separation scores. If anything, the opposite might be"
+c19,llm_wf,claim,5 Experimental Evaluation,608,"instruction and data is unlikely to be solved by scaling up models and training data sizes, but rather that"
+c20,llm_wf,limitation,5 Experimental Evaluation,610,"Discussion. While the above results are quite prominent, some caveats exist. In particular, our experimental"
+c21,llm_wf,limitation,5 Experimental Evaluation,612,"First, the distinction between system prompt and user prompt in current LM APIs is only a proxy for that of"
+c22,llm_wf,policy,6 Mitigation Strategies,623,"The behavior of LMs can be influenced by various means, in particular changes to their explicit prompts, changes"
+c23,llm_wf,limitation,6 Mitigation Strategies,662,"interpreting these results, though, as it cannot be ruled out that GPT-4 has an unfair advantage from the fact that"
+c24,llm_wf,failure,6.1 Summary,761,"but it had noticeable negative side-effects in the form of reduced utility. Overall, we hypothesize that the true"
+c25,llm_wf,limitation,6.1 Summary,765,experimental studies can never prove that it is impossible for existing techniques to establish a separation between
+c26,llm_wf,claim,7 Discussion and Outlook,787,nine state-of-the-art language models had concerning results: none of the existing models provide a dedicated
+c27,llm_wf,claim,7 Discussion and Outlook,791,"produce models that reliably separate between instruction and data and still have high utility. Clearly, many"
+c28,llm_wf,claim,7 Discussion and Outlook,793,our work as a wake-up call for the research community to start looking for new ways to create language models

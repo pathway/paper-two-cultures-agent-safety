@@ -1,0 +1,107 @@
+[
+{
+"topic": "policy",
+"locator": "Main text",
+"text": "a deep neural network (p, v) = fθ (s) with parameters θ. This neural network takes the board position s as an input and outputs a vector of move probabilities p with components pa = P r(a|s)"
+},
+{
+"topic": "value",
+"locator": "Main text",
+"text": "for each action a, and a scalar value v estimating the expected outcome z from position s,"
+},
+{
+"topic": "value",
+"locator": "Main text",
+"text": "AlphaZero learns these move probabilities and value estimates entirely from selfplay; these are then used to guide its search."
+},
+{
+"topic": "policy",
+"locator": "Main text",
+"text": "Instead of an alpha-beta search with domain-specific enhancements, AlphaZero uses a generalpurpose Monte-Carlo tree search (MCTS) algorithm."
+},
+{
+"topic": "policy",
+"locator": "Main text",
+"text": "The parameters θ of the deep neural network in AlphaZero are trained by self-play reinforcement learning, starting from randomly initialised parameters θ."
+},
+{
+"topic": "reward",
+"locator": "Main text",
+"text": "scored according to the rules of the game to compute the game outcome z: −1 for a loss, 0 for"
+},
+{
+"topic": "policy",
+"locator": "Main text",
+"text": "In contrast, AlphaZero simply maintains a single neural network that is updated continually, rather than waiting for an iteration to complete."
+},
+{
+"topic": "state",
+"locator": "Main text",
+"text": "Like AlphaGo Zero, the board state is encoded by spatial planes based only on the basic"
+},
+{
+"topic": "action",
+"locator": "Main text",
+"text": "action space is simple (a stone may be placed at each possible location), and the game outcomes"
+},
+{
+"topic": "setting",
+"locator": "Main text",
+"text": "In AlphaZero we reuse the same hyper-parameters for all games without game-specific tuning."
+},
+{
+"topic": "setting",
+"locator": "Main text",
+"text": "We trained a separate instance of AlphaZero for each game."
+},
+{
+"topic": "limitation",
+"locator": "Footnote 3",
+"text": "The prevalence of draws in high-level chess tends to compress the Elo scale, compared to shogi or Go."
+},
+{
+"topic": "reward",
+"locator": "Main text",
+"text": "chess and shogi may result in draws in addition to wins and losses; indeed it is believed that the"
+},
+{
+"topic": "action",
+"locator": "Main text",
+"text": "The action space for chess includes all legal destinations for all of the players’"
+},
+{
+"topic": "setting",
+"locator": "Main text",
+"text": "We evaluated the fully trained instances of AlphaZero against Stockfish, Elmo and the previous version of AlphaGo Zero (trained for 3 days) in chess, shogi and Go respectively, playing"
+},
+{
+"topic": "claim",
+"locator": "Main text",
+"text": "reinforcement learning algorithm – originally devised for the game of Go – that achieved superior results within a few hours, searching a thousand times fewer positions, given no domain"
+},
+{
+"topic": "claim",
+"locator": "Main text",
+"text": "scaled more effectively with thinking time than either Stockfish or Elmo, calling into question"
+},
+{
+"topic": "claim",
+"locator": "Main text",
+"text": "all opponents, losing zero games to Stockfish and eight games to Elmo"
+},
+{
+"topic": "limitation",
+"locator": "Main text",
+"text": "80 thousand positions per second in chess and 40 thousand in shogi, compared to 70 million"
+},
+{
+"topic": "setting",
+"locator": "Main text",
+"text": "and in general symmetries cannot be assumed. AlphaZero does not augment the training data"
+},
+{
+"topic": "objective",
+"locator": "Main text",
+"text": "outcomes. AlphaZero instead estimates and optimises the expected outcome, taking account of"
+}
+]

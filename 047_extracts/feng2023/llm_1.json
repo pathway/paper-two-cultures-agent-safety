@@ -1,0 +1,147 @@
+[
+ {
+  "topic": "setting",
+  "locator": "3.1",
+  "text": "We formulate the language generation process as a multistep Markov Decision Process (MDP). The particularity of natural language tasks is that both the action and state are in language space."
+ },
+ {
+  "topic": "policy",
+  "locator": "3.1",
+  "text": "The particularity of natural language tasks is that both the action and state are in language space. LLMs can serve as a policy πθ that samples sequences of tokens as actions."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.1",
+  "text": "Due to the lack of large-scale and high-quality intermediate reward labels for general tasks, it is usually a sparse reward setting where any intermediate reward from the first T − 1 timestep is zero except the last T -th step."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.1",
+  "text": "A typical case can be RLHF alignment task, where LLM can receive the reward signal after it completes the full generation."
+ },
+ {
+  "topic": "objective",
+  "locator": "3.1",
+  "text": "A specific natural language task typically predefines the state space (with language) and reward function (with task objective/metrics). What remains is the definition of action space, or in the context of tree-search algorithm, the action node."
+ },
+ {
+  "topic": "action",
+  "locator": "3.1",
+  "text": "Token-level action nodes: Analogous to tree-search in discrete action space MDP, we can treat each token as a discrete action for LLM policy and the tree search can be conducted in token-level."
+ },
+ {
+  "topic": "action",
+  "locator": "3.1",
+  "text": "For each non-terminal node, the search tree is expanded by sampling several possible subsequent intermediate steps and dropping the duplicated generations."
+ },
+ {
+  "topic": "transition",
+  "locator": "3.1",
+  "text": "We have to set a maximum tree width w to subsample w nodes during the expansion, similar to the idea of Sampled MuZero (Hubert et al., 2021) (The node will be fixed once it is expanded)."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3.1",
+  "text": "Such subsampling results in the gap, determined by w, between the tree-search space and the LLM generation space. For token-level action nodes, though it can get rid of the search space discrepancy and extra computational burdens, it greatly increases the depth of the tree, making tree-search more challenging."
+ },
+ {
+  "topic": "policy",
+  "locator": "3.2",
+  "text": "One of the benefits of tree-search algorithms is that they can optimize the cumulative reward by mere search, without any gradient calculation or update. In this section, given a fixed LLM policy, we present the full pipeline to illustrate how to guide LLM inference decoding with tree search approaches."
+ },
+ {
+  "topic": "value",
+  "locator": "3.2.1",
+  "text": "To make the tree search algorithm generally applicable, our method leverages a learned LLM-based value function vϕ (s) conditioned on state s and a learned final-step outcome reward model (ORM) r̂ϕ since most tasks can be formulated as sparsereward problems (Uesato et al., 2022)."
+ },
+ {
+  "topic": "value",
+  "locator": "3.2.1",
+  "text": "Similar to the critic training in most RL algorithms, we construct the value target ztj by TD-λ (Sutton, 1988) or MC estimate (Sutton & Barto, 2018) on each single step t ."
+ },
+ {
+  "topic": "episode",
+  "locator": "3.2.2",
+  "text": "Firstly, MCTS-α cannot trace back to its previous states once it takes an action. So it cannot restart the search from the initial state unless multiple searches are conducted which will be discussed in Section 3.2.3."
+ },
+ {
+  "topic": "episode",
+  "locator": "3.2.2",
+  "text": "It repeats the operations above until the process finds N complete answers or reaches the computation limit (e.g. maximum number of tokens.)"
+ },
+ {
+  "topic": "policy",
+  "locator": "3.3",
+  "text": "By treating the tree-search operation as a policy improvement operator, we can conduct an iterative processes of improving the policy via tree search and then improving the policy through distillation and the value function through the ground-truth training labels on the tree search trajectories."
+ },
+ {
+  "topic": "value",
+  "locator": "3.3",
+  "text": "Such iterative process belongs to generalized policy iteration (Sutton & Barto, 2018), which is also the procedure used in AlphaZero’s training."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3.4",
+  "text": "Tree-search algorithms will inevitably bring in additional computation burdens, especially in the node expansion phase for calculating legal child nodes and their corresponding value."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3.4",
+  "text": "Prior methodologies, such as ToT and RAP, tend to benchmark their performance against baseline algorithms using an equivalent number of generation paths (named Path@N ). This approach overlooks the additional computational demands of the tree-search process."
+ },
+ {
+  "topic": "policy",
+  "locator": "4.1",
+  "text": "Our policy LLM and value LLM are two separate models but are adapted from the same base model."
+ },
+ {
+  "topic": "llm",
+  "locator": "4.1",
+  "text": "All LLMs will be first supervise-finetuned (SFT) on the training set, enabling their zero-shot CoT ability."
+ },
+ {
+  "topic": "failure",
+  "locator": "4.2.1",
+  "text": "The phenomenon of LLM’s limited selfevaluation ability by prompting aligns with other papers (Huang et al., 2023; Stechly et al., 2023). This finding largely increases the necessity of a learned value function."
+ },
+ {
+  "topic": "limitation",
+  "locator": "4.2.3",
+  "text": "In all, the scalability of tree-search aggregation is an open question that is worth further exploration in future work."
+ },
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "To address these limitations, we present an AlphaZero-like tree-search learning framework for LLMs (termed TS-LLM), systematically illustrating how tree-search with a learned value function can guide LLM decoding."
+ },
+ {
+  "topic": "limitation",
+  "locator": "Abstract",
+  "text": "These methods rely on prompting a pre-trained model to serve as a value function and focus on problems with low search depth. As a result, these methods will not work in domains where the pre-trained LLM does not have enough knowledge to serve as an effective value function or in domains that require long-horizon planning."
+ },
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "Our approach can guide LLMs during both inference and training, iteratively improving the LLM. Empirical results across reasoning, planning, alignment, and decision-making tasks show that TS-LLM outperforms existing approaches and can handle trees with a depth of 64."
+ },
+ {
+  "topic": "llm",
+  "locator": "1",
+  "text": "When training LLMs with RL, LLMs’ generation can be naturally formulated as a Markov Decision Process (MDP) and optimized with specific objectives."
+ },
+ {
+  "topic": "value",
+  "locator": "1",
+  "text": "Our learned value function can be more reliable than the prompt-based counterpart and does not require any well-designed prompts or advanced, largescale LLMs."
+ },
+ {
+  "topic": "episode",
+  "locator": "1",
+  "text": "TS-LLM is also scalable: TS-LLM can conduct deep tree search, extending tree-search for LLM generation up to a depth of 64. This is far beyond 10 in ToT and 7 in RAP."
+ },
+ {
+  "topic": "claim",
+  "locator": "5",
+  "text": "Empirical results validate that TS-LLM can enhance LLMs decoding and serve as a new training paradigm. We leave further discussion of our limitation and future work in Appendix B."
+ }
+]

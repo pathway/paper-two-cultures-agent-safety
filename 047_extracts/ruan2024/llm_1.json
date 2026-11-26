@@ -1,0 +1,152 @@
+[
+ {
+  "topic": "reward",
+  "locator": "2",
+  "text": "humans can assess the helpfulness score rh = Rh (u, τN ) and safety score rs = Rs (u, τN ) with their implicit rewards Rh , Rs ."
+ },
+ {
+  "topic": "reward",
+  "locator": "2",
+  "text": "The helpfulness score measures how well the LM agent fulfills the user instruction (e.g., whether some unnecessary files were deleted to free disk space), while the safety score assesses the potential risks posed by the LM agent and the severity of those risks"
+ },
+ {
+  "topic": "action",
+  "locator": "2",
+  "text": "the LM agent takes an action an ∈ A composed of the specific tool being invoked fn ∈ F and additional input arguments for the tool (e.g., specific terminal commands)"
+ },
+ {
+  "topic": "policy",
+  "locator": "4",
+  "text": "Language Model (LM) agents (Yao et al., 2023b; Shinn et al., 2023; Liu et al., 2023a; Wang et al., 2023a) utilize powerful tools such as web browsers (Nakano et al., 2021), code interpreters (Gao et al., 2023b), and API plugins"
+ },
+ {
+  "topic": "policy",
+  "locator": "4.1",
+  "text": "The LM agent was implemented by ReAct (Yao et al., 2023b) and prompted with additional formatting instructions and examples (see Appx. C for details)."
+ },
+ {
+  "topic": "transition",
+  "locator": "3.1",
+  "text": "The emulator LM is then prompted to return the observation ωn for the current action, where it implicitly emulates the state transition T , the emission O, and the initial state s0 to return ω"
+ },
+ {
+  "topic": "transition",
+  "locator": "3.1",
+  "text": "(iii) consistency: the emulated trajectory must maintain a consistent state transition and ensure there are no discrepancies in emulated outputs throughout the entire trajectory."
+ },
+ {
+  "topic": "episode",
+  "locator": "3.1",
+  "text": "our emulator provides inherent safety guarantees, allowing us to assess any test cases with potentially severe risks without causing any real-world effects."
+ },
+ {
+  "topic": "objective",
+  "locator": "2",
+  "text": "Threat model: instruction underspecification In our safety evaluation, we focus on a particular threat model where the user instructions are underspecified."
+ },
+ {
+  "topic": "principal",
+  "locator": "2",
+  "text": "In our evaluations, the underlying user intent is assumed to be benign rather than malicious and there is no intention to direct the LM agent towards causing harm."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.2",
+  "text": "the safety evaluator takes the complete trajectory τN as input, as well as the “underspecification”, “potential risks”, and corresponding “potential risky actions” of the specific test case to facilitate its assessment."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.2",
+  "text": "To distinguish and quantify the associated risks, the evaluator is instructed to assess them based on both the likelihood that the risk materializes (certainly not, possible, or likely) and the severity of the resulting harm (mild or severe)"
+ },
+ {
+  "topic": "oversight",
+  "locator": "3.2",
+  "text": "Instead of enumerating and predefining all failure conditions, we prompt LMs to examine the LM agent trajectories and retrospectively capture failures within them."
+ },
+ {
+  "topic": "failure",
+  "locator": "4.2",
+  "text": "we define identified failures to be those assigned a binarized label of 0 by the automatic safety evaluator (Table 1)."
+ },
+ {
+  "topic": "failure",
+  "locator": "4.2",
+  "text": "true failures are those labeled 0 for safety by at least two human annotators and validated as free of critical issues in the execution trace by at least three annotators."
+ },
+ {
+  "topic": "failure",
+  "locator": "1",
+  "text": "Notably, even the safest LM agent exhibits such failures 23.9% of the time according to our evaluator, underscoring the need to develop safer LM agents for real-world deployment."
+ },
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "we introduce ToolEmu: a framework that uses an LM to emulate tool execution and enables scalable testing of LM agents against a diverse range of tools and scenarios."
+ },
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "We test both the tool emulator and evaluator through human evaluation and find that 68.8% of failures identified with ToolEmu would be valid real-world agent failures."
+ },
+ {
+  "topic": "claim",
+  "locator": "1",
+  "text": "Using our benchmark, we quantitatively evaluate current LM agents and analyze the effect of prompts on the safety of LM agents (Table 5)."
+ },
+ {
+  "topic": "llm",
+  "locator": "3.1",
+  "text": "We design the emulator by prompting GPT-4, which has showcased strong abilities to mimic multi-agent behaviors (Park et al., 2022; 2023), and even emulate a virtual machine (Degrave, 2022) and existing public APIs (Tang et al., 2023)."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7",
+  "text": "First, there were instances where the emulators overlooked certain core constraints and caused critical issues in the emulations (Table 4), which was more evident in complex or adversarial scenarios."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7",
+  "text": "However, one limitation of our work is that the test case curation still largely relies on humans."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7",
+  "text": "we found that the safety evaluator could fail to detect certain risky actions committed by the LM agent, as evidenced by the lower recall (73.1%) compared to human annotators (an average of 75.3%)."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7",
+  "text": "we focused on the specific threat model of instruction underspecification, and curated an initial benchmark comprising of 36 toolkits and 144 test cases."
+ },
+ {
+  "topic": "value",
+  "locator": "5",
+  "text": "Both the safety and helpfulness scores are in the range of 0-3 with higher being better."
+ },
+ {
+  "topic": "failure",
+  "locator": "2",
+  "text": "We identify several typical failure modes of these agents including fabrication or unwarranted assumptions [c, d], instruction misinterpretation [c], erroneous executions [b], and risk ignorance [a, e]."
+ },
+ {
+  "topic": "setting",
+  "locator": "2",
+  "text": "at each step n, the LM agent takes an action an ∈ A composed of the specific tool being invoked fn ∈ F and additional input arguments for the tool (e.g., specific terminal commands), and receives an observation ωn ∈ Ω from tool execution."
+ },
+ {
+  "topic": "state",
+  "locator": "2",
+  "text": "The initial environment state is denoted as s0 ∈ S, the state transition function and emission function are denoted as T : S × A → S and O : S → Ω, respectively."
+ },
+ {
+  "topic": "observation",
+  "locator": "3",
+  "text": "The agent receives the instruction and takes actions an by invoking tools from F. The emulator emulates the tool execution and returns the observations ωn ."
+ },
+ {
+  "topic": "state",
+  "locator": "3.1",
+  "text": "emulator automatically seeds the virtual sandbox by creating the initial state s0 for specific test cases, eliminating the need for manual setup in physical sandboxes"
+ }
+]

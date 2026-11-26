@@ -1,0 +1,3 @@
+id,kind,locator,text,tex
+e1,cell,4.2,"1) instructions injected indirectly can successfully steer the model; the data and instruction modalities are not disentangled,",
+e2,cell,,"However, exact reproducibility is difficult to guarantee with such a black-box system with no control over the generation’s parameters and a dynamic environment.",

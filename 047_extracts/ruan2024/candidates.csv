@@ -1,0 +1,31 @@
+id,pass,topic,locator,line,text
+c1,llm_wf,reward,2,293,"humans can assess the helpfulness score rh = Rh (u, τN ) and safety score rs = Rs (u, τN ) with their implicit rewards Rh , Rs ."
+c2,llm_wf,reward,2,294,"The helpfulness score measures how well the LM agent fulfills the user instruction (e.g., whether some unnecessary files were deleted to free disk space), while the safety score assesses the potential risks posed by the LM agent and the severity of those risks"
+c3,llm_wf,action,2,288,"the LM agent takes an action an ∈ A composed of the specific tool being invoked fn ∈ F and additional input arguments for the tool (e.g., specific terminal commands)"
+c4,llm_wf,policy,4,281,"Language Model (LM) agents (Yao et al., 2023b; Shinn et al., 2023; Liu et al., 2023a; Wang et al., 2023a) utilize powerful tools such as web browsers (Nakano et al., 2021), code interpreters (Gao et al., 2023b), and API plugins"
+c5,llm_wf,policy,4.1,758,"The LM agent was implemented by ReAct (Yao et al., 2023b) and prompted with additional formatting instructions and examples (see Appx. C for details)."
+c6,llm_wf,transition,3.1,413,"The emulator LM is then prompted to return the observation ωn for the current action, where it implicitly emulates the state transition T , the emission O, and the initial state s0 to return ω"
+c7,llm_wf,transition,3.1,510,(iii) consistency: the emulated trajectory must maintain a consistent state transition and ensure there are no discrepancies in emulated outputs throughout the entire trajectory.
+c8,llm_wf,episode,3.1,486,"our emulator provides inherent safety guarantees, allowing us to assess any test cases with potentially severe risks without causing any real-world effects."
+c9,llm_wf,objective,2,329,"Threat model: instruction underspecification In our safety evaluation, we focus on a particular threat model where the user instructions are underspecified."
+c10,llm_wf,principal,2,378,"In our evaluations, the underlying user intent is assumed to be benign rather than malicious and there is no intention to direct the LM agent towards causing harm."
+c11,llm_wf,reward,3.2,566,"the safety evaluator takes the complete trajectory τN as input, as well as the “underspecification”, “potential risks”, and corresponding “potential risky actions” of the specific test case to facilitate its assessment."
+c12,llm_wf,reward,3.2,571,"To distinguish and quantify the associated risks, the evaluator is instructed to assess them based on both the likelihood that the risk materializes (certainly not, possible, or likely) and the severity of the resulting harm (mild or severe)"
+c13,llm_wf,oversight,3.2,564,"Instead of enumerating and predefining all failure conditions, we prompt LMs to examine the LM agent trajectories and retrospectively capture failures within them."
+c14,llm_wf,failure,4.2,786,we define identified failures to be those assigned a binarized label of 0 by the automatic safety evaluator (Table 1).
+c15,llm_wf,failure,4.2,788,true failures are those labeled 0 for safety by at least two human annotators and validated as free of critical issues in the execution trace by at least three annotators.
+c16,llm_wf,failure,1,28,"Notably, even the safest LM agent exhibits such failures 23.9% of the time according to our evaluator, underscoring the need to develop safer LM agents for real-world deployment."
+c17,llm_wf,claim,Abstract,20,we introduce ToolEmu: a framework that uses an LM to emulate tool execution and enables scalable testing of LM agents against a diverse range of tools and scenarios.
+c18,llm_wf,claim,Abstract,23,We test both the tool emulator and evaluator through human evaluation and find that 68.8% of failures identified with ToolEmu would be valid real-world agent failures.
+c19,llm_wf,claim,1,179,"Using our benchmark, we quantitatively evaluate current LM agents and analyze the effect of prompts on the safety of LM agents (Table 5)."
+c20,llm_wf,llm,3.1,405,"We design the emulator by prompting GPT-4, which has showcased strong abilities to mimic multi-agent behaviors (Park et al., 2022; 2023), and even emulate a virtual machine (Degrave, 2022) and existing public APIs (Tang et al., 2023)."
+c21,llm_wf,limitation,7,1147,"First, there were instances where the emulators overlooked certain core constraints and caused critical issues in the emulations (Table 4), which was more evident in complex or adversarial scenarios."
+c22,llm_wf,limitation,7,1169,"However, one limitation of our work is that the test case curation still largely relies on humans."
+c23,llm_wf,limitation,7,1152,"we found that the safety evaluator could fail to detect certain risky actions committed by the LM agent, as evidenced by the lower recall (73.1%) compared to human annotators (an average of 75.3%)."
+c24,llm_wf,limitation,7,1174,"we focused on the specific threat model of instruction underspecification, and curated an initial benchmark comprising of 36 toolkits and 144 test cases."
+c25,llm_wf,value,5,895,Both the safety and helpfulness scores are in the range of 0-3 with higher being better.
+c26,llm_wf,failure,2,264,"We identify several typical failure modes of these agents including fabrication or unwarranted assumptions [c, d], instruction misinterpretation [c], erroneous executions [b], and risk ignorance [a, e]."
+c27,llm_wf,setting,2,288,"at each step n, the LM agent takes an action an ∈ A composed of the specific tool being invoked fn ∈ F and additional input arguments for the tool (e.g., specific terminal commands), and receives an observation ωn ∈ Ω from tool execution."
+c28,llm_wf,state,2,290,"The initial environment state is denoted as s0 ∈ S, the state transition function and emission function are denoted as T : S × A → S and O : S → Ω, respectively."
+c29,llm_wf,observation,3,393,The agent receives the instruction and takes actions an by invoking tools from F. The emulator emulates the tool execution and returns the observations ωn .
+c30,llm_wf,state,3.1,481,"emulator automatically seeds the virtual sandbox by creating the initial state s0 for specific test cases, eliminating the need for manual setup in physical sandboxes"

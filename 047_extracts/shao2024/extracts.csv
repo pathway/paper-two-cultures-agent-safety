@@ -1,0 +1,3 @@
+id,kind,locator,text,tex
+e1,cell,1. Introduction,"GRPO foregoes the critic model, instead estimating the baseline from group scores, significantly reducing training resources",
+e2,cell,1.1 Contributions,"GRPO foregoes the critic model, instead estimating the baseline from group scores, significantly reducing training resources compared to Proximal Policy Optimization (PPO).",

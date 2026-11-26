@@ -1,0 +1,122 @@
+[
+ {
+  "topic": "setting",
+  "locator": "3",
+  "text": "Each individual task in τ -bench can be formulated as a partially observable Markov decision process (POMDP) (S, A, O, T , R, U) with state space S, action space A, observation space O, transition function T : S × A → S × O, reward function R : S → [0, 1], and instruction space U."
+ },
+ {
+  "topic": "state",
+  "locator": "3",
+  "text": "The contents of the database form the state sdb (Figure 2a), which is hidden from the agent and the user, and can only be read from or written to using API actions adb , which are usually in the form tool_name(**kwargs)."
+ },
+ {
+  "topic": "transition",
+  "locator": "3",
+  "text": "When an action is executed on the database, the transition Tdb : (sdb , adb ) 7→ (s′db , odb ) is deterministic and implemented as a Python function (Figure 2b)."
+ },
+ {
+  "topic": "transition",
+  "locator": "3",
+  "text": "The transition Tuser : (suser , auser ) 7→ (s′user , ouser ) is stochastic and attaches the agent’s message to the chat history followed by sampling a new user message from the LM,"
+ },
+ {
+  "topic": "state",
+  "locator": "3",
+  "text": "The user state suser consists of an initial system prompt with the task instruction (Figure 2d) along with the entire conversation history between the user and the agent so far. The user cannot see the interaction history between the agent and API tools."
+ },
+ {
+  "topic": "episode",
+  "locator": "3",
+  "text": "Each task episode consists of the simulated user starting with a request, which the agent handles in a conversational manner while being able to call tools at any point and refer to the provided policy."
+ },
+ {
+  "topic": "episode",
+  "locator": "3",
+  "text": "Once the episode ends, the database state and agent-to-user messages are used to compute the reward."
+ },
+ {
+  "topic": "reward",
+  "locator": "3",
+  "text": "The reward of a task episode r = raction × routput ∈ {0, 1} is based on (1) whether the final database is identical to the unique ground truth outcome database (raction ), and (2) whether the agent’s responses to the user contain all necessary information (routput )."
+ },
+ {
+  "topic": "limitation",
+  "locator": "3",
+  "text": "Note that r = 1 might be a necessary but not sufficient condition for a successful episode e.g., the agent might issue the return without explicit user confirmation, which violates the policy."
+ },
+ {
+  "topic": "reward",
+  "locator": "3",
+  "text": "Nevertheless, our proposed rule-based reward is fast to compute and faithful, and already poses significant challenges for current models and methods as we show in § 5."
+ },
+ {
+  "topic": "objective",
+  "locator": "3",
+  "text": "The instruction sets up user identity, intent, and preferences in a way that guarantees only one possible outcome under the domain policy."
+ },
+ {
+  "topic": "policy",
+  "locator": "5",
+  "text": "In FC mode, the model’s system prompt is set to be the domain policy, and at each turn, the model autonomously decides to generate a user response message or a tool call."
+ },
+ {
+  "topic": "oversight",
+  "locator": "3",
+  "text": "In addition, the agent is provided a domain-specific policy document containing rules it must adhere to – one can think of this as partially describing the world model of the domain."
+ },
+ {
+  "topic": "action",
+  "locator": "5",
+  "text": "We limit each task to at most 30 agent actions (either tool calls or user responses)."
+ },
+ {
+  "topic": "episode",
+  "locator": "5",
+  "text": "Notably, some agent methods are not suitable for a user-in-the-loop setup, e.g., self-reflection [19] is unrealistic as real-world agents only have one chance to serve the user, and planning approaches [25] might be too slow to help a user in real time."
+ },
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "We propose τ -bench, a benchmark emulating dynamic conversations between a user (simulated by language models) and a language agent provided with domain-specific API tools and policy guidelines."
+ },
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "Our experiments show that even state-of-the-art function calling agents (like gpt-4o) succeed on < 50% of the tasks, and are quite inconsistent (pass^8 < 25% in retail)."
+ },
+ {
+  "topic": "value",
+  "locator": "3",
+  "text": "we propose a new metric – pass^k (pass hat k), defined as the chance that all k i.i.d. task trials are successful, averaged across tasks."
+ },
+ {
+  "topic": "failure",
+  "locator": "1",
+  "text": "Upon analyzing the failure cases, we find that current agents struggle with complex reasoning over databases, understanding and following ad-hoc policies, and handling compound (more than one) requests."
+ },
+ {
+  "topic": "limitation",
+  "locator": "6",
+  "text": "While τ -bench is a step towards dynamic evaluation of agents in real-world scenarios, there are several directions for improvement. The simulated user can have some limitations:"
+ },
+ {
+  "topic": "limitation",
+  "locator": "5",
+  "text": "Only the last two models openly release weights. We do not test small models (7/13B) due to the difficulty of the benchmark."
+ },
+ {
+  "topic": "llm",
+  "locator": "3",
+  "text": "We use a language model (gpt-4-0613) to simulate a human user interacting with the agent."
+ },
+ {
+  "topic": "transition",
+  "locator": "3",
+  "text": "In our case, for the same task, the user prompt and database transitions are the same, with just the LM sampling of the user and agent messages generating sufficient stochasticity."
+ },
+ {
+  "topic": "reward",
+  "locator": "4.2",
+  "text": "In τ -bench, we trade off slow, careful task annotation for fast, faithful evaluation. By ensuring that only one database outcome is possible based on domain policies and user desires, subjective and noisy human judgments can be replaced by simple and objective database state comparisons."
+ }
+]

@@ -1,0 +1,2 @@
+id,kind,locator,text,tex
+e1,cell,2,"the LM agent takes an action an ∈ A composed of the specific tool being invoked fn ∈ F and additional input arguments for the tool (e.g., specific terminal commands), and receives an observation ωn ∈ Ω from tool execution.",

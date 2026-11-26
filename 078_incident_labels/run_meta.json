@@ -1,0 +1,33 @@
+{
+ "codebook_hash": "82f3ff17e5a9",
+ "n_incidents": 70,
+ "calls": 28,
+ "retries": 0,
+ "problems": [
+  "haiku: C10/D4b: unknown codes ['D4b.privilege_compromise']",
+  "haiku: C14/D5: unknown codes ['D5.misinformation_harms']",
+  "haiku: C28/D4b: unknown codes ['D4b.privilege_escalation']",
+  "haiku: C28/D4b: no valid code",
+  "haiku: C29/D4b: unknown codes ['D4b.privilege_escalation']",
+  "haiku: C29/D4b: no valid code",
+  "haiku: C44/D4b: unknown codes ['D4b.memory_poisoning']",
+  "haiku: C46/D4b: unknown codes ['D4b.privilege_compromise']",
+  "haiku: C48/D9a: unknown codes ['D9a.7.3']",
+  "haiku: C58/D8a: 2 codes on single-label dim; kept first",
+  "haiku: C60/D4b: unknown codes ['D4b.privilege_escalation']",
+  "haiku: C64/D6: unknown codes ['D6.reward_hacking']",
+  "haiku: C64/D6: no valid code",
+  "haiku: C66/D8b: unknown codes ['D8b.near_miss']",
+  "haiku: C66/D8b: no valid code",
+  "haiku: C67/D8a: 2 codes on single-label dim; kept first",
+  "haiku_b: C49/D6: unknown codes ['D6.autonomous_misjudgement']",
+  "haiku_b: C49/D6: no valid code",
+  "haiku_b: C64/D6: unknown codes ['D6.autonomous_misjudgement']",
+  "haiku_b: C64/D6: no valid code"
+ ],
+ "raters": {
+  "haiku": "claude-haiku-4-5-20251001",
+  "haiku_b": "claude-haiku-4-5-20251001"
+ },
+ "calls_cumulative": 43
+}

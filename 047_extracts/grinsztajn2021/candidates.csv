@@ -1,0 +1,24 @@
+id,pass,topic,locator,line,text
+c1,llm_wf,claim,Abstract,26,We propose to learn to distinguish reversible from irreversible actions for better informed decision-making in Reinforcement Learning (RL).
+c2,llm_wf,claim,Abstract,30,"Intuitively, pairs of events that are always observed in the same order are likely to be separated by an irreversible sequence of actions."
+c3,llm_wf,claim,1,66,"In fine, we reduce reversibility to a simple classification task that consists in predicting the temporal order of events."
+c4,llm_wf,setting,3,144,"Intuitively, an action is reversible if it can be undone, meaning that there is a sequence of actions that can bring us back to the original state."
+c5,llm_wf,setting,3,158,"In deterministic environments, an action is either reversible or irreversible: given a state-action couple (s, a) and the unique resulting state s0 , φK (s, a) is equal to 1 if there is a sequence of less than K actions which brings the agent from s0 to s, and is otherwise equal to zero."
+c6,llm_wf,transition,3,160,"In stochastic environments, a given sequence of actions can only reverse a transition up to some probability, hence the need for the notion of degree of reversibility."
+c7,llm_wf,policy,5,300,"These assumptions, when put together, alleviate the risk of overfitting to the idiosyncrasies of a single, non-representative policy."
+c8,llm_wf,reward,5,343,"In our experiments, the reward function is a piecewise linear function of the estimated reversibility and a fixed threshold, as in Fig. 3: it grants the agent a negative reward if the transition is deemed too hard to reverse. The agent optimizes the sum of the extrinsic and auxiliary rewards."
+c9,llm_wf,action,5,348,"From a single observation, RAC estimates the degree of reversibility of all available actions, and “takes control” if the action sampled from the policy is not reversible enough (i.e. has a reversibility inferior to a threshold β)."
+c10,llm_wf,action,5,351,"In practice, we opt for rejection sampling: we sample from the policy until an action that is reversible enough is sampled."
+c11,llm_wf,oversight,5,360,"In contrast, RAC shines in safety-first, real-world scenarios, where irreversible behavior is to be banned entirely."
+c12,llm_wf,observation,5,286,"Learning which observation comes first in a trajectory is achieved by binary supervised classification, from pairs of observations sampled uniformly in a sliding window on observed trajectories."
+c13,llm_wf,reward,6.1,471,"Here, instead, we remove this reward signal and give a PPO agent [42] an intrinsic reward based on the estimated reversibility, which is learned online from agent trajectories."
+c14,llm_wf,reward,6.1,468,"In the usual setting, the agent gets a reward of 1 at every time step, such that the total undiscounted episode reward is equal to the episode length"
+c15,llm_wf,failure,6.2,491,"Handcrafting such safety constraints would be time-consuming, difficult to scale for complex problems, and might lead to reward hacking; so a reasonable proxy consists in limiting irreversible side-effects in the environment [27]."
+c16,llm_wf,failure,6.2,527,"Stepping on grass (green) will spoil it, causing it to turn brown. Stepping on the stone path (grey) does not induce any side-effect."
+c17,llm_wf,episode,6.3,544,"It is worth recalling that contrary to human players, the agent does not have the option to reset the game when stuck."
+c18,llm_wf,episode,6.3,543,"During this phase, the agent will lock itself in unrecoverable states many times, and further exploration is wasted."
+c19,llm_wf,objective,6.1,473,Note that creating insightful rewards is quite difficult: too frequent negative rewards could lead the agent to try and terminate the episode as soon as possible.
+c20,llm_wf,setting,6.4,653,"We learn reversibility offline, using trajectories collected from a random policy. Fig. 7a shows that a random policy augmented with RAC achieves seemingly infinite scores."
+c21,llm_wf,limitation,Broader impact,698,We argue that further research and applications should verify that the induced reversible behavior holds in almost all situations and does not lead to unintended effects.
+c22,llm_wf,limitation,Broader impact,700,Our method could be deflected from its goal and used to identify and encourage actions with irreversible effects.
+c23,llm_wf,llm,Broader impact,697,"safer interactions with RL-powered components (e.g. robots, virtual assistants, recommender systems) which, though rare today, could become the norm."

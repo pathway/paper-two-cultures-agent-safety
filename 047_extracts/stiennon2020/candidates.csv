@@ -1,0 +1,26 @@
+id,pass,topic,locator,line,text
+c1,llm_wf,claim,Abstract,28,we show that it is possible to significantly improve summary quality by training a model to optimize for human preferences.
+c2,llm_wf,reward,Abstract,30,"train a model to predict the human-preferred summary, and use that model as a reward function to fine-tune a summarization policy using reinforcement learning."
+c3,llm_wf,policy,1,90,"the policy generates a token of text at each ‘time step’, and is updated using the PPO algorithm [58] based on the RM ‘reward’ given to the entire generated summary."
+c4,llm_wf,reward,3.1,173,"We treat the logit output of the reward model as a reward that we optimize using reinforcement learning, specifically with the PPO algorithm [58]."
+c5,llm_wf,reward,3.4,379,"we start from a supervised baseline, as described above, then add a randomly initialized linear head that outputs a scalar value."
+c6,llm_wf,reward,3.4,393,"The full reward R can be written as: R(x, y) = rθ (x, y) − β log[πφRL (y|x)/π SFT (y|x)]"
+c7,llm_wf,action,3.4,389,"treating the output of the reward model as a reward for the entire summary that we maximize with the PPO algorithm [58], where each time step is a BPE token."
+c8,llm_wf,reward,3.4 fn8,434,"Note that the reward model only gives rewards for entire summaries, and not at intermediate time steps."
+c9,llm_wf,episode,3.4 fn8,434,"In RL terminology, each episode terminates when the policy outputs the EOS token, and the discount factor γ = 1."
+c10,llm_wf,value,3.4,398,"For the PPO value function, we use a Transformer with completely separate parameters from the policy."
+c11,llm_wf,policy,3.1,162,"We start with an initial policy that is fine-tuned via supervised learning on the desired dataset (in our case, the Reddit TL;DR summarization dataset)."
+c12,llm_wf,oversight,3.3,346,"we maintain a hands-on relationship with labelers:7 we on-board them with detailed instructions, answer their questions in a shared chat room, and provide regular feedback on their performance."
+c13,llm_wf,principal,3.2,302,"Since we have limited capacity to do comparisons, we hire labelers to do the comparisons for us."
+c14,llm_wf,objective,3.2,299,"We define our ground-truth task as producing a model that generates summaries fewer than 48 tokens long that are as good as possible, according to our judgments."
+c15,llm_wf,transition,3.3,344,"we transition entirely to the offline setting, where we alternate between sending large batches of comparison data6 to our human labelers and re-training our models on the cumulative collected data."
+c16,llm_wf,failure,4.3,531,"However, as we optimize further, true preferences fall off compared to the prediction, and eventually the reward model becomes anti-correlated with human preferences."
+c17,llm_wf,failure,4.3,495,"But the reward model isn’t a perfect representation of our labeler preferences, as it has limited capacity and only sees a small amount of comparison data from a relatively narrow distribution of summaries."
+c18,llm_wf,failure,4.3,551,"However, our RMs are biased towards longer summaries: our 6.7B RM prefers improving edits that make the summary shorter only 62.6% of the time (vs. 76.4% for humans)."
+c19,llm_wf,limitation,5,589,"One limitation of our work is the time and cost required to produce our final models. Notably, fine-tuning our 6.7B model with RL required approximately 320 GPU-days."
+c20,llm_wf,limitation,5,592,we were unable to collect baselines such as an equivalent amount of high-quality human demonstrations for supervised baselines.
+c21,llm_wf,principal,Broader impacts,638,"it is likely not appropriate to use researcher labels as the ‘gold standard’; rather, individuals from groups impacted by the technology should be included in the process to define ‘good’ behavior"
+c22,llm_wf,llm,1,93,"We follow the works of [48, 4] and use large pretrained GPT-3 models with as many as 6.7 billion parameters."
+c23,llm_wf,setting,3.1,164,The process (illustrated in Figure 2) then consists of three steps that can be repeated iteratively.
+c24,llm_wf,objective,1,49,there is still a misalignment between this fine-tuning objective—maximizing the likelihood of human-written text—and what we care about—generating high-quality outputs as determined by humans.
+c25,llm_wf,limitation,5,603,"In this setting, it is particularly challenging to identify whether an ML system is aligned with the human designer’s intentions."

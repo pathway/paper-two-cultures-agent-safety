@@ -1,0 +1,167 @@
+[
+ {
+  "topic": "setting",
+  "locator": "2",
+  "text": "An MDP is a model of an agent interacting synchronously with a world. As shown in Fig. 1, the agent takes as input the state of the world and generates as output actions, which themselves affect the state of the world."
+ },
+ {
+  "topic": "state",
+  "locator": "2",
+  "text": "In the MDP framework, it is assumed that, although there may be a great deal of uncertainty about the effects of an agent’s actions, there is never any uncertainty about the agent’s current state—it has complete and perfect perceptual abilities."
+ },
+ {
+  "topic": "transition",
+  "locator": "2.1",
+  "text": "T : S × A → Π(S) is the state-transition function, giving for each world state and agent action, a probability distribution over world states"
+ },
+ {
+  "topic": "reward",
+  "locator": "2.1",
+  "text": "R : S × A → R is the reward function, giving the expected immediate reward gained by the agent for taking each action in each state (we write R(s, a) for the expected reward for taking action a in state s)."
+ },
+ {
+  "topic": "state",
+  "locator": "2.1",
+  "text": "In this model, the next state and the expected reward depend only on the previous state and the action taken; even if we were to condition on additional previous states, the transition probabilities and the expected rewards would remain the same."
+ },
+ {
+  "topic": "objective",
+  "locator": "2.2",
+  "text": "We would like our agents to act in such a way as to maximize some measure of the long-run reward received."
+ },
+ {
+  "topic": "episode",
+  "locator": "2.2",
+  "text": "This sum is also the expected amount of reward received if a decision to terminate the run is made on each step with probability 1 − γ ."
+ },
+ {
+  "topic": "policy",
+  "locator": "2.2",
+  "text": "A policy is a description of the behavior of an agent. We consider two kinds of policies: stationary and nonstationary. A stationary policy, π : S → A, is a situation-action mapping that specifies, for each state, an action to be taken."
+ },
+ {
+  "topic": "value",
+  "locator": "2.2",
+  "text": "In the infinite-horizon discounted case, we write Vπ (s) for the expected discounted sum of future reward for starting in state s and executing policy π ."
+ },
+ {
+  "topic": "value",
+  "locator": "2.2",
+  "text": "Given a policy, we can evaluate it based on the long-run value that the agent expects to gain from executing it."
+ },
+ {
+  "topic": "setting",
+  "locator": "1",
+  "text": "This is essentially a planning problem: given a complete and correct model of the world dynamics and a reward structure, find an optimal way to behave."
+ },
+ {
+  "topic": "policy",
+  "locator": "1",
+  "text": "Rather than taking plans to be sequences of actions, which may only rarely execute as expected, we take them to be mappings from situations to actions that specify the agent’s behavior no matter what may happen."
+ },
+ {
+  "topic": "limitation",
+  "locator": "1",
+  "text": "A weakness of the methods described in this paper is that they require the states of the world to be represented enumeratively, rather than through compositional representations such as Bayes nets or probabilistic operator descriptions."
+ },
+ {
+  "topic": "claim",
+  "locator": "1",
+  "text": "This paper is intended to make two contributions. The first is to recapitulate work from the operations-research literature [36,42,56,59,64] and to describe its connection to closely related work in AI."
+ },
+ {
+  "topic": "action",
+  "locator": "1",
+  "text": "One important facet of the POMDP approach is that there is no distinction drawn between actions taken to change the state of the world and actions taken to gain information. This is important because, in general, every action has both types of effect."
+ },
+ {
+  "topic": "setting",
+  "locator": "3.1",
+  "text": "A POMDP is an MDP in which the agent is unable to observe the current state. Instead, it makes an observation based on the action and resulting state."
+ },
+ {
+  "topic": "observation",
+  "locator": "3.1",
+  "text": "O : S × A → Π(Ω) is the observation function, which gives, for each action and resulting state, a probability distribution over possible observations"
+ },
+ {
+  "topic": "state",
+  "locator": "3.2",
+  "text": "Our choice for belief states will be probability distributions over states of the world. These distributions encode the agent’s subjective probability about the state of the world and provide a basis for acting under uncertainty."
+ },
+ {
+  "topic": "state",
+  "locator": "3.2",
+  "text": "This means that the process over belief states is Markov, and that no additional data about the past would help to increase the agent’s expected reward."
+ },
+ {
+  "topic": "reward",
+  "locator": "3.4",
+  "text": "However, because the state estimator is constructed from a correct observation and transition model of the world, the belief state represents the true occupation probabilities for all states s ∈ S, and therefore the reward function ρ represents the true expected reward to the agent."
+ },
+ {
+  "topic": "failure",
+  "locator": "5.1",
+  "text": "If the agent opens the door with the tiger, then a large penalty is received (presumably in the form of some amount of bodily injury)."
+ },
+ {
+  "topic": "reward",
+  "locator": "5.1",
+  "text": "The reward for opening the correct door is +10 and the penalty for choosing the door with the tiger behind it is −100. The cost of listening is −1."
+ },
+ {
+  "topic": "episode",
+  "locator": "5.1",
+  "text": "Immediately after the agent opens a door and receives a reward or penalty, the problem resets, randomly relocating the tiger behind one of the two doors."
+ },
+ {
+  "topic": "transition",
+  "locator": "5.1",
+  "text": "The LISTEN action does not change the state of the world. The LEFT and RIGHT actions cause a transition to world state sl with probability 0.5 and to state sr with probability 0.5 (essentially resetting the problem)."
+ },
+ {
+  "topic": "policy",
+  "locator": "5.4",
+  "text": "A plan graph is essentially a finite-state controller. It uses the minimal possible amount of memory to act optimally in a partially observable environment."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5.4",
+  "text": "One drawback of the POMDP approach is that the agent must maintain a belief state and use it to select an optimal action on every step; if the underlying state space or V is large, then this computation can be expensive."
+ },
+ {
+  "topic": "limitation",
+  "locator": "5.4",
+  "text": "It is also important to note that there is no known a priori bound on the size of the optimal plan graph in terms of the size of the problem."
+ },
+ {
+  "topic": "objective",
+  "locator": "6.5",
+  "text": "This shows that the total-reward criterion is no less general than goal achievement in completely observable domains. The same holds for finite-horizon partially observable domains."
+ },
+ {
+  "topic": "episode",
+  "locator": "6.5",
+  "text": "Quite frequently, POMDPs are used to model situations in which the agent is expected to go on behaving indefinitely, rather than simply until a goal is achieved."
+ },
+ {
+  "topic": "value",
+  "locator": "6.5",
+  "text": "Using a discounted-optimal policy in a truly infinite-duration setting is a convenient approximation, similar to the use of a situation-action mapping from a finite-horizon policy in receding horizon control."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7",
+  "text": "However, experimental results [34] suggest that even the witness algorithm becomes impractical for problems of modest size (|S| > 15 and |Ω| > 15)."
+ },
+ {
+  "topic": "limitation",
+  "locator": "7",
+  "text": "Another area that is not addressed in this paper is the acquisition of a world model."
+ },
+ {
+  "topic": "claim",
+  "locator": "Abstract",
+  "text": "We then outline a novel algorithm for solving POMDPs off line and show how, in some cases, a finite-memory controller can be extracted from the solution to a POMDP."
+ }
+]

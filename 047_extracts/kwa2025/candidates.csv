@@ -1,0 +1,26 @@
+id,pass,topic,locator,line,text
+c1,llm_wf,claim,Abstract,17,"we propose a new metric: 50%-task-completion time horizon, the time humans typically take to complete tasks that AI models can complete with 50% success rate."
+c2,llm_wf,claim,Abstract,21,"Furthermore, frontier AI time horizon has doubled approximately every seven months since 2019, though the trend may have accelerated since 2024."
+c3,llm_wf,setting,1,65,"We propose tracking AI progress over time using the task completion time horizon: the duration of tasks that models can complete at a certain success probability, providing an intuitive measure of real-world capability compared to humans."
+c4,llm_wf,setting,2.1,179,"All tasks are automatically scored with a continuous score or binary threshold; details of how we normalize and process scores are given in Section 3.1, and other task suite details in Appendix B."
+c5,llm_wf,reward,3.1,234,"To convert agent run data to task completion time horizon, we first convert the agent performance on each task to a binary value (success or failure). Many tasks are naturally binary, including all SWAA tasks."
+c6,llm_wf,reward,3.1,236,"Continuously scored tasks are binarized via a task-specific threshold chosen to represent human performance. For HCAST, the task-specific threshold is the same “target score” the human baseliner tries to achieve, which we also use to filter for successful runs."
+c7,llm_wf,policy,2,92,"Second, we have both humans and AI agents (consisting of an AI model and a scaffold) attempt these tasks, recording the time taken by successful humans and the success rate for AI agents."
+c8,llm_wf,episode,2.3,214,We perform 8 runs4 per agent/task pair and report the average results in Figure 3.
+c9,llm_wf,value,3.1,258,"where ttask is the geometric mean time of successful human baselines, and hagent and βagent are learned parameters, with hagent representing the 50% time horizon."
+c10,llm_wf,value,3.1 fn5,247,"Like in IRT, we use logistic regression to find the task difficulty at which the agent has a 50% chance of success, but unlike IRT, we use difficulty ratings directly based on human baseline time rather than ratings learned from agent performance."
+c11,llm_wf,objective,2.1,181,"Tasks under 1 minute measure knowledge relevant to professional software engineering. At 10 minutes, tasks can include the easiest meaningful step of a real software project (e.g. configuring a common open-source package)."
+c12,llm_wf,failure,3.3,338,"However, we noticed that AI agents still seem to struggle in intuitively “messier” environments— specifically, environments without clear feedback loops, or where the agent needs to proactively seek out relevant information."
+c13,llm_wf,failure,3.3,335,"we observe that models seem to have improved greatly in terms of tool use capabilities, demonstrate a markedly greater ability to adapt to mistakes (as opposed to repeating unsuccessful actions)"
+c14,llm_wf,limitation,5,443,Such differences cast doubt on whether the rapid performance improvements seen on this task suite (and other benchmarks) will generalize.
+c15,llm_wf,limitation,5,442,"in short, realistic tasks rarely have automatic scoring, and often require dealing with other agents, resource constraints, dynamic environments, and high reliability requirements."
+c16,llm_wf,limitation,6,473,"we caution that time horizon is always measured relative to a domain, task distribution, and human baseliners’ level of skill and context, and can be difficult to measure in practice, especially for longer horizons or success rates near 100%."
+c17,llm_wf,limitation,1,103,but do not rule out the possibility that trends are meaningfully slower on the distribution of tasks required to automate software engineer jobs.
+c18,llm_wf,limitation,3.2.1,328,"Due to the limited dataset, we cannot confidently measure time horizons at very high success rates (e.g. 95%)"
+c19,llm_wf,oversight,1,35,Robust benchmarks that can accurately track and forecast AI capabilities thus form the foundation for responsible AI governance and risk mitigation.
+c20,llm_wf,principal,1,34,"In particular, many frontier AI developers have committed to using measures of specific AI capabilities to determine the necessary risk mitigations for their frontier AI systems."
+c21,llm_wf,claim,3.2,266,time horizon has doubled every 207 days with a 95% bootstrapped confidence interval 166-240 days (roughly ±19%).
+c22,llm_wf,claim,5,434,"If future progress instead follows the 2024–2025 trend, 1-month AI would arrive sooner, with half the probability in 2027 and even late 2026."
+c23,llm_wf,setting,2.2,192,"148 of the 169 tasks have human baselines, but we rely on researcher estimates for 21 tasks in HCAST."
+c24,llm_wf,failure,3.2.1,327,"models’ 80% time horizons are 4-6x shorter, suggesting that even models that sometimes succeed on difficult and diverse tasks cannot reliably perform tasks of moderate length."
+c25,llm_wf,limitation,5,447,"The time horizon trend may significantly change in the future due to factors including agency training, compute scaling, and automation of AI research and development."

@@ -1,0 +1,100 @@
+[
+ {
+  "primitive": "transition",
+  "setting": "T-RL",
+  "evidence_source": "sutton2018",
+  "candidate_ids": [],
+  "quote": "The function p defines the dynamics of the MDP",
+  "reason": "\"The function p defines the dynamics of the MDP\"; stochastic, often unknown to the agent [@sutton2018].",
+  "fits": true,
+  "note": "already quote"
+ },
+ {
+  "primitive": "transition",
+  "setting": "T-CHAT",
+  "evidence_source": "ahmadian2024",
+  "candidate_ids": [
+   "c16"
+  ],
+  "quote": "Hence, the problem can be reduced to a bandit problem, where the Markov Decision Process (MDP) consists of only the initial state as determined by the prompt, and the terminal state, which is always reached after the generation",
+  "reason": "\"Hence, the problem can be reduced to a bandit problem, where the Markov Decision Process (MDP) consists of only the initial state as determined by the prompt, and the terminal state, which is always reached after the generation\" [@ahmadian2024] So there is no next state [@xiong2024].",
+  "fits": true,
+  "note": "c16 supports bandit with only initial and terminal state. xiong2024 not quoted (its candidates only say contextual bandit)."
+ },
+ {
+  "primitive": "transition",
+  "setting": "T-RLVR",
+  "evidence_source": "ahmadian2024",
+  "candidate_ids": [
+   "c16"
+  ],
+  "quote": "Hence, the problem can be reduced to a bandit problem, where the Markov Decision Process (MDP) consists of only the initial state as determined by the prompt, and the terminal state, which is always reached after the generation",
+  "reason": "As T-CHAT: \"Hence, the problem can be reduced to a bandit problem, where the Markov Decision Process (MDP) consists of only the initial state as determined by the prompt, and the terminal state, which is always reached after the generation\" [@ahmadian2024]",
+  "fits": true,
+  "note": "Reason cites no key itself; it inherits T-CHAT's cites. Quote taken from ahmadian2024, cited by T-CHAT."
+ },
+ {
+  "primitive": "transition",
+  "setting": "T-PRM",
+  "evidence_source": "feng2023",
+  "candidate_ids": [],
+  "quote": "The particularity of natural language tasks is that both the action and state are in language space.",
+  "reason": "\"The particularity of natural language tasks is that both the action and state are in language space.\" [@feng2023] This states only that states are language; it does not state that the next state is prefix plus step.",
+  "fits": false,
+  "note": "No passage in feng2023 candidates or full text says the next state is the prefix plus the step or that it is deterministic. Quote is only partly relevant. The deterministic claim is in ahmadian2024 c15, which this reason does not cite."
+ },
+ {
+  "primitive": "transition",
+  "setting": "T-AGENT",
+  "evidence_source": "jimenez2024",
+  "candidate_ids": [],
+  "quote": "Next, within the local copy of the mirror, checking out the base commit will reset the repository to codebase C.",
+  "reason": "The sandbox executes the call; \"Next, within the local copy of the mirror, checking out the base commit will reset the repository to codebase C.\" [@jimenez2024] so the environment is resettable.",
+  "fits": true,
+  "note": "Supports resettable. Stochastic is not supported by this quote. Execution in a virtual environment is in the full text but not quoted."
+ },
+ {
+  "primitive": "transition",
+  "setting": "D-RL",
+  "evidence_source": "sutton2018",
+  "candidate_ids": [
+   "c41"
+  ],
+  "quote": "In a Markov decision process, the probabilities given by p completely characterize the environment’s dynamics.",
+  "reason": "As in training: \"In a Markov decision process, the probabilities given by p completely characterize the environment’s dynamics.\" [@sutton2018]",
+  "fits": true,
+  "note": "Reason cites no key itself; it inherits T-RL's cite sutton2018. Sentence is from the full text (candidate c41 contains it)."
+ },
+ {
+  "primitive": "transition",
+  "setting": "D-CHAT",
+  "evidence_source": "",
+  "candidate_ids": [],
+  "quote": "",
+  "reason": "The next observation is the user's reply; the user is the environment. No cited work supports this.",
+  "fits": false,
+  "note": "Reason cites no work and no inherited key. No quote taken, since a quote from an uncited work is not allowed."
+ },
+ {
+  "primitive": "transition",
+  "setting": "D-AGENT-A",
+  "evidence_source": "ruan2024",
+  "candidate_ids": [
+   "c27"
+  ],
+  "quote": "the LM agent takes an action an ∈ A composed of the specific tool being invoked fn ∈ F and additional input arguments for the tool (e.g., specific terminal commands), and receives an observation ωn ∈ Ω from tool execution.",
+  "reason": "\"the LM agent takes an action an ∈ A composed of the specific tool being invoked fn ∈ F and additional input arguments for the tool (e.g., specific terminal commands), and receives an observation ωn ∈ Ω from tool execution.\" [@ruan2024] The tool executes; ruan2024 emulates execution, so the real-world, external and stochastic parts are not supported.",
+  "fits": true,
+  "note": "Supports tool executes and observation returned. Does not support real-world or stochastic. ToolEmu is an emulator, not the real world."
+ },
+ {
+  "primitive": "transition",
+  "setting": "D-AGENT-X",
+  "evidence_source": "greshake2023",
+  "candidate_ids": [],
+  "quote": "However, exact reproducibility is difficult to guarantee with such a black-box system with no control over the generation’s parameters and a dynamic environment.",
+  "reason": "The world moves between calls: \"However, exact reproducibility is difficult to guarantee with such a black-box system with no control over the generation’s parameters and a dynamic environment.\" [@greshake2023] Third-party control [@chan2023] is not supported by this quote.",
+  "fits": true,
+  "note": "Supports dynamic environment (non-stationary). Third-party control not supported by any found passage in greshake2023 or chan2023."
+ }
+]

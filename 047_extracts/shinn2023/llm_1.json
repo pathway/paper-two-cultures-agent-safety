@@ -1,0 +1,127 @@
+[
+{
+"topic": "claim",
+"locator": "Abstract",
+"text": "novel framework to reinforce language agents not by updating weights, but instead through linguistic feedback. Concretely, Reflexion agents verbally reflect"
+},
+{
+"topic": "claim",
+"locator": "1 Introduction",
+"text": "Reflexion has several advantages compared to more traditional RL approaches like policy or valuebased learning: 1) it is lightweight and doesn’t require finetuning the LLM, 2) it allows for more"
+},
+{
+"topic": "limitation",
+"locator": "1 Introduction",
+"text": "power of the LLM’s self-evaluation capabilities (or heuristics) and not having a formal guarantee for"
+},
+{
+"topic": "reward",
+"locator": "1 Introduction",
+"text": "to help agents learn from prior failings. Reflexion converts binary or scalar feedback from the"
+},
+{
+"topic": "policy",
+"locator": "3 Reflexion",
+"text": "policy-based RL setups, we sample an action or generation, at , from the current policy πθ at time t,"
+},
+{
+"topic": "action",
+"locator": "1 Introduction",
+"text": "generate text and ‘actions‘ that can be used in API calls and executed in an environment. Since"
+},
+{
+"topic": "observation",
+"locator": "3 Reflexion",
+"text": "Actor The Actor is built upon a large language model (LLM) that is specifically prompted to"
+},
+{
+"topic": "value",
+"locator": "3 Reflexion",
+"text": "effective value and reward functions that apply to semantic spaces is difficult, so we investigate"
+},
+{
+"topic": "reward",
+"locator": "3 Reflexion",
+"text": "Given a sparse reward signal, such as a binary success status (success/fail), the current trajectory,"
+},
+{
+"topic": "reward",
+"locator": "3 Reflexion",
+"text": "produces a score r0 which is computed as rt = Me (τ0 ). rt is only a scalar reward for trial t that"
+},
+{
+"topic": "policy",
+"locator": "3 Reflexion",
+"text": "experiences from long-term memory. In the RL setup, the trajectory history serves as the short-term"
+},
+{
+"topic": "policy",
+"locator": "3 Reflexion",
+"text": "by a maximum number of stored experiences, Ω (usually set to 1-3) to adhere to max context LLM"
+},
+{
+"topic": "setting",
+"locator": "4.1",
+"text": "AlfWorld is a suite of text-based environments that challenge an agent to solve multi-step tasks"
+},
+{
+"topic": "reward",
+"locator": "4.1",
+"text": "as the environment can only signal if a task is complete. To achieve fully autonomous behavior,"
+},
+{
+"topic": "episode",
+"locator": "4.1",
+"text": "we skip the self-reflection process, reset the environment, and start a new trial. In the Reflexion runs,"
+},
+{
+"topic": "episode",
+"locator": "4.1",
+"text": "the agent uses self-reflection to find its mistake, update its memory, reset the environment, and start a"
+},
+{
+"topic": "failure",
+"locator": "4.1",
+"text": "has possession of an item but does not actually have the item. The agent proceeds to execute several"
+},
+{
+"topic": "reward",
+"locator": "4.2",
+"text": "trials, we use exact match answer grading using the environment to give a binary success signal to"
+},
+{
+"topic": "failure",
+"locator": "4.3",
+"text": "write diverse, comprehensive tests. Therefore, in the case in which the model generates a flaky test"
+},
+{
+"topic": "failure",
+"locator": "4.3",
+"text": "but the implementation is incorrect), the agent will prematurely report an invalid submission. In 2,"
+},
+{
+"topic": "limitation",
+"locator": "5 Limitations",
+"text": "At its core, Reflexion is an optimization technique that uses natural language to do policy optimization."
+},
+{
+"topic": "limitation",
+"locator": "5 Limitations",
+"text": "still succumb to non-optimal local minima solutions. In this study, we limit long-term memory to"
+},
+{
+"topic": "limitation",
+"locator": "5 Limitations",
+"text": "Specific to code generation, there are many practical limitations to testdriven development in specifying accurate input-output mappings such as non-deterministic generator"
+},
+{
+"topic": "failure",
+"locator": "6 Broader impact",
+"text": "these agents toward greater automation and work efficiency, but it also amplifies the risks when these"
+},
+{
+"topic": "oversight",
+"locator": "6 Broader impact",
+"text": "reinforcement learning might address some of the issues and turn autonomous agents more interpretable and diagnosable. For example, in the case of tool-usage that may be too hard for humans to"
+}
+]

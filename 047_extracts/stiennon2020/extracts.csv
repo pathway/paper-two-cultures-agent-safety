@@ -1,0 +1,2 @@
+id,kind,locator,text,tex
+e1,cell,3.4 fn8,"Note that the reward model only gives rewards for entire summaries, and not at intermediate time steps.",

@@ -1,0 +1,137 @@
+[
+ {
+  "topic": "setting",
+  "locator": "CASE STUDY",
+  "text": "Credit scoring is a great example of the problem discussed by Professor Breiman. The input variables, x, might come from company databases or credit bureaus. The output variable, y, is some indicator of credit worthiness."
+ },
+ {
+  "topic": "observation",
+  "locator": "CASE STUDY",
+  "text": "The input variables, x, in this simpliﬁed version, are the monthly bills and payments over the last 12 months. So the dimension of x is 24."
+ },
+ {
+  "topic": "objective",
+  "locator": "CASE STUDY",
+  "text": "Client demand, legal considerations and robustness over time led to the concept of score engineering. For example, the score had to be monotonically decreasing in certain delinquency characteristics."
+ },
+ {
+  "topic": "objective",
+  "locator": "CASE STUDY",
+  "text": "The overarching goal was to develop tools that would help clients make better decisions through data."
+ },
+ {
+  "topic": "claim",
+  "locator": "CASE STUDY",
+  "text": "There was no claim that the ﬁnal score formula was correct, only that it worked well on the test sample."
+ },
+ {
+  "topic": "value",
+  "locator": "CASE STUDY",
+  "text": "What counted was performance on the test sample, which was a surrogate for the future real world."
+ },
+ {
+  "topic": "limitation",
+  "locator": "OVERFITTING THE TEST SAMPLE",
+  "text": "High performance on the test sample does not guarantee high performance on future samples, things do change."
+ },
+ {
+  "topic": "oversight",
+  "locator": "OVERFITTING THE TEST SAMPLE",
+  "text": "One can monitor the performance of the models over time and develop new models when there has been sufﬁcient degradation of performance."
+ },
+ {
+  "topic": "principal",
+  "locator": "A SOLUTION TO THE OCCAM DILEMMA",
+  "text": "Sometimes we can’t implement them until the lawyers and regulators approve. And that requires super interpretability."
+ },
+ {
+  "topic": "limitation",
+  "locator": "THE ALGORITHM TUNING DILEMMA",
+  "text": "However, in industry and academia, there is sometimes a little tinkering, which involves peeking at the test sample. The result is some bias in the test sample or crossvalidation results."
+ },
+ {
+  "topic": "limitation",
+  "locator": "THE ALGORITHM TUNING DILEMMA",
+  "text": "How do you optimize your results and get an unbiased estimate of the generalization error?"
+ },
+ {
+  "topic": "objective",
+  "locator": "GENERALIZING THE GENERALIZATION ERROR",
+  "text": "However, I see a mismatch between the algorithms used to develop the models and the business measurement of the model’s value."
+ },
+ {
+  "topic": "objective",
+  "locator": "GENERALIZING THE GENERALIZATION ERROR",
+  "text": "Perhaps what the client really wants is a score that will maximize the dollars saved in their fraud control system. The score that maximizes test set divergence or minimizes test set misclassiﬁcations does not do it."
+ },
+ {
+  "topic": "claim",
+  "locator": "GENERALIZING THE GENERALIZATION ERROR",
+  "text": "The challenge for algorithmic modeling is to ﬁnd an algorithm that maximizes the generalization dollars saved, not generalization error."
+ },
+ {
+  "topic": "objective",
+  "locator": "Comment, Parzen",
+  "text": "Management seeks proﬁt, practical answers (predictions) useful for decision making in the short run. Science seeks truth, fundamental knowledge about nature which provides understanding and control in the long run."
+ },
+ {
+  "topic": "failure",
+  "locator": "Comment, Parzen",
+  "text": "This situation, which I call “the right answer to the wrong question,” is called by statisticians “the error of the third kind.” Engineers at M.I.T. deﬁne “suboptimization” as “elegantly solving the wrong problem.”"
+ },
+ {
+  "topic": "objective",
+  "locator": "Rejoinder, Cox",
+  "text": "I have never worked on a project that has started with “Here is a lot of data; let’s look at it and see if we can get some ideas about how to use it.” The data has been put together and analyzed starting with an objective."
+ },
+ {
+  "topic": "setting",
+  "locator": "Rejoinder, C1",
+  "text": "At times, there is not enough data on which to base predictions; but policy decisions need to be made."
+ },
+ {
+  "topic": "claim",
+  "locator": "Rejoinder, C4",
+  "text": "Given a statistical problem, ﬁnd a good solution, whether it is a data model, an algorithmic model or (although it is somewhat against my grain), a Bayesian data model or a completely different approach."
+ },
+ {
+  "topic": "claim",
+  "locator": "Rejoinder, E2",
+  "text": "I would add that the more predictively accurate the model is, the more faith can be put into the variables that it ﬁngers as important."
+ },
+ {
+  "topic": "value",
+  "locator": "Rejoinder, E3",
+  "text": "My deﬁnition of variable importance is based on prediction. A variable might be considered important if deleting it seriously affects prediction accuracy."
+ },
+ {
+  "topic": "limitation",
+  "locator": "Rejoinder, E3",
+  "text": "It depends on the dependencies between the output variable and the input variables, and on the dependencies between the input variables. The problem begs for research."
+ },
+ {
+  "topic": "limitation",
+  "locator": "Rejoinder, Hoadley",
+  "text": "I agree—algorithmic models accurate in one context must be modiﬁed to stay accurate in others. This does not necessarily imply that the way the model is constructed needs to be altered, but that data gathered in the new context should be used in the construction."
+ },
+ {
+  "topic": "oversight",
+  "locator": "Rejoinder, Hoadley",
+  "text": "“Simple,” he said; “We ﬁt binary trees to the inputs and outputs of the neural nets and show the trees to the clients. Keeps them happy!”"
+ },
+ {
+  "topic": "objective",
+  "locator": "Rejoinder, Hoadley",
+  "text": "In both stock prediction and credit rating, the priority is accuracy. Interpretability is a secondary goal that can be ﬁnessed."
+ },
+ {
+  "topic": "claim",
+  "locator": "Rejoinder, Parzen",
+  "text": "I like my division because it is pretty clear cut—are you modeling the inside of the box or not?"
+ },
+ {
+  "topic": "failure",
+  "locator": "CASE STUDY",
+  "text": "What I discovered surprised me. All models ﬁt with anywhere from 27 to 36 characteristics had the same performance on the test sample."
+ }
+]
